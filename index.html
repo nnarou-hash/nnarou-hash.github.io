@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nelly Narou — Data Analyst</title>
+<style>
+  :root {
+    --mauve: #7c3aed;
+    --mauve-light: #a78bfa;
+    --mauve-dark: #5b21b6;
+    --mauve-bg: #f5f3ff;
+    --dark: #1e1b2e;
+    --gray: #6b7280;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #ede9fe;
+    padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-weight: 700; color: var(--mauve); font-size: 1.1rem; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--mauve); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--dark) 0%, #2d1b69 60%, var(--mauve-dark) 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 20px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.3) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(167,139,250,0.2);
+    color: var(--mauve-light);
+    border: 1px solid rgba(167,139,250,0.4);
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 0.85rem; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800; color: var(--white);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--mauve-light); }
+  .hero p {
+    font-size: 1.15rem; color: rgba(255,255,255,0.7);
+    margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn {
+    padding: 12px 28px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--mauve); color: white; }
+  .btn-primary:hover { background: var(--mauve-dark); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { border-color: var(--mauve-light); color: var(--mauve-light); }
+
+  /* SECTIONS */
+  section { padding: 80px 20px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--mauve); text-transform: uppercase;
+    letter-spacing: 2px; margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800; margin-bottom: 40px; color: var(--dark);
+  }
+
+  /* ABOUT */
+  .about { background: var(--mauve-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .about-text p { color: var(--gray); margin-bottom: 16px; font-size: 1.05rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-card {
+    background: white; border-radius: 12px; padding: 20px;
+    text-align: center; box-shadow: 0 2px 12px rgba(124,58,237,0.08);
+  }
+  .stat-number { font-size: 2rem; font-weight: 800; color: var(--mauve); }
+  .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .project-card {
+    background: white; border-radius: 16px; overflow: hidden;
+    border: 1px solid #ede9fe;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(124,58,237,0.15); }
+  .project-header {
+    height: 120px; display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .project-header.p1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+  .project-header.p2 { background: linear-gradient(135deg, #f093fb, #7c3aed); }
+  .project-header.p3 { background: linear-gradient(135deg, #4facfe, #7c3aed); }
+  .project-header.p4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+  .project-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .project-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .project-desc { font-size: 0.88rem; color: var(--gray); flex: 1; margin-bottom: 16px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tag {
+    background: var(--mauve-bg); color: var(--mauve);
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+  }
+  .project-links { display: flex; gap: 10px; }
+  .project-link {
+    font-size: 0.82rem; color: var(--mauve); text-decoration: none;
+    font-weight: 600; padding: 6px 14px;
+    border: 1px solid var(--mauve); border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .project-link:hover { background: var(--mauve); color: white; }
+  .badge-wip {
+    font-size: 0.72rem; background: #fef3c7; color: #d97706;
+    padding: 3px 10px; border-radius: 20px; font-weight: 600;
+    display: inline-block; margin-bottom: 8px;
+  }
+
+  /* SKILLS */
+  .skills { background: var(--mauve-bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .skill-group {
+    background: white; border-radius: 12px; padding: 20px;
+    box-shadow: 0 2px 12px rgba(124,58,237,0.06);
+  }
+  .skill-group-title {
+    font-size: 0.8rem; font-weight: 700; color: var(--mauve);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .skill-item {
+    font-size: 0.88rem; color: var(--gray);
+    padding: 4px 0; border-bottom: 1px solid #f3f0ff;
+  }
+  .skill-item:last-child { border-bottom: none; }
+
+  /* CONTACT */
+  .contact-box {
+    background: linear-gradient(135deg, var(--mauve-dark), var(--dark));
+    border-radius: 20px; padding: 60px 40px;
+    text-align: center; color: white;
+  }
+  .contact-box h2 { font-size: 2rem; margin-bottom: 12px; }
+  .contact-box p { color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white; text-decoration: none;
+    padding: 10px 22px; border-radius: 8px;
+    font-size: 0.9rem; transition: all 0.2s;
+  }
+  .contact-link:hover { background: var(--mauve); border-color: var(--mauve); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 24px;
+    font-size: 0.82rem; color: var(--gray);
+    border-top: 1px solid #ede9fe;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nelly Narou ✦</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">✦ Data Analyst & BI Engineer</div>
+    <h1>Je transforme la donnée<br>en <span>décision</span></h1>
+    <p>Pipelines data, BI, gouvernance et IA — avec un ancrage fort dans le secteur santé/pharma.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">À propos</div>
+        <div class="section-title">Data & IA,<br>au service de la santé</div>
+        <p>Ancienne BI Analyst chez Teva Santé, je me suis formée à la data engineering, au machine learning et à l'IA générative chez Jedha (certification RNCP Niveau 6).</p>
+        <p>Je construis des pipelines data, des dashboards et des agents IA autonomes — avec un œil toujours tourné vers la qualité des données et l'impact métier.</p>
+        <a href="#projects" class="btn btn-primary" style="margin-top:8px">Voir mes projets →</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Projets portfolio</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">RNCP</div>
+          <div class="stat-label">Certifiée Jedha Niv.6</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">🏥</div>
+          <div class="stat-label">Focus santé/pharma</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projets</div>
+    <div class="section-title">Ce que j'ai construit</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header p1">💊</div>
+        <div class="project-body">
+          <div class="project-title">Antihistaminiques Pipeline</div>
+          <div class="project-desc">Pipeline data complet de prédiction des ruptures de stocks d'antihistaminiques en France. Architecture Bronze/Silver/Gold, ML avec SHAP, API FastAPI et dashboard Streamlit déployé.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">MLflow</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Santé</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" class="project-link">GitHub</a>
+            <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" class="project-link">Demo live</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header p2">🤖</div>
+        <div class="project-body">
+          <div class="project-title">Career Intelligence AI</div>
+          <div class="project-desc">Agent IA autonome qui scrape LinkedIn et Indeed chaque samedi, score les offres d'emploi selon un profil cible et envoie un email hebdomadaire de veille.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Firestore</span>
+            <span class="tag">Apify</span>
+            <span class="tag">OpenAI</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/nnarou-hash/career-intelligence-ai" target="_blank" class="project-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header p3">💜</div>
+        <div class="project-body">
+          <div class="project-title">Auprès de Maman</div>
+          <div class="project-desc">Site web familial pour coordonner les relais de 10 frères et sœurs auprès d'une maman. Authentification, planning partagé et notifications en temps réel.</div>
+          <div class="project-tags">
+            <span class="tag">Firebase</span>
+            <span class="tag">Firestore</span>
+            <span class="tag">React</span>
+            <span class="tag">Hosting</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Voir le projet</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header p4">🔬</div>
+        <div class="project-body">
+          <span class="badge-wip">🚧 En cours</span>
+          <div class="project-title">Agent Veille Pénuries ANSM</div>
+          <div class="project-desc">Agent IA de veille des ruptures de stock de médicaments en France, basé sur les données publiques de l'ANSM. Alertes automatiques et tableau de bord.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">ANSM</span>
+            <span class="tag">IA Générative</span>
+            <span class="tag">Santé</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Bientôt disponible</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Compétences</div>
+    <div class="section-title">Ma stack technique</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Data Engineering</div>
+        <div class="skill-item">Python (Pandas, NumPy)</div>
+        <div class="skill-item">SQL / BigQuery</div>
+        <div class="skill-item">Apache Airflow</div>
+        <div class="skill-item">dbt / Snowflake</div>
+        <div class="skill-item">Docker</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">BI & Visualisation</div>
+        <div class="skill-item">Power BI (DAX, Power Query)</div>
+        <div class="skill-item">Streamlit</div>
+        <div class="skill-item">Tableau</div>
+        <div class="skill-item">Excel Avancé</div>
+        <div class="skill-item">SAP BI / IBP</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Machine Learning</div>
+        <div class="skill-item">Scikit-learn</div>
+        <div class="skill-item">XGBoost / Random Forest</div>
+        <div class="skill-item">MLflow</div>
+        <div class="skill-item">SHAP (explicabilité)</div>
+        <div class="skill-item">FastAPI</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">IA & Cloud</div>
+        <div class="skill-item">OpenAI API</div>
+        <div class="skill-item">GitHub Actions</div>
+        <div class="skill-item">Firebase / Firestore</div>
+        <div class="skill-item">AWS (S3, RDS)</div>
+        <div class="skill-item">n8n / Apify</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Gouvernance & Méthodes</div>
+        <div class="skill-item">Data Quality</div>
+        <div class="skill-item">RGPD / DPO</div>
+        <div class="skill-item">PRINCE2</div>
+        <div class="skill-item">Lean Six Sigma</div>
+        <div class="skill-item">S&OP / IBP</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Secteur</div>
+        <div class="skill-item">Santé / Pharma</div>
+        <div class="skill-item">IQVIA / GERS</div>
+        <div class="skill-item">Supply Chain</div>
+        <div class="skill-item">Retail / Logistique</div>
+        <div class="skill-item">Finance opérationnelle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2>Travaillons ensemble 💜</h2>
+      <p>Disponible pour des opportunités en Data, BI et Gouvernance — secteur santé/pharma prioritaire.</p>
+      <div class="contact-links">
+        <a href="mailto:nelly.narou@gmail.com" class="contact-link">✉ nelly.narou@gmail.com</a>
+        <a href="https://linkedin.com/in/nelly-narou" target="_blank" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/nnarou-hash" target="_blank" class="contact-link">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Fait avec 💜 par Nelly Narou — 2026
+</footer>
+
+</body>
+</html>
