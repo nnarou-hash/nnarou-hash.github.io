@@ -182,6 +182,8 @@
   }
   .skill-item:last-child { border-bottom: none; }
 
+  .skills-note { color: var(--gray); font-size: 0.88rem; text-align: center; margin-top: 24px; }
+
   /* CONTACT */
   .contact-box {
     background: linear-gradient(135deg, var(--mauve-dark), var(--dark));
@@ -522,62 +524,70 @@
 <section class="skills" id="skills">
   <div class="container">
     <div class="section-label">Compétences</div>
-    <div class="section-title">Ma stack technique</div>
+    <div class="section-title">Compétences métier & outils</div>
     <div class="skills-grid">
       <div class="skill-group">
-        <div class="skill-group-title">Qualité & gouvernance des données</div>
-        <div class="skill-item">Data Quality (règles, tests, lignage)</div>
-        <div class="skill-item">Documentation et dictionnaire de données</div>
-        <div class="skill-item">Données de référence (produits, CRM)</div>
-        <div class="skill-item">RGPD (anonymisation de données)</div>
+        <div class="skill-group-title">Qualité & gestion des données · expérience professionnelle</div>
+        <div class="skill-item">Contrôles de qualité et détection d’anomalies</div>
+        <div class="skill-item">Données produits et données CRM</div>
+        <div class="skill-item">Dictionnaire et documentation des données</div>
+        <div class="skill-item">Cohérence des données et règles métier</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">BI & Visualisation</div>
-        <div class="skill-item">Power BI (DAX, Power Query)</div>
-        <div class="skill-item">Tableau</div>
-        <div class="skill-item">Qlik Sense / QlikView</div>
-        <div class="skill-item">SAP BI</div>
-        <div class="skill-item">Streamlit</div>
+        <div class="skill-group-title">BI & analyse · expérience professionnelle</div>
+        <div class="skill-item">QlikView / Qlik Sense</div>
+        <div class="skill-item">Power BI / Power Query</div>
+        <div class="skill-item">Tableau et SAP BI</div>
         <div class="skill-item">Excel avancé</div>
+        <div class="skill-item">Tableaux de bord, KPI et reporting</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Data Engineering – projets & pratique</div>
-        <div class="skill-item">SQL</div>
-        <div class="skill-item">Python (Pandas, NumPy)</div>
-        <div class="skill-item">BigQuery</div>
-        <div class="skill-item">Snowflake</div>
-        <div class="skill-item">dbt</div>
-        <div class="skill-item">Apache Airflow</div>
-        <div class="skill-item">PySpark</div>
-        <div class="skill-item">Docker</div>
+        <div class="skill-group-title">Pilotage métier & planification · expérience professionnelle</div>
+        <div class="skill-item">S&OP et coordination transverse</div>
+        <div class="skill-item">Prévisions commerciales et analyse des écarts</div>
+        <div class="skill-item">SAP IBP</div>
+        <div class="skill-item">Analyse de performance et productivité</div>
+        <div class="skill-item">Suivi des stocks et coûts logistiques</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">CRM & processus · expérience professionnelle</div>
+        <div class="skill-item">Salesforce : administration fonctionnelle</div>
+        <div class="skill-item">Configuration, droits et workflows</div>
+        <div class="skill-item">Qualité et migration de données CRM</div>
+        <div class="skill-item">Support utilisateurs et documentation</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Analyse & ingénierie data · projets et formation</div>
+        <div class="skill-item">SQL et Python (Pandas, NumPy)</div>
+        <div class="skill-item">BigQuery et Snowflake</div>
+        <div class="skill-item">dbt et Apache Airflow</div>
+        <div class="skill-item">PySpark et Docker</div>
         <div class="skill-item">Git / GitHub</div>
+        <div class="skill-item">Streamlit et FastAPI</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Machine Learning – projets de formation</div>
+        <div class="skill-group-title">IA & automatisation · projets et formation</div>
+        <div class="skill-item">IA générative et OpenAI API</div>
+        <div class="skill-item">Prompt engineering et agents IA</div>
+        <div class="skill-item">RAG et automatisation avec n8n</div>
+        <div class="skill-item">Apify et GitHub Actions</div>
+        <div class="skill-item">Sécurisation des usages IA : notions et pratique projet</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Machine Learning · projets de formation</div>
         <div class="skill-item">Scikit-learn</div>
-        <div class="skill-item">XGBoost / Random Forest</div>
+        <div class="skill-item">XGBoost et Random Forest</div>
         <div class="skill-item">K-Means (clustering)</div>
         <div class="skill-item">MLflow</div>
         <div class="skill-item">SHAP (explicabilité)</div>
-        <div class="skill-item">FastAPI</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">IA générative & automatisation</div>
-        <div class="skill-item">OpenAI API</div>
-        <div class="skill-item">Agents IA</div>
-        <div class="skill-item">RAG</div>
-        <div class="skill-item">Prompt engineering</div>
-        <div class="skill-item">Sécurisation des usages (prompt injection, RGPD)</div>
-        <div class="skill-item">n8n / Apify</div>
-        <div class="skill-item">GitHub Actions</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Cloud & CRM</div>
+        <div class="skill-group-title">Cloud & bases de données · projets et pratique</div>
         <div class="skill-item">Firebase / Firestore</div>
         <div class="skill-item">AWS (S3, RDS)</div>
-        <div class="skill-item">Salesforce</div>
       </div>
     </div>
+    <p class="skills-note">Les compétences sont distinguées selon leur contexte d’utilisation : expérience professionnelle, projets personnels ou de formation. Les outils cités ne correspondent pas tous au même niveau de pratique.</p>
   </div>
 </section>
 
