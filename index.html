@@ -108,6 +108,24 @@
   .stat-number { font-size: 2rem; font-weight: 800; color: var(--mauve); }
   .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
 
+  /* EXPERIENCE */
+  .experience-list { display: grid; gap: 20px; }
+  .experience-card {
+    background: white; border: 1px solid #ede9fe; border-radius: 16px;
+    padding: 26px 28px; box-shadow: 0 2px 12px rgba(124,58,237,0.05);
+  }
+  .experience-top { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 16px; }
+  .experience-top h3 { font-size: 1.12rem; margin-bottom: 3px; }
+  .experience-company { color: var(--mauve); font-weight: 600; font-size: 0.92rem; }
+  .experience-date { color: var(--gray); font-size: 0.82rem; text-align: right; white-space: nowrap; }
+  .experience-points { padding-left: 20px; color: var(--gray); font-size: 0.91rem; }
+  .experience-points li { margin: 7px 0; padding-left: 3px; }
+  .experience-points strong { color: var(--dark); }
+  .experience-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  .experience-role { margin-top: 16px; }
+  .experience-role > strong { display: block; font-size: 0.92rem; }
+  .experience-role > span { display: block; color: var(--gray); font-size: 0.8rem; margin-bottom: 6px; }
+
   /* PROJECTS */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .project-card {
@@ -194,6 +212,9 @@
     nav { padding: 14px 20px; }
     .nav-links { gap: 16px; }
     .about-grid { grid-template-columns: 1fr; }
+    .experience-card { padding: 21px 18px; }
+    .experience-top { flex-direction: column; gap: 5px; }
+    .experience-date { text-align: left; white-space: normal; }
   }
 </style>
 </head>
@@ -258,17 +279,93 @@
   </div>
 </section>
 
-<!-- EXPERIENCE DATA QUALITY -->
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="section-label">Expérience professionnelle</div>
-    <div class="section-title">La qualité des données en pratique</div>
-    <div class="projects-grid">
-      <div class="skill-group"><div class="skill-group-title">Fiabilisation des données produits</div><p class="project-desc">Contrôles mensuels de qualité portant sur 800 à 1 200 références dans un environnement pharmaceutique, avec suivi des anomalies et fiabilisation des données utilisées par les métiers.</p></div>
-      <div class="skill-group"><div class="skill-group-title">Documentation & dictionnaire de données</div><p class="project-desc">Contribution à la documentation et à la structuration des définitions de données pour faciliter leur compréhension, leur cohérence et leur réutilisation.</p></div>
-      <div class="skill-group"><div class="skill-group-title">Coordination métier & S&OP</div><p class="project-desc">Coordination avec quatre équipes dans les processus S&OP, suivi des prévisions commerciales et analyse de la précision et du biais des prévisions.</p></div>
+    <div class="section-title">Un parcours entre data, performance & métiers</div>
+    <div class="experience-list">
+
+      <article class="experience-card">
+        <div class="experience-top">
+          <div>
+            <h3>Analyste Business Intelligence</h3>
+            <div class="experience-company">Teva Santé · La Défense</div>
+          </div>
+          <span class="experience-date">Depuis sept. 2023 · CDI</span>
+        </div>
+        <ul class="experience-points">
+          <li>Contrôler mensuellement la qualité de <strong>800 à 1 200 références produits</strong> : valeurs manquantes, doublons et cohérence des données.</li>
+          <li>Contribuer au dictionnaire de données et à la documentation des données produits, supply et prévisions.</li>
+          <li>Fiabiliser les prévisions dans <strong>SAP IBP</strong>, analyser les écarts avec les ventes réelles et suivre la précision et le biais.</li>
+          <li>Coordonner le processus <strong>S&OP entre quatre équipes métier</strong> et produire des analyses et reportings pour le pilotage.</li>
+          <li>Créer un reporting de suivi des ruptures et allocations ainsi qu’un bridge d’analyse des écarts de prévisions.</li>
+        </ul>
+        <div class="experience-tags"><span class="tag">Data Quality</span><span class="tag">SAP IBP</span><span class="tag">S&OP</span><span class="tag">QlikView</span><span class="tag">Reporting</span></div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-top">
+          <div>
+            <h3>Coordinatrice commerciale</h3>
+            <div class="experience-company">Picard · Issy-les-Moulineaux</div>
+          </div>
+          <span class="experience-date">Nov. 2020 – sept. 2023 · CDI</span>
+        </div>
+        <ul class="experience-points">
+          <li>Administrer <strong>Salesforce</strong> : configuration, droits d’accès, workflows, rapports et assistance aux utilisateurs.</li>
+          <li>Contrôler la qualité des données CRM et contribuer à la migration des données lors de la mise en place de l’outil.</li>
+          <li>Construire et suivre des tableaux de bord de performance commerciale.</li>
+          <li>Suivre les stocks, la performance produits et les coûts logistiques de l’activité de distribution automatique.</li>
+          <li>Contribuer à l’évolution du système de télémétrie et coordonner des actions commerciales, dont 12 animations annuelles.</li>
+        </ul>
+        <div class="experience-tags"><span class="tag">Salesforce</span><span class="tag">CRM</span><span class="tag">Qualité des données</span><span class="tag">Pilotage commercial</span></div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-top">
+          <div>
+            <h3>Coordinatrice Business Process Management · VIE</h3>
+            <div class="experience-company">Société Générale · Luxembourg</div>
+          </div>
+          <span class="experience-date">Mai 2018 – mai 2020</span>
+        </div>
+        <ul class="experience-points">
+          <li>Analyser la performance et la productivité de <strong>12 équipes</strong> à partir d’indicateurs opérationnels.</li>
+          <li>Concevoir des tableaux de bord couvrant <strong>six pays</strong> et contribuer au suivi budgétaire des effectifs (FTE).</li>
+          <li>Cartographier les systèmes de paiement et contribuer aux projets d’amélioration des processus.</li>
+          <li>Obtenir le certificat professionnel Transfer Agent.</li>
+        </ul>
+        <div class="experience-tags"><span class="tag">Business Process</span><span class="tag">KPI</span><span class="tag">Reporting international</span><span class="tag">Analyse de performance</span></div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-top">
+          <div>
+            <h3>Parcours commercial & projets</h3>
+            <div class="experience-company">DHL Express · Paris</div>
+          </div>
+          <span class="experience-date">Janv. 2014 – sept. 2016</span>
+        </div>
+        <div class="experience-role">
+          <strong>Chef de projet commercial · CDD</strong> <span>Sept. 2015 – sept. 2016</span>
+          <ul class="experience-points">
+            <li>Coordonner les opérations commerciales de <strong>80 agences</strong>, former les équipes et rédiger procédures et guides.</li>
+            <li>Contribuer au lancement d’une nouvelle boutique ayant généré <strong>+5 % de chiffre d’affaires</strong>.</li>
+          </ul>
+        </div>
+        <div class="experience-role">
+          <strong>Retail Business Developer · Stage puis alternance</strong> <span>Janv. 2014 – sept. 2015</span>
+          <ul class="experience-points">
+            <li>Réaliser des analyses de prix et veilles concurrentielles, développer des partenariats et suivre les business reviews.</li>
+            <li>Contribuer au lancement de DHL Academy Express, associé à une hausse de <strong>45 % des ventes en ligne</strong>.</li>
+          </ul>
+        </div>
+        <div class="experience-tags"><span class="tag">Gestion de projet</span><span class="tag">Analyse commerciale</span><span class="tag">Veille concurrentielle</span><span class="tag">Formation</span></div>
+      </article>
+
     </div>
-    <p style="color:var(--gray);margin-top:22px;font-size:0.9rem">Les exemples sont décrits à un niveau général afin de préserver la confidentialité des données et processus internes.</p>
+    <p style="color:var(--gray);margin-top:22px;font-size:0.9rem">Autres expériences : Assistante administrative, DHL Express (déc. 2017 – avr. 2018) · Chargée d’accueil, LCL (déc. 2011 – déc. 2013) · Assistante commerciale, DHL Express (mai – sept. 2013). Exemples présentés à un niveau général pour préserver la confidentialité des données et processus internes.</p>
   </div>
 </section>
 
