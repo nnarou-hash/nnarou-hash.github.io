@@ -52,11 +52,13 @@ jobs:
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6-luna' }}
         continue-on-error: true
         run: |
-          if [[ -n "$OPENAI_API_KEY" ]]; then
+          if [[ -n "$OPENAI_API_KEY" && -n "$(git status --porcelain agent-veille-ansm/data)" ]]; then
             python -m pip install -r agent-veille-ansm/requirements-ai.txt
             python agent-veille-ansm/src/generate_ai_summary.py --data-dir agent-veille-ansm/data
-          else
+          elif [[ -z "$OPENAI_API_KEY" ]]; then
             echo "OPENAI_API_KEY absent : la collecte continue sans synthèse IA."
+          else
+            echo "Aucun changement ANSM : synthèse IA ignorée."
           fi
 
       - name: Enregistrer les instantanés et restitutions
