@@ -152,6 +152,26 @@ def load_medicaments(silver: Path) -> tuple[pd.DataFrame, dict[str, Any]]:
     }
 
 
+def load_bdpm(silver: Path) -> dict[str, Any]:
+    path = silver / "J0_silver_bdpm.csv"
+    df = read_required(path)
+    atc = df.get("atc", pd.Series("", index=df.index)).fillna("").astype(str).str.upper()
+    if "est_antihistaminique" in df.columns:
+        mask = truthy(df["est_antihistaminique"]) | atc.str.startswith("R06")
+    else:
+        mask = atc.str.startswith("R06")
+    df = df.loc[mask].copy()
+    substances = df.get("substance", pd.Series("", index=df.index)).fillna("Non renseignée").astype(str).str.strip()
+    atc_codes = atc.loc[df.index]
+    top_substances = substances.value_counts().head(20).rename_axis("substance").reset_index(name="specialties")
+    return {
+        "specialty_count": int(df["cis"].nunique()) if "cis" in df.columns else int(len(df)),
+        "substance_count": int(substances.nunique()),
+        "atc_code_count": int(atc_codes.nunique()),
+        "top_substances": records(top_substances),
+    }
+
+
 def load_ruptures(silver: Path) -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
 
@@ -352,6 +372,7 @@ def main() -> int:
     silver = args.source_dir
 
     medicines, medicine_summary = load_medicaments(silver)
+    bdpm_summary = load_bdpm(silver)
     events = load_ruptures(silver)
     openmedic = aggregate_openmedic(silver)
     pollen = aggregate_pollen(silver)
@@ -398,6 +419,7 @@ def main() -> int:
             "month_with_event_rate_2021_2025": number(month_rate),
         },
         "medicines": medicine_summary,
+        "bdpm": bdpm_summary,
         "consumption": openmedic,
         "ruptures": {
             "yearly": records(yearly_events),
