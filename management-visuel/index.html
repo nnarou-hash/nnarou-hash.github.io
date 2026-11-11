@@ -101,7 +101,7 @@ var defs=[
 ];
 function status(k,v){if(k.dir==="max")return v<=k.target?"green":v<=k.target*1.2+1?"amber":"red";if(k.dir==="min")return v>=k.target?"green":v>=k.target-3?"amber":"red";return v>=k.target&&v<=k.upper?"green":v>=70&&v<=95?"amber":"red"}
 function fmt(v,d){return Number(v).toLocaleString("fr-FR",{minimumFractionDigits:d||0,maximumFractionDigits:d||1})}
-function pill(s){var c=s==="Atteint"||s==="Terminée"||s==="Résolu"?"green":s==="Vigilance"||s==="Ouvert"||s==="En cours"||s==="À démarrer"?"amber":s==="Bloquée"||s==="Alerte"||s==="Non conforme"?"red":"gray";return'<span class="pill '+c+'">'+s.toUpperCase()+'</span>'}
+function pill(s){var c=s==="Atteint"||s==="Terminée"||s==="Résolu"?"green":s==="Vigilance"||s==="Ouvert"||s==="En cours"||s==="À démarrer"?"amber":s==="Bloquée"||s==="Bloqué"||s==="Alerte"||s==="Non conforme"||s==="Critique"||s==="Élevée"?"red":"gray";return'<span class="pill '+c+'">'+s.toUpperCase()+'</span>'}
 function hero(title,desc){return'<div class="hero"><div class="eyebrow">MANAGEMENT VISUEL · EXCELLENCE OPÉRATIONNELLE</div><h1>'+title+'</h1><p>'+desc+'</p></div>'}
 function card(label,val,foot,ico,cl){return'<article class="card kpi"><div class="kpitop"><span>'+label+'</span><i class="kpiicon">'+ico+'</i></div><div class="value">'+val+'</div><div class="foot">'+foot+(cl?' '+pill(cl):'')+'</div></article>'}
 function panel(title,sub,body,right){return'<section class="panel"><div class="panelhead"><div><h2>'+title+'</h2><div class="sub">'+(sub||"")+'</div></div><span class="mini">'+(right||"")+'</span></div>'+body+'</section>'}
