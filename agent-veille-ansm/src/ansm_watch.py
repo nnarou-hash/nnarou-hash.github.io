@@ -381,7 +381,18 @@ def run_monitor(data_dir: Path, url: str = SOURCE_URL) -> dict[str, Any]:
     )
     report = build_report(snapshot, events)
 
-    # Instantané immuable par collecte (heure UTC dans le nom).
+    # Une vérification sans différence ne crée ni snapshot ni commit inutile.
+    if not events:
+        return {
+            "signals": len(signals),
+            "new_entries": 0,
+            "modifications": 0,
+            "removed_from_list": 0,
+            "observed_at": observed_at,
+            "changed": False,
+        }
+
+    # Instantané immuable par actualisation détectée (heure UTC dans le nom).
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     write_json(data_dir / "snapshots" / f"{stamp}.json", snapshot)
     write_json(data_dir / "latest_snapshot.json", snapshot)
@@ -397,6 +408,7 @@ def run_monitor(data_dir: Path, url: str = SOURCE_URL) -> dict[str, Any]:
         "modifications": report["events_this_run"]["modification"],
         "removed_from_list": report["events_this_run"]["sortie_de_liste"],
         "observed_at": observed_at,
+        "changed": True,
     }
 
 
@@ -410,8 +422,14 @@ def main() -> int:
     except (requests.RequestException, ValueError, OSError, json.JSONDecodeError) as exc:
         print(f"ERREUR — collecte ANSM interrompue : {exc}", file=sys.stderr)
         return 1
+    if not summary["changed"]:
+        print(
+            f"Vérification ANSM réussie à {summary['observed_at']} : "
+            f"{summary['signals']} entrée(s), aucun changement détecté."
+        )
+        return 0
     print(
-        f"Collecte ANSM réussie : {summary['signals']} entrée(s), "
+        f"Actualisation ANSM publiée : {summary['signals']} entrée(s), "
         f"{summary['new_entries']} nouvelle(s), {summary['modifications']} modification(s), "
         f"{summary['removed_from_list']} sortie(s) de liste."
     )
