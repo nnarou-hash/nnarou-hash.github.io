@@ -145,7 +145,7 @@
 const DATA_PATH="./data/";
 const palette=["#ead8e9","#e4c9e0","#dcb8d5","#d29fc9","#c486b5","#b472a2","#9b6794","#805982","#67486f"];
 const fmt=(n,d=1)=>Number(n).toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d});
-const integer=n=>new Intl.NumberFormat("fr-FR",{useGrouping:true,maximumFractionDigits:0}).format(Math.round(Number(n)||0));
+const integer=n=>new Intl.NumberFormat("fr-FR",{useGrouping:true,maximumFractionDigits:0}).format(Math.round(Number(n)||0)).replace(/[\u00A0\u202F]/g," ");
 function parseCSV(text){
  const rows=[];let row=[],field="",quoted=false;
  for(let i=0;i<text.length;i++){const c=text[i],next=text[i+1];
