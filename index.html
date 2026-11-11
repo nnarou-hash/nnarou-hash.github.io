@@ -137,9 +137,10 @@
     background: var(--mauve-bg); color: var(--mauve);
     font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; font-weight: 500;
   }
-  .project-links { display: flex; gap: 10px; }
+  .project-links { display: flex; gap: 10px; margin-top: 16px; flex-wrap: nowrap; }
   .project-link {
     font-size: 0.82rem; color: var(--mauve); text-decoration: none;
+    white-space: nowrap;
     font-weight: 600; padding: 6px 14px;
     border: 1px solid var(--mauve); border-radius: 6px;
     transition: all 0.2s;
@@ -329,7 +330,7 @@
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Limites documentées : rupture de série 2006–2007 ; données sur le niveau d’éducation non comparables avant 2016.</p>
           <div class="project-links">
             <a href="/maternite-tardive/" class="project-link">Voir le dashboard</a>
-            <a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
+            <a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>
           </div>
         </div>
       </div>
@@ -338,15 +339,15 @@
         <div class="project-header p4">📦</div>
         <div class="project-body">
           <div class="project-title">Cosmetics Supply Chain Analytics</div>
-          <div class="project-desc"><strong>Question métier :</strong> comment améliorer la disponibilité des produits tout en maîtrisant les stocks ? Sur 100 références et 36 mois de données simulées, le projet compare les politiques de réapprovisionnement et combine prévision, segmentation ABC/XYZ et analyse des coûts. Dans la simulation, la politique ABC/XYZ atteint 98,64 % de taux de service contre 98,37 % avec un délai fixe de 10 jours ; la demande non satisfaite passe de 8 155 à 6 768 unités.</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment améliorer la disponibilité des produits tout en maîtrisant les stocks ? Sur 100 références et 36 mois de données simulées, le projet compare plusieurs politiques de réapprovisionnement. La politique ABC/XYZ réduit la demande non satisfaite d'environ 17 %, de 8 155 à 6 768 unités, avec un taux de service de 98,64 % contre 98,37 % pour un délai fixe de 10 jours. Le projet combine prévision de la demande, segmentation ABC/XYZ et analyse des coûts.</div>
           <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">CSV</span><span class="tag">HTML · CSS · JavaScript</span>
+            <span class="tag">Python</span><span class="tag">HTML · CSS · JavaScript</span>
             <span class="tag">Prévisions de la demande</span><span class="tag">ABC / XYZ</span><span class="tag">Simulation de stock</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Résultats issus d’une simulation sur données synthétiques, selon des hypothèses explicitées dans le projet.</p>
           <div class="project-links">
             <a href="/cosmetics-supply-chain-analytics/" class="project-link">Voir le dashboard</a>
-            <a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
+            <a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>
           </div>
         </div>
       </div>
@@ -363,8 +364,7 @@
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Analyse méthodologique sur données publiques NHANES ; les limites d’échantillonnage et d’interprétation sont précisées.</p>
           <div class="project-links">
             <a href="/nhanes/" class="project-link">Voir le dashboard</a>
-            <a href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">Version interactive ↗</a>
-            <a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
+            <a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
           </div>
         </div>
       </div>
@@ -381,8 +381,7 @@
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Un signal de modèle ne constitue pas une confirmation de rupture ; les sources et limites sont documentées.</p>
           <div class="project-links">
             <a href="/antihistaminiques/" class="project-link">Voir le dashboard</a>
-            <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener noreferrer" class="project-link">Prédictions ↗</a>
-            <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
+            <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>
           </div>
         </div>
       </div>
@@ -401,7 +400,7 @@
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Collecte planifiée trois fois par semaine. La veille porte sur les publications ANSM, pas sur les stocks physiques des pharmacies ou grossistes.</p>
           <div class="project-links">
             <a href="/agent-veille-ansm/" class="project-link">Voir le dashboard</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
+            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>
           </div>
         </div>
       </div>
@@ -416,8 +415,8 @@
             <span class="tag">Cas pratique BPM fictif</span><span class="tag">Dashboard interactif</span>
           </div>
           <div class="project-links">
-            <a href="/management-visuel/" class="project-link">Voir le cockpit</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">Code ↗</a>
+            <a href="/management-visuel/" class="project-link">Voir le dashboard</a>
+            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">Code</a>
           </div>
         </div>
       </div>
