@@ -212,9 +212,6 @@
   }
 
   .secondary-projects { margin-top: 38px; padding-top: 22px; border-top: 1px solid #ede9fe; }
-  .secondary-projects summary { cursor: pointer; color: var(--mauve-dark); font-weight: 750; padding: 6px 0; }
-  .secondary-projects summary:hover { text-decoration: underline; }
-  .secondary-projects[open] summary { margin-bottom: 14px; }
   .secondary-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 16px; }
   .secondary-project-card { background: #faf9ff; border: 1px solid #ede9fe; border-radius: 14px; padding: 18px; }
   .secondary-project-label { color: var(--gray); font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
@@ -426,8 +423,9 @@
 
     </div>
 
-    <details class="secondary-projects">
-      <summary>Autres réalisations & prototype (3)</summary>
+    <div class="secondary-projects">
+      <div class="section-label">En complément</div>
+      <div class="section-title" style="font-size:1.45rem">Autres réalisations & prototype</div>
       <div class="secondary-project-grid">
         <div class="secondary-project-card">
           <div class="secondary-project-label">Prototype en cours · données synthétiques</div>
@@ -445,7 +443,7 @@
           <p>Application web familiale avec authentification, planning partagé et notifications pour faciliter la coordination des relais au sein d’une fratrie.</p>
         </div>
       </div>
-    </details>
+    </div>
   </div>
 </section>
 
