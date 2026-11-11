@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Cockpit opérationnel Transfer Agency : pilotage des équipes FOP, CRU, REG et Shareholder Services — démonstration sur données synthétiques.">
-<title>Transfer Agency | Cockpit opérationnel BPM</title>
+<meta name="description" content="Cas d’étude fictif de coordination BPM dans un environnement de services aux fonds : flux, passations, incidents et actions.">
+<title>ORBITA Fund Operations | Cockpit de coordination BPM</title>
 <style>
 :root{--ink:#17324f;--muted:#687f98;--purple:#1769aa;--purple2:#5da9df;--pale:#eef5fb;--line:#dce8f3;--green:#19865a;--greenbg:#e8f6ee;--amber:#a36a0b;--amberbg:#fff4dc;--red:#b83d43;--redbg:#fcebed;--shadow:0 8px 28px rgba(18,55,88,.07)}
 *{box-sizing:border-box}body{margin:0;background:#faf9fc;color:var(--ink);font:14px/1.5 Inter,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
@@ -48,205 +48,163 @@ main{min-width:0;padding:25px 32px 28px}.top{display:flex;justify-content:space-
 <body>
 <div class="shell">
 <aside class="side">
-  <div class="brand"><div class="brandmark">TA</div><div><strong>TRANSFER AGENCY</strong><small>COCKPIT BPM · OPÉRATIONS</small></div></div>
-  <div class="navlabel">SERVICE BPM · TRANSFER AGENCY</div>
+  <div class="brand"><div class="brandmark">O</div><div><strong>ORBITA</strong><small>FUND OPERATIONS · BPM</small></div></div>
+  <div class="navlabel">ESPACE DE COORDINATION</div>
   <nav class="nav" aria-label="Navigation principale">
-    <button class="active" data-page="board"><span class="ico">◫</span>Vue BPM</button>
-    <button data-page="performance"><span class="ico">⌁</span>Équipes opérationnelles</button>
-    <button data-page="outsourcing"><span class="ico">◉</span>Outsourcing & contrôles</button>
-    <button data-page="audits"><span class="ico">✓</span>Audits & ISAE 3402</button>
-    <button data-page="leadership"><span class="ico">♙</span>Leadership & mentoring</button>
-    <button data-page="actions"><span class="ico">☷</span>Actions & incidents</button>
-    <button data-page="quality"><span class="ico">⌕</span>Qualité & gouvernance</button>
+    <button class="active" data-page="board"><span class="ico">◫</span>Vue de coordination</button>
+    <button data-page="performance"><span class="ico">⌁</span>Flux & performance</button>
+    <button data-page="handoffs"><span class="ico">⇄</span>Passations entre équipes</button>
+    <button data-page="issues"><span class="ico">◉</span>Incidents & blocages</button>
+    <button data-page="actions"><span class="ico">☷</span>Plan de suivi</button>
+    <button data-page="huddle"><span class="ico">◷</span>Point de coordination</button>
+    <button data-page="quality"><span class="ico">✓</span>Revues & contrôles</button>
   </nav>
-  <div class="sidefoot"><span class="dot"></span><strong>Démonstrateur portfolio</strong><br>Transfer Agency · Données simulées</div>
+  <div class="sidefoot"><span class="dot"></span><strong>Cas d’étude fictif</strong><br>ORBITA · Données inventées</div>
 </aside>
 <main>
-  <div class="top"><div class="crumb">Service BPM <b>/</b> <strong id="crumb">Vue BPM</strong></div><div class="topright"><span class="demo">DONNÉES DE DÉMONSTRATION</span><span class="avatar">NN</span></div></div>
+  <div class="top"><div class="crumb">ORBITA Fund Operations <b>/</b> <strong id="crumb">Vue de coordination</strong></div><div class="topright"><span class="demo">DONNÉES DE DÉMONSTRATION</span><span class="avatar">NN</span></div></div>
   <section class="filters">
-    <div class="filterintro"><small>FILTRES D’AFFICHAGE</small><strong>Périmètre opérationnel</strong></div>
+    <div class="filterintro"><small>FILTRES D’AFFICHAGE</small><strong>Périmètre de coordination</strong></div>
     <label>Date de référence<input id="refdate" type="date" value="2026-11-10" min="2026-05-14" max="2026-11-10"></label>
     <label>Équipe<select id="team"><option value="all">Toutes les équipes</option><option value="FOP">FOP · Fund Order Processing</option><option value="CRU">CRU · Payments</option><option value="REG">REG · Regulatory</option><option value="SH">Shareholder Services</option></select></label>
     <button id="reset">Réinitialiser</button>
   </section>
   <div class="project-brief">
-  <div><h2>Présentation du projet</h2><p>Un cockpit du service BPM pour coordonner le pilotage du Transfer Agency : suivi des équipes FOP, CRU, REG et Shareholder Services, supervision des contrôles externalisés, coordination des audits et accompagnement managérial.</p></div>
-  <div><h2>Périmètre et données</h2><p><strong>Démonstrateur 100 % simulé</strong> : les exemples illustrent le suivi d’un manager et de cinq collaborateurs au Luxembourg, les contrôles d’outsourcing et les demandes d’audit (interne, externe, ISAE 3402). Aucun chiffre, dossier ou document d’un ancien employeur n’est repris.</p></div>
+  <div><h2>Présentation du projet</h2><p>Cas d’étude fictif d’un service de coordination BPM dans une société imaginaire de services aux fonds. La coordinatrice dispose d’une vue transverse des flux, des passations entre équipes, des blocages, des actions et des revues de suivi.</p></div>
+  <div><h2>Scénario et données</h2><p><strong>Tout est inventé pour la démonstration</strong> : entreprise ORBITA, noms des équipes, processus, rôles, prestataires, incidents, objectifs et données. Le scénario s’inspire d’un environnement Transfer Agency sans reproduire une organisation réelle ni décrire les responsabilités exactes de l’autrice.</p></div>
 </div>
 <div id="view"></div>
-  <footer class="footer"><span>Service BPM · Transfer Agency · Coordination & gouvernance</span><span>Données simulées · Démonstrateur portfolio · Non destiné à la production</span></footer>
+  <footer class="footer"><span>ORBITA Fund Operations · Coordination BPM</span><span>Cas fictif · Données et organisation entièrement inventées</span></footer>
 </main>
 </div>
 <script>
 (function(){
 "use strict";
 var teams=[
- {id:"FOP",name:"FOP",full:"Fund Order Processing",activity:"Réception et traitement des ordres sur fonds",base:148,pending:58,sla:96.4,late:8},
- {id:"CRU",name:"CRU",full:"Payments",activity:"Préparation et suivi des paiements",base:64,pending:31,sla:97.2,late:4},
- {id:"REG",name:"REG",full:"Regulatory",activity:"Vérifications réglementaires des personnes",base:83,pending:76,sla:93.8,late:14},
- {id:"SH",name:"Shareholder",full:"Shareholder Services",activity:"Demandes et service aux actionnaires",base:92,pending:49,sla:95.6,late:9}
+ {id:"FLOW",full:"Instructions & opérations sur fonds",activity:"Réception et traitement des instructions",base:142,backlog:54,sla:96.2},
+ {id:"SETTLE",full:"Règlements & mouvements de trésorerie",activity:"Préparation et suivi des règlements",base:69,backlog:29,sla:97.1},
+ {id:"VIGIE",full:"Revue documentaire",activity:"Contrôle de complétude et revue des dossiers",base:88,backlog:72,sla:93.6},
+ {id:"RELAY",full:"Services investisseurs",activity:"Demandes, informations et suivi des investisseurs",base:96,backlog:47,sla:95.4}
 ];
 var start=new Date("2026-05-14T12:00:00"),days=[];
 for(var i=0;i<=180;i++){
  var d=new Date(start);d.setDate(d.getDate()+i);var iso=d.toISOString().slice(0,10);
  teams.forEach(function(t,ti){
-  var wave=Math.sin(i/14+ti*.8),season=Math.sin(i/31+ti)*.7,spike=(i>88+ti*2&&i<96+ti*2)?1:0;
+  var wave=Math.sin(i/14+ti*.75),season=Math.sin(i/32+ti)*.65,spike=(i>88+ti*2&&i<96+ti*2)?1:0;
   var received=Math.max(8,Math.round(t.base+wave*t.base*.12+season*t.base*.06+((i*7+ti*13)%17)-8));
-  var sla=Math.max(86,Math.min(99.8,t.sla+wave*1.5-season*.6-spike*(ti===2?5:ti===0?2.4:1.5)));
-  var processed=Math.max(0,Math.round(received*(.91+sla/100*.08)));
-  var pending=Math.max(3,Math.round(t.pending+wave*9+season*5+spike*(ti===2?28:ti===0?15:8)));
-  var late=Math.max(0,Math.round(t.late+wave*2+spike*(ti===2?8:ti===0?4:2)));
-  days.push({date:iso,team:t.id,received:received,processed:processed,pending:pending,sla:sla,late:late});
+  var sla=Math.max(86,Math.min(99.8,t.sla+wave*1.4-season*.6-spike*(ti===2?4.8:ti===0?2.2:1.4)));
+  var completed=Math.max(0,Math.round(received*(.91+sla/100*.08)));
+  var backlog=Math.max(3,Math.round(t.backlog+wave*8+season*5+spike*(ti===2?25:ti===0?13:7)));
+  var overdue=Math.max(0,Math.round((100-sla)*received/100+spike*(ti===2?7:3)));
+  days.push({date:iso,team:t.id,received:received,completed:completed,backlog:backlog,sla:sla,overdue:overdue});
  });
 }
-var outsourcing=[
- {id:"OUT-001",team:"FOP",process:"Contrôle des instructions d’ordres",provider:"Prestataire A",frequency:"Quotidien",planned:20,done:20,evidence:"Reçue",status:"Conforme",owner:"BPM"},
- {id:"OUT-002",team:"FOP",process:"Contrôle de complétude des dossiers",provider:"Prestataire A",frequency:"Hebdomadaire",planned:4,done:4,evidence:"Reçue",status:"Conforme",owner:"BPM"},
- {id:"OUT-003",team:"CRU",process:"Contrôle des coordonnées de paiement",provider:"Prestataire B",frequency:"Quotidien",planned:20,done:19,evidence:"Partielle",status:"À suivre",owner:"BPM"},
- {id:"OUT-004",team:"CRU",process:"Revue des paiements en exception",provider:"Prestataire B",frequency:"Hebdomadaire",planned:4,done:4,evidence:"Reçue",status:"Conforme",owner:"BPM"},
- {id:"OUT-005",team:"REG",process:"Suivi des vérifications des personnes",provider:"Prestataire C",frequency:"Quotidien",planned:20,done:18,evidence:"Manquante",status:"À relancer",owner:"BPM"},
- {id:"OUT-006",team:"REG",process:"Revue des dossiers en attente",provider:"Prestataire C",frequency:"Hebdomadaire",planned:4,done:3,evidence:"Partielle",status:"À suivre",owner:"BPM"},
- {id:"OUT-007",team:"SH",process:"Contrôle des demandes traitées",provider:"Prestataire D",frequency:"Mensuel",planned:1,done:1,evidence:"Reçue",status:"Conforme",owner:"BPM"},
- {id:"OUT-008",team:"SH",process:"Revue des réclamations et délais",provider:"Prestataire D",frequency:"Mensuel",planned:1,done:1,evidence:"Reçue",status:"Conforme",owner:"BPM"}
+var handoffs=[
+ {id:"HOF-001",from:"FLOW",to:"VIGIE",subject:"Instruction nécessitant une pièce complémentaire",age:2,status:"En attente",next:"Retour de la revue documentaire"},
+ {id:"HOF-002",from:"VIGIE",to:"SETTLE",subject:"Dossier revu, prêt pour l'étape de règlement",age:1,status:"Transmis",next:"Confirmation de prise en charge"},
+ {id:"HOF-003",from:"RELAY",to:"FLOW",subject:"Demande investisseur liée à une instruction en cours",age:3,status:"À clarifier",next:"Point de situation sur l'instruction"},
+ {id:"HOF-004",from:"FLOW",to:"SETTLE",subject:"Opération validée en attente de règlement",age:1,status:"En attente",next:"Mise à jour du statut de règlement"},
+ {id:"HOF-005",from:"SETTLE",to:"RELAY",subject:"Confirmation de règlement à communiquer",age:2,status:"Transmis",next:"Retour d'information à l'investisseur"},
+ {id:"HOF-006",from:"VIGIE",to:"RELAY",subject:"Information complémentaire demandée",age:4,status:"À clarifier",next:"Aligner le message adressé à l'investisseur"}
 ];
-var audits=[
- {id:"AUD-001",type:"Audit interne",topic:"Échantillon de dossiers FOP",owner:"BPM",due:"2026-11-12",evidence:"12 / 12 pièces",status:"Transmis"},
- {id:"AUD-002",type:"Audit interne",topic:"Suivi des exceptions CRU",owner:"CRU",due:"2026-11-14",evidence:"5 / 7 pièces",status:"En préparation"},
- {id:"AUD-003",type:"Audit externe",topic:"Contrôles REG et piste d’audit",owner:"REG",due:"2026-11-18",evidence:"3 / 6 pièces",status:"En préparation"},
- {id:"AUD-004",type:"Audit externe",topic:"Revue des contrôles externalisés",owner:"BPM",due:"2026-11-20",evidence:"8 / 8 pièces",status:"Transmis"},
- {id:"AUD-005",type:"ISAE 3402",topic:"Collecte des preuves de contrôles",owner:"BPM",due:"2026-11-24",evidence:"14 / 18 pièces",status:"En cours"},
- {id:"AUD-006",type:"ISAE 3402",topic:"Suivi des observations et plans d’action",owner:"BPM",due:"2026-11-28",evidence:"2 observations",status:"À suivre"}
-];
-var incidents=[
- {id:"TA-001",team:"FOP",type:"Ordres sur fonds",title:"Instruction reçue avec des éléments incomplets",severity:"Élevée",status:"En cours",date:"2026-10-02",cause:"Informations manquantes à confirmer"},
- {id:"TA-002",team:"CRU",type:"Paiements",title:"Instruction de paiement en attente de validation",severity:"Critique",status:"Ouvert",date:"2026-10-04",cause:"Validation en attente"},
- {id:"TA-003",team:"REG",type:"Réglementaire",title:"Vérification d’identité nécessitant un complément",severity:"Élevée",status:"En cours",date:"2026-10-06",cause:"Pièce justificative à compléter"},
- {id:"TA-004",team:"SH",type:"Actionnaires",title:"Demande au-delà du délai cible",severity:"Modérée",status:"Ouvert",date:"2026-10-08",cause:"File de demandes à prioriser"},
- {id:"TA-005",team:"BPM",type:"Outsourcing",title:"Preuve de contrôle non reçue du prestataire",severity:"Élevée",status:"Bloqué",date:"2026-10-10",cause:"Relance et escalade nécessaires"},
- {id:"TA-006",team:"BPM",type:"Audit",title:"Pièce justificative attendue pour le dossier d’audit",severity:"Modérée",status:"En cours",date:"2026-10-12",cause:"Collecte à coordonner"}
+var issues=[
+ {id:"ORB-001",team:"FLOW",type:"Instruction",title:"Dossier reçu avec des informations manquantes",severity:"Élevée",status:"En cours",date:"2026-10-02",cause:"Éléments à faire compléter"},
+ {id:"ORB-002",team:"SETTLE",type:"Règlement",title:"Confirmation de règlement non reçue",severity:"Critique",status:"Ouvert",date:"2026-10-04",cause:"Retour attendu du circuit de règlement"},
+ {id:"ORB-003",team:"VIGIE",type:"Revue documentaire",title:"Dossier en attente d'une pièce justificative",severity:"Élevée",status:"En cours",date:"2026-10-06",cause:"Document à obtenir"},
+ {id:"ORB-004",team:"RELAY",type:"Demande investisseur",title:"Demande nécessitant une réponse coordonnée",severity:"Modérée",status:"Ouvert",date:"2026-10-08",cause:"Information attendue d'une autre équipe"},
+ {id:"ORB-005",team:"BPM",type:"Passation",title:"Statut différent entre deux files de suivi",severity:"Élevée",status:"Bloqué",date:"2026-10-10",cause:"Synchronisation à effectuer"},
+ {id:"ORB-006",team:"BPM",type:"Coordination",title:"Échéance de suivi à confirmer",severity:"Modérée",status:"En cours",date:"2026-10-12",cause:"Responsable et prochaine étape à clarifier"}
 ];
 var actions=[
- {id:"ACT-001",title:"Relancer la preuve de contrôle manquante",team:"BPM",owner:"BPM",due:"2026-11-11",status:"En cours",priority:"Élevée"},
- {id:"ACT-002",title:"Finaliser les pièces attendues pour l’audit interne",team:"BPM",owner:"BPM",due:"2026-11-12",status:"En cours",priority:"Élevée"},
- {id:"ACT-003",title:"Revoir les dossiers de paiement en exception",team:"CRU",owner:"Manager CRU",due:"2026-11-13",status:"À démarrer",priority:"Critique"},
- {id:"ACT-004",title:"Compléter la documentation d’une vérification",team:"REG",owner:"Manager REG",due:"2026-11-15",status:"Bloquée",priority:"Élevée"},
- {id:"ACT-005",title:"Préparer le suivi des contrôles ISAE 3402",team:"BPM",owner:"BPM",due:"2026-11-18",status:"En cours",priority:"Élevée"},
- {id:"ACT-006",title:"Faire le point sur la charge de la file FOP",team:"FOP",owner:"Manager FOP",due:"2026-11-19",status:"À démarrer",priority:"Modérée"},
- {id:"ACT-007",title:"Revoir les demandes actionnaires en attente",team:"SH",owner:"Manager Shareholder",due:"2026-11-20",status:"Terminée",priority:"Modérée"},
- {id:"ACT-008",title:"Formaliser le compte rendu du point BPM",team:"BPM",owner:"BPM",due:"2026-11-21",status:"À démarrer",priority:"Faible"}
+ {id:"ACT-001",title:"Obtenir les informations manquantes sur un dossier",team:"FLOW",owner:"Référent FLOW",due:"2026-11-11",status:"En cours",priority:"Élevée"},
+ {id:"ACT-002",title:"Confirmer la prise en charge d'une passation",team:"VIGIE",owner:"Référent VIGIE",due:"2026-11-12",status:"En cours",priority:"Élevée"},
+ {id:"ACT-003",title:"Mettre à jour le statut d'un règlement",team:"SETTLE",owner:"Référent SETTLE",due:"2026-11-13",status:"À démarrer",priority:"Critique"},
+ {id:"ACT-004",title:"Préparer une réponse coordonnée à une demande",team:"RELAY",owner:"Référent RELAY",due:"2026-11-15",status:"Bloquée",priority:"Élevée"},
+ {id:"ACT-005",title:"Harmoniser le suivi des statuts entre deux équipes",team:"BPM",owner:"Coordination BPM",due:"2026-11-18",status:"En cours",priority:"Élevée"},
+ {id:"ACT-006",title:"Revoir la file des dossiers les plus anciens",team:"VIGIE",owner:"Référent VIGIE",due:"2026-11-19",status:"À démarrer",priority:"Modérée"},
+ {id:"ACT-007",title:"Clôturer le retour d'information investisseur",team:"RELAY",owner:"Référent RELAY",due:"2026-11-20",status:"Terminée",priority:"Modérée"},
+ {id:"ACT-008",title:"Formaliser les décisions du point de coordination",team:"BPM",owner:"Coordination BPM",due:"2026-11-21",status:"À démarrer",priority:"Faible"}
 ];
-var teamMap={};teams.forEach(function(t){teamMap[t.id]=t});
-var pages={board:"Vue BPM",performance:"Équipes opérationnelles",outsourcing:"Outsourcing et contrôles",audits:"Audits et ISAE 3402",leadership:"Leadership et mentoring",actions:"Actions et incidents",quality:"Qualité et gouvernance"};
-var page="board";
+var reviews=[
+ {id:"REV-001",scope:"Complétude des instructions",team:"FLOW",frequency:"Hebdomadaire",expected:12,done:12,evidence:"Disponible",status:"À jour"},
+ {id:"REV-002",scope:"Suivi des règlements en attente",team:"SETTLE",frequency:"Quotidienne",expected:20,done:18,evidence:"Partielle",status:"À suivre"},
+ {id:"REV-003",scope:"Revue des dossiers incomplets",team:"VIGIE",frequency:"Hebdomadaire",expected:12,done:9,evidence:"Partielle",status:"À relancer"},
+ {id:"REV-004",scope:"Suivi des demandes anciennes",team:"RELAY",frequency:"Hebdomadaire",expected:10,done:10,evidence:"Disponible",status:"À jour"},
+ {id:"REV-005",scope:"Cohérence des statuts de passation",team:"BPM",frequency:"Mensuelle",expected:4,done:3,evidence:"À compléter",status:"À suivre"},
+ {id:"REV-006",scope:"Revue des actions ouvertes",team:"BPM",frequency:"Hebdomadaire",expected:8,done:8,evidence:"Disponible",status:"À jour"}
+];
+var names={board:"Vue de coordination",performance:"Flux et performance",handoffs:"Passations entre équipes",issues:"Incidents et blocages",actions:"Plan de suivi",huddle:"Point de coordination",quality:"Revues et contrôles"},page="board";
 function $(id){return document.getElementById(id)}
-function selectedTeam(){return $("team").value}
-function filteredTeams(){return teams.filter(function(t){return selectedTeam()==="all"||t.id===selectedTeam()})}
-function rowsAt(date){return days.filter(function(r){return r.date===date&&(selectedTeam()==="all"||r.team===selectedTeam())})}
+function selected(){return $("team").value}
+function visibleTeams(){return teams.filter(function(t){return selected()==="all"||t.id===selected()})}
+function dayRows(date){return days.filter(function(x){return x.date===date&&(selected()==="all"||x.team===selected())})}
 function fmt(v,d){return Number(v).toLocaleString("fr-FR",{minimumFractionDigits:d||0,maximumFractionDigits:d===undefined?1:d})}
-function pct(a,b){return b?100*a/b:0}
 function pill(s){
- var cl=s==="Conforme"||s==="Transmis"||s==="Terminée"?"green":s==="À suivre"||s==="En cours"||s==="En préparation"||s==="À démarrer"||s==="Ouvert"?"amber":s==="À relancer"||s==="Bloquée"||s==="Bloqué"||s==="Critique"||s==="Élevée"?"red":"gray";
+ var cl=s==="À jour"||s==="Transmis"||s==="Terminée"?"green":s==="À suivre"||s==="En cours"||s==="En attente"||s==="À clarifier"||s==="À démarrer"?"amber":s==="À relancer"||s==="Bloquée"||s==="Bloqué"||s==="Critique"||s==="Élevée"?"red":"gray";
  return '<span class="pill '+cl+'">'+s.toUpperCase()+'</span>';
 }
-function hero(title,desc){return '<div class="hero"><div class="eyebrow">SERVICE BPM · TRANSFER AGENCY</div><h1>'+title+'</h1><p>'+desc+'</p></div>'}
 function card(label,val,foot,ico,cl){return '<article class="card kpi"><div class="kpitop"><span>'+label+'</span><i class="kpiicon">'+ico+'</i></div><div class="value">'+val+'</div><div class="foot">'+foot+(cl?' '+pill(cl):'')+'</div></article>'}
+function hero(title,desc){return '<div class="hero"><div class="eyebrow">ORBITA · COORDINATION BPM</div><h1>'+title+'</h1><p>'+desc+'</p></div>'}
 function panel(title,sub,body,right){return '<section class="panel"><div class="panelhead"><div><h2>'+title+'</h2><div class="sub">'+(sub||"")+'</div></div><span class="mini">'+(right||"")+'</span></div>'+body+'</section>'}
 function table(headers,rows){return '<div class="tablewrap"><table><thead><tr>'+headers.map(function(h){return '<th>'+h+'</th>'}).join("")+'</tr></thead><tbody>'+(rows.length?rows.map(function(row){return '<tr>'+row.map(function(v){return '<td>'+v+'</td>'}).join("")+'</tr>'}).join(""):'<tr><td colspan="'+headers.length+'">Aucun élément pour ce filtre.</td></tr>')+'</tbody></table></div>'}
-function teamActivity(){
- var date=$("refdate").value;
- return filteredTeams().map(function(t){
-  var r=days.find(function(x){return x.date===date&&x.team===t.id});
-  return [t.id+" · "+t.full,r?fmt(r.received,0):"—",r?fmt(r.processed,0):"—",r?fmt(r.pending,0):"—",r?fmt(r.sla,1)+" %":"—",r?fmt(r.late,0):"—"];
- });
-}
+function stackedBars(list){return '<div class="bars">'+list.map(function(x){return '<div class="barrow"><span>'+x.label+'</span><div class="barbg"><span style="width:'+Math.max(0,Math.min(100,x.value))+'%"></span></div><strong>'+fmt(x.value,1)+' %</strong></div>'}).join("")+'</div>'}
 function board(){
- var date=$("refdate").value,selected=filteredTeams(),op=outsourcing.filter(function(x){return selectedTeam()==="all"||x.team===selectedTeam()}),au=audits.filter(function(x){return selectedTeam()==="all"||x.owner==="BPM"||x.owner===selectedTeam()}),open=incidents.filter(function(x){return x.status!=="Résolu"&&(selectedTeam()==="all"||x.team===selectedTeam()||x.team==="BPM")});
- var planned=op.reduce(function(s,x){return s+x.planned},0),done=op.reduce(function(s,x){return s+x.done},0),sent=au.filter(function(x){return x.status==="Transmis"}).length;
- return hero("Vue de pilotage du service BPM","Une vue transverse pour suivre les quatre équipes du Transfer Agency, les contrôles externalisés, les audits et les sujets à escalader.")+
- '<div class="grid kpis">'+
- card("Périmètre opérationnel","4 équipes","FOP · CRU · REG · Shareholder","⌂","")+
- card("Contrôles réalisés",fmt(done,0)+" / "+fmt(planned,0),"Contrôles effectués sur la période","✓",done===planned?"Conforme":"À suivre")+
- card("Éléments d’audit transmis",fmt(sent,0)+" / "+fmt(au.length,0),"Demandes illustratives du registre","⇧","")+
- card("Équipe accompagnée","6 personnes","1 manager + 5 collaborateurs · Luxembourg","♙","")+
- '</div>'+
- '<div class="grid two">'+
- panel("Périmètre Transfer Agency","Volumes et délais à la date de référence",table(["Équipe","Activité","Reçus","Traités","En attente","SLA"],selected.map(function(t){var r=days.find(function(x){return x.date===date&&x.team===t.id});return [t.id,t.activity,r?fmt(r.received,0):"—",r?fmt(r.processed,0):"—",r?fmt(r.pending,0):"—",r?fmt(r.sla,1)+" %":"—"]})),"FOP · CRU · REG · SH")+
- panel("Points à suivre par le BPM","Situations de démonstration qui appellent une coordination",table(["Sujet","Équipe","Statut","Priorité"],open.slice(0,5).map(function(x){return [x.title,x.team,pill(x.status),pill(x.severity)]})),"ALERTES")+
- '</div>'+
- '<div class="scope-grid">'+
- '<div class="scope-card"><strong>Leadership</strong><small>Accompagnement du manager et des cinq collaborateurs basés au Luxembourg.</small></div>'+
- '<div class="scope-card"><strong>Outsourcing oversight</strong><small>Suivi des contrôles, collecte des preuves, relances et traitement des écarts.</small></div>'+
- '<div class="scope-card"><strong>Audit coordination</strong><small>Préparation des éléments, coordination des interlocuteurs et suivi des demandes.</small></div>'+
- '<div class="scope-card"><strong>ISAE 3402</strong><small>Coordination du dossier de contrôle et suivi des éléments attendus.</small></div>'+
- '</div>'+
- '<div class="callout">Tous les volumes, statuts, prestataires et exemples de dossiers sont simulés. Ils ne représentent pas les données de ton ancien employeur.</div>';
+ var date=$("refdate").value,rows=dayRows(date),visible=visibleTeams(),open=issues.filter(function(x){return x.status!=="Résolu"&&(selected()==="all"||x.team===selected()||x.team==="BPM")}),pending=rows.reduce(function(s,x){return s+x.backlog},0),received=rows.reduce(function(s,x){return s+x.received},0),completed=rows.reduce(function(s,x){return s+x.completed},0),sla=rows.reduce(function(s,x){return s+x.sla*x.completed},0)/Math.max(1,completed),handoffOpen=handoffs.filter(function(x){return x.status!=="Transmis"&&(selected()==="all"||x.from===selected()||x.to===selected())});
+ var teamTable=visible.map(function(t){var r=rows.find(function(x){return x.team===t.id});return [t.id+" · "+t.full,t.activity,r?fmt(r.received,0):"—",r?fmt(r.completed,0):"—",r?fmt(r.backlog,0):"—",r?fmt(r.sla,1)+" %":"—"]});
+ return hero("Vue de coordination du service","Une vue transverse pour comprendre les volumes, repérer les files qui s'accumulent, suivre les passations et préparer les points de coordination.")+
+ '<div class="grid kpis">'+card("Dossiers entrants",fmt(received,0),"Flux reçus sur le périmètre sélectionné","↓","")+card("Dossiers traités",fmt(completed,0),"Production du jour, données simulées","✓","")+card("Dossiers en attente",fmt(pending,0),"Stock de travail à surveiller","◷",pending>250?"Vigilance":"")+card("Respect des délais",fmt(sla,1)+" %","Cible fictive : 96 %","⏱",sla>=96?"À jour":"À suivre")+'</div>'+
+ '<div class="grid two">'+panel("Vue par équipe","Chaque équipe a son propre type de dossier ; les volumes ne sont pas directement comparables.",table(["Équipe fictive","Activité","Reçus","Traités","En attente","Délai cible"],teamTable.map(function(r){var t=visible.find(function(x){return x.id===r[0].split(" · ")[0]});return [r[0],t.activity,r[1],r[2],r[3],r[4]]})),"FLOW · SETTLE · VIGIE · RELAY")+
+ panel("Sujets à synchroniser","Passations et incidents qui nécessitent un retour ou une clarification",table(["Sujet","Équipe","État"],handoffOpen.slice(0,4).map(function(x){return [x.subject,x.from+" → "+x.to,pill(x.status)]})),"POINTS DE SUIVI")+'</div>'+
+ '<div class="callout">Scénario entièrement fictif : ORBITA, les équipes FLOW / SETTLE / VIGIE / RELAY, les flux, les objectifs et les incidents ont été inventés pour illustrer le rôle de coordination BPM.</div>';
 }
 function performance(){
- var date=$("refdate").value,sel=filteredTeams(),current=sel.map(function(t){var r=days.find(function(x){return x.date===date&&x.team===t.id});return r?[t.id,t.full,fmt(r.received,0),fmt(r.processed,0),fmt(r.pending,0),fmt(r.sla,1)+" %",fmt(r.late,0)]:[t.id,t.full,"—","—","—","—","—"]});
- var list=sel.map(function(t){var vals=days.filter(function(x){return x.team===t.id&&x.date<=date}).slice(-30);var avg=vals.reduce(function(s,x){return s+x.sla},0)/Math.max(1,vals.length);return '<div class="barrow"><span>'+t.id+'</span><div class="barbg"><span style="width:'+Math.max(0,Math.min(100,avg))+'%"></span></div><strong>'+fmt(avg,1)+' %</strong></div>'}).join("");
- return hero("Pilotage des équipes opérationnelles","Chaque équipe conserve ses propres unités de travail : ordres, paiements, vérifications réglementaires et demandes actionnaires.")+
- panel("Activité à la date de référence","Volumes fictifs pour illustrer le pilotage des files de traitement",table(["Équipe","Activité","Reçus","Traités","En attente","Respect du délai","En retard"],current),"SUIVI QUOTIDIEN")+
- '<div class="grid two">'+panel("Respect des délais sur 30 jours","Moyenne indicative par équipe",'<div class="bars">'+list+'</div>',"SLA")+
- panel("Lecture du BPM","Questions de pilotage",'<div class="issue"><strong>Charge</strong><p>Le volume reçu est-il absorbé par la capacité de traitement ?</p></div><div class="issue"><strong>Backlog</strong><p>Quels dossiers attendent depuis le plus longtemps et pourquoi ?</p></div><div class="issue"><strong>Escalade</strong><p>Quel sujet nécessite une décision ou une coordination transverse ?</p></div>',"REPÈRES")+'</div>'+
- '<div class="callout">Les volumes des équipes ne sont pas directement comparables : un ordre, un paiement, une vérification réglementaire et une demande actionnaire ne représentent pas la même unité de travail.</div>';
+ var date=$("refdate").value,visible=visibleTeams(),trend=visible.map(function(t){var rs=days.filter(function(x){return x.team===t.id&&x.date<=date}).slice(-30),avg=rs.reduce(function(s,x){return s+x.sla},0)/Math.max(1,rs.length);return {label:t.id,value:avg}}),rows=visible.map(function(t){var r=days.find(function(x){return x.team===t.id&&x.date===date});return [t.id,t.full,r?fmt(r.received,0):"—",r?fmt(r.completed,0):"—",r?fmt(r.backlog,0):"—",r?fmt(r.sla,1)+" %":"—",r?fmt(r.overdue,0):"—"]});
+ return hero("Flux et performance","Suivre l'équilibre entre les entrées, les traitements réalisés, les dossiers en attente et le respect des délais indicatifs.")+
+ '<div class="grid two">'+panel("Respect du délai sur 30 jours","Moyenne illustrative par équipe",stackedBars(trend),"SLA FICTIF")+
+ panel("Comment lire les indicateurs","Quelques questions simples",'<div class="issue"><strong>Les entrées dépassent-elles les sorties ?</strong><p>Une file peut augmenter si le flux reçu reste supérieur au volume traité.</p></div><div class="issue"><strong>Où se concentre l'attente ?</strong><p>Comparer les dossiers en attente et leur ancienneté, pas uniquement le volume total.</p></div><div class="issue"><strong>Qu'est-ce qui explique un retard ?</strong><p>Vérifier les dossiers incomplets, les retours attendus et les dépendances entre équipes.</p></div>',"REPÈRES")+'</div>'+
+ panel("Situation à la date de référence","Volumes simulés par équipe",table(["Équipe","Activité","Entrants","Traités","En attente","Délai","En retard"],rows),"SUIVI")+
+ '<div class="callout">Les valeurs et objectifs sont fictifs. Dans un vrai environnement, les SLA et unités de mesure doivent être définis par activité et validés par le métier.</div>';
 }
-function outsourcingPage(){
- var list=outsourcing.filter(function(x){return selectedTeam()==="all"||x.team===selectedTeam()}),planned=list.reduce(function(s,x){return s+x.planned},0),done=list.reduce(function(s,x){return s+x.done},0),missing=list.filter(function(x){return x.evidence!=="Reçue"}).length,follow=list.filter(function(x){return x.status!=="Conforme"}).length;
- return hero("Supervision de l’outsourcing et des contrôles","Suivre les contrôles attendus chez les prestataires, vérifier la réception des preuves et rendre visibles les écarts nécessitant une relance.")+
- '<div class="grid kpis">'+card("Contrôles réalisés",fmt(done,0)+" / "+fmt(planned,0),"Exécution illustrée","✓","")+
- card("Contrôles à suivre",fmt(follow,0),"Écarts ou contrôles incomplets","◷",follow?"Vigilance":"Conforme")+
- card("Preuves non complètes",fmt(missing,0),"Pièces manquantes ou partielles","▤",missing?"Alerte":"Conforme")+
- card("Prestataires illustrés","4","A · B · C · D · noms fictifs","⌂","")+'</div>'+
- panel("Registre des contrôles externalisés","Fréquence, réalisation, preuve attendue et statut de suivi",table(["Réf.","Équipe","Contrôle","Prestataire","Fréquence","Réalisé / prévu","Preuve","Statut"],list.map(function(x){return [x.id,x.team,x.process,x.provider,x.frequency,fmt(x.done,0)+" / "+fmt(x.planned,0),pill(x.evidence),pill(x.status)]})),"OUTSOURCING")+
- '<div class="callout">Cette vue illustre le suivi de l’exécution et des preuves de contrôles chez des prestataires. Les contrôles de fond, leurs fréquences et les responsabilités réelles doivent toujours être définis par les procédures et accords applicables.</div>';
+function handoffPage(){
+ var list=handoffs.filter(function(x){return selected()==="all"||x.from===selected()||x.to===selected()}),waiting=list.filter(function(x){return x.status!=="Transmis"}).length,old=list.filter(function(x){return x.age>=3}).length;
+ return hero("Passations entre équipes","Rendre visibles les dossiers transmis d'une équipe à l'autre, les retours attendus et les points où la coordination est nécessaire.")+
+ '<div class="grid kpis">'+card("Passations suivies",fmt(list.length,0),"Exemples dans le registre","⇄","")+card("Retours attendus",fmt(waiting,0),"À clarifier ou à prendre en charge","◷",waiting?"À suivre":"")+card("Passations anciennes",fmt(old,0),"Ancienneté simulée ≥ 3 jours","⌛",old?"Vigilance":"")+card("Équipes impliquées",fmt(visibleTeams().length,0),"Périmètre sélectionné","⌂","")+'</div>'+
+ panel("Registre des passations","Une passation est un point de synchronisation, pas nécessairement un incident.",table(["Réf.","De","Vers","Sujet","Ancienneté","État","Prochaine étape"],list.map(function(x){return [x.id,x.from,x.to,x.subject,x.age+" j",pill(x.status),x.next]})),"HANDOFF TRACKER")+
+ '<div class="callout">Ce registre est un exemple de coordination transverse. Les étapes et dépendances ont été imaginées pour le cas fictif ORBITA.</div>';
 }
-function auditPage(){
- var list=audits.filter(function(x){return selectedTeam()==="all"||x.owner==="BPM"||x.owner===selectedTeam()}),trans=list.filter(function(x){return x.status==="Transmis"}).length,open=list.filter(function(x){return x.status!=="Transmis"}).length;
- return hero("Coordination des audits et du dossier ISAE 3402","Centraliser les demandes, les pièces justificatives, les interlocuteurs et les échéances des audits internes et externes.")+
- '<div class="grid kpis">'+card("Demandes / sujets",fmt(list.length,0),"Registre de démonstration","▤","")+
- card("Transmis",fmt(trans,0),"Éléments finalisés dans le scénario","✓","")+
- card("En préparation / suivi",fmt(open,0),"À coordonner ou compléter","◷",open?"Vigilance":"Conforme")+
- card("Cadre ISAE","3402","Rapport sur les contrôles d’une organisation de services","◎","")+'</div>'+
- panel("Suivi des demandes d’audit","Exemples de demandes, responsables, pièces disponibles et échéances",table(["Réf.","Nature","Sujet","Responsable","Échéance","Pièces / statut","Avancement"],list.map(function(x){return [x.id,x.type,x.topic,x.owner,x.due,x.evidence,pill(x.status)]})),"AUDIT TRACKER")+
- '<div class="callout">ISAE 3402 est une norme relative aux rapports d’assurance sur les contrôles d’une organisation de services. Le rôle illustré ici est la coordination du dossier, des preuves et des échanges ; il ne s’agit pas de délivrer une « certification » ni de se substituer à l’auditeur indépendant.</div>';
-}
-function leadershipPage(){
- return hero("Leadership et mentoring","Une vue dédiée à l’accompagnement managérial, au développement des compétences et à la coordination d’une équipe basée au Luxembourg.")+
- '<div class="info-grid">'+
- '<div class="info-tile"><span>Management accompagné</span><strong>1 manager</strong><span>Leadership, points de suivi et appui managérial</span></div>'+
- '<div class="info-tile"><span>Équipe basée au Luxembourg</span><strong>5 collaborateurs</strong><span>Mentoring, partage de pratiques et développement</span></div>'+
- '<div class="info-tile"><span>Dimension managériale</span><strong>6 personnes</strong><span>1 manager et 5 employés</span></div>'+
- '</div>'+
- '<div class="grid two" style="margin-top:14px">'+
- panel("Rituels de management","Exemples de pratiques à suivre",'<div class="issue"><strong>Point individuel avec le manager</strong><p>Suivre les priorités, les difficultés, les arbitrages et les besoins d’accompagnement.</p></div><div class="issue"><strong>Mentoring des collaborateurs</strong><p>Accompagner la montée en compétences et le partage de connaissances métier.</p></div><div class="issue"><strong>Coordination avec le Luxembourg</strong><p>Maintenir une circulation claire de l’information, des priorités et des escalades.</p></div>',"LEADERSHIP")+
- panel("Axes de suivi","Exemples d’indicateurs non RH sensibles",'<div class="issue"><strong>Couverture des activités</strong><p>Identifier les processus maîtrisés par plusieurs personnes et les dépendances à une seule ressource.</p></div><div class="issue"><strong>Continuité opérationnelle</strong><p>Repérer les périodes de surcharge, les absences critiques et les besoins de relais.</p></div><div class="issue"><strong>Développement</strong><p>Suivre les formations, les procédures partagées et les sujets de mentoring convenus.</p></div>',"TEAM DEVELOPMENT")+
- '</div>'+
- '<div class="callout">La composition de l’équipe (1 manager et 5 collaborateurs au Luxembourg) reprend le périmètre que tu as décrit. Les rituels et indicateurs affichés sont des exemples à adapter à tes pratiques réelles.</div>';
+function issuePage(){
+ var list=issues.filter(function(x){return selected()==="all"||x.team===selected()||x.team==="BPM"});
+ return hero("Incidents et blocages","Qualifier les situations qui interrompent le flux, identifier l'équipe concernée et faciliter le suivi de leur résolution.")+
+ '<div class="grid kpis">'+card("Situations recensées",fmt(list.length,0),"Registre fictif","◉","")+card("À suivre",fmt(list.filter(function(x){return x.status!=="Résolu"}).length,0),"Non clôturées","◷","Vigilance")+card("Priorité élevée / critique",fmt(list.filter(function(x){return x.severity==="Critique"||x.severity==="Élevée"}).length,0),"À examiner en premier","⚑","Alerte")+card("Résolues",fmt(list.filter(function(x){return x.status==="Résolu"}).length,0),"Clôture enregistrée","✓","Atteint")+'</div>'+
+ panel("Registre des situations","Exemples inventés de blocages et d'écarts de traitement.",table(["Référence","Équipe","Catégorie","Situation","Priorité","Statut","Cause à explorer"],list.map(function(x){return [x.id,x.team,x.type,x.title,pill(x.severity),pill(x.status),x.cause]})),"INCIDENTS")+
+ '<div class="callout">Les causes sont des hypothèses de scénario. Elles ne décrivent ni un incident réel ni une procédure de ton ancien employeur.</div>';
 }
 function actionsPage(){
- var list=actions.filter(function(x){return selectedTeam()==="all"||x.team==="BPM"||x.team===selectedTeam()}),statuses=["À démarrer","En cours","Bloquée","Terminée"];
- return hero("Actions, incidents et escalades","Assurer le suivi des décisions issues des contrôles, des audits et du pilotage quotidien.")+
- '<div class="grid kpis">'+card("Actions recensées",fmt(list.length,0),"Registre simulé","☷","")+
- card("En cours / à démarrer",fmt(list.filter(function(x){return x.status==="En cours"||x.status==="À démarrer"}).length,0),"À suivre","◷","Vigilance")+
- card("Bloquées",fmt(list.filter(function(x){return x.status==="Bloquée"}).length,0),"Décision ou information attendue","!","Alerte")+
- card("Terminées",fmt(list.filter(function(x){return x.status==="Terminée"}).length,0),"Clôture illustrée","✓","Atteint")+'</div>'+
+ var list=actions.filter(function(x){return selected()==="all"||x.team===selected()||x.team==="BPM"}),statuses=["À démarrer","En cours","Bloquée","Terminée"];
+ return hero("Plan de suivi","Centraliser les prochaines étapes, attribuer un point de contact et garder une trace des échéances.")+
+ '<div class="grid kpis">'+card("Actions recensées",fmt(list.length,0),"Liste de démonstration","☷","")+card("En cours / à démarrer",fmt(list.filter(function(x){return x.status==="En cours"||x.status==="À démarrer"}).length,0),"À suivre","◷","Vigilance")+card("Bloquées",fmt(list.filter(function(x){return x.status==="Bloquée"}).length,0),"Information ou arbitrage attendu","!","Alerte")+card("Terminées",fmt(list.filter(function(x){return x.status==="Terminée"}).length,0),"Clôture fictive","✓","Atteint")+'</div>'+
  '<div class="kanban">'+statuses.map(function(s){var group=list.filter(function(x){return x.status===s});return '<div class="kancol"><div class="kanhead">'+s+' · '+group.length+'</div>'+group.map(function(x){return '<div class="kanitem"><strong>'+x.id+' · '+x.title+'</strong>'+pill(x.priority)+'<br><small>'+x.team+' · '+x.owner+'<br>Échéance : '+x.due+'</small></div>'}).join("")+'</div>'}).join("")+'</div>'+
- '<div class="callout">Les actions sont des exemples pédagogiques : elles illustrent le lien entre un écart, un responsable, une échéance et une preuve de clôture.</div>';
+ '<div class="callout">Les intitulés, propriétaires et échéances des actions sont inventés pour montrer comment une coordinatrice peut suivre les engagements pris en réunion.</div>';
+}
+function huddlePage(){
+ var date=$("refdate").value,visible=visibleTeams(),rows=visible.map(function(t){var r=days.find(function(x){return x.date===date&&x.team===t.id});return '<div class="issue"><div class="issuehead"><strong>'+t.id+' · '+t.full+'</strong>'+pill(r&&r.backlog>t.backlog+12?"Vigilance":"À suivre")+'</div><p>'+t.activity+' · '+(r?fmt(r.backlog,0):"—")+' dossiers en attente · '+(r?fmt(r.overdue,0):"—")+' en retard</p></div>'}).join("");
+ return hero("Point de coordination","Une trame de réunion pour partager les informations utiles, clarifier les dépendances et convenir des prochaines étapes.")+
+ '<div class="panel"><div class="panelhead"><div><h2>Ordre du jour suggéré</h2><div class="sub">Synthèse fictive · '+date+'</div></div><span class="mini">15 MIN</span></div>'+
+ '<div class="huddle"><article><small>01 · VOLUMES ET FILES</small><p>Quelles équipes reçoivent plus de dossiers qu'elles n'en traitent ? Où l'attente s'accumule-t-elle ?</p></article><article><small>02 · PASSATIONS</small><p>Quels dossiers attendent un retour d'une autre équipe ? Les prochaines étapes sont-elles claires ?</p></article><article><small>03 · BLOCAGES</small><p>Quelles situations nécessitent une clarification, une relance ou une décision ?</p></article><article><small>04 · ENGAGEMENTS</small><p>Pour chaque sujet : point de contact, prochaine étape et date de revue.</p></article></div></div>'+
+ '<div class="grid two" style="margin-top:14px">'+panel("Tour des équipes","Situation au "+date,rows,"FLOW · SETTLE · VIGIE · RELAY")+
+ panel("Décisions à consigner","Exemples de décisions dans le scénario",'<div class="issue"><strong>Clarifier une passation en attente</strong><p>Confirmer l'équipe qui doit agir et la date du prochain retour.</p></div><div class="issue"><strong>Prioriser les dossiers les plus anciens</strong><p>Vérifier le volume, l'impact et la capacité de traitement avant de convenir d'une action.</p></div><div class="issue"><strong>Mettre à jour le suivi partagé</strong><p>Aligner le statut, le propriétaire et la prochaine étape dans le registre commun.</p></div>',"SUIVI")+'</div>';
 }
 function qualityPage(){
- var tests=[["DQ-001","Contrôle identifié et périodicité renseignée","Outsourcing"],["DQ-002","Preuve de contrôle référencée et datée","Outsourcing"],["DQ-003","Écart associé à un responsable et une échéance","Tous processus"],["DQ-004","Demande d’audit tracée et attribuée","Audits"],["DQ-005","Pièce transmise reliée à la demande correspondante","Audits"],["DQ-006","Dossier de vérification avec statut et date de revue","REG"],["DQ-007","Instruction de paiement avec référence de suivi","CRU"],["DQ-008","Demande actionnaire catégorisée et traçable","Shareholder"]];
- return hero("Qualité et gouvernance","Fiabiliser le suivi BPM : contrôles documentés, preuves accessibles, demandes attribuées et décisions traçables.")+
- '<div class="grid kpis">'+card("Contrôles documentés","8","Règles illustratives","✓","")+
- card("Équipes couvertes","4","FOP · CRU · REG · Shareholder","⌂","")+
- card("Domaines suivis","3","Outsourcing · audits · opérations","▤","")+
- card("Cas de test préparés","8","Exemples de contrôles de cohérence","◇","")+'</div>'+
- panel("Référentiel de contrôles","Exemples de vérifications à adapter à la gouvernance réelle",table(["Réf.","Règle","Périmètre","Résultat illustré"],tests.map(function(x){return [x[0],x[1],x[2],pill("Conforme")]})),"GOUVERNANCE")+
- '<div class="callout">Cette page présente un modèle de traçabilité. Elle ne remplace ni les procédures internes, ni les politiques de conformité, ni les dispositifs de contrôle approuvés.</div>';
+ var list=reviews.filter(function(x){return selected()==="all"||x.team===selected()||x.team==="BPM"}),expected=list.reduce(function(s,x){return s+x.expected},0),done=list.reduce(function(s,x){return s+x.done},0);
+ return hero("Revues et contrôles de suivi","Illustrer le suivi de revues périodiques, la documentation des résultats et les éléments qui restent à compléter.")+
+ '<div class="grid kpis">'+card("Revues planifiées",fmt(list.length,0),"Périmètre sélectionné","▤","")+card("Points réalisés",fmt(done,0)+" / "+fmt(expected,0),"Avancement des revues simulées","✓",done===expected?"À jour":"À suivre")+card("Revues à relancer",fmt(list.filter(function(x){return x.status==="À relancer"}).length,0),"Échéances de suivi","◷",list.some(function(x){return x.status==="À relancer"})?"Vigilance":"")+card("Éléments incomplets",fmt(list.filter(function(x){return x.evidence!=="Disponible"}).length,0),"Documentation à compléter","!","À suivre")+'</div>'+
+ panel("Registre des revues","Exemples fictifs de revues opérationnelles et de suivi documentaire.",table(["Réf.","Équipe","Revue","Fréquence","Réalisé / prévu","Éléments","Statut"],list.map(function(x){return [x.id,x.team,x.scope,x.frequency,fmt(x.done,0)+" / "+fmt(x.expected,0),pill(x.evidence),pill(x.status)]})),"REVIEW TRACKER")+
+ '<div class="callout">Ces revues ne représentent pas des contrôles réglementaires ou des obligations réelles. Elles illustrent uniquement la tenue d'un suivi opérationnel dans une organisation fictive.</div>';
 }
 function render(){
  document.querySelectorAll(".nav button").forEach(function(b){b.classList.toggle("active",b.dataset.page===page)});
- $("crumb").textContent=pages[page];
- var views={board:board,performance:performance,outsourcing:outsourcingPage,audits:auditPage,leadership:leadershipPage,actions:actionsPage,quality:qualityPage};
+ $("crumb").textContent=names[page];
+ var views={board:board,performance:performance,handoffs:handoffPage,issues:issuePage,actions:actionsPage,huddle:huddlePage,quality:qualityPage};
  $("view").innerHTML=views[page]();
 }
 document.querySelectorAll(".nav button").forEach(function(b){b.addEventListener("click",function(){page=b.dataset.page;render()})});
