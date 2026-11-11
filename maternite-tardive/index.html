@@ -197,8 +197,8 @@ function drawLineChart(canvas,rows){
  const y2007=rows.findIndex(r=>r.annee>=2007);if(y2007>=0){const xx=x(y2007);ctx.save();ctx.setLineDash([4,5]);ctx.strokeStyle="#aeb9b4";ctx.beginPath();ctx.moveTo(xx,p.t);ctx.lineTo(xx,h-p.b);ctx.stroke();ctx.restore();ctx.fillStyle="#7b858b";ctx.textAlign="left";ctx.fillText("2007",Math.min(xx+5,w-45),p.t+8)}
  const series=[["part_35_39_pct","#cf7fa9"],["part_40_plus_group_pct","#705482"]];
  series.forEach(([key,color])=>{ctx.beginPath();rows.forEach((r,i)=>{if(i===0)ctx.moveTo(x(i),y(r[key]));else ctx.lineTo(x(i),y(r[key]))});ctx.strokeStyle=color;ctx.lineWidth=2.6;ctx.lineJoin="round";ctx.lineCap="round";ctx.stroke();rows.forEach((r,i)=>{ctx.beginPath();ctx.arc(x(i),y(r[key]),2.4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()})});
- ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#7b858b";const stride=Math.max(1,Math.ceil(rows.length/8));
- rows.forEach((r,i)=>{if(i%stride===0||i===rows.length-1)ctx.fillText(r.annee,x(i),h-p.b+9)});
+ ctx.textBaseline="top";ctx.fillStyle="#7b858b";const stride=Math.max(1,Math.ceil(rows.length/8));
+ rows.forEach((r,i)=>{if(i%stride===0||i===rows.length-1){ctx.textAlign=i===0?"left":i===rows.length-1?"right":"center";ctx.fillText(r.annee,x(i),h-p.b+9)}});
 }
 function drawAgeChart(rows,year){
  const native=DATA.tranches.filter(r=>r.annee===year).sort((a,b)=>a.ordre_tranche-b.ordre_tranche);
