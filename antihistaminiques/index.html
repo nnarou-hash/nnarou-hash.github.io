@@ -72,6 +72,7 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
       <article class="panel"><h3>Laboratoires les plus représentés</h3><p class="sub">Nombre de spécialités rattachées au laboratoire dans le référentiel.</p><div id="medicine-labs" class="bars"></div></article>
     </div>
     <article class="panel section"><h3>Molécules du référentiel</h3><p class="sub">Classement basé sur le volume de patients en ville déclaré par spécialité, agrégé par molécule.</p><div id="medicine-molecules" class="bars"></div></article>
+    <article class="panel section"><h3>Substances actives — référentiel BDPM</h3><p class="sub">Nombre de spécialités par substance active dans la base publique des médicaments, filtrée sur la classe R06.</p><div id="bdpm-substances" class="bars"></div></article>
   </section>
 
   <section class="section" id="environnement">
@@ -160,6 +161,7 @@ function medicines(){
   $('medicine-profile').innerHTML=(m.average_patient_age_sex_profile||[]).map(r=>'<div class="pct-row"><span>'+esc(labels[r.variable]||r.variable)+'</span><div class="pct-track"><div class="pct-fill" style="width:'+Math.max(0,Number(r.percentage||0))+'%"></div></div><strong class="pct-value">'+fmt(r.percentage,1)+' %</strong></div>').join('')||'<div class="empty">Profil démographique non disponible.</div>';
   bars('medicine-labs',m.top_laboratories||[],'laboratoire','specialties',v=>nfmt(v),12);
   bars('medicine-molecules',m.top_molecules_by_patient_volume||[],'molecule','patient_volume',v=>nfmt(v),15);
+  bars('bdpm-substances',D.bdpm?.top_substances||[],'substance','specialties',v=>nfmt(v),15);
 }
 function lineChart(el,rows,key,label,color){
   const data=(rows||[]).filter(r=>r[key]!==null&&r[key]!==undefined&&Number.isFinite(Number(r[key]))).slice(-100);
