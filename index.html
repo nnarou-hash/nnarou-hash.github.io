@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nelly Narou — Business & Data Analyst | Performance, BI & Data Quality</title>
-<meta name="description" content="Business & Data Analyst : qualité des données, Business Intelligence, performance commerciale et opérationnelle, pilotage des stocks et planification. Découvrez mes projets et dashboards.">
+<title>Nelly Narou — Analyste BI | Data Quality & Performance</title>
+<meta name="description" content="Analyste BI : Business Intelligence, qualité des données, reporting et pilotage de la performance. Découvrez des projets d’analyse, de fiabilisation et de visualisation des données.">
 <meta name="theme-color" content="#1e1b2e">
 <style>
   :root {
@@ -210,7 +210,15 @@
     .projects-grid { grid-template-columns: 1fr; }
     .contact-box { padding: 42px 22px; }
   }
-</style>
+
+  .secondary-projects { margin-top: 46px; padding-top: 30px; border-top: 1px solid #ede9fe; }
+  .secondary-project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 16px; }
+  .secondary-project-card { background: #faf9ff; border: 1px solid #ede9fe; border-radius: 14px; padding: 18px; }
+  .secondary-project-label { color: var(--gray); font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .secondary-project-card a { color: var(--dark); font-weight: 750; text-decoration: none; }
+  .secondary-project-card a:hover { color: var(--mauve-dark); }
+  .secondary-project-card p { color: var(--gray); font-size: .86rem; line-height: 1.6; margin-top: 9px; }
+  </style>
 </head>
 <body>
 
@@ -230,9 +238,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-tag">✦ Business & Data Analyst · BI · Data Quality · Performance</div>
+    <div class="hero-tag">✦ Analyste BI · Data Quality · Pilotage de la performance</div>
     <h1>De la donnée à la<br><span>performance</span></h1>
-    <p>J’aide les équipes à fiabiliser leurs données, suivre leurs indicateurs et mieux piloter leur activité. Mon approche relie analyse métier, Business Intelligence et planification, dans des environnements commerciaux et opérationnels.</p>
+    <p>J’aide les équipes à fiabiliser leurs données, construire des indicateurs utiles et mieux piloter leur activité. Mon approche associe compréhension métier, analyse et Business Intelligence, avec une attention particulière à la qualité de l’information et à sa mise en perspective.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">Voir mes projets</a>
       <a href="#contact" class="btn btn-outline">Me contacter</a>
@@ -247,8 +255,8 @@
       <div class="about-text">
         <div class="section-label">À propos</div>
         <div class="section-title">Comprendre, fiabiliser,<br>faire progresser</div>
-        <p>Spécialisée dans la qualité des données, l’analyse de la performance et le pilotage des stocks et de la planification en environnement commercial et opérationnel, j’apporte plus de 10 ans d’expérience en coordination de la performance.</p>
-        <p>J’accompagne les équipes dans l’analyse des indicateurs, la fiabilisation des données, le suivi des stocks et la création de reportings de pilotage. Ancrée dans la réalité opérationnelle, mon objectif est de transformer les données en analyses fiables et en leviers de décision concrets pour améliorer la performance.</p>
+        <p>Positionnée sur la Business Intelligence, la qualité des données et le pilotage de la performance, je m’appuie sur plus de 10 ans d’expérience en coordination de la performance commerciale et opérationnelle.</p>
+        <p>Je traduis les besoins métier en indicateurs, reportings et analyses lisibles. Mon objectif est de rendre l’information plus fiable, de comprendre les écarts et de fournir aux équipes des éléments concrets pour suivre leur activité et éclairer leurs décisions.</p>
         <a href="#projects" class="btn btn-primary" style="margin-top:8px">Voir mes projets →</a>
       </div>
       <div class="about-stats">
@@ -257,8 +265,8 @@
           <div class="stat-label">Années d'expérience</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">9</div>
-          <div class="stat-label">Projets présentés</div>
+          <div class="stat-number">6</div>
+          <div class="stat-label">Projets principaux</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">Data & IA</div>
@@ -294,8 +302,8 @@
         <p class="project-desc">Contribuer aux processus S&OP, fiabiliser les prévisions et faciliter les arbitrages entre équipes commerciales, finance, marketing et portefeuille.</p>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Relier métiers, data & IA</div>
-        <p class="project-desc">Comprendre les besoins opérationnels, utiliser les outils data et IA avec discernement, vérifier les résultats et faciliter leur appropriation par les équipes.</p>
+        <div class="skill-group-title">Restituer & faciliter le pilotage</div>
+        <p class="project-desc">Présenter les résultats dans des tableaux de bord lisibles, expliciter les indicateurs et donner aux équipes des repères pour suivre les actions et les résultats.</p>
       </div>
     </div>
     <p style="color:var(--gray);margin-top:24px;font-size:1rem;text-align:center">Mon approche associe compréhension métier, rigueur analytique, culture BI et usage maîtrisé de l’IA pour fiabiliser l’information et éclairer les décisions.</p>
@@ -305,128 +313,57 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <div class="section-label">Projets</div>
-    <div class="section-title">Ce que j'ai construit</div>
+    <div class="section-label">Sélection principale</div>
+    <div class="section-title">Projets d’analyse & de pilotage</div>
     <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-header p3">📋</div>
-        <div class="project-body">
-          <div class="project-title">Cockpit de management visuel & excellence opérationnelle</div>
-          <div class="project-desc">Conception d’un cockpit de management visuel pour suivre la performance opérationnelle, les indicateurs SQCDP, les problèmes, les plans d’action, les décisions d’équipe et la qualité des données. Une démonstration interactive inspirée des pratiques d’excellence opérationnelle, construite à partir de données entièrement synthétiques.</div>
-          <div class="project-tags">
-            <span class="tag">Performance opérationnelle</span>
-            <span class="tag">Management visuel</span>
-            <span class="tag">SQCDP</span>
-            <span class="tag">Management Lean</span>
-            <span class="tag">Qualité des données</span>
-            <span class="tag">HTML · JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="/management-visuel/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header p4">🔬</div>
-        <div class="project-body">
-          <span class="badge-wip">Veille automatisée en fonctionnement</span>
-          <div class="project-title">Agent Veille Pénuries ANSM</div>
-          <div class="project-desc">Veille automatisée des médicaments d’intérêt thérapeutique majeur suivis par l’ANSM : collecte Python, archivage des instantanés, détection des nouvelles entrées et modifications, journal de traçabilité et dashboard HTML interactif. Une synthèse par IA générative peut compléter la restitution.</div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">HTML · JavaScript</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">ANSM</span>
-            <span class="tag">IA Générative</span>
-            <span class="tag">Santé</span>
-          </div>
-          <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Collecte automatisée trois fois par semaine (lundi, mercredi et vendredi). La synthèse IA nécessite une clé API dédiée ; la veille et le dashboard fonctionnent sans elle.</p>
-          <div class="project-links">
-            <a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="project-card">
-        <div class="project-header p2">📊</div>
-        <div class="project-body">
-          <div class="project-title">Pilotage de la performance commerciale</div>
-          <div class="project-desc">Mise en place d’un socle de données synthétiques pour suivre les objectifs, le chiffre d’affaires gagné, la transformation des opportunités, le pipeline et l’activité d’une équipe commerciale. Première maquette de dashboard et modèle de données documenté.</div>
-          <div class="project-tags"><span class="tag">Business Intelligence</span><span class="tag">KPI commerciaux</span><span class="tag">Pipeline</span><span class="tag">Sales Analytics</span><span class="tag">Dashboard</span></div>
-          <div class="project-links">
-            <a href="/performance-commerciale/" class="project-link">Prototype HTML</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/performance-commerciale" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="project-card">
-        <div class="project-header p4">📦</div>
-        <div class="project-body">
-          <div class="project-title">Cosmetics Supply Chain Analytics</div>
-          <div class="project-desc">Sur un jeu de données synthétique couvrant 36 mois, ce projet combine audit de qualité, prévision de la demande, simulation du réapprovisionnement, segmentation ABC/XYZ et analyse des coûts. Un dashboard interactif en six onglets restitue les indicateurs, scénarios et résultats.</div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Supply Chain</span>
-            <span class="tag">Demand Planning</span>
-            <span class="tag">ABC / XYZ</span>
-            <span class="tag">Inventory</span>
-            <span class="tag">Dashboard HTML</span>
-            <span class="tag">IA générative</span>
-          </div>
-          <div class="project-links">
-            <a href="/cosmetics-supply-chain-analytics/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-          </div>
-        </div>
-      </div>
-
 
       <div class="project-card">
         <div class="project-header p2">📈</div>
         <div class="project-body">
           <div class="project-title">Maternité tardive aux États-Unis (1995–2024)</div>
-          <div class="project-desc">Analyse des données CDC WONDER sur l’évolution des naissances chez les mères de 35 ans et plus (11,6 % en 1995 ; 21,3 % en 2024). Le projet associe contrôles qualité avec Great Expectations, stockage BigQuery, transformations et tests dbt, documentation de gouvernance et restitution via un dashboard HTML interactif. Le code du dashboard Streamlit initial est également conservé. Les limites méthodologiques sont explicitement documentées.</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment la part des naissances chez les mères de 35 ans et plus a-t-elle évolué aux États-Unis ? L’analyse des données CDC WONDER met en évidence une progression de 11,6 % en 1995 à 21,3 % en 2024, soit +9,7 points. Le projet documente aussi les contrôles qualité, les transformations dbt et les limites de comparabilité des séries.</div>
           <div class="project-tags">
-            <span class="tag">CDC WONDER</span>
-            <span class="tag">Great Expectations</span>
-            <span class="tag">BigQuery</span>
-            <span class="tag">dbt</span>
-            <span class="tag">HTML · JavaScript</span>
-            <span class="tag">Streamlit · Python</span>
-            <span class="tag">Data Governance</span>
+            <span class="tag">CDC WONDER</span><span class="tag">BigQuery</span><span class="tag">dbt</span>
+            <span class="tag">Great Expectations</span><span class="tag">Data Quality</span><span class="tag">Dashboard</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Limites documentées : rupture de série 2006–2007 ; données sur le niveau d’éducation non comparables avant 2016.</p>
           <div class="project-links">
-            <a href="/maternite-tardive/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
+            <a href="/maternite-tardive/" class="project-link">Voir le dashboard</a>
+            <a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-header p3">📊</div>
+        <div class="project-header p4">📦</div>
         <div class="project-body">
-          <div class="project-title">Qualité des données NHANES (dbt)</div>
-          <div class="project-desc">Projet de Data Quality sur les données publiques NHANES : 12 modèles de staging, 2 tables finales et 58 tests avec dbt et BigQuery. Documentation, lignage et correction d’une anomalie de lecture, avec restitution via Streamlit. Projet méthodologique, sans conclusion clinique.</div>
+          <div class="project-title">Cosmetics Supply Chain Analytics</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment améliorer la disponibilité des produits tout en maîtrisant les stocks ? Sur 100 références et 36 mois de données simulées, le projet compare les politiques de réapprovisionnement et combine prévision, segmentation ABC/XYZ et analyse des coûts. Dans la simulation, la politique ABC/XYZ atteint 98,64 % de taux de service contre 98,37 % avec un délai fixe de 10 jours ; la demande non satisfaite passe de 8 155 à 6 768 unités.</div>
           <div class="project-tags">
-            <span class="tag">dbt</span>
-            <span class="tag">BigQuery</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Streamlit</span>
-            <span class="tag">Data Quality</span>
-            <span class="tag">Santé</span>
+            <span class="tag">Python</span><span class="tag">Supply Chain</span><span class="tag">Demand Planning</span>
+            <span class="tag">ABC / XYZ</span><span class="tag">Inventory</span><span class="tag">Dashboard</span>
           </div>
+          <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Résultats issus d’une simulation sur données synthétiques, selon des hypothèses explicitées dans le projet.</p>
           <div class="project-links">
-            <a href="/nhanes/" class="project-link">Dashboard HTML</a>
-            <a href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit ↗</a>
+            <a href="/cosmetics-supply-chain-analytics/" class="project-link">Voir le dashboard</a>
+            <a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header p3">🧪</div>
+        <div class="project-body">
+          <div class="project-title">Qualité des données NHANES</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment fiabiliser un jeu de données de santé publique avant de produire des analyses descriptives ? Le pipeline dbt et BigQuery comprend 12 modèles de staging, 2 tables finales et 58 tests. La restitution permet d’explorer les mesures biologiques et leurs relations, sans tirer de conclusion clinique.</div>
+          <div class="project-tags">
+            <span class="tag">SQL</span><span class="tag">dbt</span><span class="tag">BigQuery</span>
+            <span class="tag">Data Quality</span><span class="tag">Streamlit</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Analyse méthodologique sur données publiques NHANES ; les limites d’échantillonnage et d’interprétation sont précisées.</p>
+          <div class="project-links">
+            <a href="/nhanes/" class="project-link">Voir le dashboard</a>
+            <a href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">Version interactive ↗</a>
             <a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
           </div>
         </div>
@@ -435,61 +372,77 @@
       <div class="project-card">
         <div class="project-header p1">💊</div>
         <div class="project-body">
-          <div class="project-title">Antihistaminiques Pipeline</div>
-          <div class="project-desc">Analyse de données publiques sur les tensions d’approvisionnement en antihistaminiques en France. Le pipeline structure les données en couches Bronze/Silver/Gold et combine modèle prédictif explicable (SHAP), API FastAPI, dashboard Streamlit et dashboard HTML de synthèse.</div>
+          <div class="project-title">Antihistaminiques — analyse des signaux d’approvisionnement</div>
+          <div class="project-desc"><strong>Question métier :</strong> quels signaux peuvent aider à mieux comprendre les périodes de tension sur les médicaments ? Le projet rapproche consommation, données polliniques, météo, épidémiologie et signalements ANSM. Les données sont structurées en couches Bronze/Silver/Gold, puis exploitées dans des analyses et des modèles exploratoires pour étudier les mois à risque.</div>
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Airflow</span>
-            <span class="tag">MLflow</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Streamlit</span>
-            <span class="tag">Santé</span>
+            <span class="tag">Python</span><span class="tag">Données publiques</span><span class="tag">ETL</span>
+            <span class="tag">SHAP</span><span class="tag">Streamlit</span><span class="tag">FastAPI</span>
           </div>
+          <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Un signal de modèle ne constitue pas une confirmation de rupture ; les sources et limites sont documentées.</p>
           <div class="project-links">
-            <a href="/antihistaminiques/" class="project-link">Dashboard HTML</a>
-            <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit ↗</a>
+            <a href="/antihistaminiques/" class="project-link">Voir le dashboard</a>
+            <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener noreferrer" class="project-link">Prédictions ↗</a>
             <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-header p2">🤖</div>
+        <div class="project-header p4">🔎</div>
         <div class="project-body">
-          <div class="project-title">Career Intelligence AI</div>
-          <div class="project-desc">Automatisation d’une veille d’offres : collecte d’annonces, évaluation selon des critères de profil et génération d’une synthèse périodique. Le projet mobilise Python, des API et l’IA pour automatiser un processus métier.</div>
+          <span class="badge-wip">Veille automatisée en fonctionnement</span>
+          <div class="project-title">Agent de veille des médicaments — ANSM</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment repérer les évolutions entre deux publications de l’ANSM ? Un collecteur Python archive les instantanés, compare les mises à jour et repère les nouvelles entrées, modifications et sorties de liste. Le dashboard restitue les statuts publiés, les spécialités suivies et l’historique des changements.</div>
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">Firestore</span>
-            <span class="tag">Apify</span>
-            <span class="tag">OpenAI</span>
+            <span class="tag">Python</span><span class="tag">GitHub Actions</span><span class="tag">Data Monitoring</span>
+            <span class="tag">Traçabilité</span><span class="tag">Dashboard</span>
           </div>
+          <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Collecte planifiée trois fois par semaine. La veille porte sur les publications ANSM, pas sur les stocks physiques des pharmacies ou grossistes.</p>
           <div class="project-links">
-            <a href="https://github.com/nnarou-hash/career-intelligence-ai" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
+            <a href="/agent-veille-ansm/" class="project-link">Voir le dashboard</a>
+            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Code & documentation</a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-header p3">💜</div>
+        <div class="project-header p3">🔄</div>
         <div class="project-body">
-          <div class="project-title">Auprès de Maman</div>
-          <div class="project-desc">Application web familiale conçue pour coordonner les relais de dix membres d’une fratrie : authentification, planning partagé et notifications en temps réel.</div>
+          <div class="project-title">ORBITA — cas pratique fictif de coordination BPM</div>
+          <div class="project-desc"><strong>Question métier :</strong> comment donner une vue transverse sur des flux, leurs passations, leurs blocages et les actions de suivi ? Ce cockpit interactif met en scène un service fictif de coordination d’opérations de fonds. L’entreprise, les équipes, les rôles, les processus, les incidents et toutes les données sont inventés : il s’agit d’un cas pratique, pas de la reconstitution d’une organisation réelle ni d’un descriptif de responsabilités professionnelles.</div>
           <div class="project-tags">
-            <span class="tag">Firebase</span>
-            <span class="tag">Firestore</span>
-            <span class="tag">React</span>
-            <span class="tag">Hosting</span>
+            <span class="tag">Coordination BPM</span><span class="tag">Flux opérationnels</span>
+            <span class="tag">Indicateurs</span><span class="tag">Suivi des actions</span><span class="tag">Dashboard</span>
           </div>
           <div class="project-links">
-            <a href="https://aupres-de-maman-demo.web.app" target="_blank" rel="noopener noreferrer" class="project-link">Application web</a>
+            <a href="/management-visuel/" class="project-link">Voir le cockpit</a>
+            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">Code ↗</a>
           </div>
         </div>
       </div>
 
+    </div>
 
-
+    <div class="secondary-projects">
+      <div class="section-label">En complément</div>
+      <div class="section-title" style="font-size:1.45rem">Autres réalisations & prototype</div>
+      <div class="secondary-project-grid">
+        <div class="secondary-project-card">
+          <div class="secondary-project-label">Prototype en cours · données synthétiques</div>
+          <a href="/performance-commerciale/">Pilotage de la performance commerciale ↗</a>
+          <p>Maquette de suivi des objectifs, du chiffre d’affaires gagné, du pipeline et de la transformation commerciale. Ce prototype explore un cas d’usage BI ; il n’est pas présenté comme une analyse finalisée de données réelles.</p>
+        </div>
+        <div class="secondary-project-card">
+          <div class="secondary-project-label">Automatisation personnelle</div>
+          <a href="https://github.com/nnarou-hash/career-intelligence-ai" target="_blank" rel="noopener noreferrer">Career Intelligence AI ↗</a>
+          <p>Automatisation d’une veille d’offres : collecte d’annonces, évaluation selon des critères définis et génération d’une synthèse périodique.</p>
+        </div>
+        <div class="secondary-project-card">
+          <div class="secondary-project-label">Application personnelle</div>
+          <a href="https://aupres-de-maman-demo.web.app" target="_blank" rel="noopener noreferrer">Auprès de Maman ↗</a>
+          <p>Application web familiale avec authentification, planning partagé et notifications pour faciliter la coordination des relais au sein d’une fratrie.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -498,69 +451,40 @@
 <section class="skills" id="skills">
   <div class="container">
     <div class="section-label">Compétences</div>
-    <div class="section-title">Compétences métier & outils</div>
+    <div class="section-title">Compétences BI & métier</div>
     <div class="skills-grid">
       <div class="skill-group">
-        <div class="skill-group-title">Qualité & gouvernance des données</div>
-        <div class="skill-item">Contrôles de qualité et détection d’anomalies</div>
-        <div class="skill-item">Données produits et données CRM</div>
-        <div class="skill-item">Dictionnaire et documentation des données</div>
-        <div class="skill-item">Cohérence des données et règles métier</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">BI, reporting & visualisation</div>
-        <div class="skill-item">QlikView · Qlik Sense</div>
+        <div class="skill-group-title">Business Intelligence & reporting</div>
         <div class="skill-item">Power BI · Power Query</div>
-        <div class="skill-item">Tableau et SAP BI</div>
+        <div class="skill-item">QlikView · Qlik Sense</div>
         <div class="skill-item">Excel avancé</div>
         <div class="skill-item">Tableaux de bord, KPI et reporting</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Supply Chain & pilotage métier</div>
+        <div class="skill-group-title">Analyse & qualité des données</div>
+        <div class="skill-item">SQL</div>
+        <div class="skill-item">Python · Pandas · NumPy</div>
+        <div class="skill-item">BigQuery · dbt</div>
+        <div class="skill-item">Contrôles qualité, tests et détection d’anomalies</div>
+        <div class="skill-item">Documentation et règles métier</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Pilotage des processus métier</div>
         <div class="skill-item">S&OP et coordination transverse</div>
-        <div class="skill-item">Prévisions commerciales et analyse des écarts</div>
+        <div class="skill-item">Prévisions et analyse des écarts</div>
         <div class="skill-item">SAP IBP</div>
-        <div class="skill-item">Analyse de performance et productivité</div>
-        <div class="skill-item">Suivi des stocks et coûts logistiques</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">CRM & coordination des processus</div>
+        <div class="skill-item">Suivi des stocks, coûts et performance</div>
         <div class="skill-item">Salesforce : administration fonctionnelle</div>
-        <div class="skill-item">Configuration, droits et workflows</div>
-        <div class="skill-item">Qualité et migration de données CRM</div>
-        <div class="skill-item">Support utilisateurs et documentation</div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Analyse & ingénierie data · projets et formation</div>
-        <div class="skill-item">SQL · Python (Pandas, NumPy) (notions)</div>
-        <div class="skill-item">BigQuery · Snowflake (notions)</div>
-        <div class="skill-item">dbt (notions) · Apache Airflow</div>
-        <div class="skill-item">PySpark et Docker</div>
-        <div class="skill-item">Git / GitHub</div>
-        <div class="skill-item">Streamlit et FastAPI</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">IA & automatisation · projets et formation</div>
-        <div class="skill-item">IA générative et OpenAI API</div>
-        <div class="skill-item">Prompt engineering et agents IA</div>
-        <div class="skill-item">RAG · automatisation avec n8n</div>
-        <div class="skill-item">Apify et GitHub Actions</div>
-        <div class="skill-item">Vigilance sur les risques IA : prompt injection et confidentialité</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Machine Learning · projets de formation</div>
-        <div class="skill-item">Scikit-learn</div>
-        <div class="skill-item">XGBoost et Random Forest</div>
-        <div class="skill-item">K-Means (clustering)</div>
-        <div class="skill-item">MLflow</div>
-        <div class="skill-item">SHAP (explicabilité)</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Applications & stockage · projets</div>
-        <div class="skill-item">Firebase / Firestore · AWS S3 / RDS</div>
+        <div class="skill-group-title">Automatisation & restitution · projets</div>
+        <div class="skill-item">Git · GitHub</div>
+        <div class="skill-item">Apache Airflow · GitHub Actions</div>
+        <div class="skill-item">Streamlit · FastAPI</div>
+        <div class="skill-item">Great Expectations</div>
       </div>
     </div>
-    <p class="skills-note">La mention « notions » signale les outils découverts ou pratiqués principalement dans le cadre de projets et de formations. Les autres compétences sont présentées sans niveau afin de privilégier leur contexte d’utilisation.</p>
+    <p class="skills-note">Cette sélection privilégie les compétences mobilisées dans mon expérience et les projets présentés. Les technologies spécifiques à un projet sont détaillées dans sa documentation ; les outils simplement explorés ne sont pas affichés comme compétences principales.</p>
   </div>
 </section>
 
@@ -569,7 +493,7 @@
   <div class="container">
     <div class="contact-box">
       <h2>Travaillons ensemble 💜</h2>
-      <p>Ouverte aux opportunités en Business Analysis, Business Intelligence, Data Quality et pilotage de la performance commerciale et opérationnelle, notamment dans les environnements santé, pharmaceutiques et de distribution.</p>
+      <p>Ouverte aux opportunités d’Analyste BI, autour de la Business Intelligence, du reporting, de la Data Quality et du pilotage de la performance, notamment dans les environnements commerciaux, opérationnels, santé et pharmaceutiques.</p>
       <div class="contact-links">
         <a href="mailto:nelly.narou@gmail.com" class="contact-link">✉ nelly.narou@gmail.com</a>
         <a href="https://www.linkedin.com/in/nelly-n-018b4599/" target="_blank" class="contact-link">LinkedIn</a>
