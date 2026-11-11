@@ -51,10 +51,13 @@ jobs:
         run: |
           python antihistaminiques/build_dashboard_data.py \
             --source-dir source-data/data/silver \
-            --output antihistaminiques/data.json
+            --output "$RUNNER_TEMP/antihistaminiques-data.json"
 
-      - name: Enregistrer les données uniquement si elles ont changé
+      - name: Synchroniser et enregistrer les données
         run: |
+          git fetch origin main
+          git reset --hard origin/main
+          cp "$RUNNER_TEMP/antihistaminiques-data.json" antihistaminiques/data.json
           if [[ -n "$(git status --porcelain antihistaminiques/data.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
