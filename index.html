@@ -153,29 +153,6 @@
     display: inline-block; margin-bottom: 8px;
   }
 
-  /* EXPERIENCE */
-  .experience { background: #fff; }
-  .experience-intro { color: var(--gray); max-width: 760px; margin: -22px 0 30px; }
-  .experience-list { display: grid; gap: 18px; }
-  .experience-card {
-    display: grid; grid-template-columns: minmax(190px, .72fr) minmax(0, 1.8fr);
-    gap: 26px; padding: 26px; border: 1px solid #ede9fe; border-radius: 16px;
-    background: #fff; box-shadow: 0 4px 18px rgba(124,58,237,0.045);
-  }
-  .experience-company { font-size: 1.12rem; font-weight: 800; color: var(--dark); }
-  .experience-role { color: var(--mauve); font-size: .92rem; font-weight: 650; margin-top: 4px; }
-  .experience-period { color: var(--gray); font-size: .82rem; margin-top: 6px; }
-  .experience-summary { color: var(--gray); font-size: .93rem; line-height: 1.7; margin-bottom: 14px; }
-  .experience-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
-  .experience-result { background: var(--mauve-bg); border-radius: 10px; padding: 12px 14px; }
-  .experience-result strong { display: block; color: var(--mauve-dark); font-size: 1.25rem; line-height: 1.3; }
-  .experience-result span { display: block; color: var(--gray); font-size: .77rem; line-height: 1.45; margin-top: 4px; }
-  .experience-note { color: var(--gray); font-size: .8rem; margin-top: 18px; }
-  @media (max-width: 640px) {
-    .experience-card { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
-    .experience-intro { margin-top: -18px; }
-  }
-
   /* SKILLS */
   .skills { background: var(--mauve-bg); }
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
@@ -250,7 +227,6 @@
   <div class="nav-logo">Nelly Narou ✦</div>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
-    <li><a href="#experience">Expérience</a></li>
     <li><a href="#apport">Ce que j’apporte</a></li>
     <li><a href="#projects">Projets</a></li>
     <li><a href="#skills">Compétences</a></li>
@@ -301,64 +277,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="experience" id="experience">
-  <div class="container">
-    <div class="section-label">Parcours professionnel</div>
-    <div class="section-title">Expérience & impact</div>
-    <p class="experience-intro">Des réalisations concrètes en Business Intelligence, qualité des données, coordination opérationnelle et pilotage de la performance.</p>
-
-    <div class="experience-list">
-      <article class="experience-card">
-        <div>
-          <div class="experience-company">Teva Santé</div>
-          <div class="experience-role">Analyste Business Intelligence · CDI</div>
-          <div class="experience-period">Depuis septembre 2023</div>
-        </div>
-        <div>
-          <p class="experience-summary">Fiabilisation et suivi des données d’un portefeuille d’environ 800 produits, analyses de performance et contribution au processus S&OP. Production de reportings et accompagnement des équipes dans l’utilisation des outils BI.</p>
-          <div class="experience-results">
-            <div class="experience-result"><strong>~800</strong><span>produits concernés par les contrôles de qualité des données</span></div>
-            <div class="experience-result"><strong>75 % → 77 %</strong><span>précision des prévisions améliorée</span></div>
-            <div class="experience-result"><strong>7 → 5 jours</strong><span>cycle S&OP raccourci</span></div>
-            <div class="experience-result"><strong>~1 jour</strong><span>gagné grâce à l’automatisation d’une présentation de performance des nouveaux produits</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="experience-card">
-        <div>
-          <div class="experience-company">Picard</div>
-          <div class="experience-role">Coordination commerciale & opérationnelle</div>
-        </div>
-        <div>
-          <p class="experience-summary">Coordination des opérations, suivi de la performance d’un parc d’environ 100 distributeurs automatiques, administration CRM et mise à disposition de tableaux de bord Power BI.</p>
-          <div class="experience-results">
-            <div class="experience-result"><strong>÷ 2</strong><span>gaspillage des stocks réduit de moitié</span></div>
-            <div class="experience-result"><strong>100 %</strong><span>complétude CRM atteinte</span></div>
-            <div class="experience-result"><strong>95 %</strong><span>taux de réponse à l’enquête clients</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="experience-card">
-        <div>
-          <div class="experience-company">Société Générale</div>
-          <div class="experience-role">Coordinatrice BPM · VIE</div>
-        </div>
-        <div>
-          <p class="experience-summary">Suivi des processus, reporting et analyses de performance pour six pays. Construction d’indicateurs de productivité, cartographie des processus et accompagnement des démarches d’amélioration continue.</p>
-          <div class="experience-results">
-            <div class="experience-result"><strong>6 pays</strong><span>périmètre de reporting et de suivi de la performance</span></div>
-            <div class="experience-result"><strong>~2 h / semaine</strong><span>économisées grâce à l’automatisation de tâches de reporting</span></div>
-          </div>
-        </div>
-      </article>
-    </div>
-    <p class="experience-note">Résultats issus de mon parcours professionnel et présentés de façon synthétique ; les périmètres et indicateurs sont à replacer dans leur contexte opérationnel.</p>
   </div>
 </section>
 
