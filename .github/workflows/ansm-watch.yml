@@ -1,6 +1,11 @@
 name: Veille publique ANSM
 
 on:
+  push:
+    paths:
+      - 'agent-veille-ansm/**'
+      - '.github/workflows/ansm-watch.yml'
+      - '!agent-veille-ansm/data/**'
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
@@ -38,8 +43,8 @@ jobs:
 
       - name: Générer la synthèse IA optionnelle
         env:
-          OPENAI_API_KEY: \${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: \${{ vars.OPENAI_MODEL || 'gpt-6-luna' }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6-luna' }}
         continue-on-error: true
         run: |
           if [[ -n "$OPENAI_API_KEY" ]]; then
