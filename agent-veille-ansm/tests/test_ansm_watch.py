@@ -2,6 +2,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -10,6 +11,7 @@ from ansm_watch import (
     build_state,
     normalize_date,
     parse_availability_html,
+    run_monitor,
 )
 
 
@@ -102,6 +104,25 @@ class AnsmWatchTests(unittest.TestCase):
         self.assertEqual(report["record_count"], 2)
         self.assertEqual(report["status_counts"]["Tension d'approvisionnement"], 1)
         self.assertEqual(report["events_this_run"]["nouvelle_entree"], 2)
+
+    def test_unchanged_source_does_not_create_a_new_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            data_dir = Path(tmp)
+            with patch("ansm_watch.fetch_source", return_value=FIXTURE):
+                first = run_monitor(data_dir)
+                self.assertTrue(first["changed"])
+                files_before = {
+                    path.relative_to(data_dir).as_posix(): path.read_bytes()
+                    for path in data_dir.rglob("*") if path.is_file()
+                }
+                second = run_monitor(data_dir)
+
+            self.assertFalse(second["changed"])
+            files_after = {
+                path.relative_to(data_dir).as_posix(): path.read_bytes()
+                for path in data_dir.rglob("*") if path.is_file()
+            }
+            self.assertEqual(files_after, files_before)
 
     def test_unexpected_html_fails_explicitly(self):
         with self.assertRaises(ValueError):
