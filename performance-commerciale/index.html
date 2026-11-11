@@ -41,6 +41,49 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05
 .project-brief h2{font-size:13px;margin:0 0 6px}
 .project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
 @media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
+
+/* Vue d'ensemble en mosaïque — cockpit de pilotage commercial */
+.executive-kpis{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.executive-kpis .card{min-height:112px;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 3px 12px rgba(41,32,56,.045)}
+.executive-kpis .card:after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--purple)}
+.executive-kpis .label{font-size:9px;letter-spacing:.08em}
+.executive-kpis .value{font-size:clamp(20px,2vw,27px)}
+.cockpit-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:11px;margin-top:12px;align-items:stretch}
+.tile{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 15px;min-width:0;box-shadow:0 3px 12px rgba(41,32,56,.035)}
+.tile h2{font-size:12px;margin:0;color:#3a3344;letter-spacing:.005em}
+.tile-sub{font-size:9px;color:var(--muted);margin:4px 0 10px;line-height:1.45}
+.tile-head{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.tile-kicker{font-size:8px;color:var(--purple);font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+.tile .chart{height:220px}
+.tile-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:7px}
+.tile-legend .dot{width:7px;height:7px}
+.compare-list,.region-bars,.activity-bars{display:grid;gap:10px}
+.compare-item{display:grid;grid-template-columns:90px minmax(0,1fr);gap:9px;align-items:center;font-size:10px}
+.compare-name{font-weight:750;color:#51495b}
+.compare-stack{display:grid;gap:4px}
+.compare-track{display:grid;grid-template-columns:45px minmax(0,1fr) 58px;gap:6px;align-items:center;font-size:9px;color:var(--muted)}
+.compare-track i{height:8px;border-radius:8px;background:#eee;display:block;overflow:hidden}
+.compare-track b{display:block;height:100%;border-radius:8px}
+.compare-track em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;color:#5e5667}
+.region-bar-row{display:grid;grid-template-columns:88px minmax(0,1fr) 70px;gap:8px;align-items:center;font-size:10px}
+.region-bar-row strong{font-size:9px;text-align:right;color:#5e5667;font-weight:650}
+.region-bar-track{height:10px;background:#f0edf4;border-radius:8px;overflow:hidden}
+.region-bar-fill{height:100%;border-radius:8px;background:#00a99d}
+.donut-layout{display:grid;grid-template-columns:116px minmax(0,1fr);gap:14px;align-items:center;min-height:150px}
+.donut-ring{width:112px;height:112px;border-radius:50%;position:relative;margin:auto}
+.donut-ring:after{content:"";position:absolute;inset:27px;border-radius:50%;background:#fff}
+.donut-legend{display:grid;gap:8px;font-size:9px}
+.donut-legend-row{display:grid;grid-template-columns:8px minmax(0,1fr) auto;gap:6px;align-items:center;color:var(--muted)}
+.donut-legend-row i{width:8px;height:8px;border-radius:50%}
+.donut-legend-row b{color:#51495b;font-weight:700}
+.activity-row{display:grid;grid-template-columns:80px minmax(0,1fr) 35px;gap:8px;align-items:center;font-size:10px}
+.activity-row strong{text-align:right;font-variant-numeric:tabular-nums;font-size:10px}
+.activity-track{height:9px;background:#f0edf4;border-radius:8px;overflow:hidden}
+.activity-track i{display:block;height:100%;background:#5b2d77;border-radius:8px}
+@media(max-width:980px){.executive-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.span-8,.span-6{grid-column:span 12}.span-4{grid-column:span 6}}
+@media(max-width:600px){.executive-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cockpit-grid{gap:8px}.span-3,.span-4,.span-6,.span-8,.span-12{grid-column:span 12}.tile{padding:12px}.donut-layout{grid-template-columns:100px minmax(0,1fr)}.donut-ring{width:96px;height:96px}.compare-item{grid-template-columns:74px minmax(0,1fr)}.region-bar-row{grid-template-columns:76px minmax(0,1fr) 62px}}
+
 </style></head><body>
 <header><div class="eyebrow">Projet portfolio · Business Intelligence</div><h1>Pilotage de la performance commerciale</h1>
 <p class="subtitle">Objectifs, chiffre d’affaires gagné, transformation des opportunités, pipeline et activité des équipes commerciales.</p>
@@ -57,21 +100,53 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05
 </div>
 <nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard"><button type="button" data-dashboard-tab="vue" aria-selected="true">Vue d’ensemble</button><button type="button" data-dashboard-tab="equipe" aria-selected="false">Performance de l’équipe</button><button type="button" data-dashboard-tab="activite" aria-selected="false">Activité commerciale</button><button type="button" data-dashboard-tab="methode" aria-selected="false">Sources & méthode</button></nav>
 <div class="dashboard-panel" data-dashboard-panel="vue">
-<div class="kpis">
-<div class="card"><div class="label">Chiffre d’affaires gagné</div><div class="value" id="ca">—</div><div class="hint" id="caHint">Somme des opportunités gagnées</div></div>
-<div class="card"><div class="label">Atteinte des objectifs</div><div class="value" id="att">—</div><div class="hint">CA gagné / objectif de CA</div></div>
-<div class="card"><div class="label">Taux de transformation</div><div class="value" id="win">—</div><div class="hint">Gagnées / (gagnées + perdues)</div></div>
-<div class="card"><div class="label">Pipeline ouvert</div><div class="value" id="pipe">—</div><div class="hint">Valeur estimée des opportunités en cours</div></div>
+<div class="kpis executive-kpis">
+ <div class="card"><div class="label">Opportunités créées</div><div class="value" id="opps">—</div><div class="hint">Volume sur la période filtrée</div></div>
+ <div class="card"><div class="label">Chiffre d’affaires gagné</div><div class="value" id="ca">—</div><div class="hint" id="caHint">Valeur des opportunités gagnées</div></div>
+ <div class="card"><div class="label">Atteinte des objectifs</div><div class="value" id="att">—</div><div class="hint">CA gagné / objectif</div></div>
+ <div class="card"><div class="label">Taux de transformation</div><div class="value" id="win">—</div><div class="hint">Gagnées / opportunités closes</div></div>
+ <div class="card"><div class="label">Pipeline ouvert</div><div class="value" id="pipe">—</div><div class="hint">Montant estimé non pondéré</div></div>
+ <div class="card"><div class="label">Rendez-vous & démos</div><div class="value" id="meet">—</div><div class="hint">Activité commerciale qualifiée</div></div>
 </div>
-<div class="kpis" style="margin-top:12px">
-<div class="card"><div class="label">Opportunités créées</div><div class="value" id="opps">—</div><div class="hint">Volume créé sur la période</div></div>
-<div class="card"><div class="label">Rendez-vous & démos</div><div class="value" id="meet">—</div><div class="hint">Activités de contact qualifiées</div></div>
-<div class="card"><div class="label">Panier moyen gagné</div><div class="value" id="ticket">—</div><div class="hint">CA gagné / opportunités gagnées</div></div>
-<div class="card"><div class="label">Cycle de vente moyen</div><div class="value" id="cycle">—</div><div class="hint">En jours, opportunités clôturées</div></div>
-</div>
-<div class="grid2">
-<div class="panel"><h2>Chiffre d’affaires gagné vs objectifs</h2><div id="revenueChart"></div><div class="legend"><span><i class="dot" style="background:#7041b8"></i>CA gagné</span><span><i class="dot" style="background:#c9b9e2"></i>Objectif</span></div></div>
-<div class="panel"><h2>État des opportunités</h2><div class="funnel" id="funnel"></div><p class="note">Taux de transformation calculé sur les opportunités closes ; les opportunités en cours sont exclues.</p></div>
+<div class="cockpit-grid">
+ <section class="tile span-8">
+  <div class="tile-head"><div><div class="tile-kicker">Dynamique commerciale</div><h2>Opportunités par mois et par étape</h2></div><span class="badge">Mensuel</span></div>
+  <p class="tile-sub">Volumes d’opportunités gagnées, perdues et toujours en cours.</p>
+  <div id="stageMonthly"></div>
+  <div class="tile-legend"><span><i class="dot" style="background:#00a99d"></i>Gagnées</span><span><i class="dot" style="background:#ef6c63"></i>Perdues</span><span><i class="dot" style="background:#38464a"></i>En cours</span></div>
+ </section>
+ <section class="tile span-4">
+  <div class="tile-head"><div><div class="tile-kicker">Lecture du pipeline</div><h2>État des opportunités</h2></div></div>
+  <p class="tile-sub">Répartition des opportunités clôturées et encore ouvertes.</p>
+  <div class="funnel" id="funnel"></div>
+  <p class="note">Le taux de transformation est calculé uniquement sur les opportunités gagnées ou perdues.</p>
+ </section>
+ <section class="tile span-6">
+  <div class="tile-head"><div><div class="tile-kicker">Performance financière</div><h2>CA gagné vs objectifs</h2></div></div>
+  <p class="tile-sub">Évolution mensuelle du chiffre d’affaires gagné comparée aux objectifs.</p>
+  <div id="revenueChart"></div>
+  <div class="tile-legend"><span><i class="dot" style="background:#5b2d77"></i>CA gagné</span><span><i class="dot" style="background:#c9b9e2"></i>Objectif</span></div>
+ </section>
+ <section class="tile span-6">
+  <div class="tile-head"><div><div class="tile-kicker">Comparaison régionale</div><h2>CA gagné et objectif par région</h2></div></div>
+  <p class="tile-sub">Comparaison du réalisé et de l’objectif sur la sélection.</p>
+  <div id="regionRevenue" class="compare-list"></div>
+ </section>
+ <section class="tile span-4">
+  <div class="tile-head"><div><div class="tile-kicker">Contribution au CA</div><h2>Répartition régionale</h2></div></div>
+  <p class="tile-sub">Part du chiffre d’affaires gagné par région.</p>
+  <div id="regionDonut" class="donut-layout"></div>
+ </section>
+ <section class="tile span-4">
+  <div class="tile-head"><div><div class="tile-kicker">Portefeuille actif</div><h2>Pipeline ouvert par région</h2></div></div>
+  <p class="tile-sub">Montant estimé des opportunités non clôturées.</p>
+  <div id="regionPipeline" class="region-bars"></div>
+ </section>
+ <section class="tile span-4">
+  <div class="tile-head"><div><div class="tile-kicker">Effort commercial</div><h2>Activité de l’équipe</h2></div></div>
+  <p class="tile-sub">Volume d’actions suivies sur la période filtrée.</p>
+  <div id="activityMix" class="activity-bars"></div>
+ </section>
 </div>
 </div>
 <div class="dashboard-panel" data-dashboard-panel="equipe" hidden>
@@ -100,6 +175,35 @@ function drawLine(rows){
  const ticks=rows.filter((x,i)=>i===0||i===rows.length-1||i%3===0).map(x=>{const i=rows.indexOf(x),xx=p+i*(w-2*p)/Math.max(1,rows.length-1);return '<text x="'+xx+'" y="'+(h-8)+'" text-anchor="middle">'+x.mois.slice(2)+'</text>';}).join('');
  el.innerHTML='<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Évolution du chiffre d’affaires gagné et de l’objectif">'+axis+'<path d="'+path(pts('target'))+'" fill="none" stroke="#c9b9e2" stroke-width="3" stroke-dasharray="6 5"/><path d="'+path(pts('ca'))+'" fill="none" stroke="#7041b8" stroke-width="3"/>'+ticks+'</svg>';
 }
+function drawMonthlyStages(monthly){
+ const el=document.getElementById('stageMonthly');if(!monthly.length){el.textContent='Aucune donnée pour ce filtre.';return;}
+ const w=820,h=248,left=48,right=12,top=12,bottom=32,plotH=h-top-bottom,plotW=w-left-right,step=plotW/monthly.length,max=Math.max(1,...monthly.map(m=>m.won+m.lost+m.open)),barW=Math.max(5,Math.min(23,step*.58));
+ const yLines=Array.from({length:4},(_,i)=>{const value=Math.ceil(max*(3-i)/3),y=top+i*plotH/3;return '<line x1="'+left+'" y1="'+y+'" x2="'+(w-right)+'" y2="'+y+'" stroke="#eee"/><text x="'+(left-9)+'" y="'+(y+3)+'" text-anchor="end">'+value+'</text>'}).join('');
+ let bars='';
+ monthly.forEach((m,i)=>{const x=left+i*step+(step-barW)/2;let y=top+plotH;[['won','#00a99d'],['lost','#ef6c63'],['open','#38464a']].forEach(([key,color])=>{const bh=(m[key]/max)*plotH;y-=bh;bars+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+barW.toFixed(1)+'" height="'+Math.max(0,bh).toFixed(1)+'" rx="1.5" fill="'+color+'"><title>'+m.mois+' · '+key+': '+m[key]+'</title></rect>'})});
+ const labels=monthly.map((m,i)=>i%2===0||monthly.length<14?'<text x="'+(left+i*step+step/2).toFixed(1)+'" y="'+(h-9)+'" text-anchor="middle">'+m.mois.slice(5)+'/'+m.mois.slice(2,4)+'</text>':'').join('');
+ el.innerHTML='<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Opportunités mensuelles par étape">'+yLines+bars+labels+'</svg>';
+}
+function drawRegionRevenue(data){
+ const el=document.getElementById('regionRevenue');if(!data.length){el.textContent='Aucune donnée pour ce filtre.';return}
+ const max=Math.max(1,...data.flatMap(x=>[x.ca,x.target]));
+ el.innerHTML=data.map(x=>'<div class="compare-item"><div class="compare-name">'+x.region+'</div><div class="compare-stack"><div class="compare-track"><span>Gagné</span><i><b style="width:'+(x.ca/max*100)+'%;background:#00a99d"></b></i><em>'+fmtEur(x.ca)+'</em></div><div class="compare-track"><span>Objectif</span><i><b style="width:'+(x.target/max*100)+'%;background:#c9b9e2"></b></i><em>'+fmtEur(x.target)+'</em></div></div></div>').join('');
+}
+function drawRegionDonut(data){
+ const el=document.getElementById('regionDonut');if(!data.length||sum(data,'ca')===0){el.textContent='Aucun chiffre d’affaires gagné sur cette sélection.';return}
+ const colors=['#00a99d','#ef6c63','#38464a','#9a75c8','#d8ad55'];let angle=0;const total=sum(data,'ca');
+ const stops=data.map((x,i)=>{const start=angle;angle+=x.ca/total*360;return colors[i%colors.length]+' '+start.toFixed(1)+'deg '+angle.toFixed(1)+'deg'}).join(',');
+ el.innerHTML='<div class="donut-ring" style="background:conic-gradient('+stops+')"></div><div class="donut-legend">'+data.map((x,i)=>'<div class="donut-legend-row"><i style="background:'+colors[i%colors.length]+'"></i><span>'+x.region+'</span><b>'+pct(x.ca/total*100)+'</b></div>').join('')+'</div>';
+}
+function drawRegionPipeline(data){
+ const el=document.getElementById('regionPipeline');if(!data.length){el.textContent='Aucune donnée pour ce filtre.';return}
+ const max=Math.max(1,...data.map(x=>x.pipeline));
+ el.innerHTML=[...data].sort((a,b)=>b.pipeline-a.pipeline).map(x=>'<div class="region-bar-row"><span>'+x.region+'</span><div class="region-bar-track"><div class="region-bar-fill" style="width:'+(x.pipeline/max*100)+'%"></div></div><strong>'+fmtEur(x.pipeline)+'</strong></div>').join('');
+}
+function drawActivityMix(data){
+ const el=document.getElementById('activityMix');const values=[['Appels',sum(data,'appels')],['RDV / démos',sum(data,'rendez_vous')],['Devis',sum(data,'devis')],['Activités totales',sum(data,'activites')]];const max=Math.max(1,...values.map(x=>x[1]));
+ el.innerHTML=values.map(([name,value])=>'<div class="activity-row"><span>'+name+'</span><div class="activity-track"><i style="width:'+(value/max*100)+'%"></i></div><strong>'+fmtInt(value)+'</strong></div>').join('');
+}
 function render(){
  const yr=document.getElementById('year').value,reg=document.getElementById('region').value,sid=document.getElementById('seller').value;
  const rows=DATA.months.filter(x=>(yr==='all'||x.mois.startsWith(yr))&&(reg==='all'||x.region===reg)&&(sid==='all'||x.id_commercial===sid));
@@ -111,10 +215,11 @@ function render(){
  document.getElementById('pipe').textContent=fmtEur(sum(rows,'pipeline_ouvert_eur'));
  document.getElementById('opps').textContent=fmtInt(sum(rows,'opportunites_creees'));
  document.getElementById('meet').textContent=fmtInt(sum(rows,'rendez_vous'));
- document.getElementById('ticket').textContent=fmtEur(won?ca/won:0);
- document.getElementById('cycle').textContent=(rows.reduce((v,x)=>v+x.cycle_moyen_jours*(x.opportunites_gagnees+x.opportunites_perdues),0)/(closed||1)).toLocaleString('fr-FR',{maximumFractionDigits:1})+' j';
- const monthly=[...new Set(rows.map(x=>x.mois))].sort().map(m=>{const a=rows.filter(x=>x.mois===m);return {mois:m,ca:sum(a,'ca_gagne_eur'),target:sum(a,'objectif_ca_eur')};});
+ const monthly=[...new Set(rows.map(x=>x.mois))].sort().map(m=>{const a=rows.filter(x=>x.mois===m);return {mois:m,ca:sum(a,'ca_gagne_eur'),target:sum(a,'objectif_ca_eur'),created:sum(a,'opportunites_creees'),won:sum(a,'opportunites_gagnees'),lost:sum(a,'opportunites_perdues'),open:sum(a,'opportunites_en_cours')};});
  drawLine(monthly);
+ drawMonthlyStages(monthly);
+ const regionData=[...new Set(rows.map(x=>x.region))].sort().map(region=>{const a=rows.filter(x=>x.region===region);return{region,ca:sum(a,'ca_gagne_eur'),target:sum(a,'objectif_ca_eur'),pipeline:sum(a,'pipeline_ouvert_eur')}});
+ drawRegionRevenue(regionData);drawRegionDonut(regionData);drawRegionPipeline(regionData);drawActivityMix(rows);
  const maxOpp=Math.max(1,won,lost,open);
  document.getElementById('funnel').innerHTML=[['Gagnées',won],['Perdues',lost],['En cours',open]].map(pair=>'<div class="funnel-row"><span>'+pair[0]+'</span><div class="funnel-track"><div class="funnel-fill" style="width:'+(pair[1]/maxOpp*100)+'%"></div></div><b>'+fmtInt(pair[1])+'</b></div>').join('');
  const bySeller=DATA.sales.filter(s=>(reg==='all'||s.region===reg)&&(sid==='all'||s.id_commercial===sid)).map(s=>{
