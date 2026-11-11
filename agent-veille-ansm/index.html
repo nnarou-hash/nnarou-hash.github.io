@@ -21,15 +21,27 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
 .ai{white-space:pre-wrap;font-size:11px;line-height:1.8;color:#4f6265}.btn{border:1px solid var(--line);background:white;padding:8px 11px;border-radius:9px;font:inherit;font-size:10px;font-weight:850;color:var(--navy);cursor:pointer}.btn:hover{border-color:var(--teal)}.empty{font-size:12px;color:var(--muted);padding:15px 0}.stat-line{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}.stat-line strong{color:var(--navy);text-align:right}.fine{font-size:10px;color:var(--muted);line-height:1.8}.foot{background:var(--navy);color:#d4e1dc;padding:24px max(20px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:white}
 @media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:550px){.wrap{padding:20px 12px 40px}.header{padding:18px 15px 24px}.nav{margin-bottom:27px}.filters{padding:12px}.field{min-width:100%}.barrow{grid-template-columns:110px 1fr 30px}.event{grid-template-columns:1fr;gap:3px}.title{align-items:start;flex-direction:column}}
 
-.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
-.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750}
-.dashboard-tabs button[aria-selected="true"]{background:var(--pale,var(--soft));color:var(--ink);border-color:var(--line)}
-.dashboard-panel[hidden]{display:none!important}
 .project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 20px;box-shadow:var(--shadow)}
 .project-brief h2{font-size:13px;margin:0 0 6px;color:var(--ink)}
 .project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
 .project-brief strong{color:var(--ink)}
-@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
+.dashboard-layout{display:grid;grid-template-columns:218px minmax(0,1fr);gap:18px;align-items:start}
+.dashboard-sidebar{position:sticky;top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 11px;box-shadow:var(--shadow)}
+.sidebar-heading{padding:5px 10px 12px;border-bottom:1px solid var(--line)}
+.sidebar-heading span{display:block;color:var(--teal);font-size:9px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+.sidebar-heading strong{display:block;color:var(--navy);font-size:14px;margin-top:3px}
+.dashboard-tabs{display:grid;gap:5px;margin:12px 0 0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.dashboard-tabs button{display:flex;align-items:center;gap:10px;width:100%;border:1px solid transparent;background:transparent;color:var(--muted);padding:11px 10px;border-radius:10px;font-size:11px;font-weight:750;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.dashboard-tabs button:hover{background:#f5f8f6;color:var(--navy)}
+.dashboard-tabs button[aria-selected="true"]{background:#eaf2ef;color:var(--navy);border-color:#d9e7e1}
+.nav-number{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:8px;background:#f0f3f1;color:#6e817a;font-size:9px;font-weight:900}
+.dashboard-tabs button[aria-selected="true"] .nav-number{background:var(--teal);color:white}
+.nav-caption{display:block;line-height:1.25}
+.sidebar-note{margin:14px 3px 2px;padding:11px 10px;border-radius:10px;background:#f5f8f6;color:var(--muted);font-size:9px;line-height:1.55}
+.dashboard-content{min-width:0}
+.dashboard-panel[hidden]{display:none!important}
+@media(max-width:850px){.dashboard-layout{grid-template-columns:180px minmax(0,1fr);gap:12px}}
+@media(max-width:650px){.project-brief{grid-template-columns:1fr}.dashboard-layout{grid-template-columns:1fr}.dashboard-sidebar{position:relative;top:auto;padding:10px}.sidebar-heading{padding:3px 7px 9px}.dashboard-tabs{display:flex;overflow-x:auto;gap:5px;margin-top:9px;padding-bottom:2px}.dashboard-tabs button{width:auto;min-width:max-content;padding:8px 10px}.nav-number{flex-basis:23px;height:23px}.sidebar-note{display:none}}
 </style></head>
 <body>
 <header class="header"><div class="nav"><a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a><a href="https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments" target="_blank" rel="noopener">Source officielle ANSM ↗</a></div>
@@ -42,7 +54,19 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
 </div>
 <div id="state" class="state"></div>
 <section class="filters"><div class="field"><label for="search">Rechercher une spécialité</label><input id="search" type="search" placeholder="Nom, substance, domaine médical…"></div><div class="field"><label for="status-filter">Statut</label><select id="status-filter"><option value="">Tous les statuts</option></select></div><div class="field"><label for="domain-filter">Domaine médical</label><select id="domain-filter"><option value="">Tous les domaines</option></select></div><button class="btn" id="reset">Réinitialiser</button></section>
-<nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard"><button type="button" data-dashboard-tab="situation" aria-selected="true">Vue d’ensemble</button><button type="button" data-dashboard-tab="specialites" aria-selected="false">Spécialités suivies</button><button type="button" data-dashboard-tab="historique" aria-selected="false">Évolutions</button><button type="button" data-dashboard-tab="methode" aria-selected="false">Synthèse & méthode</button></nav>
+<div class="dashboard-layout">
+<aside class="dashboard-sidebar">
+ <div class="sidebar-heading"><span>Navigation</span><strong>Veille ANSM</strong></div>
+ <nav class="dashboard-tabs" role="tablist" aria-label="Navigation du dashboard">
+  <button type="button" data-dashboard-tab="situation" aria-selected="true"><span class="nav-number">01</span><span class="nav-caption">Situation observée</span></button>
+  <button type="button" data-dashboard-tab="specialites" aria-selected="false"><span class="nav-number">02</span><span class="nav-caption">Exploration</span></button>
+  <button type="button" data-dashboard-tab="historique" aria-selected="false"><span class="nav-number">03</span><span class="nav-caption">Traçabilités</span></button>
+  <button type="button" data-dashboard-tab="ia" aria-selected="false"><span class="nav-number">04</span><span class="nav-caption">IA générative</span></button>
+  <button type="button" data-dashboard-tab="methode" aria-selected="false"><span class="nav-number">05</span><span class="nav-caption">Méthode & limites</span></button>
+ </nav>
+ <div class="sidebar-note">Choisis une rubrique pour afficher uniquement la partie correspondante du tableau de bord.</div>
+</aside>
+<div class="dashboard-content">
 <div class="dashboard-panel" data-dashboard-panel="situation">
 <section class="kpis"><article class="kpi"><small>Entrées suivies</small><strong id="total">—</strong><span>Dans le dernier instantané public</span></article><article class="kpi"><small>Ruptures de stock</small><strong id="ruptures">—</strong><span>Statut affiché par l’ANSM</span></article><article class="kpi"><small>Tensions d’approvisionnement</small><strong id="tensions">—</strong><span>Statut affiché par l’ANSM</span></article><article class="kpi"><small>Nouveaux changements</small><strong id="changes">—</strong><span>Lors de la dernière actualisation</span></article></section>
 <section class="section"><div class="title"><div><div class="eyebrow">01 / Situation observée</div><h2>Répartition par statut</h2></div><div class="desc">Selon les libellés de la publication ANSM</div></div><div class="two"><div class="panel"><h3>Statuts publiés</h3><p>Nombre d’entrées par catégorie de statut.</p><div id="status-bars" class="bars"></div></div><div class="panel"><h3>Domaines médicaux les plus représentés</h3><p>Une même spécialité peut apparaître dans plusieurs domaines ; les volumes ne sont donc pas exclusifs.</p><div id="domain-bars" class="bars"></div></div></div></section>
@@ -53,9 +77,12 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
 <div class="dashboard-panel" data-dashboard-panel="historique" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">03 / Traçabilité</div><h2>Évolutions détectées</h2></div><div class="desc">Les disparitions sont notées « sortie de liste » et ne sont pas interprétées comme un retour à la normale.</div></div><div class="panel"><div id="events" class="events"></div></div></section>
 </div>
-<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
+<div class="dashboard-panel" data-dashboard-panel="ia" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">04 / IA générative</div><h2>Synthèse de veille</h2></div></div><div class="panel"><div id="ai-summary" class="ai">Aucune synthèse IA publiée pour le moment. Configure la variable secrète OPENAI_API_KEY dans GitHub Actions pour activer la génération optionnelle.</div></div></section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">05 / Méthode & limites</div><h2>Lire les indicateurs avec prudence</h2></div></div><div class="two"><div class="panel"><h3>Ce que la veille observe</h3><p>Le statut, la date de mise à jour, la spécialité, la date de remise à disposition lorsqu’elle est publiée et le domaine médical. Chaque actualisation détectée archive un instantané et compare les informations à celles du relevé précédent.</p><p>Les changements sont des différences entre deux publications récupérées par le collecteur. Ils ne décrivent pas nécessairement l’évolution complète de la situation sur le terrain.</p></div><div class="panel"><h3>Ce que la veille ne permet pas de conclure</h3><p>Elle ne donne pas accès aux stocks des laboratoires, grossistes-répartiteurs ou pharmacies. Une sortie de liste ne confirme pas une remise à disposition ; une date vide ne prédit pas une date de retour.</p><p>La liste n’est pas exhaustive de tous les médicaments : elle est centrée sur les MITM suivis par l’ANSM. Toute décision doit s’appuyer sur les informations officielles et les circuits professionnels appropriés.</p></div></div></section>
+</div>
 </div>
 </main><footer class="foot">Projet portfolio — Python · BeautifulSoup · CSV/JSON · GitHub Actions · OpenAI Responses API (optionnelle). <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm">Voir le code ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
 <script>
