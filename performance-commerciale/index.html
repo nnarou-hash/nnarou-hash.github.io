@@ -105,7 +105,7 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05
 .month-target-row{display:grid;grid-template-columns:46px minmax(0,1fr) 58px;gap:6px;align-items:center;font-size:9px}
 .month-target-name{color:#5e6b7e;font-weight:750}
 .month-target-track{height:7px;background:#edf0f4;border-radius:9px;overflow:hidden}
-.month-target-track i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#426b9e,#7664aa)}
+.month-target-track i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#426b9e,#168c91)}
 .month-target-value{text-align:right;color:#526078;font-variant-numeric:tabular-nums}
 .month-target-sub{font-size:8px;color:#68758a;margin-top:-4px;margin-left:52px;font-variant-numeric:tabular-nums}
 .sidebar-coverage{padding:10px 9px;border-radius:9px;background:#f3f5f9;color:#68758a;font-size:9px;line-height:1.5;margin-top:12px}
@@ -144,11 +144,6 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05
    <label>Commercial<select id="seller"><option value="all">Toute l’équipe</option><option value="COM-01">Commercial 01</option><option value="COM-02">Commercial 02</option><option value="COM-03">Commercial 03</option><option value="COM-04">Commercial 04</option><option value="COM-05">Commercial 05</option><option value="COM-06">Commercial 06</option><option value="COM-07">Commercial 07</option><option value="COM-08">Commercial 08</option><option value="COM-09">Commercial 09</option><option value="COM-10">Commercial 10</option><option value="COM-11">Commercial 11</option><option value="COM-12">Commercial 12</option></select></label>
   </div>
  </section>
- <section class="sidebar-section">
-  <h2>Objectifs & réalisé par mois</h2>
-  <p class="tile-sub">Objectif de CA et atteinte selon l’année, la région et le commercial sélectionnés.</p>
-  <div id="monthlyTargets" class="month-targets"></div>
- </section>
  <div class="sidebar-coverage">Couverture du jeu de démonstration : <strong>4 régions · 12 commerciaux · 24 mois</strong>.</div>
 </aside>
 <div class="dashboard-main">
@@ -178,7 +173,7 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05
   <div class="tile-head"><div><div class="tile-kicker">Performance financière</div><h2 id="revenueChartTitle">CA gagné : 2026 vs 2025</h2></div></div>
   <p class="tile-sub">Comparaison à mois équivalent : réalisé 2026, réalisé 2025 et objectif 2026.</p>
   <div id="revenueChart"></div>
-  <div class="tile-legend"><span><i class="dot" style="background:#526b9e"></i>CA gagné année sélectionnée</span><span><i class="dot" style="background:#8d82ba"></i>CA gagné année précédente</span><span><i class="dot" style="background:#aebbd0"></i>Objectif année sélectionnée</span></div>
+  <div class="tile-legend"><span><i class="dot" style="background:#526b9e"></i>CA gagné année sélectionnée</span><span><i class="dot" style="background:#168c91"></i>CA gagné année précédente</span><span><i class="dot" style="background:#aebbd0"></i>Objectif année sélectionnée</span></div>
  </section>
  <section class="tile span-6">
   <div class="tile-head"><div><div class="tile-kicker">Comparaison régionale</div><h2>CA gagné et objectif par région</h2></div></div>
@@ -230,7 +225,7 @@ function drawLine(rows){
  const axis=Array.from({length:5},(_,i)=>{const value=max*(4-i)/4,y=top+i*plotH/4;return '<line x1="'+left+'" y1="'+y+'" x2="'+(w-right)+'" y2="'+y+'" stroke="#e7ebf1"/><text x="'+(left-9)+'" y="'+(y+4)+'" text-anchor="end">'+fmtEur(value)+'</text>';}).join('');
  const ticks=rows.map((x,i)=>'<text x="'+px(i).toFixed(1)+'" y="'+(h-19)+'" text-anchor="middle" font-size="9">'+monthLabel(x.mois)+'</text>').join('');
  const objective='<path d="'+path('target')+'" fill="none" stroke="#aebbd0" stroke-width="2.5" stroke-dasharray="5 5"/>';
- const previous=rows.some(x=>x.caPrevious!==null&&x.caPrevious!==undefined)?'<path d="'+path('caPrevious')+'" fill="none" stroke="#8d82ba" stroke-width="2.5" stroke-dasharray="4 4"/>':'';
+ const previous=rows.some(x=>x.caPrevious!==null&&x.caPrevious!==undefined)?'<path d="'+path('caPrevious')+'" fill="none" stroke="#168c91" stroke-width="2.5" stroke-dasharray="4 4"/>':'';
  const current='<path d="'+path('ca')+'" fill="none" stroke="#526b9e" stroke-width="3.5"/>';
  const points=rows.map((x,i)=>'<circle cx="'+px(i).toFixed(1)+'" cy="'+py(x.ca).toFixed(1)+'" r="3.5" fill="#526b9e"><title>'+monthLabel(x.mois)+' · CA '+fmtEur(x.ca)+'</title></circle>').join('');
  el.innerHTML='<svg class="chart" style="height:286px" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Comparaison mensuelle du chiffre d’affaires gagné entre deux années et des objectifs">'+axis+objective+previous+current+points+ticks+'</svg>';
@@ -251,7 +246,7 @@ function drawRegionRevenue(data){
 }
 function drawRegionDonut(data){
  const el=document.getElementById('regionDonut');if(!data.length||sum(data,'ca')===0){el.textContent='Aucun chiffre d’affaires gagné sur cette sélection.';return}
- const colors=['#426b9e','#6656a6','#8492a8','#b3a9ce','#c4ccd8'];let angle=0;const total=sum(data,'ca');
+ const colors=['#426b9e','#168c91','#8492a8','#aebbd0','#c4ccd8'];let angle=0;const total=sum(data,'ca');
  const stops=data.map((x,i)=>{const start=angle;angle+=x.ca/total*360;return colors[i%colors.length]+' '+start.toFixed(1)+'deg '+angle.toFixed(1)+'deg'}).join(',');
  el.innerHTML='<div class="donut-ring" style="background:conic-gradient('+stops+')"></div><div class="donut-legend">'+data.map((x,i)=>'<div class="donut-legend-row"><i style="background:'+colors[i%colors.length]+'"></i><span>'+x.region+'</span><b>'+pct(x.ca/total*100)+'</b></div>').join('')+'</div>';
 }
@@ -273,7 +268,6 @@ function renderMonthlyTargets(rows){
 function render(){
  const yr=document.getElementById('year').value,mo=document.getElementById('month').value,reg=document.getElementById('region').value,sid=document.getElementById('seller').value;
  const targetRows=DATA.months.filter(x=>x.mois.startsWith(yr)&&(reg==='all'||x.region===reg)&&(sid==='all'||x.id_commercial===sid));
- renderMonthlyTargets(targetRows);
  const rows=targetRows.filter(x=>mo==='all'||x.mois.slice(5)===mo);
  const previousYear=String(Number(yr)-1);
  const previousRows=DATA.months.filter(x=>x.mois.startsWith(previousYear)&&(reg==='all'||x.region===reg)&&(sid==='all'||x.id_commercial===sid)&&(mo==='all'||x.mois.slice(5)===mo));
