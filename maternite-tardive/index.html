@@ -6,19 +6,19 @@
 <meta name="description" content="Dashboard interactif sur l'évolution des naissances tardives aux États-Unis, 1995–2024. Données CDC WONDER.">
 <title>Naissances tardives aux États-Unis — Data Explorer</title>
 <style>
-:root{--ink:#24313a;--muted:#6e7b83;--paper:#f4f3ee;--white:#fff;--line:#e3e6e1;--navy:#183b46;--teal:#397d78;--coral:#d4775c;--gold:#c39b55;--sage:#91a79a;--blue:#7192a1;--shadow:0 12px 32px rgba(25,50,58,.06);--r:18px}
+:root{--ink:#362b3b;--muted:#7e7184;--paper:#fbf7fb;--white:#fff;--line:#eddfeb;--navy:#563b63;--teal:#9b6ca5;--coral:#cf7fa9;--gold:#b58abb;--sage:#d9bdd8;--blue:#8a75a8;--shadow:0 12px 32px rgba(83,54,91,.07);--r:18px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
-.top{height:66px;position:sticky;top:0;z-index:10;background:rgba(244,243,238,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 max(20px,calc((100vw - 1220px)/2))}
+.top{height:66px;position:sticky;top:0;z-index:10;background:rgba(251,247,251,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 max(20px,calc((100vw - 1220px)/2))}
 .brand{display:flex;gap:10px;align-items:center;font-weight:850;letter-spacing:-.03em;color:var(--navy)}.brand-icon{width:34px;height:34px;border-radius:11px;background:var(--navy);color:white;display:grid;place-items:center;font-size:12px}.nav{display:flex;gap:22px;font-size:12px;font-weight:700;color:var(--muted)}.nav a{color:inherit}
-.wrap{max-width:1220px;margin:auto;padding:0 24px}.hero{padding:64px 0 34px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}.eyebrow,.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:850;color:var(--teal)}h1{margin:14px 0 17px;font-size:clamp(40px,5.5vw,66px);line-height:1.02;letter-spacing:-.065em;color:var(--navy)}.lead{margin:0;max-width:700px;font-size:16px;line-height:1.8;color:#5d6a71}.hero-note{border-left:3px solid var(--coral);padding:5px 0 5px 18px;color:var(--muted);font-size:12px}.hero-note strong{display:block;color:var(--ink);font-size:14px;margin-bottom:6px}.meta{margin-top:17px;display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:11px}.dot{width:6px;height:6px;background:var(--teal);border-radius:50%;display:inline-block}
+.wrap{max-width:1220px;margin:auto;padding:0 24px}.hero{padding:64px 0 34px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}.eyebrow,.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:850;color:var(--teal)}h1{margin:14px 0 17px;font-size:clamp(40px,5.5vw,66px);line-height:1.02;letter-spacing:-.065em;color:var(--navy)}.lead{margin:0;max-width:700px;font-size:16px;line-height:1.8;color:#6e6274}.hero-note{border-left:3px solid var(--coral);padding:5px 0 5px 18px;color:var(--muted);font-size:12px}.hero-note strong{display:block;color:var(--ink);font-size:14px;margin-bottom:6px}.meta{margin-top:17px;display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:11px}.dot{width:6px;height:6px;background:var(--teal);border-radius:50%;display:inline-block}
 .filters{margin:15px 0 24px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:17px 19px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap}.filter-group{display:flex;gap:12px;flex-wrap:wrap}.field{display:grid;gap:5px}.field label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.field select{min-width:110px;padding:9px 30px 9px 10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);font:inherit;font-size:12px}.hint{font-size:11px;color:var(--muted);max-width:320px}
 .heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:39px 0 14px}.heading h2{margin:5px 0 0;font-size:24px;line-height:1.15;letter-spacing:-.045em;color:var(--navy)}.sub{font-size:11px;color:var(--muted);max-width:390px;text-align:right}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.kpi,.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.kpi{padding:19px 20px;min-height:126px}.kpi-label{font-size:10px;color:var(--muted);font-weight:800}.kpi-value{margin:9px 0 2px;font-size:34px;line-height:1;font-weight:850;letter-spacing:-.06em;color:var(--navy)}.kpi:nth-child(2) .kpi-value{color:var(--coral)}.kpi:nth-child(3) .kpi-value{color:var(--teal)}.kpi-foot{font-size:10px;color:var(--muted)}
-.panel{padding:20px 22px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}.panel-title{font-size:14px;font-weight:850;color:var(--navy);letter-spacing:-.02em}.panel-desc{font-size:11px;color:var(--muted);margin-top:3px}.legend{display:flex;gap:13px;flex-wrap:wrap}.legend span{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);font-weight:700}.swatch{display:inline-block;width:17px;height:3px;border-radius:4px}.chart{width:100%;height:290px;display:block}.two{display:grid;grid-template-columns:1.18fr .82fr;gap:14px}.age-chart{width:100%;height:130px;display:block}.note{margin-top:13px;border-left:3px solid var(--gold);background:#f8f3e9;color:#6b604e;border-radius:0 10px 10px 0;padding:11px 14px;font-size:11px;line-height:1.6}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.kpi,.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.kpi{padding:19px 20px;min-height:126px}.kpi-label{font-size:10px;color:var(--muted);font-weight:800}.kpi-value{margin:9px 0 2px;font-size:34px;line-height:1;font-weight:850;letter-spacing:-.06em;color:var(--navy);font-variant-numeric:tabular-nums}#kpiBirths{font-size:clamp(22px,2.2vw,32px);letter-spacing:-.04em}.kpi:nth-child(2) .kpi-value{color:var(--coral)}.kpi:nth-child(3) .kpi-value{color:var(--teal)}.kpi-foot{font-size:10px;color:var(--muted)}
+.panel{padding:20px 22px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}.panel-title{font-size:14px;font-weight:850;color:var(--navy);letter-spacing:-.02em}.panel-desc{font-size:11px;color:var(--muted);margin-top:3px}.legend{display:flex;gap:13px;flex-wrap:wrap}.legend span{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);font-weight:700}.swatch{display:inline-block;width:17px;height:3px;border-radius:4px}.chart{width:100%;height:290px;display:block}.two{display:grid;grid-template-columns:1.18fr .82fr;gap:14px}.age-chart{width:100%;height:130px;display:block}.note{margin-top:13px;border-left:3px solid var(--gold);background:#faf3fa;color:#66566c;border-radius:0 10px 10px 0;padding:12px 15px;font-size:11px;line-height:1.7}.stat-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.stat-line:last-child{border-bottom:0}.stat-line strong{font-variant-numeric:tabular-nums;white-space:nowrap}
 .legend-list{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px;margin-top:9px}.legend-item{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted)}.legend-item i{width:9px;height:9px;border-radius:3px;display:inline-block;flex:none}
-.edu-grid{display:grid;gap:15px}.edu-row{display:grid;grid-template-columns:185px 1fr;gap:18px;align-items:center}.edu-name{font-size:11px;font-weight:750}.edu-pair{display:grid;gap:6px}.edu-track{height:10px;border-radius:20px;background:#edf0ed;overflow:hidden}.edu-fill{height:100%;border-radius:20px}.edu-line{display:grid;grid-template-columns:1fr 42px;gap:8px;align-items:center}.edu-line span{font-size:10px;text-align:right;color:var(--muted)}.edu-legend{display:flex;gap:15px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin:0 0 17px 203px}
+.edu-grid{display:grid;gap:15px}.edu-row{display:grid;grid-template-columns:185px 1fr;gap:18px;align-items:center}.edu-name{font-size:11px;font-weight:750}.edu-pair{display:grid;gap:6px}.edu-track{height:10px;border-radius:20px;background:#f2eaf2;overflow:hidden}.edu-fill{height:100%;border-radius:20px}.edu-line{display:grid;grid-template-columns:1fr 42px;gap:8px;align-items:center}.edu-line span{font-size:10px;text-align:right;color:var(--muted)}.edu-legend{display:flex;gap:15px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin:0 0 17px 203px}
 .coverage{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cover-item{padding:13px;border-radius:12px;background:#f7f8f5}.cover-value{font-size:21px;font-weight:850;color:var(--navy);letter-spacing:-.04em}.cover-label{font-size:10px;color:var(--muted)}
-.table-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}.btn{border:1px solid var(--line);border-radius:9px;padding:8px 12px;background:white;color:var(--navy);font:inherit;font-size:11px;font-weight:800;cursor:pointer}.btn:hover{border-color:var(--teal);color:var(--teal)}.table-wrap{overflow:auto;max-height:390px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid #edf0ed}th{position:sticky;top:0;background:#f6f8f5;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.09em}th:first-child,td:first-child{text-align:left}tbody tr:hover{background:#f7f9f6}
+.table-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}.btn{border:1px solid var(--line);border-radius:9px;padding:8px 12px;background:white;color:var(--navy);font:inherit;font-size:11px;font-weight:800;cursor:pointer}.btn:hover{border-color:var(--teal);color:var(--teal)}.table-wrap{overflow:auto;max-height:390px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid #f1e8f1}th{position:sticky;top:0;background:#f8f2f8;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.09em}th:first-child,td:first-child{text-align:left}tbody tr:hover{background:#fcf7fb}
 .method{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.method article{padding:15px;border:1px solid var(--line);border-radius:13px;background:white}.method strong{display:block;font-size:11px;color:var(--navy);margin-bottom:5px}.method p{margin:0;color:var(--muted);font-size:10px;line-height:1.7}
 .footer{margin-top:52px;background:var(--navy);padding:34px 0;color:#e5eeeb}.footer h2{margin:0;color:white;font-size:21px;letter-spacing:-.04em}.footer p{max-width:700px;color:#c0cfca;font-size:11px}.footer a{color:#f1c5ab}.footrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot-small{font-size:10px;color:#9db0ab}
 .error{display:none;background:#fff0ed;color:#943e33;padding:15px;border:1px solid #ecc0b5;border-radius:12px;margin:18px 0}
@@ -46,7 +46,7 @@
 <section class="hero">
  <div><div class="eyebrow">Population & démographie · États-Unis · 1995—2024</div>
  <h1>Naissances tardives :<br>une tendance qui s’installe.</h1>
- <p class="lead">Comment évolue la part des naissances chez les mères de 35 ans et plus ? Une lecture sur trente ans des données nationales du CDC, avec un focus sur l’âge et le niveau d’éducation.</p>
+ <p class="lead">Comment évolue la répartition des naissances selon l’âge de la mère ? Une lecture sur trente ans des données nationales du CDC, avec un focus sur les groupes de moins de 35 ans, 35 à 39 ans et 40 ans et plus.</p>
  <div class="meta"><i class="dot"></i><span>Source : CDC WONDER · Natality</span><span>•</span><span id="snapshot">Chargement de l’instantané…</span></div></div>
  <aside class="hero-note"><strong>Une lecture sous l’angle de la donnée</strong>Ce tableau de bord associe analyse démographique, qualité des données et transparence méthodologique. Les indicateurs décrivent des naissances enregistrées, pas un risque individuel de grossesse.</aside>
 </section>
@@ -60,7 +60,7 @@
  <div class="hint">Les filtres actualisent les indicateurs et graphiques. La rupture méthodologique de 2007 est signalée dans la série.</div>
 </section>
 <div class="project-brief">
- <div><h2>Présentation du projet</h2><p>Exploration de l’évolution des naissances vivantes chez les mères de 35 ans et plus aux États-Unis, de 1995 à 2024. Le dashboard présente les tendances à long terme, la structure par âge, la répartition par niveau d’éducation, les indicateurs annuels et les limites méthodologiques.</p></div>
+ <div><h2>Présentation du projet</h2><p>Exploration de l’évolution des naissances vivantes aux États-Unis, de 1995 à 2024. Le dashboard compare trois groupes d’âge maternel — moins de 35 ans, 35 à 39 ans et 40 ans et plus — et présente les tendances, le niveau d’éducation, la qualité des données et les limites méthodologiques.</p></div>
  <div><h2>Sources de données</h2><p><strong>CDC WONDER — Natality / National Vital Statistics System.</strong> Données nationales agrégées par année, âge de la mère et niveau d’éducation. L’analyse de l’éducation est limitée à 2016–2024 en raison de la comparabilité des certificats de naissance.</p></div>
 </div>
 <nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard">
@@ -72,34 +72,34 @@
 </nav>
 <div class="dashboard-panel" data-dashboard-panel="tendances">
 <section id="indicateurs">
- <div class="heading"><div><div class="kicker">01 / Repères clés</div><h2>Les indicateurs à retenir</h2></div><div id="period-caption" class="sub"></div></div>
+ <div class="heading"><div><div class="kicker">01 / Repères clés</div><h2>Les naissances par groupe d’âge</h2></div><div id="period-caption" class="sub"></div></div>
  <div class="kpis">
-  <article class="kpi"><div class="kpi-label">Mères de 35 ans et plus</div><div class="kpi-value" id="kpi35">—</div><div class="kpi-foot" id="kpi35foot">—</div></article>
-  <article class="kpi"><div class="kpi-label">Mères de 40 ans et plus</div><div class="kpi-value" id="kpi40">—</div><div class="kpi-foot" id="kpi40foot">—</div></article>
+  <article class="kpi"><div class="kpi-label">Moins de 35 ans</div><div class="kpi-value" id="kpiUnder35">—</div><div class="kpi-foot" id="kpiUnder35foot">—</div></article>
+  <article class="kpi"><div class="kpi-label">35 à 39 ans</div><div class="kpi-value" id="kpi3539">—</div><div class="kpi-foot" id="kpi3539foot">—</div></article>
+  <article class="kpi"><div class="kpi-label">40 ans et plus</div><div class="kpi-value" id="kpi40">—</div><div class="kpi-foot" id="kpi40foot">—</div></article>
   <article class="kpi"><div class="kpi-label">Naissances vivantes</div><div class="kpi-value" id="kpiBirths">—</div><div class="kpi-foot" id="kpiBirthsfoot">—</div></article>
-  <article class="kpi"><div class="kpi-label">Part 35+ · progression</div><div class="kpi-value" id="kpiDelta">—</div><div class="kpi-foot" id="kpiDeltafoot">—</div></article>
  </div>
 </section>
 <section id="tendances">
- <div class="heading"><div><div class="kicker">02 / Évolution</div><h2>La part des naissances après 35 ans progresse</h2></div><div class="sub">Part des naissances vivantes, en % du total annuel</div></div>
+ <div class="heading"><div><div class="kicker">02 / Évolution</div><h2>La répartition des naissances évolue selon l’âge</h2></div><div class="sub">Part des naissances vivantes, en % du total annuel</div></div>
  <div class="panel">
   <div class="panel-head"><div><div class="panel-title">Évolution annuelle · 1995 à 2024</div><div class="panel-desc">Sélectionne une période pour affiner la lecture.</div></div>
-  <div class="legend"><span><i class="swatch" style="background:#397d78"></i>35 ans et plus</span><span><i class="swatch" style="background:#d4775c"></i>40 ans et plus</span></div></div>
-  <canvas id="trend-chart" class="chart" role="img" aria-label="Évolution annuelle des parts de naissances chez les mères de 35 ans et 40 ans et plus"></canvas>
+  <div class="legend"><span><i class="swatch" style="background:#cf7fa9"></i>35 à 39 ans</span><span><i class="swatch" style="background:#705482"></i>40 ans et plus</span></div></div>
+  <canvas id="trend-chart" class="chart" role="img" aria-label="Évolution annuelle des parts de naissances chez les mères de 35 à 39 ans et de 40 ans et plus"></canvas>
   <div class="note">Point de vigilance : 2007 marque un changement de base CDC WONDER et de règles d’imputation de l’âge. La comparaison de part et d’autre doit être interprétée avec prudence.</div>
  </div>
 </section>
 </div>
 <div class="dashboard-panel" data-dashboard-panel="ages" hidden>
 <section id="ages">
- <div class="heading"><div><div class="kicker">03 / Structure par âge</div><h2>Comment se répartissent les naissances ?</h2></div><div class="sub">Tranches d’âge maternel publiées par le CDC, regroupées par classes de cinq ans</div></div>
+ <div class="heading"><div><div class="kicker">03 / Structure par âge</div><h2>Comment se répartissent les naissances ?</h2></div><div class="sub">Les tranches publiées par le CDC sont regroupées en trois classes lisibles</div></div>
  <div class="two">
-  <div class="panel"><div class="panel-head"><div><div class="panel-title">Répartition des naissances · année sélectionnée</div><div class="panel-desc" id="age-caption"></div></div><span class="pill">100 % du total annuel</span></div>
-   <canvas id="age-chart" class="age-chart" role="img" aria-label="Répartition des naissances par âge de la mère"></canvas>
+  <div class="panel"><div class="panel-head"><div><div class="panel-title">Répartition des naissances · année sélectionnée</div><div class="panel-desc" id="age-caption"></div></div><span class="pill">3 groupes d’âge</span></div>
+   <canvas id="age-chart" class="age-chart" role="img" aria-label="Répartition des naissances : moins de 35 ans, 35 à 39 ans et 40 ans et plus"></canvas>
    <div id="age-legend" class="legend-list"></div>
    <div id="age-note" class="note" style="display:none"></div>
   </div>
-  <div class="panel"><div class="panel-title">Focus · mères de 35 ans et plus</div><div class="panel-desc">Poids des classes 35–39, 40–44, 45–49 et 50 ans et plus dans l’année choisie.</div><div id="age-focus" style="margin-top:17px"></div></div>
+  <div class="panel"><div class="panel-title">Détail des trois groupes</div><div class="panel-desc">Nombre de naissances et part du total annuel pour chaque groupe d’âge.</div><div id="age-focus" style="margin-top:17px"></div></div>
  </div>
 </section>
 </div>
@@ -121,7 +121,7 @@
  <div class="heading"><div><div class="kicker">06 / Exploration</div><h2>Consulter les indicateurs annuels</h2></div><div class="sub">Table filtrée par la période choisie, exportable au format CSV</div></div>
  <div class="panel">
   <div class="table-tools"><div class="panel-title">Tableau des indicateurs</div><button class="btn" id="download">Exporter la sélection CSV ↓</button></div>
-  <div class="table-wrap"><table><thead><tr><th>Année</th><th>Naissances totales</th><th>Naissances 35+</th><th>Part 35+</th><th>Naissances 40+</th><th>Part 40+</th><th>Données incomplètes</th></tr></thead><tbody id="data-table"></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>Année</th><th>Naissances totales</th><th>Moins de 35 ans</th><th>Part &lt;35</th><th>35–39 ans</th><th>Part 35–39</th><th>40 ans et plus</th><th>Part 40+</th><th>Données incomplètes</th></tr></thead><tbody id="data-table"></tbody></table></div>
  </div>
 </section>
 </div>
@@ -130,9 +130,9 @@
  <div class="heading"><div><div class="kicker">07 / Transparence</div><h2>Définitions, sources & limites</h2></div><div class="sub">Une lecture des résultats qui conserve le contexte de production des données</div></div>
  <div class="method">
   <article><strong>Source & périmètre</strong><p>CDC WONDER, Natality (National Vital Statistics System). États-Unis, agrégats nationaux de naissances vivantes, de 1995 à 2024. Aucune ventilation par État dans cet instantané.</p></article>
-  <article><strong>Définition de l’âge</strong><p>Âge révolu de la mère (âge au dernier anniversaire), conformément à la définition CDC/NCHS. Les seuils 35+ et 40+ sont construits à partir des tranches d’âge disponibles.</p></article>
+  <article><strong>Définition et regroupement de l’âge</strong><p>Âge révolu de la mère (âge au dernier anniversaire), conformément à la définition CDC/NCHS. Les tranches publiées sont regroupées en moins de 35 ans, 35–39 ans et 40 ans et plus.</p></article>
   <article><strong>Rupture de série</strong><p>Un changement de base WONDER et de règles d’imputation intervient en 2007. Le dashboard matérialise ce repère et évite de présenter la série comme parfaitement homogène.</p></article>
-  <article><strong>Valeurs manquantes</strong><p>La tranche 50 ans et plus est absente en 1995 et 1996, en lien avec l’imputation des âges. La part des 40 ans et plus est alors légèrement sous-estimée.</p></article>
+  <article><strong>Valeurs manquantes</strong><p>La tranche 50 ans et plus est absente en 1995 et 1996, en lien avec l’imputation des âges. Le groupe 40 ans et plus est alors légèrement sous-estimé.</p></article>
   <article><strong>Éducation</strong><p>Les catégories d’éducation issues des certificats 1989 et 2003 ne sont pas directement comparables. La comparaison présentée est limitée à la fenêtre 2016–2024, avec une couverture annuelle proche de 98 %.</p></article>
   <article><strong>Interprétation</strong><p>Des statistiques descriptives nationales ne permettent pas d’expliquer les causes individuelles, la fertilité, les complications ni les parcours de soins. Aucune inférence causale ou clinique n’est effectuée.</p></article>
  </div>
@@ -143,9 +143,9 @@
 
 <script>
 const DATA_PATH="./data/";
-const palette=["#91a79a","#7192a1","#c39b55","#397d78","#d4775c","#8c8298","#b7a08d","#5e7783","#9aa4a0"];
+const palette=["#ead8e9","#e4c9e0","#dcb8d5","#d29fc9","#c486b5","#b472a2","#9b6794","#805982","#67486f"];
 const fmt=(n,d=1)=>Number(n).toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d});
-const integer=n=>Number(n).toLocaleString("fr-FR");
+const integer=n=>new Intl.NumberFormat("fr-FR",{useGrouping:true,maximumFractionDigits:0}).format(Math.round(Number(n)||0));
 function parseCSV(text){
  const rows=[];let row=[],field="",quoted=false;
  for(let i=0;i<text.length;i++){const c=text[i],next=text[i+1];
@@ -178,68 +178,78 @@ function setupFilters(){
  start.value=years[0];end.value=years.at(-1);age.value=years.at(-1);
  [start,end,age].forEach(el=>el.addEventListener("change",()=>{if(num(start.value)>num(end.value)){if(el===start)end.value=start.value;else start.value=end.value}render()}));
 }
-function filtered(){return DATA.indicateurs.filter(r=>r.annee>=num(document.getElementById("start-year").value)&&r.annee<=num(document.getElementById("end-year").value))}
+function ageGroupsForYear(year,total){
+ const rows=DATA.tranches.filter(r=>r.annee===year);
+ const sum=predicate=>rows.filter(predicate).reduce((acc,r)=>acc+r.nb_naissances,0);
+ const under35=sum(r=>r.ordre_tranche<=5),from35to39=sum(r=>r.ordre_tranche===6),from40=sum(r=>r.ordre_tranche>=7);
+ return {nb_under35:under35,part_under35_pct:total?under35/total*100:0,nb_35_39:from35to39,part_35_39_pct:total?from35to39/total*100:0,nb_40_plus_group:from40,part_40_plus_group_pct:total?from40/total*100:0};
+}
+function filtered(){return DATA.indicateurs.filter(r=>r.annee>=num(document.getElementById("start-year").value)&&r.annee<=num(document.getElementById("end-year").value)).map(r=>({...r,...ageGroupsForYear(r.annee,r.nb_naissances_total)}))}
 function drawLineChart(canvas,rows){
  const ctx=canvas.getContext("2d"),w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;
  canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
  const p={l:44,r:15,t:16,b:31},cw=w-p.l-p.r,ch=h-p.t-p.b;
- const maxY=Math.max(10,Math.ceil(Math.max(...rows.map(r=>r.part_35_plus_pct))*1.12/5)*5),minY=0;
+ const maxY=Math.max(10,Math.ceil(Math.max(...rows.flatMap(r=>[r.part_35_39_pct,r.part_40_plus_group_pct]))*1.12/5)*5),minY=0;
  const x=i=>p.l+(rows.length<=1?0:i/(rows.length-1))*cw,y=v=>p.t+ch-(v-minY)/(maxY-minY)*ch;
  ctx.font="10px system-ui";ctx.textAlign="right";ctx.textBaseline="middle";
  for(let v=0;v<=maxY;v+=5){const yy=y(v);ctx.strokeStyle="#e9ece9";ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(w-p.r,yy);ctx.stroke();ctx.fillStyle="#7b858b";ctx.fillText(v+" %",p.l-8,yy)}
  ctx.strokeStyle="#cfd6d2";ctx.beginPath();ctx.moveTo(p.l,p.t);ctx.lineTo(p.l,h-p.b);ctx.lineTo(w-p.r,h-p.b);ctx.stroke();
  const y2007=rows.findIndex(r=>r.annee>=2007);if(y2007>=0){const xx=x(y2007);ctx.save();ctx.setLineDash([4,5]);ctx.strokeStyle="#aeb9b4";ctx.beginPath();ctx.moveTo(xx,p.t);ctx.lineTo(xx,h-p.b);ctx.stroke();ctx.restore();ctx.fillStyle="#7b858b";ctx.textAlign="left";ctx.fillText("2007",Math.min(xx+5,w-45),p.t+8)}
- const series=[["part_35_plus_pct","#397d78"],["part_40_plus_pct","#d4775c"]];
+ const series=[["part_35_39_pct","#cf7fa9"],["part_40_plus_group_pct","#705482"]];
  series.forEach(([key,color])=>{ctx.beginPath();rows.forEach((r,i)=>{if(i===0)ctx.moveTo(x(i),y(r[key]));else ctx.lineTo(x(i),y(r[key]))});ctx.strokeStyle=color;ctx.lineWidth=2.6;ctx.lineJoin="round";ctx.lineCap="round";ctx.stroke();rows.forEach((r,i)=>{ctx.beginPath();ctx.arc(x(i),y(r[key]),2.4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()})});
  ctx.textAlign="center";ctx.textBaseline="top";ctx.fillStyle="#7b858b";const stride=Math.max(1,Math.ceil(rows.length/8));
  rows.forEach((r,i)=>{if(i%stride===0||i===rows.length-1)ctx.fillText(r.annee,x(i),h-p.b+9)});
 }
 function drawAgeChart(rows,year){
- const list=DATA.tranches.filter(r=>r.annee===year).sort((a,b)=>a.ordre_tranche-b.ordre_tranche);
+ const native=DATA.tranches.filter(r=>r.annee===year).sort((a,b)=>a.ordre_tranche-b.ordre_tranche);
+ const total=native.reduce((s,r)=>s+r.nb_naissances,0);
+ const groups=[
+  {label:"Moins de 35 ans",count:native.filter(r=>r.ordre_tranche<=5).reduce((s,r)=>s+r.nb_naissances,0),color:"#ead8e9"},
+  {label:"35 à 39 ans",count:native.filter(r=>r.ordre_tranche===6).reduce((s,r)=>s+r.nb_naissances,0),color:"#cf7fa9"},
+  {label:"40 ans et plus",count:native.filter(r=>r.ordre_tranche>=7).reduce((s,r)=>s+r.nb_naissances,0),color:"#705482"}
+ ].map(g=>({...g,share:total?g.count/total*100:0}));
  const canvas=document.getElementById("age-chart"),ctx=canvas.getContext("2d"),w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;
  canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
- const total=list.reduce((s,r)=>s+r.nb_naissances,0),left=8,right=8,top=30,bottom=20,barW=w-left-right,barH=33;
+ const left=8,right=8,top=30,barW=w-left-right,barH=33;
  let offset=left;
- list.forEach((r,i)=>{const seg=barW*(r.nb_naissances/total);ctx.fillStyle=palette[i%palette.length];ctx.fillRect(offset,top,seg-1,barH);offset+=seg});
- ctx.fillStyle="#66747b";ctx.font="11px system-ui";ctx.textAlign="left";ctx.fillText("0 %",left,top+barH+17);ctx.textAlign="right";ctx.fillText("100 %",w-right,top+barH+17);
- document.getElementById("age-legend").innerHTML=list.map((r,i)=>'<div class="legend-item"><i style="background:'+palette[i%palette.length]+'"></i>'+r.tranche_age_libelle+' <strong>'+fmt(r.part_pct,2)+' %</strong></div>').join("");
+ groups.forEach(g=>{const seg=barW*(g.share/100);ctx.fillStyle=g.color;ctx.fillRect(offset,top,Math.max(0,seg-1),barH);offset+=seg});
+ ctx.fillStyle="#75677a";ctx.font="11px system-ui";ctx.textAlign="left";ctx.fillText("0 %",left,top+barH+17);ctx.textAlign="right";ctx.fillText("100 %",w-right,top+barH+17);
+ document.getElementById("age-legend").innerHTML=groups.map(g=>'<div class="legend-item"><i style="background:'+g.color+'"></i>'+g.label+' <strong>'+fmt(g.share,1)+' %</strong></div>').join("");
  document.getElementById("age-caption").textContent=year+" · "+integer(total)+" naissances comptabilisées";
- const focus=list.filter(r=>r.ordre_tranche>=6),focusTotal=focus.reduce((s,r)=>s+r.nb_naissances,0);
- document.getElementById("age-focus").innerHTML=focus.map((r,i)=>'<div class="stat-line"><span>'+r.tranche_age_libelle+'</span><strong>'+integer(r.nb_naissances)+' · '+fmt(r.part_pct,2)+' %</strong></div>').join("")+
- '<div class="stat-line"><span><b>Total 35 ans et plus</b></span><strong>'+integer(focusTotal)+' · '+fmt(focus.reduce((s,r)=>s+r.part_pct,0),2)+' %</strong></div>';
- const incomplete=list.some(r=>r.donnee_incomplete);
+ document.getElementById("age-focus").innerHTML=groups.map(g=>'<div class="stat-line"><span>'+g.label+'</span><strong>'+integer(g.count)+' · '+fmt(g.share,1)+' %</strong></div>').join("");
+ const incomplete=native.some(r=>r.donnee_incomplete);
  const note=document.getElementById("age-note");
  note.style.display=incomplete?"block":"none";
- note.textContent=incomplete?"Attention : les données de cette année sont signalées comme incomplètes par le CDC, notamment en raison de l'absence de la tranche 50 ans et plus. La part 40+ est légèrement sous-estimée.":"";
+ note.textContent=incomplete?"Attention : les données de cette année sont signalées comme incomplètes par le CDC. La tranche 50 ans et plus est absente en 1995 et 1996 ; le groupe « 40 ans et plus » est donc légèrement sous-estimé.":"";
 }
 function renderEducation(){
  const wrap=document.getElementById("education-chart");
  wrap.innerHTML=DATA.edu.map((r,i)=>'<div class="edu-row"><div class="edu-name">'+r.groupe_education+'</div><div class="edu-pair">'+
- '<div class="edu-line"><div class="edu-track"><div class="edu-fill" style="width:'+r.part_dans_toutes_meres_pct+'%;background:#91a79a"></div></div><span>'+fmt(r.part_dans_toutes_meres_pct)+' %</span></div>'+
- '<div class="edu-line"><div class="edu-track"><div class="edu-fill" style="width:'+r.part_dans_meres_35_plus_pct+'%;background:#d4775c"></div></div><span>'+fmt(r.part_dans_meres_35_plus_pct)+' %</span></div></div></div>').join("");
+ '<div class="edu-line"><div class="edu-track"><div class="edu-fill" style="width:'+r.part_dans_toutes_meres_pct+'%;background:#d9bdd8"></div></div><span>'+fmt(r.part_dans_toutes_meres_pct)+' %</span></div>'+
+ '<div class="edu-line"><div class="edu-track"><div class="edu-fill" style="width:'+r.part_dans_meres_35_plus_pct+'%;background:#cf7fa9"></div></div><span>'+fmt(r.part_dans_meres_35_plus_pct)+' %</span></div></div></div>').join("");
  const values=DATA.coverage.map(r=>r.couverture_pct),min=Math.min(...values),max=Math.max(...values),avg=values.reduce((a,b)=>a+b,0)/values.length;
  document.getElementById("coverage-cards").innerHTML='<div class="cover-item"><div class="cover-value">'+fmt(min,2)+' %</div><div class="cover-label">Couverture minimale · 2016–2024</div></div><div class="cover-item"><div class="cover-value">'+fmt(max,2)+' %</div><div class="cover-label">Couverture maximale · 2016–2024</div></div><div class="cover-item"><div class="cover-value">'+fmt(avg,2)+' %</div><div class="cover-label">Couverture moyenne · 2016–2024</div></div>';
 }
 function renderTable(rows){
- document.getElementById("data-table").innerHTML=rows.slice().reverse().map(r=>'<tr><td>'+r.annee+'</td><td>'+integer(r.nb_naissances_total)+'</td><td>'+integer(r.nb_naissances_35_plus)+'</td><td>'+fmt(r.part_35_plus_pct,2)+' %</td><td>'+integer(r.nb_naissances_40_plus)+'</td><td>'+fmt(r.part_40_plus_pct,2)+' %</td><td>'+(r.donnee_incomplete?"Oui":"Non")+'</td></tr>').join("");
+ document.getElementById("data-table").innerHTML=rows.slice().reverse().map(r=>'<tr><td>'+r.annee+'</td><td>'+integer(r.nb_naissances_total)+'</td><td>'+integer(r.nb_under35)+'</td><td>'+fmt(r.part_under35_pct)+' %</td><td>'+integer(r.nb_35_39)+'</td><td>'+fmt(r.part_35_39_pct)+' %</td><td>'+integer(r.nb_40_plus_group)+'</td><td>'+fmt(r.part_40_plus_group_pct)+' %</td><td>'+(r.donnee_incomplete?"Oui":"Non")+'</td></tr>').join("");
  document.getElementById("download").onclick=()=>{
-  const head=["annee","nb_naissances_total","nb_naissances_35_plus","part_35_plus_pct","nb_naissances_40_plus","part_40_plus_pct","donnee_incomplete"];
-  const lines=[head.join(","),...rows.map(r=>head.map(k=>r[k]).join(","))];
+  const head=["annee","nb_naissances_total","nb_under35","part_under35_pct","nb_35_39","part_35_39_pct","nb_40_plus","part_40_plus_pct","donnee_incomplete"];
+  const lines=[head.join(","),...rows.map(r=>[r.annee,r.nb_naissances_total,r.nb_under35,r.part_under35_pct,r.nb_35_39,r.part_35_39_pct,r.nb_40_plus_group,r.part_40_plus_group_pct,r.donnee_incomplete].join(","))];
   const blob=new Blob(["\uFEFF"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
   const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="indicateurs_naissances_tardives_selection.csv";a.click();URL.revokeObjectURL(url);
  };
 }
 function render(){
  const rows=filtered();if(!rows.length)return;
- const first=rows[0],last=rows.at(-1),delta=last.part_35_plus_pct-first.part_35_plus_pct;
- document.getElementById("kpi35").textContent=fmt(last.part_35_plus_pct)+" %";
- document.getElementById("kpi35foot").textContent="En "+last.annee+" · "+integer(last.nb_naissances_35_plus)+" naissances";
- document.getElementById("kpi40").textContent=fmt(last.part_40_plus_pct)+" %";
- document.getElementById("kpi40foot").textContent="En "+last.annee+" · "+integer(last.nb_naissances_40_plus)+" naissances";
+ const first=rows[0],last=rows.at(-1);
+ document.getElementById("kpiUnder35").textContent=fmt(last.part_under35_pct)+" %";
+ document.getElementById("kpiUnder35foot").textContent="En "+last.annee+" · "+integer(last.nb_under35)+" naissances";
+ document.getElementById("kpi3539").textContent=fmt(last.part_35_39_pct)+" %";
+ document.getElementById("kpi3539foot").textContent="En "+last.annee+" · "+integer(last.nb_35_39)+" naissances";
+ document.getElementById("kpi40").textContent=fmt(last.part_40_plus_group_pct)+" %";
+ document.getElementById("kpi40foot").textContent="En "+last.annee+" · "+integer(last.nb_40_plus_group)+" naissances";
  document.getElementById("kpiBirths").textContent=integer(last.nb_naissances_total);
  document.getElementById("kpiBirthsfoot").textContent="Naissances vivantes · "+last.annee;
- document.getElementById("kpiDelta").textContent=(delta>=0?"+":"")+fmt(delta)+" pts";
- document.getElementById("kpiDeltafoot").textContent="Variation entre "+first.annee+" et "+last.annee;
  document.getElementById("period-caption").textContent="Lecture : "+first.annee+"–"+last.annee;
  drawLineChart(document.getElementById("trend-chart"),rows);
  drawAgeChart(rows,num(document.getElementById("age-year").value));
