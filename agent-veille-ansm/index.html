@@ -37,7 +37,7 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
 .nav-number{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:8px;background:#f0f3f1;color:#6e817a;font-size:9px;font-weight:900}
 .dashboard-tabs button[aria-selected="true"] .nav-number{background:var(--teal);color:white}
 .nav-caption{display:block;line-height:1.25}
-.sidebar-note{margin:14px 3px 2px;padding:11px 10px;border-radius:10px;background:#f5f8f6;color:var(--muted);font-size:9px;line-height:1.55}
+.sidebar-period{margin-top:14px;padding:13px 9px 2px;border-top:1px solid var(--line)}.sidebar-period>label{display:block;color:var(--navy);font-size:10px;font-weight:850;margin-bottom:7px}.sidebar-period select,.sidebar-period input{width:100%;min-width:0;padding:9px 8px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:11px}.period-custom{display:grid;gap:7px;margin-top:9px}.period-custom[hidden]{display:none!important}.period-custom label{display:block;color:var(--muted);font-size:9px;font-weight:800;margin:2px 0 4px}.period-help{display:block;margin-top:7px;color:var(--muted);font-size:9px;line-height:1.5}.sidebar-note{margin:14px 3px 2px;padding:11px 10px;border-radius:10px;background:#f5f8f6;color:var(--muted);font-size:9px;line-height:1.55}
 .dashboard-content{min-width:0}
 .dashboard-panel[hidden]{display:none!important}
 @media(max-width:850px){.dashboard-layout{grid-template-columns:180px minmax(0,1fr);gap:12px}}
@@ -64,6 +64,22 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
   <button type="button" data-dashboard-tab="history" aria-selected="false"><span class="nav-number">03</span><span class="nav-caption">Traçabilités</span></button>
   <button type="button" data-dashboard-tab="synthesis" aria-selected="false"><span class="nav-number">04</span><span class="nav-caption">Synthèse & méthode</span></button>
  </nav>
+ <div class="sidebar-period">
+  <label for="period-filter">Période de mise à jour</label>
+  <select id="period-filter">
+   <option value="all">Toutes les périodes</option>
+   <option value="7">7 derniers jours</option>
+   <option value="30">30 derniers jours</option>
+   <option value="90">3 derniers mois</option>
+   <option value="365">12 derniers mois</option>
+   <option value="custom">Personnalisée</option>
+  </select>
+  <div class="period-custom" id="period-custom" hidden>
+   <div><label for="period-start">Du</label><input id="period-start" type="date"></div>
+   <div><label for="period-end">Au</label><input id="period-end" type="date"></div>
+  </div>
+  <small class="period-help">Filtre les spécialités et les indicateurs selon la date de mise à jour publiée par l’ANSM.</small>
+ </div>
  <div class="sidebar-note">Choisis une rubrique pour afficher uniquement la partie correspondante du tableau de bord.</div>
 </aside>
 <div class="dashboard-content">
@@ -96,16 +112,19 @@ function parseCSV(text){text=text.replace(/^\\uFEFF/,"");const all=[];let row=[]
 function statusClass(s){const x=s.toLowerCase();if(x.includes("rupture"))return"red";if(x.includes("tension"))return"orange";if(x.includes("remise"))return"green";return""}
 function fillSelect(id,values){const sel=$(id);[...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,"fr")).forEach(v=>sel.add(new Option(v,v)))}
 function drawBars(id,obj,color){const pairs=Object.entries(obj||{}).sort((a,b)=>b[1]-a[1]).slice(0,9),max=Math.max(1,...pairs.map(p=>p[1]));$(id).innerHTML=pairs.length?pairs.map(([name,val])=>'<div class="barrow"><span>'+esc(name)+'</span><div class="barbg"><div class="barfill" style="width:'+(val/max*100)+'%;background:'+color+'"></div></div><span class="barvalue">'+val+'</span></div>').join(""):'<div class="empty">Aucune donnée disponible.</div>'}
-function currentFilters(){return{q:$("search").value.trim().toLocaleLowerCase("fr"),st:$("status-filter").value,dom:$("domain-filter").value}}
-function getFilteredRows(){const {q,st,dom}=currentFilters();return rows.filter(r=>(!st||r.status===st)&&(!dom||(r.medical_domains||"").split(",").map(x=>x.trim()).includes(dom))&&(!q||[r.specialty,r.medical_domains,r.status].join(" ").toLocaleLowerCase("fr").includes(q)))}
-function getFilteredEvents(){const {q,st,dom}=currentFilters();const byKey=new Map(rows.map(r=>[r.record_key,r]));return events.filter(e=>{const current=byKey.get(e.record_key);const statuses=[e.previous_status,e.current_status,current?.status].filter(Boolean);const domains=(current?.medical_domains||"").split(",").map(x=>x.trim());const text=[e.specialty,e.event_type,e.previous_status,e.current_status,current?.medical_domains].join(" ").toLocaleLowerCase("fr");return(!st||statuses.includes(st))&&(!dom||domains.includes(dom))&&(!q||text.includes(q))})}
-function render(){const filtered=getFilteredRows(),filteredEventRows=getFilteredEvents(),statusCounts={},domainCounts={};filtered.forEach(r=>{statusCounts[r.status]=(statusCounts[r.status]||0)+1;(r.medical_domains||"").split(",").map(x=>x.trim()).filter(Boolean).forEach(d=>domainCounts[d]=(domainCounts[d]||0)+1)});
+function localIsoDate(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+day}
+function selectedPeriod(){const value=$("period-filter").value;if(value==="all")return{from:"",to:"",label:"Toutes les périodes"};if(value==="custom"){const from=$("period-start").value,to=$("period-end").value;return{from,to,label:from||to?(from||"Début ouvert")+" → "+(to||"fin ouverte"):"Période personnalisée"}}const days=Number(value),end=new Date(),start=new Date();start.setDate(start.getDate()-days+1);return{from:localIsoDate(start),to:localIsoDate(end),label:value==="90"?"3 derniers mois":value==="365"?"12 derniers mois":days+" derniers jours"}}
+function isWithinPeriod(value,period){if(!period.from&&!period.to)return true;const day=String(value||"").slice(0,10);if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(day))return false;return(!period.from||day>=period.from)&&(!period.to||day<=period.to)}
+function currentFilters(){const period=selectedPeriod();return{q:$("search").value.trim().toLocaleLowerCase("fr"),st:$("status-filter").value,dom:$("domain-filter").value,period}}
+function getFilteredRows(){const {q,st,dom,period}=currentFilters();return rows.filter(r=>(!st||r.status===st)&&(!dom||(r.medical_domains||"").split(",").map(x=>x.trim()).includes(dom))&&isWithinPeriod(r.source_updated_at,period)&&(!q||[r.specialty,r.medical_domains,r.status].join(" ").toLocaleLowerCase("fr").includes(q)))}
+function getFilteredEvents(filteredRows){const {q,st,dom,period}=currentFilters();const byKey=new Map(rows.map(r=>[r.record_key,r]));return events.filter(e=>{const current=byKey.get(e.record_key);const statuses=[e.previous_status,e.current_status,current?.status].filter(Boolean);const domains=(current?.medical_domains||"").split(",").map(x=>x.trim());const text=[e.specialty,e.event_type,e.previous_status,e.current_status,current?.medical_domains].join(" ").toLocaleLowerCase("fr");const periodDate=current?.source_updated_at||(e.event_at||"").slice(0,10);return(!st||statuses.includes(st))&&(!dom||domains.includes(dom))&&isWithinPeriod(periodDate,period)&&(!q||text.includes(q))})}
+function render(){const filtered=getFilteredRows(),filteredEventRows=getFilteredEvents(filtered),statusCounts={},domainCounts={};filtered.forEach(r=>{statusCounts[r.status]=(statusCounts[r.status]||0)+1;(r.medical_domains||"").split(",").map(x=>x.trim()).filter(Boolean).forEach(d=>domainCounts[d]=(domainCounts[d]||0)+1)});
  $("rows-count").textContent=filtered.length+" / "+rows.length+" spécialités";
  $("total").textContent=filtered.length;
  $("ruptures").textContent=filtered.filter(r=>r.status.toLocaleLowerCase("fr").includes("rupture")).length;
  $("tensions").textContent=filtered.filter(r=>r.status.toLocaleLowerCase("fr").includes("tension")).length;
  $("changes").textContent=filteredEventRows.length;
- $("filter-feedback").textContent=filtered.length+" / "+rows.length+" spécialités · "+filteredEventRows.length+" événements correspondants. Les indicateurs, graphiques et historiques sont recalculés avec ces filtres.";
+ const period=selectedPeriod();$("filter-feedback").textContent=period.label+" · "+filtered.length+" / "+rows.length+" spécialités · "+filteredEventRows.length+" événements correspondants. Les indicateurs, graphiques et historiques suivent les filtres actifs.";
  drawBars("status-bars",statusCounts,"#397e78");drawBars("domain-bars",domainCounts,"#bd8b4d");
  $("signals").innerHTML=filtered.length?filtered.map(r=>'<tr><td><span class="status '+statusClass(r.status)+'">'+esc(r.status)+'</span></td><td>'+esc(date(r.source_updated_at))+'</td><td>'+esc(r.specialty)+'</td><td>'+esc(date(r.availability_date))+'</td><td>'+esc(r.medical_domains||"—")+'</td><td>'+(r.detail_url?'<a href="'+esc(r.detail_url)+'" target="_blank" rel="noopener">ANSM ↗</a>':'<a href="https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments" target="_blank" rel="noopener">ANSM ↗</a>')+'</td></tr>').join(""):'<tr><td colspan="6" class="empty">Aucune spécialité ne correspond aux filtres.</td></tr>';
  renderEvents(filteredEventRows)}
@@ -115,7 +134,10 @@ async function load(){try{const [snapshot,report,eventsResponse]=await Promise.a
  render();
  try{let r=await fetch(DATA+"ai_summary.md",{cache:"no-store"});if(!r.ok)r=await fetch(DATA+"report.md",{cache:"no-store"});if(r.ok)$("ai-summary").textContent=await r.text()}catch(_){}
  }catch(err){$("state").style.display="block";$("state").textContent="Aucun relevé exploitable n’est encore publié. Le collecteur doit effectuer sa première exécution réussie. Détail : "+err.message;$("last-check").textContent="En attente du premier relevé validé";$("total").textContent="—";$("ruptures").textContent="—";$("tensions").textContent="—";$("changes").textContent="—"}}
-["search","status-filter","domain-filter"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));$("reset").addEventListener("click",()=>{$("search").value="";$("status-filter").value="";$("domain-filter").value="";render()});load();
+["search","status-filter","domain-filter"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+$("period-filter").addEventListener("change",()=>{$("period-custom").hidden=$("period-filter").value!=="custom";render()});
+["period-start","period-end"].forEach(id=>$(id).addEventListener("change",render));
+$("reset").addEventListener("click",()=>{$("search").value="";$("status-filter").value="";$("domain-filter").value="";$("period-filter").value="all";$("period-start").value="";$("period-end").value="";$("period-custom").hidden=true;render()});load();
 </script><script>
 (function(){
  const buttons=[...document.querySelectorAll('[data-dashboard-tab]')];
