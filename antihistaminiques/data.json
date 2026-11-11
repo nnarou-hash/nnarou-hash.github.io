@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-11-11T02:28:34+00:00",
+    "generated_at": "2026-11-11T02:32:49+00:00",
     "origin": "Tables Silver du dépôt antihistaminiques-pipeline",
     "scope": "R06 / antihistaminiques",
     "openmedic_file": "J0_silver_openmedic_2021_2025_20260607.csv",
@@ -204,6 +204,41 @@
       {
         "laboratoire": "upsa",
         "specialties": 3.0
+      }
+    ]
+  },
+  "bdpm": {
+    "specialty_count": 15,
+    "substance_count": 7,
+    "atc_code_count": 7,
+    "top_substances": [
+      {
+        "substance": "DICHLORHYDRATE DE CÉTIRIZINE",
+        "specialties": 4.0
+      },
+      {
+        "substance": "LORATADINE",
+        "specialties": 3.0
+      },
+      {
+        "substance": "DESLORATADINE",
+        "specialties": 3.0
+      },
+      {
+        "substance": "DICHLORHYDRATE DE LÉVOCÉTIRIZINE",
+        "specialties": 2.0
+      },
+      {
+        "substance": "ÉBASTINE",
+        "specialties": 1.0
+      },
+      {
+        "substance": "BILASTINE",
+        "specialties": 1.0
+      },
+      {
+        "substance": "MALÉATE DE DEXCHLORPHÉNIRAMINE",
+        "specialties": 1.0
       }
     ]
   },
