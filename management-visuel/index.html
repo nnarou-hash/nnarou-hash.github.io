@@ -19,6 +19,16 @@ main{min-width:0;padding:25px 32px 28px}.top{display:flex;justify-content:space-
 .huddle{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.huddle article{background:#fbf9fd;border:1px solid var(--line);border-radius:12px;padding:15px}.huddle small{font-size:9px;letter-spacing:.1em;font-weight:800;color:#8c8298}.huddle p{font-size:12px;margin:8px 0 0}
 .callout{background:#f7f4fb;border-left:3px solid #9778bc;border-radius:8px;padding:12px 14px;color:#625773;font-size:10px;margin-top:14px}.footer{border-top:1px solid var(--line);margin-top:25px;padding-top:15px;display:flex;justify-content:space-between;gap:12px;color:#9690a0;font-size:9px}
 @media(max-width:1050px){.shell{grid-template-columns:210px 1fr}.kpis{grid-template-columns:repeat(2,1fr)}main{padding:20px}.two{grid-template-columns:1fr}}@media(max-width:720px){.shell{display:block}.side{height:auto;position:relative;padding:13px}.brand{padding:0 5px 11px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.navlabel,.sidefoot{display:none}.nav button{font-size:11px;padding:9px}.top{align-items:flex-start}.demo{display:none}main{padding:13px}.filters{gap:9px}.filterintro{width:100%}.filters label{flex:1;min-width:130px}.hero{padding:19px}.hero h1{font-size:22px}.kpis{gap:8px}.kpi{padding:11px;min-height:104px}.value{font-size:22px}.two,.cards2,.huddle{grid-template-columns:1fr}.footer{display:block}.footer span{display:block;margin:4px 0}}
+
+.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750}
+.dashboard-tabs button[aria-selected="true"]{background:var(--soft,var(--pale));color:var(--ink);border-color:var(--line)}
+.dashboard-panel[hidden]{display:none!important}
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--ink)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -44,7 +54,11 @@ main{min-width:0;padding:25px 32px 28px}.top{display:flex;justify-content:space-
     <label>Équipe<select id="team"><option value="all">Toutes les équipes</option><option value="Conditionnement">Conditionnement</option><option value="Qualité">Qualité</option><option value="Approvisionnement">Approvisionnement</option></select></label>
     <button id="reset">Réinitialiser</button>
   </section>
-  <div id="view"></div>
+  <div class="project-brief">
+  <div><h2>Présentation du projet</h2><p>Un cockpit de management visuel pour lire la performance opérationnelle, repérer les écarts et suivre leur résolution. Il couvre six vues : performance quotidienne, analyse, problèmes, plan d’action, réunion d’équipe et qualité des données.</p></div>
+  <div><h2>Sources de données</h2><p><strong>Données 100 % synthétiques</strong>, générées pour ce démonstrateur sur six mois et trois équipes fictives. Aucune donnée d’entreprise ni source opérationnelle externe n’est utilisée. Les objectifs et seuils SQCDP sont des hypothèses pédagogiques.</p></div>
+</div>
+<div id="view"></div>
   <footer class="footer"><span>Excellence opérationnelle & management visuel</span><span>Jeu fictif · Données synthétiques · Démonstrateur non validé pour la production</span></footer>
 </main>
 </div>
