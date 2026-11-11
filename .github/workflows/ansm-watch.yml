@@ -61,6 +61,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add agent-veille-ansm/data
             git commit -m "chore(ansm-watch): update public availability data"
+            git pull --rebase origin main
             git push
           else
             echo "Aucun fichier de veille à mettre à jour."
