@@ -90,7 +90,7 @@ L'appel IA utilise l'API Responses d'OpenAI. La génération est facultative et 
 ## Automatisation et publication
 
 Le workflow \`.github/workflows/ansm-watch.yml\` :
-- vérifie la page ANSM toutes les 30 minutes (horaires UTC) ;
+- vérifie la page ANSM les lundis, mercredis et vendredis à 06:00 UTC ;
 - peut être lancé manuellement depuis l'onglet Actions ;
 - exécute les tests avant toute collecte ;
 - compare les données au dernier relevé validé ;
