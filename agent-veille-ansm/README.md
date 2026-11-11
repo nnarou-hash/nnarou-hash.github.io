@@ -22,14 +22,21 @@ Collecter la liste publique des médicaments suivis par l'ANSM, conserver un ét
 |---|---|---|
 | ANSM – Disponibilité des médicaments | Source principale du MVP | Statuts publics et informations publiées par spécialité |
 | Base de données publique des médicaments (BDPM) | Référentiel complémentaire envisagé | Identification et rapprochement des médicaments |
-| data.ansm | Source complémentaire à étudier | Données historiques agrégées de déclarations de ruptures depuis 2014 |
+| data.ansm | Source complémentaire à étudier | Consultation d'historiques de déclarations, dont les ruptures et risques de rupture (base Trustmed), avec des données présentées depuis 2014. Le mode d'export ou l'existence d'une API exploitable restent à valider avant automatisation |
 | Ministère de la Santé – Liste des médicaments essentiels | Enrichissement métier à étudier | Priorisation des molécules essentielles |
 
 Liens :
 - https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments
 - https://base-donnees-publique.medicaments.gouv.fr/
-- https://data.ansm.sante.fr/
+- https://data.ansm.sante.fr/ (historique des déclarations ; modalités d'extraction à confirmer)
 - https://sante.gouv.fr/soins-et-maladies/medicaments/article/lutte-contre-les-penuries-de-medicaments
+
+## Intégration des sources : ordre de priorité
+
+- **Étape 1 – Liste ANSM** : source opérationnelle du MVP, collectée à chaque exécution.
+- **Étape 2 – BDPM** : référentiel d'identification pour rapprocher une spécialité de ses présentations et, lorsque c'est possible, de ses identifiants officiels. La BDPM est mise à jour mensuellement ; les fichiers et leur date de mise à jour sont publiés sur son site.
+- **Étape 3 – data.ansm** : source de contexte historique pour explorer les déclarations de ruptures et de risques de rupture. La plateforme présente des données issues de la base Trustmed depuis 2014, mais son mode d'extraction devra être vérifié avant d'en faire une dépendance automatisée.
+- **Étape 4 – Médicaments essentiels** : référentiel de priorisation à rapprocher des signaux, sans assimiler le caractère essentiel à une rupture effective.
 
 ## Limites à afficher clairement
 
