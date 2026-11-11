@@ -1,6 +1,6 @@
 # Rapport de veille ANSM
 
-- Dernière collecte réussie : 2026-11-11T02:04:17+00:00
+- Dernière collecte réussie : 2026-11-11T02:05:11+00:00
 - Entrées publiées : 293
 - Source : https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments
 
@@ -13,7 +13,7 @@
 
 ## Changements détectés lors de cette collecte
 
-- Nouvelles entrées : 293
+- Nouvelles entrées : 0
 - Modifications : 0
 - Sorties de liste : 0
 
