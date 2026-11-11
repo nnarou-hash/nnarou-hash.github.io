@@ -25,12 +25,22 @@
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:22px}.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.nav{gap:12px}.nav a:last-child{display:none}}
 @media(max-width:600px){.wrap{padding:0 14px}.top{padding:0 14px}.nav{display:none}.hero{padding-top:37px}.lead{font-size:14px}.filters{padding:14px}.filter-group{width:100%}.field{flex:1}.field select{width:100%;min-width:0}.kpis{gap:8px}.kpi{padding:14px;min-height:112px}.kpi-value{font-size:28px}.panel{padding:16px 13px}.heading{align-items:start;flex-direction:column}.sub{text-align:left}.chart{height:260px}.edu-row{grid-template-columns:1fr;gap:6px}.edu-legend{margin-left:0}.coverage{grid-template-columns:1fr 1fr}.method{grid-template-columns:1fr}.panel-head{flex-direction:column}}
 @media print{.top,.filters,.btn{display:none}.panel,.kpi{box-shadow:none;break-inside:avoid}.footer{background:white;color:#222}.footer p,.foot-small{color:#555}}
+
+.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer}
+.dashboard-tabs button[aria-selected="true"]{background:#eaf2ef;color:var(--navy);border-color:var(--line)}
+.dashboard-panel[hidden]{display:none!important}
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:15px 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--navy)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
 </style>
 </head>
 <body>
 <header class="top">
  <a class="brand" href="https://nnarou-hash.github.io/"><span class="brand-icon">ND</span><span>DATA / EXPLORER</span></a>
- <nav class="nav"><a href="#tendances">Tendances</a><a href="#ages">Âges</a><a href="#education">Éducation</a><a href="#methodologie">Méthodologie</a></nav>
+ <nav class="nav"><a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></nav>
 </header>
 <main class="wrap">
 <section class="hero">
@@ -49,6 +59,18 @@
  </div>
  <div class="hint">Les filtres actualisent les indicateurs et graphiques. La rupture méthodologique de 2007 est signalée dans la série.</div>
 </section>
+<div class="project-brief">
+ <div><h2>Présentation du projet</h2><p>Exploration de l’évolution des naissances vivantes chez les mères de 35 ans et plus aux États-Unis, de 1995 à 2024. Le dashboard présente les tendances à long terme, la structure par âge, la répartition par niveau d’éducation, les indicateurs annuels et les limites méthodologiques.</p></div>
+ <div><h2>Sources de données</h2><p><strong>CDC WONDER — Natality / National Vital Statistics System.</strong> Données nationales agrégées par année, âge de la mère et niveau d’éducation. L’analyse de l’éducation est limitée à 2016–2024 en raison de la comparabilité des certificats de naissance.</p></div>
+</div>
+<nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard">
+ <button type="button" data-dashboard-tab="tendances" aria-selected="true">Tendances</button>
+ <button type="button" data-dashboard-tab="ages" aria-selected="false">Structure par âge</button>
+ <button type="button" data-dashboard-tab="education" aria-selected="false">Éducation</button>
+ <button type="button" data-dashboard-tab="donnees" aria-selected="false">Données annuelles</button>
+ <button type="button" data-dashboard-tab="methode" aria-selected="false">Sources & méthode</button>
+</nav>
+<div class="dashboard-panel" data-dashboard-panel="tendances">
 <section id="indicateurs">
  <div class="heading"><div><div class="kicker">01 / Repères clés</div><h2>Les indicateurs à retenir</h2></div><div id="period-caption" class="sub"></div></div>
  <div class="kpis">
@@ -67,6 +89,8 @@
   <div class="note">Point de vigilance : 2007 marque un changement de base CDC WONDER et de règles d’imputation de l’âge. La comparaison de part et d’autre doit être interprétée avec prudence.</div>
  </div>
 </section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="ages" hidden>
 <section id="ages">
  <div class="heading"><div><div class="kicker">03 / Structure par âge</div><h2>Comment se répartissent les naissances ?</h2></div><div class="sub">Tranches d’âge maternel publiées par le CDC, regroupées par classes de cinq ans</div></div>
  <div class="two">
@@ -78,6 +102,8 @@
   <div class="panel"><div class="panel-title">Focus · mères de 35 ans et plus</div><div class="panel-desc">Poids des classes 35–39, 40–44, 45–49 et 50 ans et plus dans l’année choisie.</div><div id="age-focus" style="margin-top:17px"></div></div>
  </div>
 </section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="education" hidden>
 <section id="education">
  <div class="heading"><div><div class="kicker">04 / Niveau d’éducation</div><h2>Un profil éducatif distinct</h2></div><div class="sub">Comparaison agrégée sur 2016–2024 uniquement</div></div>
  <div class="panel">
@@ -89,6 +115,8 @@
  <div class="heading"><div><div class="kicker">05 / Couverture</div><h2>La qualité de l’information reste élevée</h2></div><div class="sub">Part des enregistrements disposant d’une information éducative exploitable</div></div>
  <div class="panel"><div class="coverage" id="coverage-cards"></div></div>
 </section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="donnees" hidden>
 <section id="donnees">
  <div class="heading"><div><div class="kicker">06 / Exploration</div><h2>Consulter les indicateurs annuels</h2></div><div class="sub">Table filtrée par la période choisie, exportable au format CSV</div></div>
  <div class="panel">
@@ -96,6 +124,8 @@
   <div class="table-wrap"><table><thead><tr><th>Année</th><th>Naissances totales</th><th>Naissances 35+</th><th>Part 35+</th><th>Naissances 40+</th><th>Part 40+</th><th>Données incomplètes</th></tr></thead><tbody id="data-table"></tbody></table></div>
  </div>
 </section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
 <section id="methodologie">
  <div class="heading"><div><div class="kicker">07 / Transparence</div><h2>Définitions, sources & limites</h2></div><div class="sub">Une lecture des résultats qui conserve le contexte de production des données</div></div>
  <div class="method">
@@ -107,6 +137,7 @@
   <article><strong>Interprétation</strong><p>Des statistiques descriptives nationales ne permettent pas d’expliquer les causes individuelles, la fertilité, les complications ni les parcours de soins. Aucune inférence causale ou clinique n’est effectuée.</p></article>
  </div>
 </section>
+</div>
 </main>
 <footer class="footer"><div class="wrap footrow"><div><h2>Naissances tardives aux États-Unis</h2><p>Projet de Data Governance : consolidation, contrôles qualité, transformations dbt et restitution de données publiques. Les valeurs affichées proviennent de l’instantané des tables dbt exportées du projet source.</p><div class="foot-small">Réalisé à partir des données CDC WONDER · Mise à jour de l’instantané : <span id="footer-date">—</span></div></div><div><a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener">Code & pipeline sur GitHub ↗</a><br><a href="https://wonder.cdc.gov/natality.html" target="_blank" rel="noopener">Source CDC WONDER ↗</a><br><a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></div></div></footer>
 
@@ -224,6 +255,18 @@ function render(){
   const e=document.getElementById("load-error");e.style.display="block";e.textContent="Le dashboard n’a pas pu charger ses données : "+err.message+" Vérifie que les fichiers CSV du dossier data sont bien publiés avec cette page.";
   console.error(err);
  }
+})();
+</script>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-dashboard-tab]')];
+ const panels=[...document.querySelectorAll('[data-dashboard-panel]')];
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const key=button.dataset.dashboardTab;
+  buttons.forEach(b=>b.setAttribute('aria-selected',String(b===button)));
+  panels.forEach(panel=>panel.hidden=panel.dataset.dashboardPanel!==key);
+  window.dispatchEvent(new Event('resize'));
+ }));
 })();
 </script>
 </body></html>
