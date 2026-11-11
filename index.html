@@ -323,8 +323,9 @@
           <div class="project-title">Maternité tardive aux États-Unis (1995–2024)</div>
           <div class="project-desc"><strong>Question métier :</strong> comment la part des naissances chez les mères de 35 ans et plus a-t-elle évolué aux États-Unis ? L’analyse des données CDC WONDER met en évidence une progression de 11,6 % en 1995 à 21,3 % en 2024, soit +9,7 points. Le projet documente aussi les contrôles qualité, les transformations dbt et les limites de comparabilité des séries.</div>
           <div class="project-tags">
-            <span class="tag">CDC WONDER</span><span class="tag">BigQuery</span><span class="tag">dbt</span>
-            <span class="tag">Great Expectations</span><span class="tag">Data Quality</span><span class="tag">Dashboard</span>
+            <span class="tag">CDC WONDER</span><span class="tag">Python · pandas</span>
+            <span class="tag">Great Expectations</span><span class="tag">BigQuery</span>
+            <span class="tag">dbt</span><span class="tag">Streamlit</span><span class="tag">HTML · CSS · JavaScript</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Limites documentées : rupture de série 2006–2007 ; données sur le niveau d’éducation non comparables avant 2016.</p>
           <div class="project-links">
@@ -340,8 +341,8 @@
           <div class="project-title">Cosmetics Supply Chain Analytics</div>
           <div class="project-desc"><strong>Question métier :</strong> comment améliorer la disponibilité des produits tout en maîtrisant les stocks ? Sur 100 références et 36 mois de données simulées, le projet compare les politiques de réapprovisionnement et combine prévision, segmentation ABC/XYZ et analyse des coûts. Dans la simulation, la politique ABC/XYZ atteint 98,64 % de taux de service contre 98,37 % avec un délai fixe de 10 jours ; la demande non satisfaite passe de 8 155 à 6 768 unités.</div>
           <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">Supply Chain</span><span class="tag">Demand Planning</span>
-            <span class="tag">ABC / XYZ</span><span class="tag">Inventory</span><span class="tag">Dashboard</span>
+            <span class="tag">Python</span><span class="tag">CSV</span><span class="tag">HTML · CSS · JavaScript</span>
+            <span class="tag">Prévisions de la demande</span><span class="tag">ABC / XYZ</span><span class="tag">Simulation de stock</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Résultats issus d’une simulation sur données synthétiques, selon des hypothèses explicitées dans le projet.</p>
           <div class="project-links">
@@ -357,8 +358,8 @@
           <div class="project-title">Qualité des données NHANES</div>
           <div class="project-desc"><strong>Question métier :</strong> comment fiabiliser un jeu de données de santé publique avant de produire des analyses descriptives ? Le pipeline dbt et BigQuery comprend 12 modèles de staging, 2 tables finales et 58 tests. La restitution permet d’explorer les mesures biologiques et leurs relations, sans tirer de conclusion clinique.</div>
           <div class="project-tags">
-            <span class="tag">SQL</span><span class="tag">dbt</span><span class="tag">BigQuery</span>
-            <span class="tag">Data Quality</span><span class="tag">Streamlit</span>
+            <span class="tag">Python · pandas</span><span class="tag">SQL</span><span class="tag">BigQuery</span>
+            <span class="tag">dbt</span><span class="tag">Streamlit</span><span class="tag">HTML · JavaScript</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Analyse méthodologique sur données publiques NHANES ; les limites d’échantillonnage et d’interprétation sont précisées.</p>
           <div class="project-links">
@@ -375,8 +376,8 @@
           <div class="project-title">Antihistaminiques — analyse des signaux d’approvisionnement</div>
           <div class="project-desc"><strong>Question métier :</strong> quels signaux peuvent aider à mieux comprendre les périodes de tension sur les médicaments ? Le projet rapproche consommation, données polliniques, météo, épidémiologie et signalements ANSM. Les données sont structurées en couches Bronze/Silver/Gold, puis exploitées dans des analyses et des modèles exploratoires pour étudier les mois à risque.</div>
           <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">Données publiques</span><span class="tag">ETL</span>
-            <span class="tag">SHAP</span><span class="tag">Streamlit</span><span class="tag">FastAPI</span>
+            <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">SHAP</span>
+            <span class="tag">Neon · PostgreSQL</span><span class="tag">Streamlit · Plotly</span><span class="tag">FastAPI</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Un signal de modèle ne constitue pas une confirmation de rupture ; les sources et limites sont documentées.</p>
           <div class="project-links">
@@ -394,8 +395,9 @@
           <div class="project-title">Agent de veille des médicaments — ANSM</div>
           <div class="project-desc"><strong>Question métier :</strong> comment repérer les évolutions entre deux publications de l’ANSM ? Un collecteur Python archive les instantanés, compare les mises à jour et repère les nouvelles entrées, modifications et sorties de liste. Le dashboard restitue les statuts publiés, les spécialités suivies et l’historique des changements.</div>
           <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">GitHub Actions</span><span class="tag">Data Monitoring</span>
-            <span class="tag">Traçabilité</span><span class="tag">Dashboard</span>
+            <span class="tag">Python</span><span class="tag">Requests · BeautifulSoup</span>
+            <span class="tag">GitHub Actions</span><span class="tag">HTML · CSS · JavaScript</span>
+            <span class="tag">OpenAI API (optionnelle)</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Collecte planifiée trois fois par semaine. La veille porte sur les publications ANSM, pas sur les stocks physiques des pharmacies ou grossistes.</p>
           <div class="project-links">
@@ -411,8 +413,8 @@
           <div class="project-title">ORBITA — cas pratique fictif de coordination BPM</div>
           <div class="project-desc"><strong>Question métier :</strong> comment donner une vue transverse sur des flux, leurs passations, leurs blocages et les actions de suivi ? Ce cockpit interactif met en scène un service fictif de coordination d’opérations de fonds. L’entreprise, les équipes, les rôles, les processus, les incidents et toutes les données sont inventés : il s’agit d’un cas pratique, pas de la reconstitution d’une organisation réelle ni d’un descriptif de responsabilités professionnelles.</div>
           <div class="project-tags">
-            <span class="tag">Coordination BPM</span><span class="tag">Flux opérationnels</span>
-            <span class="tag">Indicateurs</span><span class="tag">Suivi des actions</span><span class="tag">Dashboard</span>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            <span class="tag">Cas pratique BPM fictif</span><span class="tag">Dashboard interactif</span>
           </div>
           <div class="project-links">
             <a href="/management-visuel/" class="project-link">Voir le cockpit</a>
@@ -477,7 +479,7 @@
         <div class="skill-item">Salesforce</div>
       </div>
     </div>
-    <p class="skills-note">Sélection des outils et logiciels mentionnés dans mon CV. Les technologies spécifiques utilisées dans les projets sont précisées dans leurs descriptions et documentations respectives.</p>
+    <p class="skills-note">Sélection des outils et logiciels mentionnés dans mon CV. Les bulles de chaque projet présentent séparément les technologies et méthodes effectivement mobilisées pour sa réalisation.</p>
   </div>
 </section>
 
