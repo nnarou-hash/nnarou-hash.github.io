@@ -20,13 +20,23 @@ main{max-width:1180px;margin:auto;padding:26px 22px 54px}.notice{background:#fff
 details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:12px 14px}summary{cursor:pointer;color:var(--navy);font-weight:800;font-size:11px}.downloads{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.downloads a{padding:7px 9px;border:1px solid var(--line);border-radius:8px;font-size:10px}.limits{display:grid;grid-template-columns:1fr 1fr;gap:13px}.limits ul{padding-left:17px;margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.8}.foot{background:var(--navy);color:#d4e1dc;padding:23px max(22px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:#fff}.pill{display:inline-block;padding:4px 8px;border-radius:30px;background:#edf4f1;color:#3d7068;font-size:9px;font-weight:800}
 @media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.limits{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.section-head p{text-align:left}.barrow{grid-template-columns:115px 1fr 42px}.range-row{grid-template-columns:130px 1fr}.range-value{grid-column:2;text-align:left}.corr-row{grid-template-columns:105px 1fr 42px 40px}}
 @media(max-width:540px){header{padding:17px 15px 35px}.top{align-items:flex-start;margin-bottom:34px}.toplinks{gap:9px;justify-content:flex-end}.toplinks a{font-size:10px}.hero h1{font-size:39px}main{padding:20px 12px 40px}.kpis{gap:8px}.kpi{padding:13px}.kpi strong{font-size:27px}.panel{padding:14px}.barrow{grid-template-columns:100px 1fr 38px;gap:6px}.range-row{grid-template-columns:1fr}.range-value{grid-column:1}.groupbar{grid-template-columns:110px 1fr 40px}.corr-row{grid-template-columns:85px 1fr 39px 35px;gap:5px;font-size:9px}}
+
+.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer}
+.dashboard-tabs button[aria-selected="true"]{background:#eaf2ef;color:var(--navy);border-color:var(--line)}
+.dashboard-panel[hidden]{display:none!important}
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--navy)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
 </style>
 </head>
 <body>
 <header>
   <div class="top">
     <a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a>
-    <nav class="toplinks"><a href="#qualite">Qualité</a><a href="#analyse">Descriptif</a><a href="#matrice">Corrélations</a><a href="#methode">Méthode</a></nav>
+    <nav class="toplinks"><a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></nav>
   </div>
   <div class="hero">
     <div class="eyebrow">NHANES · Data quality · dbt · BigQuery</div>
@@ -41,6 +51,17 @@ details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:
 <main>
   <div class="notice"><strong>Projet de qualité de données.</strong> Les résultats sont descriptifs et concernent cet échantillon. Ils ne constituent ni une analyse médicale, ni une conclusion clinique, ni un conseil de santé. Les associations observées ne démontrent aucune causalité.</div>
   <div class="meta"><span>Cycle NHANES : août 2021 – août 2023 · Exports agrégés issus du projet dbt</span><span id="load-state">Chargement des données…</span></div>
+<div class="project-brief">
+ <div><h2>Présentation du projet</h2><p>Projet de qualité et de gouvernance des données NHANES : règles de sélection des participants, construction descriptive du HOMA-IR, comparaisons par groupes, associations avec des mesures de laboratoire et tests de robustesse. Il s’agit d’une analyse méthodologique, sans conclusion clinique ni conseil de santé.</p></div>
+ <div><h2>Sources de données</h2><p><strong>CDC — NHANES, cycle août 2021 à août 2023.</strong> Fichiers publics de démographie, mesures corporelles, insuline et glycémie à jeun, activité physique, jeûne, lipides, hémoglobine glyquée, hémoglobine et ferritine. Le dashboard HTML consomme des exports agrégés des tables dbt/BigQuery.</p></div>
+</div>
+<nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard">
+ <button type="button" data-dashboard-tab="qualite" aria-selected="true">Qualité des données</button>
+ <button type="button" data-dashboard-tab="analyse" aria-selected="false">Analyse descriptive</button>
+ <button type="button" data-dashboard-tab="correlations" aria-selected="false">Corrélations & robustesse</button>
+ <button type="button" data-dashboard-tab="methode" aria-selected="false">Méthode & limites</button>
+</nav>
+<div class="dashboard-panel" data-dashboard-panel="qualite">
   <section class="kpis">
     <article class="kpi"><small>Participants examinés</small><strong id="kpi-total">—</strong><span>Sur 11 933 participants dans les tables brutes</span></article>
     <article class="kpi"><small>Retenus pour le HOMA-IR</small><strong id="kpi-retained">—</strong><span>Adultes satisfaisant les règles du projet</span></article>
@@ -57,7 +78,9 @@ details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:
     <article class="panel section"><h3>Part retenue par âge et sexe</h3><p class="sub">Pourcentage retenu parmi les adultes examinés dans chaque groupe.</p><div id="quality-groups"></div><p class="hint">La tranche 70 ans et plus inclut les 80 ans et plus (âge plafonné à 80).</p></article>
   </section>
 
-  <section class="section" id="analyse">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="analyse" hidden>
+<section class="section" id="analyse">
     <div class="section-head"><div><div class="section-no">02 / Description</div><h2>HOMA-IR et groupes observés</h2></div><p>Les barres montrent la médiane et l’intervalle interquartile (Q1–Q3), avec l’effectif de chaque groupe.</p></div>
     <article class="panel">
       <div class="controls"><div class="field"><label for="homa-view">Comparer selon</label><select id="homa-view">
@@ -78,7 +101,9 @@ details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:
     </div>
   </section>
 
-  <section class="section" id="laboratoire">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="correlations" hidden>
+<section class="section" id="laboratoire">
     <div class="section-head"><div><div class="section-no">03 / Cohérence</div><h2>Mesures de laboratoire</h2></div><p>Corrélations de rangs avec le HOMA-IR, calculées séparément chez les femmes et les hommes.</p></div>
     <article class="panel"><h3>Corrélation de Spearman avec le HOMA-IR</h3><p class="sub">De −1 à +1 ; une valeur proche de 0 indique l’absence de lien net dans cet échantillon.</p><div id="correlation-chart" class="corr-list"></div><p class="hint">La ferritine n’est disponible que chez les femmes de 18 à 49 ans dans cet échantillon (n = 632) ; aucune valeur n’est présente chez les hommes.</p></article>
     <article class="panel section">
@@ -111,7 +136,9 @@ details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:
     </article>
   </section>
 
-  <section class="section" id="methode">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
+<section class="section" id="methode">
     <div class="section-head"><div><div class="section-no">06 / Transparence</div><h2>Méthode et limites</h2></div><p>La qualité des données est prioritaire sur l’interprétation des associations.</p></div>
     <div class="limits">
       <article class="panel"><h3>Règles de qualité appliquées</h3><ul>
@@ -143,6 +170,7 @@ details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:
       </details>
     </article>
   </section>
+</div>
 </main>
 <footer class="foot">Dashboard HTML statique construit à partir des exports agrégés du projet <a href="https://github.com/nnarou-hash/nutrition-insuline">nutrition-insuline</a>. <a href="https://nutrition-insuline-nn.streamlit.app">Version Streamlit interactive ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
 <script>
@@ -292,5 +320,16 @@ async function init(){
   }
 }
 init();
+</script>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-dashboard-tab]')];
+ const panels=[...document.querySelectorAll('[data-dashboard-panel]')];
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const key=button.dataset.dashboardTab;
+  buttons.forEach(b=>b.setAttribute('aria-selected',String(b===button)));
+  panels.forEach(panel=>panel.hidden=panel.dataset.dashboardPanel!==key);
+ }));
+})();
 </script>
 </body></html>
