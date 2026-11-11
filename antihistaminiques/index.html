@@ -18,10 +18,20 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
 .spark{width:100%;height:250px;display:block}.chart-axis{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:5px}.chart-tooltip{font-size:10px;color:var(--muted);margin-top:8px}.callout{background:#eff5f1;border-left:3px solid var(--teal);padding:12px 14px;border-radius:0 9px 9px 0;color:#496362;font-size:10px;line-height:1.7}.limits{display:grid;grid-template-columns:1fr 1fr;gap:13px}.limits ul{padding-left:18px;color:var(--muted);font-size:10px;line-height:1.85;margin:8px 0 0}.source{padding:16px;box-shadow:none}.source .icon{font-size:21px;margin-bottom:8px}.source h3{font-size:12px;color:var(--navy);margin:0 0 5px}.source p{font-size:10px;color:var(--muted);line-height:1.7;margin:0}.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.btn{border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:10px;color:var(--navy);font-weight:850;display:inline-block;background:#fff}.foot{background:var(--navy);color:#d3e1dc;padding:23px max(22px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:#fff}
 @media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.limits{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.section-head p{text-align:left}.barrow{grid-template-columns:110px 1fr 52px}}
 @media(max-width:540px){header{padding:17px 15px 35px}.top{align-items:flex-start;margin-bottom:32px}.nav{justify-content:flex-end;gap:8px}.nav a{font-size:9px}.hero h1{font-size:38px}main{padding:20px 12px 40px}.kpis{gap:8px}.kpi{padding:13px}.kpi strong{font-size:26px}.panel{padding:14px}.barrow{grid-template-columns:95px 1fr 46px;gap:6px}.pct-row{grid-template-columns:100px 1fr 40px}}
+
+.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750;cursor:pointer}
+.dashboard-tabs button[aria-selected="true"]{background:#e8f1ed;color:var(--navy);border-color:var(--line)}
+.dashboard-panel[hidden]{display:none!important}
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--navy)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
 </style></head>
 <body>
 <header>
-  <div class="top"><a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a><nav class="nav"><a href="#ruptures">Ruptures</a><a href="#consommation">OpenMedic</a><a href="#environnement">Pollen & météo</a><a href="#methode">Méthode</a></nav></div>
+  <div class="top"><a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a><nav class="nav"><a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></nav></div>
   <div class="hero">
     <div class="eyebrow">Antihistaminiques · Supply chain · Data engineering</div>
     <h1>Comprendre les signaux<br>de tension d’approvisionnement.</h1>
@@ -32,6 +42,10 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
 <main>
   <div class="notice"><strong>À lire :</strong> les consommations OpenMedic décrivent des remboursements, les événements ANSM des signalements et les pollens / météo des facteurs contextuels. Aucun de ces jeux ne donne accès aux stocks physiques des pharmacies, grossistes ou laboratoires. Ce dashboard est descriptif, pas une alerte opérationnelle ni un conseil médical.</div>
   <div class="meta"><span>Source des visualisations : fichiers Silver du dépôt antihistaminiques-pipeline</span><span id="data-status">Chargement des agrégats Silver…</span></div>
+<div class="project-brief">
+ <div><h2>Présentation du projet</h2><p>Exploration des signaux associés aux antihistaminiques (ATC R06) : signalements de tensions d’approvisionnement, volumes remboursés, référentiel des spécialités et facteurs environnementaux. Le dashboard sépare les sources et leurs périmètres pour éviter de confondre consommation, signalements et disponibilité physique.</p></div>
+ <div><h2>Sources de données</h2><p><strong>Sources publiques :</strong> ANSM (signalements et disponibilités), OpenMedic/CNAM (boîtes remboursées), BDPM (référentiel médicaments), RNSA/ATMO/CAMS-Copernicus (pollens), Open-Meteo (météo) et Sentinelles/INSERM (repères épidémiologiques). Les données sont préparées dans les tables Silver du pipeline.</p></div>
+</div>
   <section class="kpis">
     <article class="kpi"><small>Spécialités antihistaminiques</small><strong id="kpi-specialties">—</strong><span>Référentiel médicament Silver</span></article>
     <article class="kpi"><small>Molécules distinctes</small><strong id="kpi-molecules">—</strong><span>Dans le référentiel R06</span></article>
@@ -39,6 +53,8 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     <article class="kpi"><small>Événements ANSM</small><strong id="kpi-events">—</strong><span>Ruptures, risques et disponibilités</span></article>
   </section>
 
+  <nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard"><button type="button" data-dashboard-tab="ruptures" aria-selected="true">Signalements ANSM</button><button type="button" data-dashboard-tab="consommation" aria-selected="false">Consommation OpenMedic</button><button type="button" data-dashboard-tab="referentiel" aria-selected="false">Référentiel médicaments</button><button type="button" data-dashboard-tab="environnement" aria-selected="false">Environnement</button><button type="button" data-dashboard-tab="methode" aria-selected="false">Sources & limites</button></nav>
+  <div class="dashboard-panel" data-dashboard-panel="ruptures">
   <section class="section" id="ruptures">
     <div class="section-head"><div><div class="section-no">01 / Signalements</div><h2>Ruptures et tensions déclarées</h2></div><p>Événements extraits des fichiers Silver ANSM historiques et de l’export disponibilités 2025–2026.</p></div>
     <div class="grid2">
@@ -49,7 +65,9 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     <article class="panel section"><h3>Derniers événements présents dans le Silver</h3><p class="sub">Échantillon des événements les plus récents dans les fichiers récupérés.</p><div class="table-wrap"><table><thead><tr><th>Mois</th><th>Catégorie</th><th>Molécule</th><th>Médicament</th><th>Source</th></tr></thead><tbody id="rupture-table"></tbody></table></div></article>
   </section>
 
-  <section class="section" id="consommation">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="consommation" hidden>
+<section class="section" id="consommation">
     <div class="section-head"><div><div class="section-no">02 / Consommation</div><h2>Volumes OpenMedic</h2></div><p>Boîtes remboursées en ville. La lecture peut être filtrée par année et comparée entre régions ou molécules.</p></div>
     <article class="panel">
       <div class="controls"><div class="field"><label for="cons-year">Année</label><select id="cons-year"></select></div><div class="field"><label for="cons-region">Région</label><select id="cons-region"><option value="">Toutes les régions</option></select></div></div>
@@ -65,7 +83,9 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     <p class="callout section">La normalisation régionale utilise les valeurs de population paramétrées dans le projet Streamlit. La Corse peut être exclue dans la version interactive pour tenir compte de sa petite population et de la fréquentation touristique.</p>
   </section>
 
-  <section class="section">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="referentiel" hidden>
+<section class="section">
     <div class="section-head"><div><div class="section-no">03 / Référentiel</div><h2>Spécialités et laboratoires</h2></div><p>Profil agrégé des spécialités R06 présentes dans le référentiel Silver.</p></div>
     <div class="grid2">
       <article class="panel"><h3>Profil démographique moyen</h3><p class="sub">Moyenne simple des parts par spécialité, et non répartition pondérée des patients.</p><div id="medicine-profile" class="pct-grid"></div></article>
@@ -75,7 +95,9 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     <article class="panel section"><h3>Substances actives — référentiel BDPM</h3><p class="sub">Nombre de spécialités par substance active dans la base publique des médicaments, filtrée sur la classe R06.</p><div id="bdpm-substances" class="bars"></div></article>
   </section>
 
-  <section class="section" id="environnement">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="environnement" hidden>
+<section class="section" id="environnement">
     <div class="section-head"><div><div class="section-no">04 / Facteurs contextuels</div><h2>Pollen et météo</h2></div><p>Les données environnementales sont agrégées par mois à partir des fichiers Silver ; les changements de source doivent rester visibles dans l’interprétation.</p></div>
     <article class="panel">
       <div class="controls"><div class="field"><label for="pollen-taxon">Taxon</label><select id="pollen-taxon"></select><div class="sub">Concentration moyenne mensuelle, unités de la source.</div></div><div class="field"><label for="pollen-source">Source</label><select id="pollen-source"><option value="">Toutes</option></select></div></div>
@@ -88,7 +110,9 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     <article class="panel section"><h3>Repères épidémiologiques Sentinelles</h3><p class="sub">Indicateurs mensuels nationaux lorsqu’ils sont présents dans le fichier Silver.</p><div class="table-wrap"><table><thead id="sentinel-head"></thead><tbody id="sentinel-table"></tbody></table></div></article>
   </section>
 
-  <section class="section" id="methode">
+  </div>
+<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
+<section class="section" id="methode">
     <div class="section-head"><div><div class="section-no">05 / Méthode</div><h2>Sources et limites d’interprétation</h2></div><p>Les chiffres et graphiques de cette page sont calculés à partir des fichiers Silver, pas de valeurs recopiées du README.</p></div>
     <div class="grid3">
       <article class="source"><div class="icon">💊</div><h3>OpenMedic / CNAM</h3><p>Volumes de remboursements par année, région, molécule, âge et sexe. Ne mesure ni toutes les ventes, ni les stocks disponibles.</p></article>
@@ -104,6 +128,7 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     </div>
     <article class="panel section"><h3>Modélisation prédictive</h3><p class="sub">Le projet conserve un classificateur Random Forest, un modèle de régression pollen et une interprétation SHAP. Les courbes de prédiction et les métriques détaillées restent dans l’application Streamlit afin de ne pas mélanger les indicateurs calculés depuis Silver avec les résultats issus des modèles Gold.</p><div class="links"><a class="btn" href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener">Voir les prédictions interactives ↗</a><a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline/blob/main/docs/dictionnaire_donnees.md" target="_blank" rel="noopener">Dictionnaire de données ↗</a><a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener">Dépôt GitHub ↗</a></div></article>
   </section>
+</div>
 </main>
 <footer class="foot">Dashboard HTML construit à partir des tables Silver du projet Antihistaminiques Pipeline. <a href="https://antihistaminiques-pipeline-2.streamlit.app">Conserver l’exploration interactive avec Streamlit ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
 <script>
@@ -210,5 +235,16 @@ async function init(){
   }catch(error){$('data-status').textContent='Données Silver non chargées';const note=document.createElement('div');note.className='notice';note.textContent=error.message+' Le générateur doit récupérer les fichiers LFS Silver puis produire data.json.';document.querySelector('main').prepend(note)}
 }
 init();
+</script>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-dashboard-tab]')];
+ const panels=[...document.querySelectorAll('[data-dashboard-panel]')];
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const key=button.dataset.dashboardTab;
+  buttons.forEach(b=>b.setAttribute('aria-selected',String(b===button)));
+  panels.forEach(panel=>panel.hidden=panel.dataset.dashboardPanel!==key);
+ }));
+})();
 </script>
 </body></html>
