@@ -55,7 +55,7 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
       <div class="controls"><div class="field"><label for="cons-year">Année</label><select id="cons-year"></select></div><div class="field"><label for="cons-region">Région</label><select id="cons-region"><option value="">Toutes les régions</option></select></div></div>
       <div class="grid2">
         <div><h3>Évolution annuelle</h3><p class="sub">Volume de boîtes remboursées en millions.</p><div id="cons-annual" class="bars"></div></div>
-        <div><h3>Régions</h3><p class="sub">Volume absolu ; ou normalisation pour 1 000 habitants lorsqu’une région est sélectionnée.</p><div id="cons-region-chart" class="bars"></div></div>
+        <div><h3 id="region-chart-title">Volumes par région</h3><p class="sub" id="region-chart-sub">Boîtes remboursées sur la période sélectionnée ; choisis une région pour voir son évolution par année.</p><div id="cons-region-chart" class="bars"></div></div>
       </div>
     </article>
     <div class="grid2 section">
@@ -82,7 +82,7 @@ main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff
     </article>
     <div class="grid2 section">
       <article class="panel"><h3>Température moyenne mensuelle</h3><p class="sub">Moyenne calculée à partir des lignes météo disponibles dans le Silver.</p><div id="weather-temp" class="bars"></div></article>
-      <article class="panel"><h3>Précipitations mensuelles</h3><p class="sub">Agrégat mensuel du fichier météo Silver.</p><div id="weather-rain" class="bars"></div></article>
+      <article class="panel"><h3>Précipitations mensuelles</h3><p class="sub">Moyenne des valeurs quotidiennes agrégées par mois dans le fichier météo Silver.</p><div id="weather-rain" class="bars"></div></article>
     </div>
     <article class="panel section"><h3>Repères épidémiologiques Sentinelles</h3><p class="sub">Indicateurs mensuels nationaux lorsqu’ils sont présents dans le fichier Silver.</p><div class="table-wrap"><table><thead id="sentinel-head"></thead><tbody id="sentinel-table"></tbody></table></div></article>
   </section>
@@ -137,12 +137,20 @@ function monthlyRuptures(){
 function consumption(){
   const c=D.consumption||{},year=$('cons-year').value,region=$('cons-region').value;
   bars('cons-annual',(c.annual||[]).map(r=>({label:String(r.year),boxes:r.boxes})),'label','boxes',v=>million(v),10);
-  const regional=(c.regional||[]).filter(r=>(!year||String(r.year)===year)&&(!region||r.region===region));
-  const grouped={};regional.forEach(r=>{if(!grouped[r.region])grouped[r.region]={region:r.region,boxes:0,per1000:0};grouped[r.region].boxes+=Number(r.boxes||0);grouped[r.region].per1000+=Number(r.boxes_per_1000||0)});
-  let regRows=Object.values(grouped);
-  regRows.sort((a,b)=>region?a.boxes-b.boxes:b.boxes-a.boxes);
-  if(!region)regRows=regRows.slice(0,13);
-  bars('cons-region-chart',regRows.map(r=>({label:r.region,value:region?r.boxes:r.per1000})),'label','value',v=>region?million(v):fmt(v,0),13);
+  const allRegional=(c.regional||[]);
+  if(region){
+    const regRows=allRegional.filter(r=>r.region===region&&(!year||String(r.year)===year)).sort((a,b)=>Number(a.year)-Number(b.year)).map(r=>({label:String(r.year),value:r.boxes_per_1000}));
+    $('region-chart-title').textContent=region+' · évolution annuelle';
+    $('region-chart-sub').textContent='Boîtes remboursées pour 1 000 habitants, selon les populations paramétrées dans le projet.';
+    bars('cons-region-chart',regRows,'label','value',v=>fmt(v,0),10);
+  }else{
+    const grouped={};
+    allRegional.filter(r=>!year||String(r.year)===year).forEach(r=>{if(!grouped[r.region])grouped[r.region]={region:r.region,boxes:0};grouped[r.region].boxes+=Number(r.boxes||0)});
+    const regRows=Object.values(grouped).sort((a,b)=>b.boxes-a.boxes).slice(0,13).map(r=>({label:r.region,value:r.boxes}));
+    $('region-chart-title').textContent='Volumes par région';
+    $('region-chart-sub').textContent=year?'Boîtes remboursées en '+year+'.':'Boîtes remboursées cumulées sur les années affichées.';
+    bars('cons-region-chart',regRows,'label','value',v=>million(v),13);
+  }
   const mols=(c.molecules||[]).filter(r=>!year||String(r.year)===year),byMolecule={};mols.forEach(r=>byMolecule[r.molecule]=(byMolecule[r.molecule]||0)+Number(r.boxes||0));
   bars('cons-molecules',Object.entries(byMolecule).map(([molecule,boxes])=>({molecule,boxes})).sort((a,b)=>b.boxes-a.boxes),'molecule','boxes',v=>million(v),12);
   bars('cons-demographics',(c.demographics||[]).map(r=>({label:r.age_group+' · '+r.sex_group,boxes:r.boxes})).sort((a,b)=>b.boxes-a.boxes),'label','boxes',v=>million(v),12);
