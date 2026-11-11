@@ -20,20 +20,43 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
 .events{display:grid;gap:9px}.event{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.event:last-child{border:0}.event-date{font-size:10px;color:var(--muted)}.event-main strong{display:block;font-size:11px}.event-main span{font-size:10px;color:var(--muted)}
 .ai{white-space:pre-wrap;font-size:11px;line-height:1.8;color:#4f6265}.btn{border:1px solid var(--line);background:white;padding:8px 11px;border-radius:9px;font:inherit;font-size:10px;font-weight:850;color:var(--navy);cursor:pointer}.btn:hover{border-color:var(--teal)}.empty{font-size:12px;color:var(--muted);padding:15px 0}.stat-line{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}.stat-line strong{color:var(--navy);text-align:right}.fine{font-size:10px;color:var(--muted);line-height:1.8}.foot{background:var(--navy);color:#d4e1dc;padding:24px max(20px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:white}
 @media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:550px){.wrap{padding:20px 12px 40px}.header{padding:18px 15px 24px}.nav{margin-bottom:27px}.filters{padding:12px}.field{min-width:100%}.barrow{grid-template-columns:110px 1fr 30px}.event{grid-template-columns:1fr;gap:3px}.title{align-items:start;flex-direction:column}}
+
+.dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;padding:7px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.dashboard-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;font-size:12px;font-weight:750}
+.dashboard-tabs button[aria-selected="true"]{background:var(--pale,var(--soft));color:var(--ink);border-color:var(--line)}
+.dashboard-panel[hidden]{display:none!important}
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--ink)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}.dashboard-tabs{overflow-x:auto;flex-wrap:nowrap}.dashboard-tabs button{white-space:nowrap}}
 </style></head>
 <body>
 <header class="header"><div class="nav"><a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a><a href="https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments" target="_blank" rel="noopener">Source officielle ANSM ↗</a></div>
 <div class="hero"><div class="tag">Santé publique · Data quality · Monitoring</div><h1>Agent Veille<br>Pénuries ANSM</h1><p>Un dispositif de veille documentaire qui suit les informations publiées par l’ANSM, conserve les instantanés, détecte les changements et facilite l’analyse des tensions d’approvisionnement.</p><div class="scope"><strong>Périmètre :</strong> liste publique ANSM des médicaments d’intérêt thérapeutique majeur (MITM) faisant l’objet de difficultés d’approvisionnement, ainsi que certaines situations récemment normalisées. Cette page ne mesure pas les stocks disponibles dans les pharmacies ou chez les grossistes.</div></div></header>
 <main class="wrap">
 <div class="meta"><span id="last-check">Chargement du dernier relevé…</span><span>Contrôle automatique lundi, mercredi et vendredi · publication si changement détecté</span><span><a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener">Code source & documentation ↗</a></span></div>
+<div class="project-brief">
+ <div><h2>Présentation du projet</h2><p>Une veille documentaire qui compare les publications successives de l’ANSM, conserve les instantanés et rend visibles les nouvelles entrées, modifications et sorties de liste. Le tableau de bord présente la situation par statut, les spécialités suivies, l’historique des évolutions et une synthèse de veille facultative.</p></div>
+ <div><h2>Sources de données</h2><p><strong>Source principale :</strong> page publique ANSM « Disponibilité des médicaments ». Les historiques et événements sont produits par le collecteur Python à partir des instantanés successifs. Cette veille ne mesure pas les stocks physiques des pharmacies, grossistes ou laboratoires.</p></div>
+</div>
 <div id="state" class="state"></div>
 <section class="filters"><div class="field"><label for="search">Rechercher une spécialité</label><input id="search" type="search" placeholder="Nom, substance, domaine médical…"></div><div class="field"><label for="status-filter">Statut</label><select id="status-filter"><option value="">Tous les statuts</option></select></div><div class="field"><label for="domain-filter">Domaine médical</label><select id="domain-filter"><option value="">Tous les domaines</option></select></div><button class="btn" id="reset">Réinitialiser</button></section>
+<nav class="dashboard-tabs" role="tablist" aria-label="Parties du dashboard"><button type="button" data-dashboard-tab="situation" aria-selected="true">Vue d’ensemble</button><button type="button" data-dashboard-tab="specialites" aria-selected="false">Spécialités suivies</button><button type="button" data-dashboard-tab="historique" aria-selected="false">Évolutions</button><button type="button" data-dashboard-tab="methode" aria-selected="false">Synthèse & méthode</button></nav>
+<div class="dashboard-panel" data-dashboard-panel="situation">
 <section class="kpis"><article class="kpi"><small>Entrées suivies</small><strong id="total">—</strong><span>Dans le dernier instantané public</span></article><article class="kpi"><small>Ruptures de stock</small><strong id="ruptures">—</strong><span>Statut affiché par l’ANSM</span></article><article class="kpi"><small>Tensions d’approvisionnement</small><strong id="tensions">—</strong><span>Statut affiché par l’ANSM</span></article><article class="kpi"><small>Nouveaux changements</small><strong id="changes">—</strong><span>Lors de la dernière actualisation</span></article></section>
 <section class="section"><div class="title"><div><div class="eyebrow">01 / Situation observée</div><h2>Répartition par statut</h2></div><div class="desc">Selon les libellés de la publication ANSM</div></div><div class="two"><div class="panel"><h3>Statuts publiés</h3><p>Nombre d’entrées par catégorie de statut.</p><div id="status-bars" class="bars"></div></div><div class="panel"><h3>Domaines médicaux les plus représentés</h3><p>Une même spécialité peut apparaître dans plusieurs domaines ; les volumes ne sont donc pas exclusifs.</p><div id="domain-bars" class="bars"></div></div></div></section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="specialites" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">02 / Exploration</div><h2>Spécialités suivies</h2></div><div class="desc" id="rows-count"></div></div><div class="panel"><div class="tablebox"><table><thead><tr><th>Statut</th><th>Mise à jour</th><th>Spécialité</th><th>Remise à disposition</th><th>Domaines</th><th>Source</th></tr></thead><tbody id="signals"></tbody></table></div></div></section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="historique" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">03 / Traçabilité</div><h2>Évolutions détectées</h2></div><div class="desc">Les disparitions sont notées « sortie de liste » et ne sont pas interprétées comme un retour à la normale.</div></div><div class="panel"><div id="events" class="events"></div></div></section>
+</div>
+<div class="dashboard-panel" data-dashboard-panel="methode" hidden>
 <section class="section"><div class="title"><div><div class="eyebrow">04 / IA générative</div><h2>Synthèse de veille</h2></div></div><div class="panel"><div id="ai-summary" class="ai">Aucune synthèse IA publiée pour le moment. Configure la variable secrète OPENAI_API_KEY dans GitHub Actions pour activer la génération optionnelle.</div></div></section>
 <section class="section"><div class="title"><div><div class="eyebrow">05 / Méthode & limites</div><h2>Lire les indicateurs avec prudence</h2></div></div><div class="two"><div class="panel"><h3>Ce que la veille observe</h3><p>Le statut, la date de mise à jour, la spécialité, la date de remise à disposition lorsqu’elle est publiée et le domaine médical. Chaque actualisation détectée archive un instantané et compare les informations à celles du relevé précédent.</p><p>Les changements sont des différences entre deux publications récupérées par le collecteur. Ils ne décrivent pas nécessairement l’évolution complète de la situation sur le terrain.</p></div><div class="panel"><h3>Ce que la veille ne permet pas de conclure</h3><p>Elle ne donne pas accès aux stocks des laboratoires, grossistes-répartiteurs ou pharmacies. Une sortie de liste ne confirme pas une remise à disposition ; une date vide ne prédit pas une date de retour.</p><p>La liste n’est pas exhaustive de tous les médicaments : elle est centrée sur les MITM suivis par l’ANSM. Toute décision doit s’appuyer sur les informations officielles et les circuits professionnels appropriés.</p></div></div></section>
+</div>
 </main><footer class="foot">Projet portfolio — Python · BeautifulSoup · CSV/JSON · GitHub Actions · OpenAI Responses API (optionnelle). <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm">Voir le code ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
 <script>
 const DATA="./data/";
@@ -60,4 +83,17 @@ async function load(){try{const [snapshot,report,eventsResponse]=await Promise.a
  try{let r=await fetch(DATA+"ai_summary.md",{cache:"no-store"});if(!r.ok)r=await fetch(DATA+"report.md",{cache:"no-store"});if(r.ok)$("ai-summary").textContent=await r.text()}catch(_){}
  }catch(err){$("state").style.display="block";$("state").textContent="Aucun relevé exploitable n’est encore publié. Le collecteur doit effectuer sa première exécution réussie. Détail : "+err.message;$("last-check").textContent="En attente du premier relevé validé";$("total").textContent="—";$("ruptures").textContent="—";$("tensions").textContent="—";$("changes").textContent="—"}}
 ["search","status-filter","domain-filter"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));$("reset").addEventListener("click",()=>{$("search").value="";$("status-filter").value="";$("domain-filter").value="";render()});load();
-</script></body></html>
+</script><script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-dashboard-tab]')];
+ const panels=[...document.querySelectorAll('[data-dashboard-panel]')];
+ if(!buttons.length||!panels.length)return;
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const key=button.dataset.dashboardTab;
+  buttons.forEach(b=>b.setAttribute('aria-selected',String(b===button)));
+  panels.forEach(panel=>panel.hidden=panel.dataset.dashboardPanel!==key);
+  window.dispatchEvent(new Event('resize'));
+ }));
+})();
+</script>
+</body></html>
