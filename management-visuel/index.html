@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Cockpit de management visuel et de pilotage de la performance opérationnelle — démonstration sur données synthétiques.">
+<title>Management visuel | Cockpit opérationnel</title>
+<style>
+:root{--ink:#241f32;--muted:#777287;--purple:#7652a5;--purple2:#9b7bc2;--pale:#f6f3fa;--line:#ebe7f1;--green:#19865a;--greenbg:#e8f6ee;--amber:#a36a0b;--amberbg:#fff4dc;--red:#b83d43;--redbg:#fcebed;--shadow:0 8px 28px rgba(37,25,58,.055)}
+*{box-sizing:border-box}body{margin:0;background:#faf9fc;color:var(--ink);font:14px/1.5 Inter,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.shell{min-height:100vh;display:grid;grid-template-columns:248px 1fr}.side{background:#fff;border-right:1px solid var(--line);padding:26px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}.brand{display:flex;gap:11px;align-items:center;padding:0 8px 28px}.brandmark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#5d3c8b,#a58ac8);color:#fff;display:grid;place-items:center;font-size:19px}.brand strong{display:block;font-size:14px;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.1em;margin-top:3px}.navlabel{font-size:10px;font-weight:800;letter-spacing:.14em;color:#a09aaa;padding:8px 11px 10px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#696477;text-align:left;padding:11px 12px;border-radius:10px;font-weight:650;display:flex;align-items:center;gap:11px}.nav button:hover{background:#f8f5fb}.nav button.active{background:#f0eaf7;color:#69478f}.nav .ico{width:19px;text-align:center;font-size:16px}.sidefoot{margin-top:auto;background:#f8f6fb;border:1px solid var(--line);padding:13px;border-radius:12px;font-size:11px;color:var(--muted)}.dot{display:inline-block;width:7px;height:7px;background:#27a66a;border-radius:50%;margin-right:6px}
+main{min-width:0;padding:25px 32px 28px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.crumb{color:var(--muted);font-size:12px}.crumb b{padding:0 8px;color:#c3bdcc}.crumb strong{color:var(--ink)}.topright{display:flex;gap:9px;align-items:center}.demo{background:#f0eaf7;color:#65468a;border-radius:20px;padding:6px 11px;font-size:10px;letter-spacing:.07em;font-weight:800}.avatar{width:34px;height:34px;border-radius:50%;background:#e8e0f1;color:#69478f;display:grid;place-items:center;font-weight:800}
+.filters{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px;display:flex;flex-wrap:wrap;gap:13px;align-items:end;box-shadow:var(--shadow);margin-bottom:22px}.filterintro{min-width:150px;margin-right:auto}.filterintro small{display:block;color:#948da0;font-size:9px;font-weight:800;letter-spacing:.12em}.filterintro strong{display:block;margin-top:3px;font-size:12px}.filters label{display:grid;gap:5px;font-size:10px;color:var(--muted);font-weight:700}.filters input,.filters select,.control{border:1px solid var(--line);background:#fff;border-radius:8px;color:var(--ink);padding:8px 10px;font-size:12px}.filters button{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:#645a72;font-size:11px;font-weight:700}
+.hero{background:linear-gradient(112deg,#241b3f 0%,#49346c 58%,#7652a5 100%);border-radius:18px;color:#fff;padding:23px 26px;margin-bottom:17px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-40px;top:-110px;width:360px;height:260px;border-radius:50%;background:rgba(255,255,255,.07)}.eyebrow{font-size:9px;letter-spacing:.16em;font-weight:800;color:#d7c9e9}.hero h1{font-size:26px;margin:6px 0 5px;letter-spacing:-.03em;position:relative;z-index:1}.hero p{margin:0;color:#e6dfee;font-size:12px;max-width:800px;position:relative;z-index:1}
+.grid{display:grid;gap:13px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:15px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.kpi{padding:15px 16px;min-height:113px}.kpitop{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px;font-weight:650}.kpiicon{width:27px;height:27px;border-radius:8px;background:#f3eef8;color:#7955a0;display:grid;place-items:center}.value{font-size:27px;font-weight:800;letter-spacing:-.04em;margin:8px 0 2px}.foot{font-size:10px;color:#918b9d}.pill{display:inline-block;border-radius:20px;padding:3px 8px;font-size:9px;font-weight:800;letter-spacing:.04em}.green{background:var(--greenbg);color:var(--green)}.amber{background:var(--amberbg);color:var(--amber)}.red{background:var(--redbg);color:var(--red)}.gray{background:#f0eef3;color:#777080}
+.two{grid-template-columns:1.1fr .9fr;margin-bottom:14px}.panel{padding:17px 18px;min-width:0}.panelhead{display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:13px}.panel h2{font-size:14px;margin:0 0 3px}.sub{font-size:10px;color:var(--muted)}.mini{font-size:9px;color:#938c9c;font-weight:800;letter-spacing:.08em}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:11px;white-space:nowrap}th{text-align:left;color:#8a8495;font-size:9px;letter-spacing:.05em;font-weight:800;padding:9px 8px;border-bottom:1px solid var(--line)}td{padding:10px 8px;border-bottom:1px solid #f2eff5;color:#5d5768}td:first-child{color:var(--ink);font-weight:700}tr:last-child td{border-bottom:0}.statusline{height:7px;background:#f0edf4;border-radius:99px;overflow:hidden;min-width:75px}.statusline span{display:block;height:100%;border-radius:99px}.chart{width:100%;height:auto;display:block}.bars{display:grid;gap:12px}.barrow{display:grid;grid-template-columns:105px 1fr 37px;gap:9px;align-items:center;font-size:10px;color:#6f687b}.barbg{height:9px;border-radius:20px;background:#f0edf4;overflow:hidden}.barbg span{display:block;height:100%;background:linear-gradient(90deg,#a68ac7,#7652a5);border-radius:20px}
+.cards2{grid-template-columns:repeat(2,minmax(0,1fr))}.issue{border:1px solid var(--line);border-radius:11px;padding:12px;margin-bottom:9px}.issuehead{display:flex;justify-content:space-between;gap:12px}.issue strong{font-size:11px}.issue p{margin:6px 0;color:var(--muted);font-size:10px}.meta{font-size:9px;color:#938c9c}
+.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:13px}.kanban{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:10px;overflow:auto}.kancol{background:#f7f5f9;border:1px solid var(--line);border-radius:11px;padding:10px}.kanhead{font-size:10px;font-weight:800;margin-bottom:9px}.kanitem{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px;margin-bottom:8px;font-size:10px}.kanitem strong{display:block;margin-bottom:5px}.kanitem small{color:var(--muted)}
+.huddle{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.huddle article{background:#fbf9fd;border:1px solid var(--line);border-radius:12px;padding:15px}.huddle small{font-size:9px;letter-spacing:.1em;font-weight:800;color:#8c8298}.huddle p{font-size:12px;margin:8px 0 0}
+.callout{background:#f7f4fb;border-left:3px solid #9778bc;border-radius:8px;padding:12px 14px;color:#625773;font-size:10px;margin-top:14px}.footer{border-top:1px solid var(--line);margin-top:25px;padding-top:15px;display:flex;justify-content:space-between;gap:12px;color:#9690a0;font-size:9px}
+@media(max-width:1050px){.shell{grid-template-columns:210px 1fr}.kpis{grid-template-columns:repeat(2,1fr)}main{padding:20px}.two{grid-template-columns:1fr}}@media(max-width:720px){.shell{display:block}.side{height:auto;position:relative;padding:13px}.brand{padding:0 5px 11px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.navlabel,.sidefoot{display:none}.nav button{font-size:11px;padding:9px}.top{align-items:flex-start}.demo{display:none}main{padding:13px}.filters{gap:9px}.filterintro{width:100%}.filters label{flex:1;min-width:130px}.hero{padding:19px}.hero h1{font-size:22px}.kpis{gap:8px}.kpi{padding:11px;min-height:104px}.value{font-size:22px}.two,.cards2,.huddle{grid-template-columns:1fr}.footer{display:block}.footer span{display:block;margin:4px 0}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side">
+  <div class="brand"><div class="brandmark">◈</div><div><strong>OPERATIONS</strong><small>COCKPIT OPÉRATIONNEL</small></div></div>
+  <div class="navlabel">ESPACE DE PILOTAGE</div>
+  <nav class="nav" aria-label="Navigation principale">
+    <button class="active" data-page="board"><span class="ico">◫</span>Vue quotidienne</button>
+    <button data-page="performance"><span class="ico">⌁</span>Analyse de la performance</button>
+    <button data-page="issues"><span class="ico">◉</span>Problèmes & résolution</button>
+    <button data-page="actions"><span class="ico">☷</span>Plan d’action</button>
+    <button data-page="huddle"><span class="ico">◷</span>Réunion quotidienne</button>
+    <button data-page="quality"><span class="ico">✓</span>Qualité des données</button>
+  </nav>
+  <div class="sidefoot"><span class="dot"></span><strong>Démonstrateur portfolio</strong><br>Organisation fictive · Données synthétiques</div>
+</aside>
+<main>
+  <div class="top"><div class="crumb">Espace de travail <b>/</b> <strong id="crumb">Vue quotidienne</strong></div><div class="topright"><span class="demo">DONNÉES DE DÉMONSTRATION</span><span class="avatar">NN</span></div></div>
+  <section class="filters">
+    <div class="filterintro"><small>FILTRES D’AFFICHAGE</small><strong>Périmètre opérationnel</strong></div>
+    <label>Date de référence<input id="refdate" type="date" value="2026-11-10" min="2026-05-14" max="2026-11-10"></label>
+    <label>Équipe<select id="team"><option value="all">Toutes les équipes</option><option value="Conditionnement">Conditionnement</option><option value="Qualité">Qualité</option><option value="Approvisionnement">Approvisionnement</option></select></label>
+    <button id="reset">Réinitialiser</button>
+  </section>
+  <div id="view"></div>
+  <footer class="footer"><span>Operations Excellence & Management visuel</span><span>Jeu fictif · Données synthétiques · Démonstrateur non validé pour la production</span></footer>
+</main>
+</div>
+<script>
+(function(){
+"use strict";
+var teams=["Conditionnement","Qualité","Approvisionnement"];
+var start=new Date("2026-05-14T12:00:00");
+var end=new Date("2026-11-10T12:00:00");
+var days=[];
+for(var i=0;i<=180;i++){
+ var d=new Date(start);d.setDate(d.getDate()+i);
+ var iso=d.toISOString().slice(0,10);
+ teams.forEach(function(t,ti){
+  var wave=Math.sin(i/15),q=6.8+wave*1.1+ti*.45+Math.sin(i/37)*.8+(i>88&&i<97?3.3:0);
+  var due=64+((i*7+ti*13)%37),rate=95+Math.sin(i/18)*1.9-ti*.8+(i>120&&i<129?-4:0);
+  days.push({date:iso,team:t,safety:(i%53===10+ti?1:0),ncr:Math.max(0,Math.round((q/1000)*(260+ti*55))),inspected:260+ti*55,
+   rework:Math.max(8,26+ti*4+wave*4+(i>88&&i<97?7:0)),onTime:Math.round(due*rate/100),due:due,productive:(.82+Math.sin(i/17)*.06+ti*.012)*(ti===0?120:ti===1?88:72),capacity:ti===0?120:ti===1?88:72});
+ });
+}
+var issues=[
+["ISS-001","Qualité","Écart dans le dossier de lot","Élevée","En cours","Conditionnement","Revue documentaire"],
+["ISS-002","Délais","Confirmation d’expédition retardée","Critique","Ouvert","Approvisionnement","Expédition"],
+["ISS-003","Processus","Transmission manuelle générant des reprises","Modérée","En cours","Qualité","Revue qualité"],
+["ISS-004","Données","Référence en doublon détectée","Élevée","Bloqué","Qualité","Référentiel"],
+["ISS-005","Ressources","Couverture d’équipe inférieure au plan","Modérée","Ouvert","Conditionnement","Planification"],
+["ISS-006","Qualité","Enregistrement d’échantillonnage incomplet","Élevée","Résolu","Qualité","Contrôle"],
+["ISS-007","Délais","Livraison de matières hors créneau","Critique","En cours","Approvisionnement","Approvisionnement"],
+["ISS-008","Sécurité","Observation ergonomique enregistrée","Faible","Résolu","Conditionnement","Sécurité"],
+["ISS-009","Processus","File d’approbation au-dessus du seuil","Élevée","Bloqué","Qualité","Libération"],
+["ISS-010","Données","Champ obligatoire manquant dans le suivi","Modérée","Ouvert","Approvisionnement","Référentiel"],
+["ISS-011","Délais","Jalon de libération à risque","Élevée","En cours","Qualité","Libération"],
+["ISS-012","Ressources","Déséquilibre de capacité entre équipes","Modérée","Résolu","Approvisionnement","Planification"]
+].map(function(a,i){return{id:a[0],category:a[1],title:a[2],severity:a[3],status:a[4],team:a[5],process:a[6],date:"2026-10-"+String(2+i*2).padStart(2,"0"),cause:["Transmission insuffisante","Procédure imprécise","Donnée de référence inexacte","Contrainte de capacité"][i%4]};});
+var actionTitles=["Mettre à jour l’instruction de travail","Réconcilier les enregistrements sources","Revoir la transmission entre équipes","Ajouter un point de vérification","Actualiser le briefing de l’équipe","Valider les données de référence","Rééquilibrer la charge de travail","Confirmer les preuves de contrôle","Sécuriser le jalon de libération","Clarifier le circuit d’approbation"];
+var actions=[];
+for(var j=0;j<30;j++){
+ var st=["À démarrer","En cours","Bloquée","Terminée"][j%4],team=teams[j%3],due=new Date("2026-10-01T12:00:00");due.setDate(due.getDate()+j*2);
+ actions.push({id:"ACT-"+String(j+1).padStart(3,"0"),title:actionTitles[j%actionTitles.length],team:team,owner:["Responsable des opérations","Coordinateur qualité","Analyste planification"][j%3],priority:["Critique","Élevée","Modérée","Faible"][j%4],status:st,due:due.toISOString().slice(0,10),issue:issues[j%issues.length].id});
+}
+var names={board:"Vue quotidienne",performance:"Analyse de la performance",issues:"Problèmes et résolution",actions:"Gestion des actions",huddle:"Réunion quotidienne",quality:"Qualité des données"};
+var page="board";
+function $(id){return document.getElementById(id)}
+function teamRows(){var t=$("team").value;return days.filter(function(r){return t==="all"||r.team===t})}
+function metricRows(date){return teamRows().filter(function(r){return r.date===date})}
+function agg(rows,key){return rows.reduce(function(s,r){return s+r[key]},0)}
+function value(k,rows){if(!rows.length)return 0;if(k==="security")return agg(rows,"safety");if(k==="quality")return agg(rows,"ncr")/Math.max(1,agg(rows,"inspected"))*1000;if(k==="rework")return agg(rows,"rework");if(k==="delivery")return agg(rows,"onTime")/Math.max(1,agg(rows,"due"))*100;return agg(rows,"productive")/Math.max(1,agg(rows,"capacity"))*100}
+var defs=[
+{id:"security",name:"Événements de sécurité",dim:"Sécurité",target:0,unit:"",dir:"max"},
+{id:"quality",name:"Taux de non-conformité",dim:"Qualité",target:8,unit:"pour 1 000",dir:"max"},
+{id:"rework",name:"Heures de reprise",dim:"Coût",target:34,unit:"h",dir:"max"},
+{id:"delivery",name:"Respect des délais",dim:"Délais",target:95,unit:"%",dir:"min"},
+{id:"people",name:"Utilisation de la capacité",dim:"Équipe",target:75,upper:90,unit:"%",dir:"range"}
+];
+function status(k,v){if(k.dir==="max")return v<=k.target?"green":v<=k.target*1.2+1?"amber":"red";if(k.dir==="min")return v>=k.target?"green":v>=k.target-3?"amber":"red";return v>=k.target&&v<=k.upper?"green":v>=70&&v<=95?"amber":"red"}
+function fmt(v,d){return Number(v).toLocaleString("fr-FR",{minimumFractionDigits:d||0,maximumFractionDigits:d||1})}
+function pill(s){var c=s==="Atteint"||s==="Terminée"||s==="Résolu"?"green":s==="Vigilance"||s==="Ouvert"||s==="En cours"||s==="À démarrer"?"amber":s==="Bloquée"||s==="Alerte"||s==="Non conforme"?"red":"gray";return'<span class="pill '+c+'">'+s.toUpperCase()+'</span>'}
+function hero(title,desc){return'<div class="hero"><div class="eyebrow">MANAGEMENT VISUEL · EXCELLENCE OPÉRATIONNELLE</div><h1>'+title+'</h1><p>'+desc+'</p></div>'}
+function card(label,val,foot,ico,cl){return'<article class="card kpi"><div class="kpitop"><span>'+label+'</span><i class="kpiicon">'+ico+'</i></div><div class="value">'+val+'</div><div class="foot">'+foot+(cl?' '+pill(cl):'')+'</div></article>'}
+function panel(title,sub,body,right){return'<section class="panel"><div class="panelhead"><div><h2>'+title+'</h2><div class="sub">'+(sub||"")+'</div></div><span class="mini">'+(right||"")+'</span></div>'+body+'</section>'}
+function lineChart(rows,k){var w=620,h=190,l=35,r=12,t=12,b=28,vals=rows.map(function(x){return x.v}),min=Math.min.apply(null,vals.concat([k.target])),max=Math.max.apply(null,vals.concat([k.target]));if(max===min)max=min+1;var x=function(i){return l+i/Math.max(1,rows.length-1)*(w-l-r)},y=function(v){return t+(max-v)/(max-min)*(h-t-b)};var pts=rows.map(function(a,i){return x(i)+","+y(a.v)}).join(" ");var yy=y(k.target);return'<svg class="chart" viewBox="0 0 '+w+' '+h+'"><line x1="'+l+'" x2="'+(w-r)+'" y1="'+yy+'" y2="'+yy+'" stroke="#d19b43" stroke-dasharray="5 4"/><polyline points="'+pts+'" fill="none" stroke="#8060a9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="'+l+'" y="'+(h-7)+'" font-size="10" fill="#928b9c">'+rows[0].date.slice(5)+'</text><text x="'+(w-r)+'" y="'+(h-7)+'" font-size="10" text-anchor="end" fill="#928b9c">'+rows[rows.length-1].date.slice(5)+'</text><text x="'+(w-r-5)+'" y="'+(yy-7)+'" font-size="10" text-anchor="end" fill="#a36a0b">Objectif '+fmt(k.target,0)+'</text></svg>'}
+function table(headers,rows){return'<div class="tablewrap"><table><thead><tr>'+headers.map(function(h){return'<th>'+h+'</th>'}).join("")+'</tr></thead><tbody>'+(rows.length?rows.map(function(row){return'<tr>'+row.map(function(v){return'<td>'+v+'</td>'}).join("")+'</tr>'}).join(""):'<tr><td colspan="'+headers.length+'">Aucun résultat pour cette sélection.</td></tr>')+'</tbody></table></div>'}
+function board(){
+ var ref=$("refdate").value,rows=metricRows(ref),ks=defs.map(function(k){var v=value(k,rows);return{k:k,v:v,s:status(k,v)}}),greens=ks.filter(function(x){return x.s==="green"}).length,open=issues.filter(function(i){return i.status!=="Résolu"&&($("team").value==="all"||i.team===$("team").value)}),late=actions.filter(function(a){return a.status!=="Terminée"&&a.status!=="Annulée"&&a.due<ref&&($("team").value==="all"||a.team===$("team").value)});
+ var kpi=ks.map(function(x){var v=x.k.unit==="%"?fmt(x.v,1)+" %":x.k.unit==="h"?fmt(x.v,1)+" h":x.k.unit==="pour 1 000"?fmt(x.v,1):fmt(x.v,0);return'<tr><td>'+x.k.dim+'</td><td>'+x.k.name+'</td><td>'+v+'</td><td>'+x.k.target+(x.k.unit==="%"?" %":"")+'</td><td>'+pill(x.s==="green"?"Atteint":x.s==="amber"?"Vigilance":"Alerte")+'</td></tr>'});
+ var issuehtml=open.slice(0,5).map(function(i){return'<div class="issue"><div class="issuehead"><strong>'+i.id+' · '+i.title+'</strong>'+pill(i.severity)+'</div><p>'+i.team+' · '+i.process+'</p><div class="meta">Détecté le '+i.date+' · '+pill(i.status)+'</div></div>'}).join("");
+ return hero("Tableau de pilotage quotidien","La situation opérationnelle du jour, les écarts prioritaires et les décisions à prendre réunis dans un même espace.")+
+ '<div class="grid kpis">'+card("Indicateurs dans la cible",greens+"/5","Lecture SQCDP du "+ref,"✓",greens===5?"Atteint":"") +card("Problèmes ouverts",open.length,"Tous niveaux de criticité","◉",open.length?"Vigilance":"Atteint")+card("Actions en retard",late.length,"À revoir avec les responsables","◷",late.length?"Alerte":"Atteint")+card("Équipe sélectionnée",$("team").value==="all"?"3 équipes":$("team").value,"Périmètre de pilotage","⌂","")+'</div>'+
+ '<div class="grid two">'+panel("Tableau SQCDP","Objectifs et résultats à la date de référence",table(["Dimension","Indicateur","Réalisé","Objectif","Statut"],kpi),"S / Q / C / D / P")+panel("Points de vigilance","Problèmes nécessitant un suivi",issuehtml||'<div class="sub">Aucun problème ouvert sur ce périmètre.</div>','PRIORITÉS')+'</div>'+
+ '<div class="callout">Un indicateur rouge ou orange doit conduire à l’examen des faits, de l’impact et des actions associées. Les seuils présentés sont des hypothèses pédagogiques, à adapter au contexte métier.</div>';
+}
+function performance(){
+ var k=defs[3],hist=teamRows().filter(function(r){return r.date<=$("refdate").value}).reduce(function(acc,r){if(r.date>=addDays($("refdate").value,-29)){if(!acc[r.date])acc[r.date]=[];acc[r.date].push(r)}return acc},{});
+ var trend=Object.keys(hist).sort().map(function(d){return{date:d,v:value(k,hist[d])}});
+ var compare=teams.map(function(t){var rr=teamRows().filter(function(r){return r.team===t&&r.date===$("refdate").value});return{t:t,v:value(k,rr)}}).filter(function(x){return $("team").value==="all"||x.t===$("team").value});
+ return hero("Analyse de la performance","Comprendre les tendances, comparer les équipes et objectiver les écarts par rapport aux objectifs.")+
+ '<div class="grid two">'+panel("Respect des délais · 30 derniers jours","Taux calculé à partir des volumes réalisés et attendus",lineChart(trend,k),"CIBLE 95 %")+panel("Comparaison des équipes","Résultat à la date de référence",'<div class="bars">'+compare.map(function(x){return'<div class="barrow"><span>'+x.t+'</span><div class="barbg"><span style="width:'+Math.max(0,Math.min(100,x.v))+'%"></span></div><strong>'+fmt(x.v,1)+' %</strong></div>'}).join("")+'</div>','PAR ÉQUIPE')+'</div>'+
+ panel("Référentiel des indicateurs","Formules de calcul et seuils indicatifs",table(["Dimension","Indicateur","Formule","Objectif"],defs.map(function(x){return[x.dim,x.name, x.id==="quality"?"Non-conformités / unités contrôlées × 1 000":x.id==="delivery"?"Éléments à l’heure / éléments échus × 100":x.id==="people"?"Heures productives / capacité × 100":x.id==="rework"?"Somme des heures de reprise":"Nombre d’événements enregistrés",x.target+(x.unit==="%"?" %":" "+x.unit)]})),"MÉTHODOLOGIE");
+}
+function issuePage(){
+ var list=issues.filter(function(i){return $("team").value==="all"||i.team===$("team").value});
+ return hero("Problèmes et résolution","Qualifier les incidents, comprendre leurs causes et rendre visibles les sujets à escalader.")+
+ '<div class="grid kpis">'+card("Problèmes recensés",list.length,"Registre de démonstration","◉","")+card("Encore ouverts",list.filter(function(i){return i.status!=="Résolu"}).length,"À traiter ou surveiller","!", "Vigilance")+card("Critiques / élevés",list.filter(function(i){return i.severity==="Critique"||i.severity==="Élevée"}).length,"Priorisation par criticité","⚑","Alerte")+card("Résolus",list.filter(function(i){return i.status==="Résolu"}).length,"Sur le périmètre affiché","✓","Atteint")+'</div>'+
+ panel("Registre des problèmes","Les causes racines sont des hypothèses de travail à confirmer avec les équipes",table(["Identifiant","Catégorie","Problème","Équipe","Criticité","Statut","Cause racine"],list.map(function(i){return[i.id,i.category,i.title,i.team,pill(i.severity),pill(i.status),i.cause]})),"INCIDENTS");
+}
+function actionPage(){
+ var list=actions.filter(function(a){return $("team").value==="all"||a.team===$("team").value});
+ var statuses=["À démarrer","En cours","Bloquée","Terminée"];
+ return hero("Gestion des plans d’action","Suivre les responsabilités, les échéances et l’avancement des mesures correctives.")+
+ '<div class="grid kpis">'+card("Actions recensées",list.length,"Plan d’action de démonstration","☷","")+card("Actions ouvertes",list.filter(function(a){return a.status!=="Terminée"&&a.status!=="Annulée"}).length,"Non clôturées","◷","Vigilance")+card("Actions bloquées",list.filter(function(a){return a.status==="Bloquée"}).length,"Arbitrage nécessaire","!","Alerte")+card("Actions terminées",list.filter(function(a){return a.status==="Terminée"}).length,"Clôture enregistrée","✓","Atteint")+'</div>'+
+ '<div class="kanban">'+statuses.map(function(s){var group=list.filter(function(a){return a.status===s});return'<div class="kancol"><div class="kanhead">'+s+' · '+group.length+'</div>'+group.map(function(a){return'<div class="kanitem"><strong>'+a.id+' · '+a.title+'</strong>'+pill(a.priority)+'<br><small>'+a.team+' · '+a.owner+'<br>Échéance : '+a.due+'</small></div>'}).join("")+'</div>'}).join("")+'</div>'+
+ '<div class="callout">Cette version publiée sur GitHub Pages est en consultation seule. La version Streamlit du projet inclut la création et la modification des actions avec stockage local SQLite.</div>';
+}
+function huddle(){
+ var t=$("team").value==="all"?"les équipes sélectionnées":$("team").value;
+ return hero("Réunion quotidienne et décisions","Une trame de 10 à 15 minutes pour relire les résultats, traiter les écarts et formaliser les engagements.")+
+ '<div class="panel"><div class="panelhead"><div><h2>Trame du point opérationnel</h2><div class="sub">Synthèse de démonstration · '+t+'</div></div><span class="mini">10–15 MIN</span></div>'+
+ '<div class="huddle"><article><small>01 · RÉSULTATS</small><p>Revoir les indicateurs SQCDP et confirmer les écarts à la date de référence.</p></article><article><small>02 · POINTS DE VIGILANCE</small><p>Examiner les problèmes ouverts, leur criticité et leurs impacts opérationnels.</p></article><article><small>03 · DÉCISIONS</small><p>Attribuer une action, un responsable, une échéance et un niveau d’escalade.</p></article></div></div>'+
+ '<div class="grid two" style="margin-top:14px">'+panel("Points positifs","Exemple de synthèse hebdomadaire",'<div class="issue"><strong>Transmission entre équipes clarifiée</strong><p>Les éléments de passation sont revus au début de chaque poste.</p></div><div class="issue"><strong>File d’attente stabilisée</strong><p>Le volume en attente est suivi lors du point quotidien.</p></div>','À PARTAGER')+panel("Décisions et engagements","Exemples à formaliser",'<div class="issue"><strong>Confirmer les preuves des actions correctives</strong><p>Responsable : Coordinateur qualité · Échéance : prochain point.</p></div><div class="issue"><strong>Escalader le sujet prioritaire</strong><p>Responsable : Responsable des opérations · Selon criticité.</p></div>','SUIVI')+'</div>';
+}
+function quality(){
+ var tests=[["DQ-001","Identifiants uniques","Actions et problèmes"],["DQ-002","Responsable renseigné pour toute action ouverte","Actions"],["DQ-003","Statuts conformes au référentiel","Actions et problèmes"],["DQ-004","Échéance postérieure à la création","Actions"],["DQ-005","Date de résolution renseignée","Problèmes"],["DQ-006","Valeurs de performance non négatives","Mesures quotidiennes"],["DQ-007","Dénominateurs de taux strictement positifs","Mesures quotidiennes"],["DQ-008","Clés de référence des équipes et processus","Toutes les tables"]];
+ return hero("Qualité des données et gouvernance","Vérifier la cohérence des informations avant d’utiliser les indicateurs pour décider.")+
+ '<div class="grid kpis">'+card("Taux de conformité","100 %","8 règles de contrôle illustrées","✓","Atteint")+card("Contrôles documentés","8","Règles de validation métier","⌕","")+card("Tables de référence","3","Équipes, processus, indicateurs","▤","")+card("Cas négatifs préparés","8","Exemples invalides à détecter","◇","")+'</div>'+
+ panel("Contrôles de cohérence","Les règles sont illustrées sur un jeu de données synthétiques conçu pour être cohérent.",table(["Règle","Contrôle","Périmètre","Résultat"],tests.map(function(x){return[x[0],x[1],x[2],pill("Conforme")]})),"GOUVERNANCE")+
+ '<div class="callout">Les contrôles présentés sont pédagogiques. Ce démonstrateur n’est ni un système qualité validé, ni un logiciel réglementé GxP, ni un outil de production.</div>';
+}
+function addDays(date,offset){var d=new Date(date+"T12:00:00");d.setDate(d.getDate()+offset);return d.toISOString().slice(0,10)}
+function render(){
+ document.querySelectorAll(".nav button").forEach(function(b){b.classList.toggle("active",b.dataset.page===page)});
+ $("crumb").textContent=names[page];
+ $("view").innerHTML=({board:board,performance:performance,issues:issuePage,actions:actionPage,huddle:huddle,quality:quality})[page]();
+}
+document.querySelectorAll(".nav button").forEach(function(b){b.addEventListener("click",function(){page=b.dataset.page;render()})});
+$("refdate").addEventListener("change",render);$("team").addEventListener("change",render);
+$("reset").addEventListener("click",function(){$("refdate").value="2026-11-10";$("team").value="all";render()});
+render();
+})();
+</script>
+</body>
+</html>
