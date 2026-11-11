@@ -25,6 +25,11 @@ jobs:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
 
+      - name: Synchroniser avec la dernière version de main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Installer Python
         uses: actions/setup-python@v5
         with:
@@ -61,7 +66,6 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add agent-veille-ansm/data
             git commit -m "chore(ansm-watch): update public availability data"
-            git pull --rebase origin main
             git push
           else
             echo "Aucun fichier de veille à mettre à jour."
