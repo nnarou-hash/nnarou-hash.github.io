@@ -7,7 +7,7 @@ on:
       - '.github/workflows/ansm-watch.yml'
       - '!agent-veille-ansm/data/**'
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0,30 * * * *"
   workflow_dispatch:
 
 permissions:
