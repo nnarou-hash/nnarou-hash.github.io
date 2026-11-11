@@ -131,6 +131,7 @@
   .project-header.p3 { background: linear-gradient(135deg, #4facfe, #7c3aed); }
   .project-header.p4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
   .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .projects-intro { color: var(--gray); font-size: 0.95rem; margin: -25px 0 28px; max-width: 850px; }
   .project-title { font-size: 1.08rem; line-height: 1.35; font-weight: 750; margin-bottom: 10px; }
   .project-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.7; flex: 1; margin-bottom: 18px; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
@@ -138,7 +139,16 @@
     background: var(--mauve-bg); color: var(--mauve);
     font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; font-weight: 500;
   }
-  .project-links { display: flex; gap: 10px; }
+  .project-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .project-links .project-link { flex: 1 1 112px; text-align: center; min-width: 0; }
+  .project-link-disabled {
+    color: #9b96a3;
+    border-color: #e7e3eb;
+    border-style: dashed;
+    background: #faf9fb;
+    cursor: not-allowed;
+  }
+  .project-link-disabled:hover { background: #faf9fb; color: #9b96a3; }
   .project-link {
     font-size: 0.82rem; color: var(--mauve); text-decoration: none;
     font-weight: 600; padding: 6px 14px;
@@ -308,6 +318,7 @@
   <div class="container">
     <div class="section-label">Projets</div>
     <div class="section-title">Ce que j'ai construit</div>
+    <p class="projects-intro">Pour chaque projet : démonstration HTML, application ou code Streamlit et dépôt GitHub, selon les livrables disponibles. Les formats non publiés sont signalés.</p>
     <div class="projects-grid">
 
       <div class="project-card">
@@ -323,10 +334,7 @@
             <span class="tag">Qualité des données</span>
             <span class="tag">HTML · JavaScript</span>
           </div>
-          <div class="project-links">
-            <a href="/management-visuel/" class="project-link">Ouvrir le dashboard</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">Voir le code</a>
-          </div>
+          <div class="project-links"><a href="/management-visuel/" class="project-link">Dashboard HTML</a><span class="project-link project-link-disabled" aria-disabled="true" title="Application Streamlit non publiée en ligne">Streamlit · non publié</span><a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/management-visuel" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -345,10 +353,7 @@
             <span class="tag">Santé</span>
           </div>
           <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Collecte automatisée trois fois par semaine (lundi, mercredi et vendredi). La synthèse IA nécessite une clé API dédiée ; la veille et le dashboard fonctionnent sans elle.</p>
-          <div class="project-links">
-            <a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Voir le code</a>
-          </div>
+          <div class="project-links"><a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a><span class="project-link project-link-disabled" aria-disabled="true" title="Aucune version Streamlit n’est prévue pour ce projet">Streamlit · non disponible</span><a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -361,10 +366,7 @@
           <div class="project-title">Pilotage de la performance commerciale</div>
           <div class="project-desc">Mise en place d’un socle de données synthétiques pour suivre les objectifs, le chiffre d’affaires gagné, la transformation des opportunités, le pipeline et l’activité d’une équipe commerciale. Première maquette de dashboard et modèle de données documenté.</div>
           <div class="project-tags"><span class="tag">Business Intelligence</span><span class="tag">KPI commerciaux</span><span class="tag">Pipeline</span><span class="tag">Sales Analytics</span><span class="tag">Dashboard</span></div>
-          <div class="project-links">
-            <a href="/performance-commerciale/" class="project-link">Voir le prototype</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/performance-commerciale" target="_blank" rel="noopener noreferrer" class="project-link">Données & modèle</a>
-          </div>
+          <div class="project-links"><a href="/performance-commerciale/" class="project-link">Dashboard HTML</a><span class="project-link project-link-disabled" aria-disabled="true" title="Le projet comporte actuellement un prototype HTML uniquement">Streamlit · non disponible</span><a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/performance-commerciale" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -383,10 +385,7 @@
             <span class="tag">Dashboard HTML</span>
             <span class="tag">IA générative</span>
           </div>
-          <div class="project-links">
-            <a href="/cosmetics-supply-chain-analytics/" class="project-link">Dashboard live</a>
-            <a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-          </div>
+          <div class="project-links"><a href="/cosmetics-supply-chain-analytics/" class="project-link">Dashboard HTML</a><span class="project-link project-link-disabled" aria-disabled="true" title="Le dépôt documente un dashboard HTML autonome, sans application Streamlit publiée">Streamlit · non disponible</span><a href="https://github.com/nnarou-hash/cosmetics-supply-chain-analytics" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -406,11 +405,7 @@
             <span class="tag">Data Governance</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Limites documentées : rupture de série 2006–2007 ; données sur le niveau d’éducation non comparables avant 2016.</p>
-          <div class="project-links">
-            <a href="/maternite-tardive/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/grossesses_tardives_us/blob/main/app/dashboard.py" target="_blank" rel="noopener noreferrer" class="project-link">Code Streamlit ↗</a>
-            <a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
-          </div>
+          <div class="project-links"><a href="/maternite-tardive/" class="project-link">Dashboard HTML</a><a href="https://github.com/nnarou-hash/grossesses_tardives_us/blob/main/app/dashboard.py" target="_blank" rel="noopener noreferrer" class="project-link" title="Code Streamlit à lancer localement">Streamlit · code local</a><a href="https://github.com/nnarou-hash/grossesses_tardives_us" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -427,11 +422,7 @@
             <span class="tag">Data Quality</span>
             <span class="tag">Santé</span>
           </div>
-          <div class="project-links">
-            <a href="/nhanes/" class="project-link">Dashboard HTML</a>
-            <a href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit ↗</a>
-            <a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
-          </div>
+          <div class="project-links"><a href="/nhanes/" class="project-link">Dashboard HTML</a><a href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit</a><a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -448,11 +439,7 @@
             <span class="tag">Streamlit</span>
             <span class="tag">Santé</span>
           </div>
-          <div class="project-links">
-            <a href="/antihistaminiques/" class="project-link">Dashboard HTML</a>
-            <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit ↗</a>
-            <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
-          </div>
+          <div class="project-links"><a href="/antihistaminiques/" class="project-link">Dashboard HTML</a><a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener noreferrer" class="project-link">Dashboard Streamlit</a><a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -468,9 +455,7 @@
             <span class="tag">Apify</span>
             <span class="tag">OpenAI</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/nnarou-hash/career-intelligence-ai" target="_blank" class="project-link">GitHub</a>
-          </div>
+          <div class="project-links"><span class="project-link project-link-disabled" aria-disabled="true" title="Le dashboard est indiqué dans la feuille de route, mais pas encore publié">Dashboard HTML · à venir</span><span class="project-link project-link-disabled" aria-disabled="true" title="Aucune application Streamlit publiée">Streamlit · non disponible</span><a href="https://github.com/nnarou-hash/career-intelligence-ai" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a></div>
         </div>
       </div>
 
@@ -485,9 +470,7 @@
             <span class="tag">React</span>
             <span class="tag">Hosting</span>
           </div>
-          <div class="project-links">
-            <a href="https://aupres-de-maman-demo.web.app" target="_blank" class="project-link">Voir le projet</a>
-          </div>
+          <div class="project-links"><span class="project-link project-link-disabled" aria-disabled="true" title="Projet livré comme application web, pas comme dashboard HTML">Dashboard HTML · non concerné</span><span class="project-link project-link-disabled" aria-disabled="true" title="Application React/Firebase, pas une application Streamlit">Streamlit · non concerné</span><span class="project-link project-link-disabled" aria-disabled="true" title="Aucun dépôt GitHub public n’a été identifié pour ce projet">GitHub · non public</span><a href="https://aupres-de-maman-demo.web.app" target="_blank" rel="noopener noreferrer" class="project-link">Application web</a></div>
         </div>
       </div>
 
