@@ -1,0 +1,269 @@
+zone_code,zone_type,annee,tranche_age_native,ordre_tranche,tranche_age_libelle,nb_naissances,part_pct,donnee_incomplete
+US,pays,2024,15-19 years,2,15-19 ans,137219,3.78,False
+US,pays,2005,15-19 years,2,15-19 ans,414544,10.02,False
+US,pays,2011,15-19 years,2,15-19 ans,329756,8.34,False
+US,pays,2001,15-19 years,2,15-19 ans,445871,11.08,False
+US,pays,2008,15-19 years,2,15-19 ans,434731,10.23,False
+US,pays,2022,15-19 years,2,15-19 ans,143736,3.92,False
+US,pays,2023,15-19 years,2,15-19 ans,140909,3.92,False
+US,pays,2000,15-19 years,2,15-19 ans,468911,11.56,False
+US,pays,2021,15-19 years,2,15-19 ans,146927,4.01,False
+US,pays,1997,15-19 years,2,15-19 ans,483156,12.45,False
+US,pays,2004,15-19 years,2,15-19 ans,415223,10.1,False
+US,pays,2015,15-19 years,2,15-19 ans,229693,5.77,False
+US,pays,2019,15-19 years,2,15-19 ans,171594,4.58,False
+US,pays,2002,15-19 years,2,15-19 ans,425443,10.58,False
+US,pays,2018,15-19 years,2,15-19 ans,179769,4.74,False
+US,pays,2014,15-19 years,2,15-19 ans,249072,6.25,False
+US,pays,2010,15-19 years,2,15-19 ans,367664,9.19,False
+US,pays,2012,15-19 years,2,15-19 ans,305377,7.73,False
+US,pays,1999,15-19 years,2,15-19 ans,475975,12.02,False
+US,pays,2013,15-19 years,2,15-19 ans,273087,6.95,False
+US,pays,2006,15-19 years,2,15-19 ans,435409,10.21,False
+US,pays,1998,15-19 years,2,15-19 ans,484794,12.3,False
+US,pays,2020,15-19 years,2,15-19 ans,157962,4.37,False
+US,pays,2016,15-19 years,2,15-19 ans,209724,5.32,False
+US,pays,2009,15-19 years,2,15-19 ans,409779,9.92,False
+US,pays,2007,15-19 years,2,15-19 ans,444891,10.31,False
+US,pays,2017,15-19 years,2,15-19 ans,194295,5.04,False
+US,pays,2003,15-19 years,2,15-19 ans,414539,10.14,False
+US,pays,2024,20-24 years,3,20-24 ans,611675,16.86,False
+US,pays,2001,20-24 years,3,20-24 ans,1021508,25.38,False
+US,pays,1997,20-24 years,3,20-24 ans,941923,24.28,False
+US,pays,2005,20-24 years,3,20-24 ans,1040369,25.14,False
+US,pays,2018,20-24 years,3,20-24 ans,726068,19.15,False
+US,pays,2017,20-24 years,3,20-24 ans,764694,19.84,False
+US,pays,2012,20-24 years,3,20-24 ans,916804,23.19,False
+US,pays,2013,20-24 years,3,20-24 ans,896719,22.81,False
+US,pays,1998,20-24 years,3,20-24 ans,965055,24.49,False
+US,pays,2003,20-24 years,3,20-24 ans,1032240,25.24,False
+US,pays,2016,20-24 years,3,20-24 ans,803876,20.38,False
+US,pays,2002,20-24 years,3,20-24 ans,1022024,25.42,False
+US,pays,2007,20-24 years,3,20-24 ans,1082344,25.08,False
+US,pays,1999,20-24 years,3,20-24 ans,981851,24.8,False
+US,pays,2019,20-24 years,3,20-24 ans,704247,18.8,False
+US,pays,2000,20-24 years,3,20-24 ans,1017705,25.08,False
+US,pays,2011,20-24 years,3,20-24 ans,925191,23.4,False
+US,pays,2020,20-24 years,3,20-24 ans,665451,18.42,False
+US,pays,2009,20-24 years,3,20-24 ans,1005961,24.35,False
+US,pays,2006,20-24 years,3,20-24 ans,1080392,25.33,False
+US,pays,2023,20-24 years,3,20-24 ans,616879,17.16,False
+US,pays,2022,20-24 years,3,20-24 ans,638592,17.42,False
+US,pays,2021,20-24 years,3,20-24 ans,648395,17.7,False
+US,pays,2010,20-24 years,3,20-24 ans,951674,23.8,False
+US,pays,2008,20-24 years,3,20-24 ans,1052184,24.77,False
+US,pays,2015,20-24 years,3,20-24 ans,850490,21.38,False
+US,pays,2014,20-24 years,3,20-24 ans,882555,22.13,False
+US,pays,2004,20-24 years,3,20-24 ans,1034404,25.16,False
+US,pays,2005,25-29 years,4,25-29 ans,1131568,27.35,False
+US,pays,2007,25-29 years,4,25-29 ans,1208408,28.0,False
+US,pays,2017,25-29 years,4,25-29 ans,1123508,29.15,False
+US,pays,2023,25-29 years,4,25-29 ans,986450,27.44,False
+US,pays,2016,25-29 years,4,25-29 ans,1149007,29.13,False
+US,pays,1999,25-29 years,4,25-29 ans,1078171,27.24,False
+US,pays,2008,25-29 years,4,25-29 ans,1195774,28.15,False
+US,pays,2014,25-29 years,4,25-29 ans,1145384,28.72,False
+US,pays,2020,25-29 years,4,25-29 ans,1024277,28.35,False
+US,pays,2021,25-29 years,4,25-29 ans,1023887,27.95,False
+US,pays,2024,25-29 years,4,25-29 ans,990688,27.31,False
+US,pays,2006,25-29 years,4,25-29 ans,1181859,27.71,False
+US,pays,2009,25-29 years,4,25-29 ans,1166778,28.25,False
+US,pays,1997,25-29 years,4,25-29 ans,1069314,27.56,False
+US,pays,2015,25-29 years,4,25-29 ans,1152311,28.96,False
+US,pays,2019,25-29 years,4,25-29 ans,1077994,28.77,False
+US,pays,2022,25-29 years,4,25-29 ans,1013304,27.63,False
+US,pays,2012,25-29 years,4,25-29 ans,1123900,28.43,False
+US,pays,2010,25-29 years,4,25-29 ans,1133707,28.35,False
+US,pays,2001,25-29 years,4,25-29 ans,1058165,26.29,False
+US,pays,1998,25-29 years,4,25-29 ans,1082918,27.48,False
+US,pays,2013,25-29 years,4,25-29 ans,1120777,28.5,False
+US,pays,2002,25-29 years,4,25-29 ans,1060298,26.37,False
+US,pays,2018,25-29 years,4,25-29 ans,1099393,29.0,False
+US,pays,2004,25-29 years,4,25-29 ans,1104458,26.86,False
+US,pays,2003,25-29 years,4,25-29 ans,1086338,26.56,False
+US,pays,2000,25-29 years,4,25-29 ans,1087468,26.8,False
+US,pays,2011,25-29 years,4,25-29 ans,1127583,28.52,False
+US,pays,2002,30-34 years,5,30-34 ans,951109,23.65,False
+US,pays,2014,30-34 years,5,30-34 ans,1081058,27.11,False
+US,pays,2010,30-34 years,5,30-34 ans,962170,24.06,False
+US,pays,2016,30-34 years,5,30-34 ans,1110953,28.16,False
+US,pays,2006,30-34 years,5,30-34 ans,950225,22.28,False
+US,pays,2008,30-34 years,5,30-34 ans,956716,22.52,False
+US,pays,2018,30-34 years,5,30-34 ans,1090573,28.77,False
+US,pays,2005,30-34 years,5,30-34 ans,950665,22.97,False
+US,pays,2009,30-34 years,5,30-34 ans,955246,23.13,False
+US,pays,2021,30-34 years,5,30-34 ans,1114957,30.44,False
+US,pays,2019,30-34 years,5,30-34 ans,1089187,29.07,False
+US,pays,2004,30-34 years,5,30-34 ans,965647,23.49,False
+US,pays,1998,30-34 years,5,30-34 ans,889254,22.57,False
+US,pays,2024,30-34 years,5,30-34 ans,1112291,30.66,False
+US,pays,2017,30-34 years,5,30-34 ans,1091783,28.32,False
+US,pays,2023,30-34 years,5,30-34 ans,1097913,30.54,False
+US,pays,2001,30-34 years,5,30-34 ans,942600,23.42,False
+US,pays,2012,30-34 years,5,30-34 ans,1013416,25.64,False
+US,pays,1997,30-34 years,5,30-34 ans,886708,22.85,False
+US,pays,2003,30-34 years,5,30-34 ans,975488,23.85,False
+US,pays,2013,30-34 years,5,30-34 ans,1036927,26.37,False
+US,pays,2011,30-34 years,5,30-34 ans,986682,24.96,False
+US,pays,2000,30-34 years,5,30-34 ans,929217,22.9,False
+US,pays,2007,30-34 years,5,30-34 ans,961931,22.29,False
+US,pays,2015,30-34 years,5,30-34 ans,1094693,27.52,False
+US,pays,1999,30-34 years,5,30-34 ans,892308,22.54,False
+US,pays,2020,30-34 years,5,30-34 ans,1069904,29.62,False
+US,pays,2022,30-34 years,5,30-34 ans,1118680,30.51,False
+US,pays,1997,35-39 years,6,35-39 ans,409586,10.56,False
+US,pays,2020,35-39 years,6,35-39 ans,563964,15.61,False
+US,pays,2002,35-39 years,6,35-39 ans,453807,11.29,False
+US,pays,2013,35-39 years,6,35-39 ans,483873,12.31,False
+US,pays,2007,35-39 years,6,35-39 ans,499908,11.58,False
+US,pays,2014,35-39 years,6,35-39 ans,508748,12.76,False
+US,pays,2019,35-39 years,6,35-39 ans,572503,15.28,False
+US,pays,2022,35-39 years,6,35-39 ans,606492,16.54,False
+US,pays,2010,35-39 years,6,35-39 ans,464862,11.62,False
+US,pays,2001,35-39 years,6,35-39 ans,451653,11.22,False
+US,pays,2005,35-39 years,6,35-39 ans,483115,11.68,False
+US,pays,1998,35-39 years,6,35-39 ans,424784,10.78,False
+US,pays,2006,35-39 years,6,35-39 ans,498569,11.69,False
+US,pays,2011,35-39 years,6,35-39 ans,463849,11.73,False
+US,pays,2004,35-39 years,6,35-39 ans,475583,11.57,False
+US,pays,2018,35-39 years,6,35-39 ans,566674,14.95,False
+US,pays,2021,35-39 years,6,35-39 ans,592084,16.16,False
+US,pays,2015,35-39 years,6,35-39 ans,527996,13.27,False
+US,pays,2024,35-39 years,6,35-39 ans,622428,17.16,False
+US,pays,2003,35-39 years,6,35-39 ans,467614,11.43,False
+US,pays,1999,35-39 years,6,35-39 ans,434188,10.97,False
+US,pays,2009,35-39 years,6,35-39 ans,474102,11.48,False
+US,pays,2000,35-39 years,6,35-39 ans,451974,11.14,False
+US,pays,2016,35-39 years,6,35-39 ans,547342,13.87,False
+US,pays,2023,35-39 years,6,35-39 ans,604533,16.82,False
+US,pays,2008,35-39 years,6,35-39 ans,488875,11.51,False
+US,pays,2012,35-39 years,6,35-39 ans,472318,11.95,False
+US,pays,2017,35-39 years,6,35-39 ans,554659,14.39,False
+US,pays,2010,40-44 years,7,40-44 ans,107030,2.68,False
+US,pays,2001,40-44 years,7,40-44 ans,92706,2.3,False
+US,pays,2008,40-44 years,7,40-44 ans,105967,2.49,False
+US,pays,2014,40-44 years,7,40-44 ans,110008,2.76,False
+US,pays,1997,40-44 years,7,40-44 ans,75997,1.96,False
+US,pays,2011,40-44 years,7,40-44 ans,108908,2.75,False
+US,pays,2022,40-44 years,7,40-44 ans,134006,3.65,False
+US,pays,2005,40-44 years,7,40-44 ans,104603,2.53,False
+US,pays,2017,40-44 years,7,40-44 ans,114692,2.98,False
+US,pays,2018,40-44 years,7,40-44 ans,117246,3.09,False
+US,pays,2023,40-44 years,7,40-44 ans,136226,3.79,False
+US,pays,2013,40-44 years,7,40-44 ans,109478,2.78,False
+US,pays,2002,40-44 years,7,40-44 ans,95679,2.38,False
+US,pays,2012,40-44 years,7,40-44 ans,109561,2.77,False
+US,pays,2015,40-44 years,7,40-44 ans,111842,2.81,False
+US,pays,2003,40-44 years,7,40-44 ans,100927,2.47,False
+US,pays,2009,40-44 years,7,40-44 ans,105803,2.56,False
+US,pays,1999,40-44 years,7,40-44 ans,82984,2.1,False
+US,pays,2004,40-44 years,7,40-44 ans,103615,2.52,False
+US,pays,2016,40-44 years,7,40-44 ans,113035,2.87,False
+US,pays,1998,40-44 years,7,40-44 ans,80911,2.05,False
+US,pays,2024,40-44 years,7,40-44 ans,141361,3.9,False
+US,pays,2019,40-44 years,7,40-44 ans,120027,3.2,False
+US,pays,2000,40-44 years,7,40-44 ans,89884,2.21,False
+US,pays,2020,40-44 years,7,40-44 ans,120454,3.33,False
+US,pays,2021,40-44 years,7,40-44 ans,126199,3.44,False
+US,pays,2006,40-44 years,7,40-44 ans,105460,2.47,False
+US,pays,2007,40-44 years,7,40-44 ans,105164,2.44,False
+US,pays,2022,45-49 years,8,45-49 ans,9143,0.25,False
+US,pays,2021,45-49 years,8,45-49 ans,8229,0.22,False
+US,pays,2003,45-49 years,8,45-49 ans,5448,0.13,False
+US,pays,2002,45-49 years,8,45-49 ans,5072,0.13,False
+US,pays,2016,45-49 years,8,45-49 ans,8146,0.21,False
+US,pays,1998,45-49 years,8,45-49 ans,3485,0.09,False
+US,pays,2004,45-49 years,8,45-49 ans,5661,0.14,False
+US,pays,2011,45-49 years,8,45-49 ans,6998,0.18,False
+US,pays,2006,45-49 years,8,45-49 ans,6407,0.15,False
+US,pays,2009,45-49 years,8,45-49 ans,7268,0.18,False
+US,pays,2014,45-49 years,8,45-49 ans,7687,0.19,False
+US,pays,2008,45-49 years,8,45-49 ans,7093,0.17,False
+US,pays,2010,45-49 years,8,45-49 ans,7125,0.18,False
+US,pays,2013,45-49 years,8,45-49 ans,7480,0.19,False
+US,pays,2007,45-49 years,8,45-49 ans,6783,0.16,False
+US,pays,2019,45-49 years,8,45-49 ans,8390,0.22,False
+US,pays,2015,45-49 years,8,45-49 ans,8136,0.2,False
+US,pays,2020,45-49 years,8,45-49 ans,8080,0.22,False
+US,pays,2005,45-49 years,8,45-49 ans,6031,0.15,False
+US,pays,1999,45-49 years,8,45-49 ans,4036,0.1,False
+US,pays,1997,45-49 years,8,45-49 ans,3214,0.08,False
+US,pays,2023,45-49 years,8,45-49 ans,9318,0.26,False
+US,pays,2001,45-49 years,8,45-49 ans,4705,0.12,False
+US,pays,2000,45-49 years,8,45-49 ans,4191,0.1,False
+US,pays,2012,45-49 years,8,45-49 ans,7109,0.18,False
+US,pays,2024,45-49 years,8,45-49 ans,9548,0.26,False
+US,pays,2017,45-49 years,8,45-49 ans,8328,0.22,False
+US,pays,2018,45-49 years,8,45-49 ans,8449,0.22,False
+US,pays,2005,50 years and over,9,50 ans et plus,313,0.01,False
+US,pays,2001,50 years and over,9,50 ans et plus,151,0.0,False
+US,pays,2013,50 years and over,9,50 ans et plus,656,0.02,False
+US,pays,1999,50 years and over,9,50 ans et plus,95,0.0,False
+US,pays,2024,50 years and over,9,50 ans et plus,1018,0.03,False
+US,pays,2016,50 years and over,9,50 ans et plus,634,0.02,False
+US,pays,2006,50 years and over,9,50 ans et plus,393,0.01,False
+US,pays,2021,50 years and over,9,50 ans et plus,896,0.02,False
+US,pays,2023,50 years and over,9,50 ans et plus,1057,0.03,False
+US,pays,2015,50 years and over,9,50 ans et plus,740,0.02,False
+US,pays,2003,50 years and over,9,50 ans et plus,229,0.01,False
+US,pays,1998,50 years and over,9,50 ans et plus,77,0.0,False
+US,pays,2020,50 years and over,9,50 ans et plus,848,0.02,False
+US,pays,2008,50 years and over,9,50 ans et plus,513,0.01,False
+US,pays,2012,50 years and over,9,50 ans et plus,581,0.01,False
+US,pays,2000,50 years and over,9,50 ans et plus,169,0.0,False
+US,pays,2019,50 years and over,9,50 ans et plus,971,0.03,False
+US,pays,2018,50 years and over,9,50 ans et plus,812,0.02,False
+US,pays,2017,50 years and over,9,50 ans et plus,721,0.02,False
+US,pays,1997,50 years and over,9,50 ans et plus,97,0.0,False
+US,pays,2004,50 years and over,9,50 ans et plus,274,0.01,False
+US,pays,2007,50 years and over,9,50 ans et plus,483,0.01,False
+US,pays,2014,50 years and over,9,50 ans et plus,721,0.02,False
+US,pays,2022,50 years and over,9,50 ans et plus,1079,0.03,False
+US,pays,2009,50 years and over,9,50 ans et plus,538,0.01,False
+US,pays,2002,50 years and over,9,50 ans et plus,186,0.0,False
+US,pays,2010,50 years and over,9,50 ans et plus,553,0.01,False
+US,pays,2011,50 years and over,9,50 ans et plus,567,0.01,False
+US,pays,2010,Under 15 years,1,Moins de 15 ans,4468,0.11,False
+US,pays,1998,Under 15 years,1,Moins de 15 ans,9420,0.24,False
+US,pays,2005,Under 15 years,1,Moins de 15 ans,6694,0.16,False
+US,pays,2009,Under 15 years,1,Moins de 15 ans,5012,0.12,False
+US,pays,2014,Under 15 years,1,Moins de 15 ans,2749,0.07,False
+US,pays,2017,Under 15 years,1,Moins de 15 ans,1885,0.05,False
+US,pays,2007,Under 15 years,1,Moins de 15 ans,6188,0.14,False
+US,pays,2022,Under 15 years,1,Moins de 15 ans,1767,0.05,False
+US,pays,2013,Under 15 years,1,Moins de 15 ans,3081,0.08,False
+US,pays,2008,Under 15 years,1,Moins de 15 ans,5757,0.14,False
+US,pays,2019,Under 15 years,1,Moins de 15 ans,1762,0.05,False
+US,pays,2015,Under 15 years,1,Moins de 15 ans,2498,0.06,False
+US,pays,2003,Under 15 years,1,Moins de 15 ans,6634,0.16,False
+US,pays,2000,Under 15 years,1,Moins de 15 ans,8456,0.21,False
+US,pays,1997,Under 15 years,1,Moins de 15 ans,10072,0.26,False
+US,pays,2016,Under 15 years,1,Moins de 15 ans,2202,0.06,False
+US,pays,2002,Under 15 years,1,Moins de 15 ans,7248,0.18,False
+US,pays,2021,Under 15 years,1,Moins de 15 ans,1822,0.05,False
+US,pays,2001,Under 15 years,1,Moins de 15 ans,7720,0.19,False
+US,pays,2023,Under 15 years,1,Moins de 15 ans,1711,0.05,False
+US,pays,2012,Under 15 years,1,Moins de 15 ans,3664,0.09,False
+US,pays,2024,Under 15 years,1,Moins de 15 ans,1679,0.05,False
+US,pays,1999,Under 15 years,1,Moins de 15 ans,9006,0.23,False
+US,pays,2020,Under 15 years,1,Moins de 15 ans,1721,0.05,False
+US,pays,2004,Under 15 years,1,Moins de 15 ans,6747,0.16,False
+US,pays,2018,Under 15 years,1,Moins de 15 ans,1709,0.05,False
+US,pays,2011,Under 15 years,1,Moins de 15 ans,3957,0.1,False
+US,pays,2006,Under 15 years,1,Moins de 15 ans,6382,0.15,False
+US,pays,1995,15-19 years,2,15-19 ans,499811,12.82,True
+US,pays,1996,15-19 years,2,15-19 ans,491502,12.63,True
+US,pays,1996,20-24 years,3,20-24 ans,945096,24.29,True
+US,pays,1995,20-24 years,3,20-24 ans,965479,24.76,True
+US,pays,1995,25-29 years,4,25-29 ans,1063443,27.28,True
+US,pays,1996,25-29 years,4,25-29 ans,1071186,27.53,True
+US,pays,1996,30-34 years,5,30-34 ans,897851,23.08,True
+US,pays,1995,30-34 years,5,30-34 ans,904556,23.2,True
+US,pays,1996,35-39 years,6,35-39 ans,399401,10.27,True
+US,pays,1995,35-39 years,6,35-39 ans,383644,9.84,True
+US,pays,1995,40-44 years,7,40-44 ans,67142,1.72,True
+US,pays,1996,40-44 years,7,40-44 ans,71713,1.84,True
+US,pays,1995,45-49 years,8,45-49 ans,2606,0.07,True
+US,pays,1996,45-49 years,8,45-49 ans,2927,0.08,True
+US,pays,1996,Under 15 years,1,Moins de 15 ans,11107,0.29,True
+US,pays,1995,Under 15 years,1,Moins de 15 ans,12213,0.31,True
