@@ -1,162 +1,204 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Dashboard HTML de synthèse du projet Antihistaminiques Pipeline : consommation, pollens, météo, signalements ANSM et modèle de risque.">
-<title>Antihistaminiques | Signaux & risques d’approvisionnement</title>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dashboard antihistaminiques alimenté par les tables Silver : signalements ANSM, consommation OpenMedic, pollen, météo et données épidémiologiques.">
+<title>Antihistaminiques | Dashboard Silver</title>
 <style>
-:root{--ink:#1d3339;--muted:#6c7c7d;--line:#dfe7e4;--paper:#f3f6f4;--white:#fff;--navy:#193c43;--teal:#377d76;--leaf:#8eaa79;--orange:#c2874a;--red:#bd665d;--blue:#6f9ab5;--shadow:0 12px 35px rgba(25,60,67,.07)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
-header{background:var(--navy);color:#fff;padding:20px max(22px,calc((100vw - 1180px)/2)) 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:42px}.brand{color:#e1ede8;font-size:11px;font-weight:850;letter-spacing:.14em}.navlinks{display:flex;flex-wrap:wrap;gap:16px}.navlinks a{font-size:10px;color:#d4e4df}.hero{max-width:1180px;margin:auto}.eyebrow{color:#abd0c5;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:850}.hero h1{font-size:clamp(35px,5vw,58px);letter-spacing:-.055em;line-height:1.03;margin:12px 0 15px}.hero p{max-width:810px;color:#d0dfd9;font-size:14px;line-height:1.8;margin:0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.actions a{border:1px solid rgba(255,255,255,.3);border-radius:9px;padding:9px 13px;color:white;font-size:11px;font-weight:800}.actions a.primary{background:#e1eee8;color:var(--navy);border-color:#e1eee8}
-main{max-width:1180px;margin:auto;padding:26px 22px 55px}.notice{background:#fff7eb;border:1px solid #ead7b5;color:#795e38;border-radius:13px;padding:13px 16px;font-size:11px;margin-bottom:18px}.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px;color:var(--muted);font-size:10px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi,.panel,.source{background:white;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.kpi{padding:17px 18px}.kpi small{font-size:10px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.08em}.kpi strong{display:block;color:var(--navy);font-size:32px;letter-spacing:-.05em;line-height:1.12;margin:7px 0 3px}.kpi span{font-size:10px;color:var(--muted)}
-.section{margin-top:30px;scroll-margin-top:15px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:13px}.section-no{font-size:10px;color:var(--teal);font-weight:850;letter-spacing:.15em;text-transform:uppercase}.section-head h2{font-size:23px;color:var(--navy);letter-spacing:-.04em;margin:4px 0 0}.section-head p{font-size:10px;color:var(--muted);max-width:440px;text-align:right;margin:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.panel{padding:18px;min-width:0}.panel h3{font-size:13px;margin:0 0 5px;color:var(--navy)}.sub{font-size:10px;color:var(--muted);margin:0 0 15px}.pill{display:inline-block;padding:4px 8px;border-radius:30px;background:#eaf2ee;color:#3b7169;font-size:9px;font-weight:850}
-.risk-layout{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center}.donut{width:168px;height:168px;border-radius:50%;background:conic-gradient(var(--red) 0 37%,#e7eeea 37% 100%);display:grid;place-items:center;margin:auto}.donut:after{content:"";width:118px;height:118px;border-radius:50%;background:#fff;grid-area:1/1}.donut-label{grid-area:1/1;z-index:1;text-align:center;color:var(--navy)}.donut-label strong{display:block;font-size:30px;letter-spacing:-.05em}.donut-label span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.legend{display:grid;gap:10px}.legend-row{display:flex;align-items:center;gap:9px;font-size:11px;color:#4c6163}.swatch{width:9px;height:9px;border-radius:3px;flex:none}.legend-row strong{margin-left:auto;color:var(--navy)}
-.metric-bars{display:grid;gap:13px}.metric-row{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:10px;font-size:10px}.track{height:10px;background:#edf2ef;border-radius:30px;overflow:hidden}.fill{height:100%;border-radius:30px;background:var(--teal)}.fill.orange{background:var(--orange)}.metric-value{text-align:right;font-weight:850;color:var(--navy);font-variant-numeric:tabular-nums}
-.source{padding:17px;box-shadow:none}.source .ico{font-size:22px;margin-bottom:11px}.source h3{font-size:12px;color:var(--navy);margin:0 0 6px}.source p{font-size:10px;color:var(--muted);margin:0;line-height:1.7}.source strong{color:#405a5b}.period{display:inline-block;margin-top:11px;padding:4px 7px;border-radius:6px;background:#eef3f0;color:#4f6b67;font-size:9px;font-weight:800}
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.step{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 12px;position:relative}.step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:40%;z-index:2;color:var(--teal);font-weight:900}.step small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:850}.step strong{display:block;color:var(--navy);font-size:14px;margin:4px 0}.step span{display:block;color:var(--muted);font-size:9px;line-height:1.5}
-.feature{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#eef4f0;border-radius:12px;padding:16px 18px}.feature strong{font-size:15px;color:var(--navy)}.feature p{font-size:10px;color:var(--muted);margin:4px 0 0}.feature .tag{flex:none;background:white;padding:7px 10px;border-radius:8px;font-size:9px;color:var(--teal);font-weight:850}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:10px 11px;border-bottom:1px solid #edf1ee;text-align:left;vertical-align:top}th{background:#f6f8f7;color:var(--muted);font-size:9px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}tbody tr:last-child td{border-bottom:0}
-.callout{border-left:3px solid var(--orange);background:#fff9f1;padding:12px 14px;border-radius:0 9px 9px 0;font-size:10px;color:#735c3c;line-height:1.7}.limits{display:grid;grid-template-columns:1fr 1fr;gap:13px}.limits ul{padding-left:17px;margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.85}.btn{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:10px;font-weight:850;color:var(--navy);background:#fff}.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.foot{background:var(--navy);color:#d3e1dc;padding:24px max(22px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:#fff}
-@media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.limits{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.section-head p{text-align:left}.flow{grid-template-columns:repeat(2,1fr)}.step:not(:last-child):after{display:none}}
-@media(max-width:540px){header{padding:17px 15px 36px}.top{align-items:flex-start;margin-bottom:32px}.navlinks{justify-content:flex-end;gap:8px}.navlinks a{font-size:9px}.hero h1{font-size:39px}main{padding:20px 12px 40px}.kpis{gap:8px}.kpi{padding:13px}.kpi strong{font-size:26px}.panel{padding:14px}.risk-layout{grid-template-columns:1fr}.metric-row{grid-template-columns:105px 1fr 44px;gap:7px}.flow{grid-template-columns:1fr 1fr}.source{padding:14px}.feature{align-items:flex-start;flex-direction:column}}
-</style>
-</head>
+:root{--ink:#203538;--muted:#6c7b7c;--line:#dfe8e3;--bg:#f3f6f3;--white:#fff;--navy:#193e43;--teal:#397e75;--green:#8aa77b;--orange:#c58b4d;--red:#bd675c;--blue:#7099b4;--shadow:0 12px 35px rgba(25,60,67,.065)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+header{background:var(--navy);color:#fff;padding:20px max(22px,calc((100vw - 1180px)/2)) 45px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:40px}.brand{font-size:11px;letter-spacing:.14em;font-weight:850;color:#dcebe4}.nav{display:flex;gap:15px;flex-wrap:wrap}.nav a{font-size:10px;color:#d5e4de}.hero{max-width:1180px;margin:auto}.eyebrow{font-size:10px;color:#a8d0c2;text-transform:uppercase;letter-spacing:.16em;font-weight:850}.hero h1{font-size:clamp(34px,5vw,57px);line-height:1.03;letter-spacing:-.055em;margin:12px 0 15px}.hero p{max-width:820px;margin:0;color:#d1dfd9;font-size:14px;line-height:1.8}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.actions a{border:1px solid rgba(255,255,255,.3);border-radius:9px;padding:9px 13px;color:#fff;font-size:11px;font-weight:850}.actions a.main{background:#e2eee7;border-color:#e2eee7;color:var(--navy)}
+main{max-width:1180px;margin:auto;padding:25px 22px 55px}.notice{background:#fff8ed;border:1px solid #ead9bc;color:#795f3e;border-radius:13px;padding:13px 16px;font-size:11px;margin-bottom:18px}.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:10px;margin-bottom:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi,.panel,.source{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.kpi{padding:17px 18px}.kpi small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:850}.kpi strong{display:block;font-size:31px;line-height:1.13;letter-spacing:-.05em;color:var(--navy);margin:7px 0 3px}.kpi span{font-size:10px;color:var(--muted)}
+.section{margin-top:30px;scroll-margin-top:16px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:13px}.section-no{font-size:10px;color:var(--teal);font-weight:850;letter-spacing:.15em;text-transform:uppercase}.section-head h2{font-size:23px;letter-spacing:-.04em;color:var(--navy);margin:4px 0 0}.section-head p{max-width:470px;text-align:right;color:var(--muted);font-size:10px;margin:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.panel{padding:18px;min-width:0}.panel h3{font-size:13px;color:var(--navy);margin:0 0 5px}.sub{font-size:10px;color:var(--muted);margin:0 0 14px}.empty{color:var(--muted);font-size:11px;padding:15px 0}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:14px}.field{display:grid;gap:5px;min-width:145px}.field label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:850}.field select{border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:9px 10px;font:inherit;font-size:11px}
+.bars{display:grid;gap:11px}.barrow{display:grid;grid-template-columns:minmax(120px,190px) 1fr 65px;gap:10px;align-items:center;font-size:10px}.barlabel{color:#486063;overflow-wrap:anywhere}.track{height:9px;background:#edf2ef;border-radius:30px;overflow:hidden}.fill{height:100%;border-radius:30px;background:var(--teal)}.value{text-align:right;color:var(--navy);font-weight:850;font-variant-numeric:tabular-nums}
+.stacked{display:grid;gap:12px}.stack-row{display:grid;grid-template-columns:48px 1fr 60px;align-items:center;gap:9px;font-size:10px}.stack-track{display:flex;height:13px;border-radius:20px;overflow:hidden;background:#edf2ef}.stack-seg{height:100%;min-width:0}.stack-total{text-align:right;font-weight:850;color:var(--navy)}.legend{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 14px}.legend span{font-size:9px;color:var(--muted);display:flex;align-items:center;gap:6px}.swatch{width:8px;height:8px;border-radius:2px;display:inline-block}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:10px 11px;border-bottom:1px solid #edf1ee;text-align:left;vertical-align:middle}th{background:#f6f8f7;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}tbody tr:last-child td{border-bottom:0}
+.pct-grid{display:grid;gap:12px}.pct-row{display:grid;grid-template-columns:130px 1fr 48px;gap:9px;align-items:center;font-size:10px}.pct-track{height:10px;border-radius:20px;background:#edf2ef;overflow:hidden}.pct-fill{height:100%;background:var(--green);border-radius:20px}.pct-value{text-align:right;font-weight:850}
+.spark{width:100%;height:250px;display:block}.chart-axis{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:5px}.chart-tooltip{font-size:10px;color:var(--muted);margin-top:8px}.callout{background:#eff5f1;border-left:3px solid var(--teal);padding:12px 14px;border-radius:0 9px 9px 0;color:#496362;font-size:10px;line-height:1.7}.limits{display:grid;grid-template-columns:1fr 1fr;gap:13px}.limits ul{padding-left:18px;color:var(--muted);font-size:10px;line-height:1.85;margin:8px 0 0}.source{padding:16px;box-shadow:none}.source .icon{font-size:21px;margin-bottom:8px}.source h3{font-size:12px;color:var(--navy);margin:0 0 5px}.source p{font-size:10px;color:var(--muted);line-height:1.7;margin:0}.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.btn{border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:10px;color:var(--navy);font-weight:850;display:inline-block;background:#fff}.foot{background:var(--navy);color:#d3e1dc;padding:23px max(22px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:#fff}
+@media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.limits{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.section-head p{text-align:left}.barrow{grid-template-columns:110px 1fr 52px}}
+@media(max-width:540px){header{padding:17px 15px 35px}.top{align-items:flex-start;margin-bottom:32px}.nav{justify-content:flex-end;gap:8px}.nav a{font-size:9px}.hero h1{font-size:38px}main{padding:20px 12px 40px}.kpis{gap:8px}.kpi{padding:13px}.kpi strong{font-size:26px}.panel{padding:14px}.barrow{grid-template-columns:95px 1fr 46px;gap:6px}.pct-row{grid-template-columns:100px 1fr 40px}}
+</style></head>
 <body>
 <header>
-  <div class="top">
-    <a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a>
-    <nav class="navlinks"><a href="#signaux">Signaux</a><a href="#modele">Modèle ML</a><a href="#pipeline">Pipeline</a><a href="#limites">Limites</a></nav>
-  </div>
+  <div class="top"><a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a><nav class="nav"><a href="#ruptures">Ruptures</a><a href="#consommation">OpenMedic</a><a href="#environnement">Pollen & météo</a><a href="#methode">Méthode</a></nav></div>
   <div class="hero">
-    <div class="eyebrow">Data engineering · Santé · Supply chain · Machine learning</div>
-    <h1>Anticiper les tensions<br>avant la rupture.</h1>
-    <p>Un pipeline qui croise consommation de médicaments, signalements ANSM, pollens, météo et données épidémiologiques pour analyser les facteurs associés aux tensions d’approvisionnement en antihistaminiques (ATC R06A) et explorer un modèle de détection des mois à risque.</p>
-    <div class="actions">
-      <a class="primary" href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener">Ouvrir Streamlit interactif ↗</a>
-      <a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener">Code et documentation ↗</a>
-    </div>
+    <div class="eyebrow">Antihistaminiques · Supply chain · Data engineering</div>
+    <h1>Comprendre les signaux<br>de tension d’approvisionnement.</h1>
+    <p>Un tableau de bord construit directement à partir des tables Silver : médicaments et référentiels, événements ANSM, consommation OpenMedic, pollens, météo et épidémiologie. Il donne une lecture descriptive des signaux disponibles autour des antihistaminiques (ATC R06).</p>
+    <div class="actions"><a class="main" href="https://antihistaminiques-pipeline-2.streamlit.app" target="_blank" rel="noopener">Explorer l’application Streamlit ↗</a><a href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener">Code source ↗</a></div>
   </div>
 </header>
 <main>
-  <div class="notice"><strong>Lecture méthodologique :</strong> ce dashboard est une synthèse HTML des indicateurs et métriques documentés dans le dépôt. Il ne constitue pas une alerte opérationnelle, ne mesure pas les stocks en temps réel et ne remplace pas l’exploration détaillée disponible dans Streamlit.</div>
-  <div class="meta"><span>Projet Jedha · Classes ATC étudiées : R06, R03 et J01 · Focus de restitution : R06A</span><span>Indicateurs issus du code et de la documentation du projet</span></div>
+  <div class="notice"><strong>À lire :</strong> les consommations OpenMedic décrivent des remboursements, les événements ANSM des signalements et les pollens / météo des facteurs contextuels. Aucun de ces jeux ne donne accès aux stocks physiques des pharmacies, grossistes ou laboratoires. Ce dashboard est descriptif, pas une alerte opérationnelle ni un conseil médical.</div>
+  <div class="meta"><span>Source des visualisations : fichiers Silver du dépôt antihistaminiques-pipeline</span><span id="data-status">Chargement des agrégats Silver…</span></div>
   <section class="kpis">
-    <article class="kpi"><small>Fenêtre d’apprentissage</small><strong>60 mois</strong><span>Janvier 2021 – décembre 2025</span></article>
-    <article class="kpi"><small>Régions métropolitaines</small><strong>13</strong><span>Consommation et météo régionalisées</span></article>
-    <article class="kpi"><small>Mois avec rupture / tension</small><strong>≈ 37 %</strong><span>Part indicative documentée dans le projet</span></article>
-    <article class="kpi"><small>Lignes OpenMedic</small><strong>1,24 M</strong><span>Consommation 2021–2025, plusieurs classes ATC</span></article>
+    <article class="kpi"><small>Spécialités antihistaminiques</small><strong id="kpi-specialties">—</strong><span>Référentiel médicament Silver</span></article>
+    <article class="kpi"><small>Molécules distinctes</small><strong id="kpi-molecules">—</strong><span>Dans le référentiel R06</span></article>
+    <article class="kpi"><small>Boîtes remboursées</small><strong id="kpi-boxes">—</strong><span>OpenMedic · 2021–2025</span></article>
+    <article class="kpi"><small>Événements ANSM</small><strong id="kpi-events">—</strong><span>Ruptures, risques et disponibilités</span></article>
   </section>
 
-  <section class="section" id="signaux">
-    <div class="section-head"><div><div class="section-no">01 / Données croisées</div><h2>Plusieurs signaux, une même lecture</h2></div><p>Les sources ne décrivent pas la même réalité : elles sont rapprochées à une granularité mensuelle pour construire les variables d’analyse.</p></div>
-    <div class="grid3">
-      <article class="source"><div class="ico">💊</div><h3>Consommation remboursée</h3><p><strong>OpenMedic / CNAM</strong> : volumes de boîtes, remboursements, région, molécule, âge et sexe. Les données décrivent la consommation remboursée en ville, pas les stocks disponibles.</p><span class="period">2021–2025 · Région × molécule × année</span></article>
-      <article class="source"><div class="ico">🌿</div><h3>Exposition pollinique</h3><p><strong>RNSA / ATMO / CAMS Copernicus</strong> : graminées, bouleau, ambroisie, aulne, armoise et olivier. Les séries combinent plusieurs sources et méthodes.</p><span class="period">2021–2026 · National / régional</span></article>
-      <article class="source"><div class="ico">🌡️</div><h3>Conditions météorologiques</h3><p><strong>Open-Meteo</strong> : températures, précipitations, vent et indicateurs thermiques, structurés pour 13 régions françaises.</p><span class="period">2021–2026 · 13 régions × mois</span></article>
-      <article class="source"><div class="ico">📋</div><h3>Signalements de ruptures</h3><p><strong>ANSM / CADA</strong> : événements de rupture et risques, avec ajout d’un export spécifique pour les années récentes.</p><span class="period">2021–2024 + 2025–2026</span></article>
-      <article class="source"><div class="ico">🏥</div><h3>Contexte épidémiologique</h3><p><strong>Réseau Sentinelles / INSERM</strong> : indicateurs mensuels nationaux, notamment grippe et infections respiratoires aiguës.</p><span class="period">2021–2026 · National × mois</span></article>
-      <article class="source"><div class="ico">🧾</div><h3>Référentiel médicament</h3><p><strong>BDPM / ANSM</strong> : spécialités, substances actives, codes ATC et laboratoires, pour rapprocher les signalements et les médicaments.</p><span class="period">Référentiel médicament</span></article>
+  <section class="section" id="ruptures">
+    <div class="section-head"><div><div class="section-no">01 / Signalements</div><h2>Ruptures et tensions déclarées</h2></div><p>Événements extraits des fichiers Silver ANSM historiques et de l’export disponibilités 2025–2026.</p></div>
+    <div class="grid2">
+      <article class="panel"><h3>Événements par année et catégorie</h3><p class="sub">Comptage des lignes Silver après filtre ATC R06.</p><div id="rupture-yearly" class="empty">Données en attente.</div></article>
+      <article class="panel"><h3>Molécules les plus signalées</h3><p class="sub">Nombre d’événements par DCI / molécule lorsqu’elle est renseignée.</p><div id="rupture-molecules" class="bars"></div></article>
     </div>
+    <article class="panel section"><h3>Évolution mensuelle des événements</h3><p class="sub">Nombre de signalements observés par mois ; le graphe ne mesure pas une prévalence de pénurie.</p><div class="controls"><div class="field"><label for="rupture-year">Année</label><select id="rupture-year"></select></div></div><div id="rupture-monthly" class="bars"></div></article>
+    <article class="panel section"><h3>Derniers événements présents dans le Silver</h3><p class="sub">Échantillon des événements les plus récents dans les fichiers récupérés.</p><div class="table-wrap"><table><thead><tr><th>Mois</th><th>Catégorie</th><th>Molécule</th><th>Médicament</th><th>Source</th></tr></thead><tbody id="rupture-table"></tbody></table></div></article>
+  </section>
+
+  <section class="section" id="consommation">
+    <div class="section-head"><div><div class="section-no">02 / Consommation</div><h2>Volumes OpenMedic</h2></div><p>Boîtes remboursées en ville. La lecture peut être filtrée par année et comparée entre régions ou molécules.</p></div>
+    <article class="panel">
+      <div class="controls"><div class="field"><label for="cons-year">Année</label><select id="cons-year"></select></div><div class="field"><label for="cons-region">Région</label><select id="cons-region"><option value="">Toutes les régions</option></select></div></div>
+      <div class="grid2">
+        <div><h3>Évolution annuelle</h3><p class="sub">Volume de boîtes remboursées en millions.</p><div id="cons-annual" class="bars"></div></div>
+        <div><h3>Régions</h3><p class="sub">Volume absolu ; ou normalisation pour 1 000 habitants lorsqu’une région est sélectionnée.</p><div id="cons-region-chart" class="bars"></div></div>
+      </div>
+    </article>
+    <div class="grid2 section">
+      <article class="panel"><h3>Principales molécules</h3><p class="sub">Classement des molécules selon le volume de boîtes remboursées.</p><div id="cons-molecules" class="bars"></div></article>
+      <article class="panel"><h3>Répartition par âge et sexe</h3><p class="sub">Volume de boîtes agrégé à partir des catégories démographiques OpenMedic.</p><div id="cons-demographics" class="bars"></div></article>
+    </div>
+    <p class="callout section">La normalisation régionale utilise les valeurs de population paramétrées dans le projet Streamlit. La Corse peut être exclue dans la version interactive pour tenir compte de sa petite population et de la fréquentation touristique.</p>
   </section>
 
   <section class="section">
-    <div class="section-head"><div><div class="section-no">02 / Déséquilibre de la cible</div><h2>Une cible peu fréquente, à détecter sans fuite</h2></div><p>La cible vaut 1 lorsqu’un mois comporte au moins une rupture ou tension ; sinon elle vaut 0.</p></div>
-    <article class="panel">
-      <div class="risk-layout">
-        <div class="donut"><div class="donut-label"><strong>≈ 37 %</strong><span>Mois en tension</span></div></div>
-        <div class="legend">
-          <div class="legend-row"><span class="swatch" style="background:var(--red)"></span><span>Mois avec au moins une rupture ou tension</span><strong>≈ 37 %</strong></div>
-          <div class="legend-row"><span class="swatch" style="background:#e7eeea"></span><span>Mois sans événement dans la cible</span><strong>≈ 63 %</strong></div>
-          <p class="sub" style="margin:3px 0 0">Répartition indicative décrite dans le dictionnaire de données ; le jeu Gold de classification comporte 60 mois.</p>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <section class="section" id="modele">
-    <div class="section-head"><div><div class="section-no">03 / Modélisation</div><h2>Un modèle pour prioriser les mois à surveiller</h2></div><p>Le modèle R06 vise à classer les mois selon la probabilité d’observer une rupture ou tension, à partir des variables environnementales et historiques.</p></div>
+    <div class="section-head"><div><div class="section-no">03 / Référentiel</div><h2>Spécialités et laboratoires</h2></div><p>Profil agrégé des spécialités R06 présentes dans le référentiel Silver.</p></div>
     <div class="grid2">
-      <article class="panel">
-        <h3>Classification : ROC-AUC</h3><p class="sub">Valeurs affichées par le dashboard principal et le script KPI du projet.</p>
-        <div class="metric-bars">
-          <div class="metric-row"><span>Random Forest</span><div class="track"><div class="fill" style="width:77.1%"></div></div><span class="metric-value">0,771</span></div>
-          <div class="metric-row"><span>Baseline logistique</span><div class="track"><div class="fill orange" style="width:45.7%"></div></div><span class="metric-value">0,457</span></div>
-        </div>
-        <div class="callout" style="margin-top:15px">Le score F1 moyen reporté en validation croisée pour le classificateur Random Forest est de <strong>0,520 ± 0,176</strong>. La variabilité rappelle la prudence nécessaire avec seulement 60 observations mensuelles.</div>
-      </article>
-      <article class="panel">
-        <h3>Régression : pollen du mois suivant</h3><p class="sub">Modèle distinct du classificateur de ruptures : il prédit la concentration moyenne de graminées.</p>
-        <div class="metric-bars">
-          <div class="metric-row"><span>R²</span><div class="track"><div class="fill" style="width:51.3%;background:var(--blue)"></div></div><span class="metric-value">0,513</span></div>
-          <div class="metric-row"><span>RMSE</span><div class="track"><div class="fill orange" style="width:48%"></div></div><span class="metric-value">6,3</span></div>
-        </div>
-        <p class="sub" style="margin-top:12px">RMSE exprimée en grains/m³. Ces métriques ne sont pas directement comparables à la ROC-AUC de classification.</p>
-      </article>
+      <article class="panel"><h3>Profil démographique moyen</h3><p class="sub">Moyenne simple des parts par spécialité, et non répartition pondérée des patients.</p><div id="medicine-profile" class="pct-grid"></div></article>
+      <article class="panel"><h3>Laboratoires les plus représentés</h3><p class="sub">Nombre de spécialités rattachées au laboratoire dans le référentiel.</p><div id="medicine-labs" class="bars"></div></article>
     </div>
-    <article class="panel section">
-      <h3>Variables mobilisées par le classificateur</h3><p class="sub">Groupes de caractéristiques indiqués dans la documentation : pollen, météo, saisonnalité et historique récent.</p>
-      <div class="grid3">
-        <div><span class="pill">Pollen</span><p class="sub" style="margin:8px 0 0">Graminées, bouleau, ambroisie, pics journaliers et retards mensuels.</p></div>
-        <div><span class="pill">Météo</span><p class="sub" style="margin:8px 0 0">Température, précipitations, vent et cumul thermique.</p></div>
-        <div><span class="pill">Contexte</span><p class="sub" style="margin:8px 0 0">Mois, saison allergique et signal de rupture du mois précédent.</p></div>
-      </div>
-      <div class="feature" style="margin-top:13px"><div><strong>Ambroisie : signal important identifié par SHAP</strong><p>La documentation du projet identifie <code>ambroisie_moy</code> comme une variable particulièrement informative pour le classificateur.</p></div><span class="tag">Interprétabilité</span></div>
-      <p class="sub" style="margin:13px 0 0">Les variables <code>nb_ruptures</code> et <code>nb_risques</code> sont exclues des caractéristiques du classificateur : elles composent directement la cible et créeraient une fuite de données.</p>
-    </article>
-    <article class="panel section">
-      <h3>Explorer les prédictions et les alertes</h3><p class="sub">La version Streamlit conserve les visualisations détaillées et les fonctionnalités interactives du projet.</p>
-      <div class="table-wrap"><table><thead><tr><th>Vue interactive</th><th>Contenu</th></tr></thead><tbody>
-        <tr><td>Timeline des probabilités</td><td>Probabilité de rupture par mois et seuil de décision à 50 %.</td></tr>
-        <tr><td>Tableau des alertes</td><td>Mois classés par probabilité de rupture prédite.</td></tr>
-        <tr><td>Réel vs prédit</td><td>Comparaison des valeurs observées et prédites pour les graminées et les ruptures.</td></tr>
-        <tr><td>Variables importantes</td><td>Importance des variables et interprétation SHAP.</td></tr>
-        <tr><td>Prédiction via API</td><td>Formulaire de test avec conditions pollen, météo et contexte temporel.</td></tr>
-      </tbody></table></div>
-      <div class="links"><a class="btn" href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener">Ouvrir les prédictions Streamlit ↗</a><a class="btn" href="https://antihistaminiques-pipeline.onrender.com/docs" target="_blank" rel="noopener">Documentation API ↗</a></div>
-    </article>
+    <article class="panel section"><h3>Molécules du référentiel</h3><p class="sub">Classement basé sur le volume de patients en ville déclaré par spécialité, agrégé par molécule.</p><div id="medicine-molecules" class="bars"></div></article>
   </section>
 
-  <section class="section" id="pipeline">
-    <div class="section-head"><div><div class="section-no">04 / Architecture</div><h2>Du brut à la restitution</h2></div><p>Le pipeline structure les sources, prépare les variables mensuelles, entraîne les modèles et expose les résultats.</p></div>
-    <div class="flow">
-      <div class="step"><small>01 · Ingestion</small><strong>Bronze</strong><span>Sources publiques et fichiers bruts</span></div>
-      <div class="step"><small>02 · Nettoyage</small><strong>Silver</strong><span>Normalisation, jointures et référentiels</span></div>
-      <div class="step"><small>03 · Modélisation</small><strong>Gold</strong><span>Features mensuelles et cible ML</span></div>
-      <div class="step"><small>04 · Analyse</small><strong>ML / SHAP</strong><span>Classification, régression et explication</span></div>
-      <div class="step"><small>05 · Diffusion</small><strong>API / BI</strong><span>FastAPI et dashboard Streamlit</span></div>
+  <section class="section" id="environnement">
+    <div class="section-head"><div><div class="section-no">04 / Facteurs contextuels</div><h2>Pollen et météo</h2></div><p>Les données environnementales sont agrégées par mois à partir des fichiers Silver ; les changements de source doivent rester visibles dans l’interprétation.</p></div>
+    <article class="panel">
+      <div class="controls"><div class="field"><label for="pollen-taxon">Taxon</label><select id="pollen-taxon"></select><div class="sub">Concentration moyenne mensuelle, unités de la source.</div></div><div class="field"><label for="pollen-source">Source</label><select id="pollen-source"><option value="">Toutes</option></select></div></div>
+      <div id="pollen-chart"><div class="empty">Données polliniques en attente.</div></div>
+    </article>
+    <div class="grid2 section">
+      <article class="panel"><h3>Température moyenne mensuelle</h3><p class="sub">Moyenne calculée à partir des lignes météo disponibles dans le Silver.</p><div id="weather-temp" class="bars"></div></article>
+      <article class="panel"><h3>Précipitations mensuelles</h3><p class="sub">Agrégat mensuel du fichier météo Silver.</p><div id="weather-rain" class="bars"></div></article>
     </div>
+    <article class="panel section"><h3>Repères épidémiologiques Sentinelles</h3><p class="sub">Indicateurs mensuels nationaux lorsqu’ils sont présents dans le fichier Silver.</p><div class="table-wrap"><table><thead id="sentinel-head"></thead><tbody id="sentinel-table"></tbody></table></div></article>
   </section>
 
-  <section class="section" id="limites">
-    <div class="section-head"><div><div class="section-no">05 / Limites</div><h2>Ce que le modèle permet — et ne permet pas</h2></div><p>Une aide à l’analyse et à la priorisation, pas une mesure directe de disponibilité.</p></div>
-    <div class="limits">
-      <article class="panel"><h3>Points de vigilance</h3><ul>
-        <li>Le jeu d’apprentissage comporte 60 mois : la taille d’échantillon limite la robustesse et la généralisation.</li>
-        <li>Les scores sont des performances expérimentales, pas une garantie de détection future.</li>
-        <li>Les sources pollen changent de méthode : RNSA pour 2021–2022 puis CAMS / Copernicus à partir de 2023.</li>
-        <li>Le réseau RNSA a été liquidé en mars 2025 ; aucune nouvelle donnée de stations RNSA n’est disponible pour 2025 selon la documentation du projet.</li>
-        <li>OpenMedic mesure des remboursements en ville, pas les ventes totales ni les stocks réels.</li>
-      </ul></article>
-      <article class="panel"><h3>À ne pas interpréter comme</h3><ul>
-        <li>Une prévision certaine de rupture ou de date de retour à la normale.</li>
-        <li>Une visibilité sur les stocks des fabricants, répartiteurs ou pharmacies.</li>
-        <li>Une relation causale entre un taxon de pollen et un événement de rupture.</li>
-        <li>Une alerte réglementaire ou une recommandation médicale.</li>
-        <li>Un modèle prêt à être utilisé seul pour décider d’un approvisionnement.</li>
-      </ul></article>
+  <section class="section" id="methode">
+    <div class="section-head"><div><div class="section-no">05 / Méthode</div><h2>Sources et limites d’interprétation</h2></div><p>Les chiffres et graphiques de cette page sont calculés à partir des fichiers Silver, pas de valeurs recopiées du README.</p></div>
+    <div class="grid3">
+      <article class="source"><div class="icon">💊</div><h3>OpenMedic / CNAM</h3><p>Volumes de remboursements par année, région, molécule, âge et sexe. Ne mesure ni toutes les ventes, ni les stocks disponibles.</p></article>
+      <article class="source"><div class="icon">📋</div><h3>ANSM</h3><p>Signalements historiques et export de disponibilités. Les catégories et dates reflètent les informations publiées dans les fichiers source.</p></article>
+      <article class="source"><div class="icon">🧾</div><h3>BDPM</h3><p>Référentiel des spécialités, substances actives, codes ATC et informations médicament.</p></article>
+      <article class="source"><div class="icon">🌿</div><h3>RNSA / ATMO / CAMS</h3><p>Les séries pollen combinent des sources et méthodes différentes. RNSA pour 2021–2022 puis CAMS / Copernicus à partir de 2023 selon la documentation.</p></article>
+      <article class="source"><div class="icon">🌡️</div><h3>Open-Meteo</h3><p>Températures, précipitations et vent. Les résumés affichés sont agrégés depuis les valeurs Silver.</p></article>
+      <article class="source"><div class="icon">🏥</div><h3>Sentinelles / INSERM</h3><p>Indicateurs épidémiologiques hebdomadaires agrégés en mensuel, notamment syndromes grippaux et infections respiratoires aiguës.</p></article>
     </div>
-    <div class="callout" style="margin-top:13px">Note de cohérence documentaire : le code du dashboard principal, <code>src/analysis/kpis.py</code> et le dictionnaire de données indiquent une ROC-AUC Random Forest de 0,771 et une baseline logistique de 0,457. Une table de synthèse du README contient d’autres valeurs (0,593 et 0,679) ; ces chiffres doivent être réconciliés avec le protocole d’évaluation avant toute communication externe.</div>
-    <article class="panel section"><h3>Sources et code du projet</h3><p class="sub">Les sources utilisées et le détail des transformations sont documentés dans le dépôt original.</p>
-      <div class="links">
-        <a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener">Dépôt GitHub ↗</a>
-        <a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline/blob/main/docs/dictionnaire_donnees.md" target="_blank" rel="noopener">Dictionnaire de données ↗</a>
-        <a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline/tree/main/src" target="_blank" rel="noopener">Scripts Python ↗</a>
-        <a class="btn" href="https://www.assurance-maladie.ameli.fr/etudes-et-donnees/open-medic" target="_blank" rel="noopener">OpenMedic ↗</a>
-        <a class="btn" href="https://ansm.sante.fr/" target="_blank" rel="noopener">ANSM ↗</a>
-      </div>
-    </article>
+    <div class="limits section">
+      <article class="panel"><h3>Ce que ce dashboard permet</h3><ul><li>Explorer les événements ANSM liés aux molécules R06.</li><li>Mettre en regard les volumes OpenMedic et la répartition régionale.</li><li>Décrire des évolutions polliniques et météorologiques mensuelles.</li><li>Consulter les indicateurs épidémiologiques disponibles.</li></ul></article>
+      <article class="panel"><h3>Ce qu’il ne permet pas</h3><ul><li>Voir les stocks physiques chez les fabricants, grossistes ou pharmacies.</li><li>Prédire avec certitude une rupture, sa durée ou une date de retour.</li><li>Attribuer une causalité à une association pollen / météo / rupture.</li><li>Fournir une recommandation médicale ou une alerte réglementaire.</li></ul></article>
+    </div>
+    <article class="panel section"><h3>Modélisation prédictive</h3><p class="sub">Le projet conserve un classificateur Random Forest, un modèle de régression pollen et une interprétation SHAP. Les courbes de prédiction et les métriques détaillées restent dans l’application Streamlit afin de ne pas mélanger les indicateurs calculés depuis Silver avec les résultats issus des modèles Gold.</p><div class="links"><a class="btn" href="https://antihistaminiques-pipeline-2.streamlit.app/predictions" target="_blank" rel="noopener">Voir les prédictions interactives ↗</a><a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline/blob/main/docs/dictionnaire_donnees.md" target="_blank" rel="noopener">Dictionnaire de données ↗</a><a class="btn" href="https://github.com/nnarou-hash/antihistaminiques-pipeline" target="_blank" rel="noopener">Dépôt GitHub ↗</a></div></article>
   </section>
 </main>
-<footer class="foot">Dashboard HTML de synthèse · Antihistaminiques Pipeline · Projet Jedha. <a href="https://antihistaminiques-pipeline-2.streamlit.app/predictions">Conserver l’exploration complète avec Streamlit ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
+<footer class="foot">Dashboard HTML construit à partir des tables Silver du projet Antihistaminiques Pipeline. <a href="https://antihistaminiques-pipeline-2.streamlit.app">Conserver l’exploration interactive avec Streamlit ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=(v,d=1)=>Number(v||0).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const nfmt=v=>Number(v||0).toLocaleString('fr-FR');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const million=v=>fmt(Number(v||0)/1e6,1)+' M';
+const COLORS={'Rupture':'#bd675c','Risque de rupture':'#c58b4d','Tension':'#d19b55','Remise à disposition':'#76a18b','Arrêt de commercialisation':'#7099b4','Autre':'#9aa8a5'};
+let D={};
+function bars(el,rows,label,value,formatter,limit){
+  const data=(rows||[]).slice(0,limit||12),max=Math.max(1,...data.map(r=>Number(r[value]||0)));
+  $(el).innerHTML=data.length?data.map(r=>{const v=Number(r[value]||0);return '<div class="barrow"><span class="barlabel">'+esc(r[label])+'</span><div class="track"><div class="fill" style="width:'+Math.max(0,v/max*100)+'%"></div></div><span class="value">'+(formatter?formatter(v):fmt(v,0))+'</span></div>'}).join(''):'<div class="empty">Pas de données pour cette sélection.</div>';
+}
+function yearlyRuptures(){
+  const rows=D.ruptures.yearly||[],years=[...new Set(rows.map(r=>String(r.year)))].sort(),cats=[...new Set(rows.map(r=>r.event_category))];
+  const max=Math.max(1,...years.map(y=>rows.filter(r=>String(r.year)===y).reduce((s,r)=>s+Number(r.events),0)));
+  let html='<div class="legend">'+cats.map(c=>'<span><i class="swatch" style="background:'+(COLORS[c]||'#9aa8a5')+'"></i>'+esc(c)+'</span>').join('')+'</div><div class="stacked">';
+  html+=years.map(y=>{const rs=rows.filter(r=>String(r.year)===y),total=rs.reduce((s,r)=>s+Number(r.events),0);return '<div class="stack-row"><strong>'+esc(y)+'</strong><div class="stack-track">'+rs.map(r=>'<i class="stack-seg" style="width:'+(Number(r.events)/max*100)+'%;background:'+(COLORS[r.event_category]||'#9aa8a5')+'" title="'+esc(r.event_category)+': '+nfmt(r.events)+'"></i>').join('')+'</div><span class="stack-total">'+nfmt(total)+'</span></div>'}).join('');
+  html+='</div>'; $('rupture-yearly').innerHTML=years.length?html:'<div class="empty">Aucun événement ANSM R06 trouvé.</div>';
+  $('rupture-year').innerHTML=years.map(y=>'<option>'+esc(y)+'</option>').join('');
+  if(years.length){$('rupture-year').value=years[years.length-1];monthlyRuptures();}
+}
+function monthlyRuptures(){
+  const year=$('rupture-year').value,rows=(D.ruptures.monthly||[]).filter(r=>String(r.year_month).startsWith(year+'-'));
+  const names=['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Août','Sep','Oct','Nov','Déc'];
+  const monthly=names.map((label,i)=>({label,count:rows.filter(r=>Number(String(r.year_month).slice(5,7))===i+1).reduce((s,r)=>s+Number(r.events),0)}));
+  bars('rupture-monthly',monthly,'label','count',v=>nfmt(v),12);
+  const events=(D.ruptures.events||[]).filter(r=>String(r.year)===year).slice(0,20);
+  $('rupture-table').innerHTML=events.map(r=>'<tr><td>'+esc(r.year_month)+'</td><td>'+esc(r.event_category)+'</td><td>'+esc(r.molecule_clean||'—')+'</td><td>'+esc(r.medicine||'—')+'</td><td>'+esc(r.source)+'</td></tr>').join('')||'<tr><td colspan="5">Aucun événement pour cette année.</td></tr>';
+}
+function consumption(){
+  const c=D.consumption||{},year=$('cons-year').value,region=$('cons-region').value;
+  bars('cons-annual',(c.annual||[]).map(r=>({label:String(r.year),boxes:r.boxes})),'label','boxes',v=>million(v),10);
+  const regional=(c.regional||[]).filter(r=>(!year||String(r.year)===year)&&(!region||r.region===region));
+  const grouped={};regional.forEach(r=>{if(!grouped[r.region])grouped[r.region]={region:r.region,boxes:0,per1000:0};grouped[r.region].boxes+=Number(r.boxes||0);grouped[r.region].per1000+=Number(r.boxes_per_1000||0)});
+  let regRows=Object.values(grouped);
+  regRows.sort((a,b)=>region?a.boxes-b.boxes:b.boxes-a.boxes);
+  if(!region)regRows=regRows.slice(0,13);
+  bars('cons-region-chart',regRows.map(r=>({label:r.region,value:region?r.boxes:r.per1000})),'label','value',v=>region?million(v):fmt(v,0),13);
+  const mols=(c.molecules||[]).filter(r=>!year||String(r.year)===year),byMolecule={};mols.forEach(r=>byMolecule[r.molecule]=(byMolecule[r.molecule]||0)+Number(r.boxes||0));
+  bars('cons-molecules',Object.entries(byMolecule).map(([molecule,boxes])=>({molecule,boxes})).sort((a,b)=>b.boxes-a.boxes),'molecule','boxes',v=>million(v),12);
+  bars('cons-demographics',(c.demographics||[]).map(r=>({label:r.age_group+' · '+r.sex_group,boxes:r.boxes})).sort((a,b)=>b.boxes-a.boxes),'label','boxes',v=>million(v),12);
+}
+function medicines(){
+  const m=D.medicines||{},labels={pct_age_0_19_ans:'0–19 ans',pct_age_20_59_ans:'20–59 ans',pct_age_60_ans_et_plus:'60 ans et +',pct_sexe_female:'Femmes',pct_sexe_male:'Hommes'};
+  $('medicine-profile').innerHTML=(m.average_patient_age_sex_profile||[]).map(r=>'<div class="pct-row"><span>'+esc(labels[r.variable]||r.variable)+'</span><div class="pct-track"><div class="pct-fill" style="width:'+Math.max(0,Number(r.percentage||0))+'%"></div></div><strong class="pct-value">'+fmt(r.percentage,1)+' %</strong></div>').join('')||'<div class="empty">Profil démographique non disponible.</div>';
+  bars('medicine-labs',m.top_laboratories||[],'laboratoire','specialties',v=>nfmt(v),12);
+  bars('medicine-molecules',m.top_molecules_by_patient_volume||[],'molecule','patient_volume',v=>nfmt(v),15);
+}
+function lineChart(el,rows,key,label,color){
+  const data=(rows||[]).filter(r=>r[key]!==null&&r[key]!==undefined&&Number.isFinite(Number(r[key]))).slice(-100);
+  if(data.length<2){$(el).innerHTML='<div class="empty">Pas assez de points pour tracer une courbe.</div>';return}
+  const vals=data.map(r=>Number(r[key])),max=Math.max(1,...vals),min=Math.min(0,...vals),w=900,h=235,p=24;
+  const points=vals.map((v,i)=>String(p+i*(w-2*p)/(vals.length-1))+','+String(h-p-(v-min)/(max-min||1)*(h-2*p))).join(' ');
+  const circles=data.map((r,i)=>{const x=p+i*(w-2*p)/(data.length-1),y=h-p-(vals[i]-min)/(max-min||1)*(h-2*p);return '<circle cx="'+x+'" cy="'+y+'" r="3" fill="'+color+'"><title>'+esc(r.year_month)+': '+fmt(vals[i],2)+'</title></circle>'}).join('');
+  $(el).innerHTML='<svg class="spark" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(label)+'"><line x1="'+p+'" y1="'+(h-p)+'" x2="'+(w-p)+'" y2="'+(h-p)+'" stroke="#dfe8e3"/><polyline points="'+points+'" fill="none" stroke="'+color+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+circles+'</svg><div class="chart-axis"><span>'+esc(data[0].year_month)+'</span><span>'+esc(data[data.length-1].year_month)+'</span></div><div class="chart-tooltip">Minimum : '+fmt(min,2)+' · maximum : '+fmt(Math.max.apply(null,vals),2)+' · '+esc(label)+'</div>';
+}
+function environment(){
+  const taxon=$('pollen-taxon').value,source=$('pollen-source').value;
+  const pollen=(D.pollen_monthly||[]).filter(r=>(!source||r.source===source)&&r[taxon]!==null&&r[taxon]!==undefined).sort((a,b)=>a.year_month.localeCompare(b.year_month));
+  lineChart('pollen-chart',pollen,taxon,taxon,'#397e75');
+  const weather=D.weather_monthly||[],monthly={};
+  weather.forEach(r=>{const k=r.year_month;if(!monthly[k])monthly[k]={year_month:k,temp:[],rain:[]};if(r.temperature_2m_mean!==null)monthly[k].temp.push(Number(r.temperature_2m_mean));if(r.precipitation_sum!==null)monthly[k].rain.push(Number(r.precipitation_sum))});
+  const w=Object.values(monthly).sort((a,b)=>a.year_month.localeCompare(b.year_month)).map(r=>({year_month:r.year_month,temp:r.temp.length?r.temp.reduce((s,v)=>s+v,0)/r.temp.length:null,rain:r.rain.length?r.rain.reduce((s,v)=>s+v,0)/r.rain.length:null}));
+  bars('weather-temp',w.slice(-12).map(r=>({label:r.year_month,value:r.temp})),'label','value',v=>fmt(v,1)+' °C',12);
+  bars('weather-rain',w.slice(-12).map(r=>({label:r.year_month,value:r.rain})),'label','value',v=>fmt(v,1)+' mm',12);
+  const sent=D.epidemiology_monthly||[];
+  if(sent.length){const cols=Object.keys(sent[0]).slice(0,5);$('sentinel-head').innerHTML='<tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>';$('sentinel-table').innerHTML=sent.slice(-12).reverse().map(r=>'<tr>'+cols.map(c=>'<td>'+esc(r[c]??'—')+'</td>').join('')+'</tr>').join('')}
+  else{$('sentinel-head').innerHTML='<tr><th>Indicateur</th></tr>';$('sentinel-table').innerHTML='<tr><td>Aucune donnée épidémiologique disponible.</td></tr>'}
+}
+async function init(){
+  try{
+    const response=await fetch('./data.json',{cache:'no-store'});if(!response.ok)throw new Error('Les agrégats Silver ne sont pas encore publiés.');
+    D=await response.json();const s=D.summary||{};
+    $('kpi-specialties').textContent=nfmt(s.medicine_specialties);
+    $('kpi-molecules').textContent=nfmt(s.molecule_count);
+    $('kpi-boxes').textContent=million(s.total_boxes_2021_2025);
+    $('kpi-events').textContent=nfmt(s.rupture_event_count);
+    const when=D.metadata?.generated_at?new Date(D.metadata.generated_at).toLocaleString('fr-FR'):'date non renseignée';
+    $('data-status').textContent='Agrégats Silver générés le '+when;
+    const years=[...new Set((D.consumption.annual||[]).map(r=>String(r.year)))].sort();
+    $('cons-year').innerHTML='<option value="">Toutes les années</option>'+years.map(y=>'<option>'+esc(y)+'</option>').join('');
+    const regions=[...new Set((D.consumption.regional||[]).map(r=>r.region))].sort((a,b)=>a.localeCompare(b,'fr'));
+    $('cons-region').innerHTML='<option value="">Toutes les régions</option>'+regions.map(r=>'<option>'+esc(r)+'</option>').join('');
+    const pollen=D.pollen_monthly||[],taxa=Object.keys(pollen[0]||{}).filter(k=>!['year_month','source'].includes(k));
+    $('pollen-taxon').innerHTML=taxa.map(k=>'<option>'+esc(k)+'</option>').join('');
+    const sources=[...new Set(pollen.map(r=>r.source).filter(Boolean))];
+    $('pollen-source').innerHTML='<option value="">Toutes les sources</option>'+sources.map(x=>'<option>'+esc(x)+'</option>').join('');
+    yearlyRuptures();
+    bars('rupture-molecules',(D.ruptures.top_molecules||[]).map(r=>({molecule:r.molecule,events:r.events})),'molecule','events',v=>nfmt(v),12);
+    consumption();medicines();environment();
+    $('cons-year').addEventListener('change',consumption);$('cons-region').addEventListener('change',consumption);
+    $('rupture-year').addEventListener('change',monthlyRuptures);$('pollen-taxon').addEventListener('change',environment);$('pollen-source').addEventListener('change',environment);
+  }catch(error){$('data-status').textContent='Données Silver non chargées';const note=document.createElement('div');note.className='notice';note.textContent=error.message+' Le générateur doit récupérer les fichiers LFS Silver puis produire data.json.';document.querySelector('main').prepend(note)}
+}
+init();
+</script>
 </body></html>
