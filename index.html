@@ -347,13 +347,14 @@
         <div class="project-header p2">📈</div>
         <div class="project-body">
           <div class="project-title">Maternité tardive aux États-Unis (1995–2024)</div>
-          <div class="project-desc">Analyse des données CDC WONDER sur l’évolution des naissances chez les mères de 35 ans et plus (11,6 % en 1995 ; 21,3 % en 2024). Le projet associe contrôles qualité avec Great Expectations, stockage BigQuery, transformations et tests dbt, restitution Streamlit et documentation de gouvernance. Les limites méthodologiques sont explicitement documentées.</div>
+          <div class="project-desc">Analyse des données CDC WONDER sur l’évolution des naissances chez les mères de 35 ans et plus (11,6 % en 1995 ; 21,3 % en 2024). Le projet associe contrôles qualité avec Great Expectations, stockage BigQuery, transformations et tests dbt, documentation de gouvernance et restitution via un dashboard HTML interactif. Le code du dashboard Streamlit initial est également conservé. Les limites méthodologiques sont explicitement documentées.</div>
           <div class="project-tags">
             <span class="tag">CDC WONDER</span>
             <span class="tag">Great Expectations</span>
             <span class="tag">BigQuery</span>
             <span class="tag">dbt</span>
-            <span class="tag">Streamlit</span>
+            <span class="tag">HTML · JavaScript</span>
+            <span class="tag">Streamlit · Python</span>
             <span class="tag">Data Governance</span>
           </div>
           <p style="font-size:0.8rem;color:var(--gray);margin-top:auto">Limites documentées : rupture de série 2006–2007 ; données sur le niveau d’éducation non comparables avant 2016.</p>
@@ -442,16 +443,18 @@
       <div class="project-card">
         <div class="project-header p4">🔬</div>
         <div class="project-body">
-          <span class="badge-wip">🚧 En cours</span>
+          <span class="badge-wip">⚙️ Socle opérationnel</span>
           <div class="project-title">Agent Veille Pénuries ANSM</div>
-          <div class="project-desc">Projet en cours visant à structurer une veille à partir des données publiques de l’ANSM : identification des sources, suivi des mises à jour, traçabilité et restitution des informations sur les tensions d’approvisionnement. Les fonctionnalités sont en cours de développement.</div>
+          <div class="project-desc">Veille automatisée des médicaments d’intérêt thérapeutique majeur suivis par l’ANSM : collecte Python, archivage des instantanés, détection des nouvelles entrées et modifications, journal de traçabilité et dashboard HTML interactif. Une synthèse par IA générative peut compléter la restitution.</div>
           <div class="project-tags">
             <span class="tag">Python</span>
+            <span class="tag">HTML · JavaScript</span>
+            <span class="tag">GitHub Actions</span>
             <span class="tag">ANSM</span>
             <span class="tag">IA Générative</span>
             <span class="tag">Santé</span>
           </div>
-          <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Périmètre en cours de définition et de développement.</p>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Collecte quotidienne opérationnelle. La synthèse IA nécessite une clé API dédiée ; la veille et le dashboard fonctionnent sans elle.</p>
           <div class="project-links">
             <a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a>
             <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Voir le code</a>
