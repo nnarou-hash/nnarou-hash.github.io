@@ -90,12 +90,15 @@ L'appel IA utilise l'API Responses d'OpenAI. La génération est facultative et 
 ## Automatisation et publication
 
 Le workflow \`.github/workflows/ansm-watch.yml\` :
-- s'exécute quotidiennement à 06:00 UTC ;
+- vérifie la page ANSM toutes les 30 minutes (horaires UTC) ;
 - peut être lancé manuellement depuis l'onglet Actions ;
 - exécute les tests avant toute collecte ;
-- archive un snapshot et met à jour les exports ;
-- ajoute un commit uniquement si des fichiers de suivi ont changé ;
-- génère un résumé IA uniquement lorsque le secret API est configuré.
+- compare les données au dernier relevé validé ;
+- archive un snapshot, journalise les événements et met à jour les exports uniquement si une nouvelle entrée, une modification ou une sortie de liste est détectée ;
+- ne crée aucun commit ni déploiement lorsque les données sont inchangées ;
+- génère un résumé IA uniquement lorsqu'un changement est détecté et que le secret API est configuré.
+
+La source ANSM ne déclenchant pas directement le workflow, il s'agit d'une actualisation par vérification périodique : une nouvelle publication est récupérée lors du prochain passage, puis publiée après la fin du workflow et du déploiement GitHub Pages. Un léger délai reste donc possible.
 
 Le dashboard statique est servi depuis le dossier \`agent-veille-ansm/\` du site GitHub Pages. Il lit les fichiers générés dans \`agent-veille-ansm/data/\`. Le premier affichage reste en état « en attente » jusqu'à la première collecte réussie.
 
