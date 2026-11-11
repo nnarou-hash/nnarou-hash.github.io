@@ -1,0 +1,9 @@
+zone_code,zone_type,fenetre_analyse,certificat,groupe_education,ordre_groupe,nb_naissances,nb_naissances_35_plus,part_35_plus_pct,part_dans_toutes_meres_pct,part_dans_meres_35_plus_pct
+US,pays,2016-2024,cert_2003,Licence ou plus,4,11311574,3354101,29.65,34.28,53.21
+US,pays,1995-2002,cert_1989,Licence ou plus,4,7396044,1746856,23.62,23.7,43.35
+US,pays,2016-2024,cert_2003,Lycée,2,8650357,926935,10.72,26.22,14.7
+US,pays,1995-2002,cert_1989,Lycée,2,10126483,959864,9.48,32.45,23.82
+US,pays,1995-2002,cert_1989,Moins du lycée,1,6847732,406976,5.94,21.94,10.1
+US,pays,2016-2024,cert_2003,Moins du lycée,1,3998690,604677,15.12,12.12,9.59
+US,pays,2016-2024,cert_2003,Études supérieures sans licence,3,9036007,1418297,15.7,27.38,22.5
+US,pays,1995-2002,cert_1989,Études supérieures sans licence,3,6838137,916387,13.4,21.91,22.74
