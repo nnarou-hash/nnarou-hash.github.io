@@ -84,6 +84,9 @@
   .btn-primary:hover { background: var(--mauve-dark); transform: translateY(-1px); }
   .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
   .btn-outline:hover { border-color: var(--mauve-light); color: var(--mauve-light); }
+  .btn-ansm { background: #d8f1eb; color: #193c43; border: 2px solid #d8f1eb; }
+  .btn-ansm:hover { background: white; border-color: white; color: #193c43; transform: translateY(-1px); }
+  .nav-ansm { color: var(--mauve) !important; font-weight: 800 !important; }
 
   /* SECTIONS */
   section { padding: 88px 24px; scroll-margin-top: 76px; }
@@ -220,6 +223,7 @@
 
     <li><a href="#apport">Ce que j’apporte</a></li>
     <li><a href="#projects">Projets</a></li>
+    <li><a href="/agent-veille-ansm/?v=20261111" class="nav-ansm">Veille ANSM ↗</a></li>
     <li><a href="#skills">Compétences</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -234,6 +238,7 @@
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">Voir mes projets</a>
       <a href="#contact" class="btn btn-outline">Me contacter</a>
+      <a href="/agent-veille-ansm/?v=20261111" class="btn btn-ansm">Ouvrir la veille ANSM ↗</a>
     </div>
   </div>
 </section>
@@ -277,6 +282,28 @@
     <div class="section-label">Ma contribution</div>
     <div class="section-title">Ce que je peux apporter</div>
     <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header p4">🔬</div>
+        <div class="project-body">
+          <span class="badge-wip">⚙️ Socle opérationnel</span>
+          <div class="project-title">Agent Veille Pénuries ANSM</div>
+          <div class="project-desc">Veille automatisée des médicaments d’intérêt thérapeutique majeur suivis par l’ANSM : collecte Python, archivage des instantanés, détection des nouvelles entrées et modifications, journal de traçabilité et dashboard HTML interactif. Une synthèse par IA générative peut compléter la restitution.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">HTML · JavaScript</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">ANSM</span>
+            <span class="tag">IA Générative</span>
+            <span class="tag">Santé</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Collecte quotidienne opérationnelle. La synthèse IA nécessite une clé API dédiée ; la veille et le dashboard fonctionnent sans elle.</p>
+          <div class="project-links">
+            <a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a>
+            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Voir le code</a>
+          </div>
+        </div>
+      </div>
 
       <div class="skill-group">
         <div class="skill-group-title">Fiabiliser & structurer les données</div>
@@ -440,27 +467,7 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-header p4">🔬</div>
-        <div class="project-body">
-          <span class="badge-wip">⚙️ Socle opérationnel</span>
-          <div class="project-title">Agent Veille Pénuries ANSM</div>
-          <div class="project-desc">Veille automatisée des médicaments d’intérêt thérapeutique majeur suivis par l’ANSM : collecte Python, archivage des instantanés, détection des nouvelles entrées et modifications, journal de traçabilité et dashboard HTML interactif. Une synthèse par IA générative peut compléter la restitution.</div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">HTML · JavaScript</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">ANSM</span>
-            <span class="tag">IA Générative</span>
-            <span class="tag">Santé</span>
-          </div>
-          <p style="font-size:0.82rem;color:var(--gray);margin-top:auto">Collecte quotidienne opérationnelle. La synthèse IA nécessite une clé API dédiée ; la veille et le dashboard fonctionnent sans elle.</p>
-          <div class="project-links">
-            <a href="/agent-veille-ansm/" class="project-link">Dashboard HTML</a>
-            <a href="https://github.com/nnarou-hash/nnarou-hash.github.io/tree/main/agent-veille-ansm" target="_blank" rel="noopener noreferrer" class="project-link">Voir le code</a>
-          </div>
-        </div>
-      </div>
+
 
     </div>
   </div>
