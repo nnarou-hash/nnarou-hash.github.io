@@ -1,0 +1,66 @@
+name: Dashboard Antihistaminiques — exports Silver
+
+on:
+  push:
+    paths:
+      - 'antihistaminiques/index.html'
+      - 'antihistaminiques/build_dashboard_data.py'
+      - '.github/workflows/antihistaminiques-silver.yml'
+  schedule:
+    - cron: "0 7 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: antihistaminiques-silver-dashboard
+  cancel-in-progress: false
+
+jobs:
+  build-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout du portfolio
+        uses: actions/checkout@v4
+
+      - name: Checkout du projet source
+        uses: actions/checkout@v4
+        with:
+          repository: nnarou-hash/antihistaminiques-pipeline
+          ref: main
+          path: source-data
+          lfs: false
+
+      - name: Récupérer uniquement les fichiers Silver Git LFS nécessaires
+        working-directory: source-data
+        run: |
+          git lfs install
+          git config lfs.concurrenttransfers 4
+          git lfs pull --include="data/silver/J0_silver_medicaments.csv,data/silver/J0_silver_ruptures.csv,data/silver/J0_silver_ruptures_ansm_2026.csv,data/silver/J0_silver_openmedic_2021_2025_20260607.csv,data/silver/J0_silver_pollen_2021_2026.csv,data/silver/J0_silver_meteo_openmeteo_2021_2026.csv,data/silver/J0_silver_sentinelles.csv"
+
+      - name: Installer Python et pandas
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip pandas==2.2.3
+
+      - name: Construire les agrégats publics depuis Silver
+        run: |
+          python antihistaminiques/build_dashboard_data.py \
+            --source-dir source-data/data/silver \
+            --output antihistaminiques/data.json
+
+      - name: Enregistrer les données uniquement si elles ont changé
+        run: |
+          if [[ -n "$(git status --porcelain antihistaminiques/data.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add antihistaminiques/data.json
+            git commit -m "data(antihistaminiques): refresh Silver dashboard aggregates"
+            git push
+          else
+            echo "Aucune évolution dans les données Silver agrégées."
+          fi
