@@ -19,9 +19,19 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;p
 footer{padding:16px 5vw;background:#292522;color:#c9c0b8;font-size:11px}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.two,.insights{grid-template-columns:1fr}}
 @media(max-width:540px){.kpis{grid-template-columns:1fr 1fr}.value{font-size:21px}header{padding:24px}}
+
+.project-brief{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 20px;box-shadow:var(--shadow)}
+.project-brief h2{font-size:13px;margin:0 0 6px;color:var(--ink)}
+.project-brief p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief strong{color:var(--ink)}
+@media(max-width:720px){.project-brief{grid-template-columns:1fr}}
 </style></head><body>
 <header><div class="eyebrow">Projet portfolio · Business & Data Analyst</div><h1>Analyse de la chaîne d'approvisionnement cosmétique</h1><p class="subtitle">Performance des stocks · Prévisions de la demande · Qualité des données · Janvier 2024 — Décembre 2026</p></header>
 <main>
+<div class="project-brief">
+ <div><h2>Présentation du projet</h2><p>Analyse d’un portefeuille fictif de produits cosmétiques sur 36 mois : chiffre d’affaires, ventes, demande et prévisions, niveau de stock, risques de rupture, qualité des données, simulations de réapprovisionnement, segmentation ABC/XYZ et comparaison de coûts.</p></div>
+ <div><h2>Sources de données</h2><p><strong>Valeurs entièrement synthétiques</strong> : 100 SKU fictifs et 3 600 couples SKU-mois (janvier 2024 à décembre 2026). La structure des champs s’inspire d’un jeu de données public de supply chain ; l’historique chiffré, les marques, fournisseurs et résultats sont simulés.</p></div>
+</div>
 <nav><button class="active" onclick="onglet('vue',this)">01 · Vue d'ensemble</button><button onclick="onglet('stock',this)">02 · Stocks et prévisions</button><button onclick="onglet('qualite',this)">03 · Qualité des données</button><button onclick="onglet('reappro',this)">04 · Simulation de réapprovisionnement</button><button onclick="onglet('abcxyz',this)">05 · Segmentation ABC/XYZ</button><button onclick="onglet('couts',this)">06 · Analyse des coûts</button></nav>
 <section id="vue" class="section active">
 <div class="kpis">
