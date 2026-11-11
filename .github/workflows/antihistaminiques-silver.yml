@@ -38,7 +38,7 @@ jobs:
         run: |
           git lfs install
           git config lfs.concurrenttransfers 4
-          git lfs pull --include="data/silver/J0_silver_medicaments.csv,data/silver/J0_silver_ruptures.csv,data/silver/J0_silver_ruptures_ansm_2026.csv,data/silver/J0_silver_openmedic_2021_2025_20260607.csv,data/silver/J0_silver_pollen_2021_2026.csv,data/silver/J0_silver_meteo_openmeteo_2021_2026.csv,data/silver/J0_silver_sentinelles.csv"
+          git lfs pull --include="data/silver/J0_silver_medicaments.csv,data/silver/J0_silver_bdpm.csv,data/silver/J0_silver_ruptures.csv,data/silver/J0_silver_ruptures_ansm_2026.csv,data/silver/J0_silver_openmedic_2021_2025_20260607.csv,data/silver/J0_silver_pollen_2021_2026.csv,data/silver/J0_silver_meteo_openmeteo_2021_2026.csv,data/silver/J0_silver_sentinelles.csv"
 
       - name: Installer Python et pandas
         uses: actions/setup-python@v5
