@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dashboard statique de qualité des données NHANES 2021–2023, construit à partir des exports agrégés du projet dbt.">
+<title>NHANES 2021–2023 | Qualité des données</title>
+<style>
+:root{--ink:#1d3438;--muted:#667a7d;--line:#dfe8e5;--paper:#f4f7f5;--white:#fff;--navy:#173b42;--teal:#377e78;--teal2:#a7cbc2;--orange:#b98545;--red:#b9655b;--shadow:0 12px 36px rgba(24,58,64,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+header{background:var(--navy);color:#fff;padding:20px max(22px,calc((100vw - 1180px)/2)) 48px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:42px}.brand{font-size:11px;letter-spacing:.14em;font-weight:850;color:#d9e9e3}.toplinks{display:flex;gap:16px;flex-wrap:wrap}.toplinks a{font-size:11px;color:#d5e5df}.hero{max-width:1180px;margin:auto}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.17em;color:#a7d2c7;font-weight:850}.hero h1{font-size:clamp(34px,5vw,58px);letter-spacing:-.055em;line-height:1.02;margin:12px 0 16px}.hero p{max-width:800px;color:#d1dfda;font-size:14px;margin:0;line-height:1.8}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hero-actions a{border:1px solid rgba(255,255,255,.3);border-radius:9px;padding:9px 13px;color:#fff;font-size:11px;font-weight:800}.hero-actions a.primary{background:#dcebe5;color:var(--navy);border-color:#dcebe5}
+main{max-width:1180px;margin:auto;padding:26px 22px 54px}.notice{background:#fff8ed;border:1px solid #ead9bc;border-radius:13px;padding:13px 16px;font-size:11px;color:#785f3d;margin-bottom:20px}.meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:10px;margin-bottom:18px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi,.panel{background:var(--white);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.kpi{padding:17px 18px}.kpi small{font-size:10px;color:var(--muted);font-weight:850;text-transform:uppercase;letter-spacing:.08em}.kpi strong{display:block;color:var(--navy);font-size:33px;line-height:1.15;letter-spacing:-.045em;margin:7px 0 3px}.kpi span{font-size:10px;color:var(--muted)}
+.section{margin-top:30px;scroll-margin-top:16px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:13px}.section-head h2{margin:4px 0 0;color:var(--navy);font-size:23px;letter-spacing:-.04em}.section-head p{font-size:10px;color:var(--muted);margin:0;max-width:440px;text-align:right}.section-no{font-size:10px;color:var(--teal);letter-spacing:.15em;font-weight:850;text-transform:uppercase}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.panel{padding:18px;min-width:0}.panel h3{font-size:13px;color:var(--navy);margin:0 0 5px}.panel .sub{font-size:10px;color:var(--muted);margin:0 0 15px}.bars{display:grid;gap:12px}.barrow{display:grid;grid-template-columns:minmax(120px,190px) 1fr 50px;gap:10px;align-items:center;font-size:10px}.barlabel{overflow-wrap:anywhere;color:#40575a}.bartrack{height:9px;border-radius:30px;background:#edf2ef;overflow:hidden}.barfill{height:100%;border-radius:30px;background:var(--teal)}.barvalue{text-align:right;color:var(--navy);font-weight:800;font-variant-numeric:tabular-nums}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:10px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid #edf1ef;vertical-align:middle}th{background:#f6f8f7;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}tbody tr:last-child td{border-bottom:0}.groupbar{display:grid;grid-template-columns:145px 1fr 48px;gap:9px;align-items:center;margin:10px 0;font-size:10px}.groupbar .track{height:8px;background:#edf2ef;border-radius:20px;overflow:hidden}.groupbar .fill{height:100%;background:var(--teal);border-radius:20px}.groupbar .fill.male{background:var(--orange)}
+.range-list{display:grid;gap:12px}.range-row{display:grid;grid-template-columns:minmax(145px,205px) 1fr minmax(135px,165px);gap:10px;align-items:center;font-size:10px}.range-label{color:#40575a;overflow-wrap:anywhere}.range-track{height:16px;position:relative;background:linear-gradient(to right,#edf2ef,#f6f8f7);border-radius:20px}.range-segment{position:absolute;height:7px;top:4px;background:#9dc6bc;border-radius:20px}.range-marker{position:absolute;height:14px;width:3px;top:1px;background:var(--navy);border-radius:3px;transform:translateX(-50%)}.range-value{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:9px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:0 0 15px}.field{display:grid;gap:5px;min-width:145px}.field label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:850}.field select{background:white;border:1px solid var(--line);border-radius:8px;padding:9px 10px;color:var(--ink);font:inherit;font-size:11px}.hint{font-size:10px;color:var(--muted);line-height:1.7;margin:12px 0 0}
+.corr-list{display:grid;gap:9px}.corr-row{display:grid;grid-template-columns:130px 1fr 48px 55px;gap:9px;align-items:center;font-size:10px}.corr-label{color:#40575a}.corr-axis{height:11px;position:relative;background:#f0f3f1;border-radius:20px}.corr-mid{position:absolute;left:50%;top:-2px;height:15px;width:1px;background:#879795}.corr-fill{position:absolute;top:0;height:11px;border-radius:20px}.corr-num{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}.corr-n{text-align:right;color:var(--muted);font-size:9px}
+.heatmap-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.heatmap{min-width:720px;font-size:9px}.heatmap th,.heatmap td{text-align:center;padding:7px 5px;min-width:54px}.heatmap th:first-child{position:sticky;left:0;background:#f6f8f7;z-index:2;text-align:left;min-width:140px}.heatmap td:first-child{position:sticky;left:0;background:#fff;font-weight:750;text-align:left;z-index:1}.heatcell{border-radius:5px;font-weight:800}.empty{padding:15px;color:var(--muted);font-size:11px}.legend{display:flex;align-items:center;gap:8px;font-size:9px;color:var(--muted);margin-top:12px}.legendbar{width:125px;height:8px;border-radius:20px;background:linear-gradient(90deg,#b9655b,#f2f4f2,#377e78)}
+details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:12px 14px}summary{cursor:pointer;color:var(--navy);font-weight:800;font-size:11px}.downloads{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.downloads a{padding:7px 9px;border:1px solid var(--line);border-radius:8px;font-size:10px}.limits{display:grid;grid-template-columns:1fr 1fr;gap:13px}.limits ul{padding-left:17px;margin:8px 0 0;color:var(--muted);font-size:10px;line-height:1.8}.foot{background:var(--navy);color:#d4e1dc;padding:23px max(22px,calc((100vw - 1180px)/2));font-size:10px}.foot a{color:#fff}.pill{display:inline-block;padding:4px 8px;border-radius:30px;background:#edf4f1;color:#3d7068;font-size:9px;font-weight:800}
+@media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.limits{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.section-head p{text-align:left}.barrow{grid-template-columns:115px 1fr 42px}.range-row{grid-template-columns:130px 1fr}.range-value{grid-column:2;text-align:left}.corr-row{grid-template-columns:105px 1fr 42px 40px}}
+@media(max-width:540px){header{padding:17px 15px 35px}.top{align-items:flex-start;margin-bottom:34px}.toplinks{gap:9px;justify-content:flex-end}.toplinks a{font-size:10px}.hero h1{font-size:39px}main{padding:20px 12px 40px}.kpis{gap:8px}.kpi{padding:13px}.kpi strong{font-size:27px}.panel{padding:14px}.barrow{grid-template-columns:100px 1fr 38px;gap:6px}.range-row{grid-template-columns:1fr}.range-value{grid-column:1}.groupbar{grid-template-columns:110px 1fr 40px}.corr-row{grid-template-columns:85px 1fr 39px 35px;gap:5px;font-size:9px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <a class="brand" href="https://nnarou-hash.github.io/">ND / DATA PORTFOLIO</a>
+    <nav class="toplinks"><a href="#qualite">Qualité</a><a href="#analyse">Descriptif</a><a href="#matrice">Corrélations</a><a href="#methode">Méthode</a></nav>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">NHANES · Data quality · dbt · BigQuery</div>
+    <h1>Fiabiliser avant<br>d’interpréter.</h1>
+    <p>Exploration de la qualité des données publiques NHANES, cycle août 2021–août 2023. Le projet documente les règles de sélection, la construction du HOMA-IR et la cohérence descriptive de l’indicateur avec d’autres mesures.</p>
+    <div class="hero-actions">
+      <a class="primary" href="https://nutrition-insuline-nn.streamlit.app" target="_blank" rel="noopener">Ouvrir Streamlit interactif ↗</a>
+      <a href="https://github.com/nnarou-hash/nutrition-insuline" target="_blank" rel="noopener">Code et documentation ↗</a>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="notice"><strong>Projet de qualité de données.</strong> Les résultats sont descriptifs et concernent cet échantillon. Ils ne constituent ni une analyse médicale, ni une conclusion clinique, ni un conseil de santé. Les associations observées ne démontrent aucune causalité.</div>
+  <div class="meta"><span>Cycle NHANES : août 2021 – août 2023 · Exports agrégés issus du projet dbt</span><span id="load-state">Chargement des données…</span></div>
+  <section class="kpis">
+    <article class="kpi"><small>Participants examinés</small><strong id="kpi-total">—</strong><span>Sur 11 933 participants dans les tables brutes</span></article>
+    <article class="kpi"><small>Retenus pour le HOMA-IR</small><strong id="kpi-retained">—</strong><span>Adultes satisfaisant les règles du projet</span></article>
+    <article class="kpi"><small>Part retenue</small><strong id="kpi-rate">—</strong><span>Parmi les participants examinés</span></article>
+    <article class="kpi"><small>Tests dbt</small><strong>58 / 58</strong><span>Tous au vert selon la documentation du projet</span></article>
+  </section>
+
+  <section class="section" id="qualite">
+    <div class="section-head"><div><div class="section-no">01 / Contrôles</div><h2>Qualité et sélection des participants</h2></div><p>Chaque participant examiné est classé selon le premier motif d’exclusion rencontré.</p></div>
+    <div class="grid2">
+      <article class="panel"><h3>Motifs de sélection</h3><p class="sub">Nombre de participants par motif, y compris les participants retenus.</p><div id="exclusion-bars" class="bars"></div></article>
+      <article class="panel"><h3>Valeurs manquantes</h3><p class="sub">Part de valeurs manquantes parmi les adultes retenus pour le HOMA-IR.</p><div id="missing-bars" class="bars"></div></article>
+    </div>
+    <article class="panel section"><h3>Part retenue par âge et sexe</h3><p class="sub">Pourcentage retenu parmi les adultes examinés dans chaque groupe.</p><div id="quality-groups"></div><p class="hint">La tranche 70 ans et plus inclut les 80 ans et plus (âge plafonné à 80).</p></article>
+  </section>
+
+  <section class="section" id="analyse">
+    <div class="section-head"><div><div class="section-no">02 / Description</div><h2>HOMA-IR et groupes observés</h2></div><p>Les barres montrent la médiane et l’intervalle interquartile (Q1–Q3), avec l’effectif de chaque groupe.</p></div>
+    <article class="panel">
+      <div class="controls"><div class="field"><label for="homa-view">Comparer selon</label><select id="homa-view">
+        <option value="imc">Catégorie d’IMC</option>
+        <option value="age">Tranche d’âge et sexe</option>
+        <option value="waist">Quartile de tour de taille et sexe</option>
+        <option value="imc_sex">Catégorie d’IMC et sexe</option>
+        <option value="activity">Activité physique de loisir</option>
+        <option value="intensity">Intensité de l’activité de loisir</option>
+        <option value="sedentary">Temps passé assis</option>
+      </select></div></div>
+      <div id="homa-chart" class="range-list"></div>
+      <p class="hint">Le trait vertical représente la médiane ; le segment horizontal représente les 1er et 3e quartiles. L’échelle est recalculée selon les groupes affichés.</p>
+    </article>
+    <div class="grid2 section">
+      <article class="panel"><h3>Activité de loisir à IMC comparable</h3><p class="sub">Médiane du HOMA-IR selon l’activité déclarée au sein de chaque catégorie d’IMC.</p><div class="table-wrap"><table><thead><tr><th>IMC</th><th>Activité de loisir</th><th>n</th><th>Médiane</th></tr></thead><tbody id="activity-imc-table"></tbody></table></div></article>
+      <article class="panel"><h3>Ce que montre la comparaison</h3><p class="sub">Repères descriptifs fournis par le projet.</p><div id="key-observations"></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="laboratoire">
+    <div class="section-head"><div><div class="section-no">03 / Cohérence</div><h2>Mesures de laboratoire</h2></div><p>Corrélations de rangs avec le HOMA-IR, calculées séparément chez les femmes et les hommes.</p></div>
+    <article class="panel"><h3>Corrélation de Spearman avec le HOMA-IR</h3><p class="sub">De −1 à +1 ; une valeur proche de 0 indique l’absence de lien net dans cet échantillon.</p><div id="correlation-chart" class="corr-list"></div><p class="hint">La ferritine n’est disponible que chez les femmes de 18 à 49 ans dans cet échantillon (n = 632) ; aucune valeur n’est présente chez les hommes.</p></article>
+    <article class="panel section">
+      <div class="controls"><div class="field"><label for="lab-measure">Mesure</label><select id="lab-measure"></select></div><div class="field"><label for="lab-sex">Groupe</label><select id="lab-sex"><option>Femme</option><option>Homme</option></select></div></div>
+      <h3>HOMA-IR médian par quartile de mesure</h3><p class="sub">Les quatre groupes vont du niveau de mesure le plus bas (quartile 1) au plus haut (quartile 4).</p>
+      <div id="lab-chart" class="bars"></div>
+    </article>
+  </section>
+
+  <section class="section" id="robustesse">
+    <div class="section-head"><div><div class="section-no">04 / Sensibilité</div><h2>Robustesse du critère de jeûne</h2></div><p>Les médianes varient peu lorsque le seuil minimal de jeûne change ; les effectifs évoluent davantage.</p></div>
+    <article class="panel">
+      <div class="controls"><div class="field"><label for="fasting-filter">Jeûne minimum exigé</label><select id="fasting-filter"><option value="0">0 h · aucun minimum</option><option value="8" selected>8 h · critère officiel du projet</option><option value="9">9 h</option><option value="12">12 h</option></select></div></div>
+      <div id="fasting-chart" class="bars"></div><p class="hint">Dans tous les cas, la durée de jeûne reste inférieure à 24 heures. La comparaison porte sur les médianes par catégorie d’IMC.</p>
+    </article>
+  </section>
+
+  <section class="section" id="matrice">
+    <div class="section-head"><div><div class="section-no">05 / Exploration</div><h2>Matrice de corrélation</h2></div><p>Filtres identiques à ceux de la page Streamlit : sexe et plage de tranches d’âge.</p></div>
+    <article class="panel">
+      <div class="controls">
+        <div class="field"><label for="matrix-sex">Sexe</label><select id="matrix-sex"><option>Femme</option><option>Homme</option></select></div>
+        <div class="field"><label for="age-start">À partir de</label><select id="age-start"></select></div>
+        <div class="field"><label for="age-end">Jusqu’à</label><select id="age-end"></select></div>
+      </div>
+      <div class="meta"><span id="matrix-n">Effectif : —</span><span>Corrélation de rangs · diagonale = 1</span></div>
+      <div id="matrix-table" class="heatmap-wrap"></div>
+      <div class="legend"><span>−1</span><span class="legendbar"></span><span>+1</span><span>Couleur et intensité = sens et force de la corrélation</span></div>
+      <p class="hint">Les cases vides correspondent aux paires de mesures avec moins de 30 participants. Les effectifs de chaque paire sont indiqués au survol des cases.</p>
+    </article>
+  </section>
+
+  <section class="section" id="methode">
+    <div class="section-head"><div><div class="section-no">06 / Transparence</div><h2>Méthode et limites</h2></div><p>La qualité des données est prioritaire sur l’interprétation des associations.</p></div>
+    <div class="limits">
+      <article class="panel"><h3>Règles de qualité appliquées</h3><ul>
+        <li>Adultes uniquement (18 ans et plus).</li>
+        <li>Critère de jeûne du projet : 8 heures à moins de 24 heures.</li>
+        <li>Femmes enceintes et cas indéterminés exclus.</li>
+        <li>Valeurs « refus » et « ne sait pas » recodées en valeurs manquantes en conservant la trace.</li>
+        <li>Correction en staging de valeurs proches de zéro mal lues dans certains fichiers XPT ; les données brutes restent intactes.</li>
+        <li>Contrôles de plausibilité sur les mesures corporelles et de laboratoire, et cohérence fréquence / unité pour l’activité physique.</li>
+      </ul></article>
+      <article class="panel"><h3>Limites d’interprétation</h3><ul>
+        <li>Les chiffres décrivent cet échantillon, pas la population américaine : les poids de sondage ne sont pas utilisés.</li>
+        <li>Les associations sont descriptives, sans test statistique et sans démonstration de causalité.</li>
+        <li>Le HOMA-IR n’est pas validé contre une mesure de référence ; la formule de 1985 n’est pas recalibrée pour les dosages actuels.</li>
+        <li>Les données ne suivent pas les mêmes personnes dans le temps.</li>
+        <li>Les seuils de plausibilité, catégories d’IMC et groupes sont des choix du projet, pas des normes.</li>
+        <li>Les petits effectifs rendent certaines comparaisons fragiles.</li>
+      </ul></article>
+    </div>
+    <article class="panel section"><h3>Formule utilisée</h3><p class="sub">Approximation courante à partir des mesures à jeun.</p><strong>HOMA-IR = glycémie à jeun (mg/dL) × insuline à jeun (µU/mL) / 405</strong><p class="hint">Référence : Matthews DR et al., « Homeostasis model assessment », Diabetologia, 1985;28(7):412–419. DOI : 10.1007/BF00280883.</p></article>
+    <article class="section">
+      <details><summary>Sources des exports agrégés et code source</summary>
+        <div class="downloads">
+          <a href="https://github.com/nnarou-hash/nutrition-insuline/tree/main/dashboard/exports" target="_blank" rel="noopener">Exports CSV du projet ↗</a>
+          <a href="https://github.com/nnarou-hash/nutrition-insuline/tree/main/models" target="_blank" rel="noopener">Modèles dbt ↗</a>
+          <a href="https://github.com/nnarou-hash/nutrition-insuline/blob/main/dashboard/app.py" target="_blank" rel="noopener">Code Streamlit ↗</a>
+          <a href="https://www.cdc.gov/nchs/nhanes/" target="_blank" rel="noopener">Source NHANES / CDC ↗</a>
+        </div>
+      </details>
+    </article>
+  </section>
+</main>
+<footer class="foot">Dashboard HTML statique construit à partir des exports agrégés du projet <a href="https://github.com/nnarou-hash/nutrition-insuline">nutrition-insuline</a>. <a href="https://nutrition-insuline-nn.streamlit.app">Version Streamlit interactive ↗</a> · <a href="https://nnarou-hash.github.io/">Retour au portfolio ↗</a></footer>
+<script>
+const money = v => Number(v || 0);
+const fmt = (v,d=1) => Number(v).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const nfmt = v => Number(v).toLocaleString('fr-FR');
+const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = id => document.getElementById(id);
+let D = {};
+async function loadData(){
+  const response = await fetch('./data.json',{cache:'no-store'});
+  if(!response.ok) throw new Error('Exports agrégés indisponibles');
+  const payload = await response.json();
+  D = payload.exports || {};
+  $('load-state').textContent = 'Exports agrégés chargés · cycle NHANES 2021–2023';
+}
+function get(name){return D[name] || []}
+function drawBars(elementId, rows, labelField, valueField, suffix){
+  const el=$(elementId), max=Math.max(1,...rows.map(r=>money(r[valueField])));
+  el.innerHTML=rows.map(r=>{
+    const v=money(r[valueField]);
+    return '<div class="barrow"><span class="barlabel">'+esc(r[labelField])+'</span><div class="bartrack"><div class="barfill" style="width:'+(v/max*100)+'%"></div></div><span class="barvalue">'+fmt(v, suffix==='%'?1:0)+(suffix||'')+'</span></div>';
+  }).join('') || '<div class="empty">Aucune donnée disponible.</div>';
+}
+function drawQuality(){
+  const motifs=get('motifs_exclusion');
+  const total=motifs.reduce((s,r)=>s+money(r.n),0);
+  const retained=motifs.filter(r=>r.motif==='Retenus pour le HOMA-IR').reduce((s,r)=>s+money(r.n),0);
+  $('kpi-total').textContent=nfmt(total);
+  $('kpi-retained').textContent=nfmt(retained);
+  $('kpi-rate').textContent=fmt(100*retained/total,1)+' %';
+  drawBars('exclusion-bars',motifs.slice().sort((a,b)=>money(b.n)-money(a.n)),'motif','n','');
+  drawBars('missing-bars',get('valeurs_manquantes'),'variable','pct_manquants','%');
+  const grouped=get('qualite_retenus_par_groupe');
+  const ages=[...new Set(grouped.map(r=>r.groupe_age))];
+  $('quality-groups').innerHTML=ages.map(age=>{
+    const pair=grouped.filter(r=>r.groupe_age===age);
+    return '<div style="margin:12px 0"><div style="font-size:10px;font-weight:800;color:var(--navy);margin-bottom:6px">'+esc(age)+'</div>'+pair.map(r=>{
+      const male=r.groupe_sexe==='Homme';
+      return '<div class="groupbar"><span>'+ (male?'Hommes':'Femmes')+' · '+nfmt(r.n_retenus)+' / '+nfmt(r.n_adultes_examines)+'</span><div class="track"><div class="fill '+(male?'male':'')+'" style="width:'+money(r.pct_retenus)+'%"></div></div><strong>'+fmt(r.pct_retenus,1)+' %</strong></div>';
+    }).join('')+'</div>';
+  }).join('');
+}
+const homaViews={
+  imc:{rows:'homa_par_imc',label:r=>r.groupe_imc},
+  age:{rows:'homa_par_age_sexe',label:r=>r.groupe_age+' · '+r.groupe_sexe},
+  waist:{rows:'homa_par_tour_taille',label:r=>'Quartile '+r.quartile_tour_taille+' · '+r.groupe_sexe},
+  imc_sex:{rows:'homa_sexe_par_imc',label:r=>r.groupe_imc+' · '+r.groupe_sexe},
+  activity:{rows:'homa_par_activite',label:r=>r.groupe_activite},
+  intensity:{rows:'homa_par_intensite',label:r=>r.groupe_intensite},
+  sedentary:{rows:'homa_par_sedentarite',label:r=>r.groupe_sedentarite}
+};
+function drawRange(rows,labelFn){
+  if(!rows.length)return '<div class="empty">Aucune donnée disponible.</div>';
+  const max=Math.max(1,...rows.map(r=>money(r.homa_q3)))*1.06;
+  return rows.map(r=>{
+    const q1=money(r.homa_q1),q3=money(r.homa_q3),median=money(r.homa_mediane);
+    const left=q1/max*100,width=Math.max(.5,(q3-q1)/max*100),mid=median/max*100;
+    return '<div class="range-row"><div class="range-label">'+esc(labelFn(r))+'</div><div class="range-track"><span class="range-segment" style="left:'+left+'%;width:'+width+'%"></span><i class="range-marker" style="left:'+mid+'%"></i></div><div class="range-value">Méd. '+fmt(median,2)+' · n = '+nfmt(r.n)+'</div></div>';
+  }).join('');
+}
+function drawHoma(){
+  const view=homaViews[$('homa-view').value], rows=get(view.rows);
+  $('homa-chart').innerHTML=drawRange(rows,view.label);
+  const activity=get('homa_activite_par_imc');
+  $('activity-imc-table').innerHTML=activity.map(r=>'<tr><td>'+esc(r.groupe_imc)+'</td><td>'+esc(r.groupe_activite)+'</td><td>'+nfmt(r.n)+'</td><td>'+fmt(r.homa_mediane,2)+'</td></tr>').join('');
+  $('key-observations').innerHTML='<div class="stat-line"><span>HOMA-IR médian, IMC 18,5 à &lt; 25</span><strong>1,37</strong></div><div class="stat-line"><span>HOMA-IR médian, IMC ≥ 30</span><strong>3,82</strong></div><div class="stat-line"><span>Activité de loisir déclarée : aucune</span><strong>2,77</strong></div><div class="stat-line"><span>Activité de loisir déclarée : groupe le plus actif</span><strong>2,08</strong></div><p class="hint">L’écart associé à l’activité de loisir se réduit nettement à IMC comparable, selon la documentation du projet.</p>';
+}
+function drawCorrelation(){
+  const rows=get('correlation_homa');
+  const measures=[...new Set(rows.map(r=>r.mesure))];
+  $('correlation-chart').innerHTML=measures.map(measure=>{
+    const pair=rows.filter(r=>r.mesure===measure);
+    return pair.map(r=>{
+      const v=money(r.correlation_spearman),left=v>=0?50:50-Math.abs(v)*50,width=Math.abs(v)*50;
+      return '<div class="corr-row"><span class="corr-label">'+esc(measure)+' · '+(r.groupe_sexe==='Femme'?'F':'H')+'</span><div class="corr-axis"><i class="corr-mid"></i><i class="corr-fill" style="left:'+left+'%;width:'+width+'%;background:'+(v>=0?'#377e78':'#b9655b')+'"></i></div><strong class="corr-num">'+(v>0?'+':'')+fmt(v,2)+'</strong><span class="corr-n">n '+nfmt(r.n)+'</span></div>';
+    }).join('');
+  }).join('');
+  const labs=get('homa_par_mesures_labo');
+  const measuresLab=[...new Set(labs.map(r=>r.mesure))].sort((a,b)=>a.localeCompare(b,'fr'));
+  $('lab-measure').innerHTML=measuresLab.map(m=>'<option>'+esc(m)+'</option>').join('');
+  drawLab();
+}
+function drawLab(){
+  const measure=$('lab-measure').value,sex=$('lab-sex').value;
+  const rows=get('homa_par_mesures_labo').filter(r=>r.mesure===measure&&r.groupe_sexe===sex).sort((a,b)=>money(a.quartile)-money(b.quartile));
+  const max=Math.max(1,...rows.map(r=>money(r.homa_mediane)));
+  $('lab-chart').innerHTML=rows.map(r=>{
+    const v=money(r.homa_mediane);
+    return '<div class="barrow"><span class="barlabel">Quartile '+r.quartile+' · '+fmt(r.valeur_min,1)+'–'+fmt(r.valeur_max,1)+'</span><div class="bartrack"><div class="barfill" style="width:'+(v/max*100)+'%"></div></div><span class="barvalue">'+fmt(v,2)+' · n '+nfmt(r.n)+'</span></div>';
+  }).join('')||'<div class="empty">Aucune donnée pour ce groupe.</div>';
+}
+function drawFasting(){
+  const threshold=$('fasting-filter').value;
+  const rows=get('sensibilite_jeune').filter(r=>String(r.jeune_minimum_heures)===threshold);
+  drawBars('fasting-chart',rows,'groupe_imc','homa_mediane','');
+  const target=$('fasting-chart');
+  [...target.querySelectorAll('.barvalue')].forEach((el,i)=>{el.textContent=fmt(rows[i].homa_mediane,2)+' · n '+nfmt(rows[i].n)});
+}
+const ageBands=['18-29','30-39','40-49','50-59','60-69','70+'];
+function initMatrixControls(){
+  $('age-start').innerHTML=ageBands.map(x=>'<option>'+x+'</option>').join('');
+  $('age-end').innerHTML=ageBands.map(x=>'<option>'+x+'</option>').join('');
+  $('age-end').value='70+';
+  drawMatrix();
+}
+function drawMatrix(){
+  const sex=$('matrix-sex').value,start=$('age-start').value,end=$('age-end').value;
+  const startIndex=ageBands.indexOf(start),endIndex=ageBands.indexOf(end);
+  if(startIndex>endIndex){$('matrix-table').innerHTML='<div class="empty">La borne de début doit précéder la borne de fin.</div>';$('matrix-n').textContent='Plage invalide';return}
+  const rows=get('matrice_correlation').filter(r=>r.sexe===sex&&r.bande_debut===start&&r.bande_fin===end);
+  if(!rows.length){$('matrix-table').innerHTML='<div class="empty">Aucune matrice calculée pour cette plage.</div>';$('matrix-n').textContent='Effectif : —';return}
+  const variables=[...new Set(rows.map(r=>r.variable_x))];
+  const lookup=new Map(rows.map(r=>[r.variable_x+'||'+r.variable_y,r]));
+  $('matrix-n').textContent='Effectif dans la plage : '+nfmt(rows[0].n_groupe)+' · '+sex.toLowerCase()+'s';
+  let html='<table class="heatmap"><thead><tr><th>Mesure</th>'+variables.map(v=>'<th>'+esc(v)+'</th>').join('')+'</tr></thead><tbody>';
+  for(const x of variables){
+    html+='<tr><td>'+esc(x)+'</td>';
+    for(const y of variables){
+      const r=lookup.get(x+'||'+y),val=r&&r.correlation!==''?Number(r.correlation):null;
+      if(val===null||!Number.isFinite(val)){html+='<td title="Effectif insuffisant">—</td>';continue}
+      const alpha=(.12+Math.abs(val)*.72).toFixed(2),bg=val>=0?'rgba(55,126,120,'+alpha+')':'rgba(185,101,91,'+alpha+')';
+      const color=Math.abs(val)>.48?'#fff':'#203a3d';
+      html+='<td><span class="heatcell" style="display:block;background:'+bg+';color:'+color+'" title="Corrélation '+fmt(val,2)+' · n = '+nfmt(r.n)+'">'+fmt(val,2)+'</span></td>';
+    }
+    html+='</tr>';
+  }
+  html+='</tbody></table>';
+  $('matrix-table').innerHTML=html;
+}
+async function init(){
+  try{
+    await loadData();
+    drawQuality();drawHoma();drawCorrelation();initMatrixControls();drawFasting();
+    $('homa-view').addEventListener('change',drawHoma);
+    $('lab-measure').addEventListener('change',drawLab);$('lab-sex').addEventListener('change',drawLab);
+    $('fasting-filter').addEventListener('change',drawFasting);
+    ['matrix-sex','age-start','age-end'].forEach(id=>$(id).addEventListener('change',drawMatrix));
+  }catch(error){
+    $('load-state').textContent='Erreur de chargement';
+    const notice=document.createElement('div');notice.className='notice';notice.textContent='Les exports agrégés ne peuvent pas être chargés : '+error.message;
+    document.querySelector('main').prepend(notice);
+  }
+}
+init();
+</script>
+</body></html>
