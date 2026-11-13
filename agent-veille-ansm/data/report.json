@@ -1,12 +1,12 @@
 {
   "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-  "observed_at": "2026-11-11T02:06:01+00:00",
-  "record_count": 293,
+  "observed_at": "2026-11-13T14:18:34+00:00",
+  "record_count": 294,
   "status_counts": {
     "Arrêt de commercialisation": 19,
-    "Remise à disposition": 86,
+    "Remise à disposition": 88,
     "Rupture de stock": 51,
-    "Tension d'approvisionnement": 137
+    "Tension d'approvisionnement": 136
   },
   "domain_counts": {
     "Infectiologie": 58,
@@ -14,8 +14,8 @@
     "Oncologie/Radiothérapie": 36,
     "Psychiatrie": 34,
     "Ophtalmologie": 28,
+    "Hépato-gastroentérologie": 24,
     "Neurologie": 24,
-    "Hépato-gastroentérologie": 23,
     "Endocrinologie": 22,
     "Hématologie": 12,
     "Rhumatologie": 11,
@@ -34,10 +34,88 @@
     "Urologie": 1
   },
   "events_this_run": {
-    "nouvelle_entree": 0,
+    "nouvelle_entree": 4,
     "modification": 0,
-    "sortie_de_liste": 0
+    "sortie_de_liste": 3
   },
-  "recent_events": [],
+  "recent_events": [
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "1f0164c015f4855591c2",
+      "specialty": "Cimzia 200 mg, solution injectable en stylo prérempli – [certolizumab pégol] [MAJ]",
+      "previous_status": "",
+      "current_status": "Remise à disposition",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "f0e195d1d4cc306ec348",
+      "specialty": "Dipentum 250 mg, gélule – [olsalazine sodique]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "ced8add5cc7b90f24e46",
+      "specialty": "Vitamine E Provepharm 100 mg/2 ml, solution injectable – [acétate d'alpha-tocophérol] [MAJ]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "452eb4e2dadb8e7393ca",
+      "specialty": "Zypadhera 210 mg, poudre et solvant pour suspension injectable à libération prolongée – [olanzapine (pamoate d') monohydraté] [MAJ]",
+      "previous_status": "",
+      "current_status": "Remise à disposition",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "096263b2d6bfc046e3bd",
+      "specialty": "Vitamine E Provepharm 100 mg/2 ml, solution injectable – [acétate d'alpha-tocophérol]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "257d5bd0e95e18170ef7",
+      "specialty": "Cimzia 200 mg, solution injectable en stylo prérempli – [certolizumab pégol]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-13T14:18:34+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "67db3d68c237db735f0a",
+      "specialty": "Zypadhera 210 mg, poudre et solvant pour suspension injectable à libération prolongée – [olanzapine (pamoate d') monohydraté]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    }
+  ],
   "scope_note": "La liste ANSM porte sur les médicaments d'intérêt thérapeutique majeur (MITM) suivis par l'ANSM et les situations récemment normalisées. Une sortie de liste n'est pas une preuve de retour à la normale."
 }
