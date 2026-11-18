@@ -1,12 +1,12 @@
 {
   "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-  "observed_at": "2026-11-16T15:17:31+00:00",
-  "record_count": 297,
+  "observed_at": "2026-11-18T15:24:30+00:00",
+  "record_count": 298,
   "status_counts": {
     "Arrêt de commercialisation": 19,
     "Remise à disposition": 91,
     "Rupture de stock": 49,
-    "Tension d'approvisionnement": 138
+    "Tension d'approvisionnement": 139
   },
   "domain_counts": {
     "Infectiologie": 58,
@@ -22,7 +22,7 @@
     "Allergologie": 8,
     "Néphrologie": 8,
     "Dermatologie": 7,
-    "Immunologie": 6,
+    "Immunologie": 7,
     "ORL": 6,
     "Anesthésie/Réanimation/Soins intensifs": 5,
     "Gynécologie": 5,
@@ -34,153 +34,32 @@
     "Urologie": 1
   },
   "events_this_run": {
-    "nouvelle_entree": 8,
-    "modification": 0,
-    "sortie_de_liste": 5
+    "nouvelle_entree": 1,
+    "modification": 1,
+    "sortie_de_liste": 0
   },
   "recent_events": [
     {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "1bde6cf34499f6f9d5ec",
-      "specialty": "Cernevit, poudre pour solution injectable ou pour perfusion – [acide ascorbique, acide folique, biotine,...]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "11912fa8d2e71e2a916c",
-      "specialty": "Duloxétine 30 mg et 60 mg, gélules gastro-résistantes – [duloxétine (chlorhydrate de)] [MAJ]",
-      "previous_status": "",
-      "current_status": "Remise à disposition",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "df2e1af5a0fe6c9d0f86",
-      "specialty": "Jext 300 microgrammes, solution injectable en stylo prérempli – [adrénaline (tartrate d')]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "44447738b27b33d1a102",
-      "specialty": "Mitoxantrone Accord 2 mg/mL, solution à diluer pour perfusion – [mitoxantrone (chlorhydrate de)] [MAJ]",
-      "previous_status": "",
-      "current_status": "Remise à disposition",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "78116573cfe0b1615dec",
-      "specialty": "Plerixafor Arrow 20 mg/mL, solution injectable – [plerixafor] [MAJ]",
-      "previous_status": "",
-      "current_status": "Remise à disposition",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "1a61aac12f60bfe879fb",
-      "specialty": "Sectral 40 mg/ml, solution buvable en flacon – [acébutolol (chlorhydrate d')]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "57d6d14dbda9969335b4",
-      "specialty": "Toxicarb, suspension buvable – [charbon activé]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "52baf4a5b5f550915d1a",
-      "specialty": "Virophta, préparation pour collyre (lyophilisat et solvant) – [trifluridine] [MAJ]",
-      "previous_status": "",
-      "current_status": "Remise à disposition",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "sortie_de_liste",
-      "record_key": "027b29092fb166624aaa",
-      "specialty": "Virophta, préparation pour collyre (lyophilisat et solvant) – [trifluridine]",
+      "event_at": "2026-11-18T15:24:30+00:00",
+      "event_type": "modification",
+      "record_key": "1db9037d370f4b0095da",
+      "specialty": "Spécialités à base de furosémide 20 mg et 40 mg en comprimés – [furosémide]",
       "previous_status": "Tension d'approvisionnement",
-      "current_status": "",
-      "changed_fields": "entrée absente du dernier instantané",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "source_updated_at",
       "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+      "interpretation_note": "Modification des informations publiées ; vérifier le détail sur la page ANSM."
     },
     {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "sortie_de_liste",
-      "record_key": "04f5d6ae21e6184c64ce",
-      "specialty": "Duloxétine 30 mg et 60 mg, gélules gastro-résistantes – [duloxétine (chlorhydrate de)]",
-      "previous_status": "Tension d'approvisionnement",
-      "current_status": "",
-      "changed_fields": "entrée absente du dernier instantané",
+      "event_at": "2026-11-18T15:24:30+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "03d89d64a31ce709e1c1",
+      "specialty": "Zovirax 200 mg/5 ml, suspension buvable en flacon – [aciclovir]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
       "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "sortie_de_liste",
-      "record_key": "2c9236b2f0649abe01eb",
-      "specialty": "Mitoxantrone Accord 2 mg/mL, solution à diluer pour perfusion – [mitoxantrone (chlorhydrate de)]",
-      "previous_status": "Rupture de stock",
-      "current_status": "",
-      "changed_fields": "entrée absente du dernier instantané",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "sortie_de_liste",
-      "record_key": "4c93b3ec90b6266cae2e",
-      "specialty": "Rapibloc 20 mg/2 ml, solution à diluer injectable – [landiolol (chlorhydrate de)]",
-      "previous_status": "Remise à disposition",
-      "current_status": "",
-      "changed_fields": "entrée absente du dernier instantané",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
-    },
-    {
-      "event_at": "2026-11-16T15:17:31+00:00",
-      "event_type": "sortie_de_liste",
-      "record_key": "d9ad3cfdfb868e0f80da",
-      "specialty": "Plerixafor Arrow 20 mg/mL, solution injectable – [plerixafor]",
-      "previous_status": "Rupture de stock",
-      "current_status": "",
-      "changed_fields": "entrée absente du dernier instantané",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     }
   ],
   "scope_note": "La liste ANSM porte sur les médicaments d'intérêt thérapeutique majeur (MITM) suivis par l'ANSM et les situations récemment normalisées. Une sortie de liste n'est pas une preuve de retour à la normale."
