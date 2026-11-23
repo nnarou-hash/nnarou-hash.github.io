@@ -1,7 +1,7 @@
 # Rapport de veille ANSM
 
-- Dernière collecte réussie : 2026-11-20T15:08:10+00:00
-- Entrées publiées : 295
+- Dernière collecte réussie : 2026-11-23T17:44:37+00:00
+- Entrées publiées : 297
 - Source : https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments
 
 ## Répartition par statut
@@ -9,13 +9,13 @@
 - Arrêt de commercialisation : 20
 - Remise à disposition : 91
 - Rupture de stock : 47
-- Tension d'approvisionnement : 137
+- Tension d'approvisionnement : 139
 
 ## Changements détectés lors de cette collecte
 
-- Nouvelles entrées : 14
+- Nouvelles entrées : 5
 - Modifications : 2
-- Sorties de liste : 18
+- Sorties de liste : 3
 
 ## Limite d'interprétation
 
