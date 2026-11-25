@@ -1,10 +1,10 @@
 {
   "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-  "observed_at": "2026-11-23T17:44:37+00:00",
-  "record_count": 297,
+  "observed_at": "2026-11-25T16:58:12+00:00",
+  "record_count": 298,
   "status_counts": {
     "Arrêt de commercialisation": 20,
-    "Remise à disposition": 91,
+    "Remise à disposition": 92,
     "Rupture de stock": 47,
     "Tension d'approvisionnement": 139
   },
@@ -23,9 +23,9 @@
     "Néphrologie": 8,
     "Dermatologie": 7,
     "Immunologie": 7,
+    "Gynécologie": 6,
     "ORL": 6,
     "Anesthésie/Réanimation/Soins intensifs": 5,
-    "Gynécologie": 5,
     "Pneumologie": 4,
     "Imagerie/Radiologie": 3,
     "Traitement de la douleur": 3,
@@ -34,16 +34,16 @@
     "Urologie": 1
   },
   "events_this_run": {
-    "nouvelle_entree": 5,
-    "modification": 2,
-    "sortie_de_liste": 3
+    "nouvelle_entree": 6,
+    "modification": 1,
+    "sortie_de_liste": 5
   },
   "recent_events": [
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "0c920e6abed11ea9f9f0",
-      "specialty": "Ambrisentan-Volibris tous dosages – [ambrisentan] [MAJ]",
+      "record_key": "18711f833f825e690d2f",
+      "specialty": "Clomid 50 mg, comprimé – [clomifène (citrate de)] [MAJ / ACTION REQUISE]",
       "previous_status": "",
       "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
@@ -51,7 +51,18 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "4aaa334b9a6ff63e6eee",
+      "specialty": "Depo Prodasone 500 mg, suspension injectable – [médroxyprogestérone] [MAJ]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "modification",
       "record_key": "da3055019697ff7c1e5a",
       "specialty": "Fluorouracile Pfizer 50 mg/ml, solution à diluer pour perfusion - flacon de 100 ml – [fluorouracile] [MAJ]",
@@ -62,65 +73,54 @@
       "interpretation_note": "Modification des informations publiées ; vérifier le détail sur la page ANSM."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "3c3899c20013e038e72b",
-      "specialty": "Ioméron 350 et 400 mg Iode/mL, solution injectable en 500 mL - [ioméprol] [MAJ]",
+      "record_key": "481a912f20131fa6e405",
+      "specialty": "Mapakna LP 20 mg, comprimé à libération prolongée – [nifédipine]",
       "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
+      "current_status": "Rupture de stock",
       "changed_fields": "entrée observée pour la première fois",
       "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "6aba5465ae6ea6d4f5a8",
-      "specialty": "Likozam 1 mg/ml, suspension buvable – [clobazam]",
+      "record_key": "658090614e616d75e1ed",
+      "specialty": "Micropakine L.P. 500 mg, granulés à libération prolongée en sachet-dose – [acide valproïque, sodium (valproate de)] [MAJ]",
       "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-23T17:44:37+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "fce91de46aeac3d6d42f",
-      "specialty": "Microval, comprimé enrobé – [lévonorgestrel] [MAJ]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-23T17:44:37+00:00",
-      "event_type": "nouvelle_entree",
-      "record_key": "fc70b255eb183fc48bd2",
-      "specialty": "Nozinan 25 mg, comprimé pelliculé sécable – [lévomépromazine (maléate de)]",
-      "previous_status": "",
-      "current_status": "Tension d'approvisionnement",
-      "changed_fields": "entrée observée pour la première fois",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
-    },
-    {
-      "event_at": "2026-11-23T17:44:37+00:00",
-      "event_type": "modification",
-      "record_key": "452eb4e2dadb8e7393ca",
-      "specialty": "Zypadhera 210 mg, poudre et solvant pour suspension injectable à libération prolongée – [olanzapine (pamoate d') monohydraté] [MAJ]",
-      "previous_status": "Remise à disposition",
       "current_status": "Remise à disposition",
-      "changed_fields": "availability_date",
+      "changed_fields": "entrée observée pour la première fois",
       "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Modification des informations publiées ; vérifier le détail sur la page ANSM."
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "600a247ac5d8036fe6ae",
+      "specialty": "Rapamune 1 mg/ml, solution buvable – [sirolimus] [MAJ]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "6d1e9f19f9fdd0f14cf7",
+      "specialty": "Xenpozyme 20 mg, poudre pour solution à diluer pour perfusion – [olipudase alfa] [MAJ]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "11e35e50eb68b30ebfcb",
-      "specialty": "Ambrisentan-Volibris tous dosages – [ambrisentan]",
+      "record_key": "12d8ce309c9296c0a283",
+      "specialty": "Micropakine L.P. 500 mg, granulés à libération prolongée en sachet-dose - [acide valproïque, sodium (valproate de)]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -128,10 +128,21 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "14ceb0a2ddce35758e7b",
-      "specialty": "Microval, comprimé enrobé – [lévonorgestrel]",
+      "record_key": "4d6c74952c7392a5be5c",
+      "specialty": "Clomid 50 mg, comprimé – [clomifène (citrate de)]",
+      "previous_status": "Rupture de stock",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "b77d420252a6ec571329",
+      "specialty": "Depo Prodasone 500 mg, suspension injectable – [médroxyprogestérone]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -139,10 +150,21 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-23T17:44:37+00:00",
+      "event_at": "2026-11-25T16:58:12+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "bab69dea4075e190153b",
-      "specialty": "Ioméron 250, 350 et 400 mg Iode/mL, solution injectable en 50-100-200 et 500 mL - [ioméprol]",
+      "record_key": "b9b4ccd5d3291461b689",
+      "specialty": "Rapamune 1 mg/ml, solution buvable – [sirolimus]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "b9ec17dba9897da7c119",
+      "specialty": "Xenpozyme 20 mg, poudre pour solution à diluer pour perfusion – [olipudase alfa]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
