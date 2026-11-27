@@ -1,21 +1,21 @@
 {
   "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-  "observed_at": "2026-11-25T16:58:12+00:00",
-  "record_count": 298,
+  "observed_at": "2026-11-27T16:24:19+00:00",
+  "record_count": 300,
   "status_counts": {
-    "Arrêt de commercialisation": 20,
-    "Remise à disposition": 92,
+    "Arrêt de commercialisation": 21,
+    "Remise à disposition": 94,
     "Rupture de stock": 47,
-    "Tension d'approvisionnement": 139
+    "Tension d'approvisionnement": 138
   },
   "domain_counts": {
-    "Infectiologie": 57,
+    "Infectiologie": 58,
     "Cardiologie": 46,
     "Oncologie/Radiothérapie": 36,
     "Psychiatrie": 35,
     "Ophtalmologie": 28,
     "Hépato-gastroentérologie": 26,
-    "Neurologie": 25,
+    "Neurologie": 26,
     "Endocrinologie": 20,
     "Hématologie": 12,
     "Rhumatologie": 11,
@@ -34,16 +34,27 @@
     "Urologie": 1
   },
   "events_this_run": {
-    "nouvelle_entree": 6,
+    "nouvelle_entree": 10,
     "modification": 1,
-    "sortie_de_liste": 5
+    "sortie_de_liste": 8
   },
   "recent_events": [
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "18711f833f825e690d2f",
-      "specialty": "Clomid 50 mg, comprimé – [clomifène (citrate de)] [MAJ / ACTION REQUISE]",
+      "record_key": "463e74e5845d85d21b3e",
+      "specialty": "Emend 125 mg, poudre pour suspension buvable – [aprépitant] [MAJ]",
+      "previous_status": "",
+      "current_status": "Arrêt de commercialisation",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "f598fea3ce7e89871512",
+      "specialty": "Endoxan 50 mg, comprimé enrobé – [cyclophosphamide] [MAJ]",
       "previous_status": "",
       "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
@@ -51,10 +62,10 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "4aaa334b9a6ff63e6eee",
-      "specialty": "Depo Prodasone 500 mg, suspension injectable – [médroxyprogestérone] [MAJ]",
+      "record_key": "6518af0084d184fcbfd7",
+      "specialty": "Fluanxol 4 %, solution buvable – [flupentixol (dichlorhydrate de)]",
       "previous_status": "",
       "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
@@ -62,32 +73,21 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
-      "event_type": "modification",
-      "record_key": "da3055019697ff7c1e5a",
-      "specialty": "Fluorouracile Pfizer 50 mg/ml, solution à diluer pour perfusion - flacon de 100 ml – [fluorouracile] [MAJ]",
-      "previous_status": "Rupture de stock",
-      "current_status": "Rupture de stock",
-      "changed_fields": "source_updated_at",
-      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
-      "interpretation_note": "Modification des informations publiées ; vérifier le détail sur la page ANSM."
-    },
-    {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "481a912f20131fa6e405",
-      "specialty": "Mapakna LP 20 mg, comprimé à libération prolongée – [nifédipine]",
+      "record_key": "f22c5e79c96917cd1cb1",
+      "specialty": "Fluorouracile Accord 50 mg/ml, solution à diluer pour perfusion, flacon de 100 ml – [fluorouracile] (MAJ]",
       "previous_status": "",
-      "current_status": "Rupture de stock",
+      "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
       "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "658090614e616d75e1ed",
-      "specialty": "Micropakine L.P. 500 mg, granulés à libération prolongée en sachet-dose – [acide valproïque, sodium (valproate de)] [MAJ]",
+      "record_key": "05ffa4bca89835914a06",
+      "specialty": "Icatibant Zentiva 30 mg, solution injectable en seringue préremplie – 1 seringue préremplie en verre de 3 mL avec 1 aiguille – [icatibant (acétate d')] [MAJ]",
       "previous_status": "",
       "current_status": "Remise à disposition",
       "changed_fields": "entrée observée pour la première fois",
@@ -95,10 +95,21 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "600a247ac5d8036fe6ae",
-      "specialty": "Rapamune 1 mg/ml, solution buvable – [sirolimus] [MAJ]",
+      "record_key": "bcafa4e59acbdbf24cbc",
+      "specialty": "Likozam 1 mg/ml, suspension buvable – [clobazam] [MAJ]",
+      "previous_status": "",
+      "current_status": "Remise à disposition",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "a800278833ad74fe97cc",
+      "specialty": "Pipéracilline Panpharma 4 g, poudre pour solution injectable (I.M., I.V.) – [pipéracilline sodique] [MAJ]",
       "previous_status": "",
       "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
@@ -106,10 +117,10 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "nouvelle_entree",
-      "record_key": "6d1e9f19f9fdd0f14cf7",
-      "specialty": "Xenpozyme 20 mg, poudre pour solution à diluer pour perfusion – [olipudase alfa] [MAJ]",
+      "record_key": "ed69889a43de535d4203",
+      "specialty": "Spécialités à base de furosémide 20 mg et 40 mg en comprimés – [furosémide] [MAJ]",
       "previous_status": "",
       "current_status": "Tension d'approvisionnement",
       "changed_fields": "entrée observée pour la première fois",
@@ -117,10 +128,43 @@
       "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "b43979b0e0dc5270cd9b",
+      "specialty": "Tamiflu 6 mg/ml, poudre pour suspension buvable – [oséltamivir (phosphate d')] [ACTION REQUISE]",
+      "previous_status": "",
+      "current_status": "Tension d'approvisionnement",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "nouvelle_entree",
+      "record_key": "59094e2718cb38c5713f",
+      "specialty": "Tétracaïne 1% Théa, collyre en solution en récipient unidose – [chlorhydrate de tétracaïne] [MAJ]",
+      "previous_status": "",
+      "current_status": "Rupture de stock",
+      "changed_fields": "entrée observée pour la première fois",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Nouvelle entrée dans la liste publique observée par le collecteur."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "modification",
+      "record_key": "51e5675e62ed54cea601",
+      "specialty": "Yellox 0,9 mg/ml, collyre en solution – [bromfénac sodique sesquihydraté] [MAJ]",
+      "previous_status": "Rupture de stock",
+      "current_status": "Rupture de stock",
+      "changed_fields": "source_updated_at",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Modification des informations publiées ; vérifier le détail sur la page ANSM."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "12d8ce309c9296c0a283",
-      "specialty": "Micropakine L.P. 500 mg, granulés à libération prolongée en sachet-dose - [acide valproïque, sodium (valproate de)]",
+      "record_key": "1db9037d370f4b0095da",
+      "specialty": "Spécialités à base de furosémide 20 mg et 40 mg en comprimés – [furosémide]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -128,10 +172,32 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "4d6c74952c7392a5be5c",
-      "specialty": "Clomid 50 mg, comprimé – [clomifène (citrate de)]",
+      "record_key": "2c3aeb6b6084a88a82cb",
+      "specialty": "Pipéracilline Panpharma 4 g, poudre pour solution injectable (I.M., I.V.) – [pipéracilline sodique]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "2fa65fe01cfd20d673e2",
+      "specialty": "Endoxan 50 mg, comprimé enrobé – [cyclophosphamide]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "5df588c9ac9e34303183",
+      "specialty": "Tétracaïne 1% Théa, collyre en solution en récipient unidose – [chlorhydrate de tétracaïne]",
       "previous_status": "Rupture de stock",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -139,10 +205,10 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "b77d420252a6ec571329",
-      "specialty": "Depo Prodasone 500 mg, suspension injectable – [médroxyprogestérone]",
+      "record_key": "69773069c801dc215037",
+      "specialty": "Emend 125 mg, poudre pour suspension buvable – [aprépitant]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -150,10 +216,10 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "b9b4ccd5d3291461b689",
-      "specialty": "Rapamune 1 mg/ml, solution buvable – [sirolimus]",
+      "record_key": "6aba5465ae6ea6d4f5a8",
+      "specialty": "Likozam 1 mg/ml, suspension buvable – [clobazam]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
@@ -161,10 +227,21 @@
       "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
     },
     {
-      "event_at": "2026-11-25T16:58:12+00:00",
+      "event_at": "2026-11-27T16:24:19+00:00",
       "event_type": "sortie_de_liste",
-      "record_key": "b9ec17dba9897da7c119",
-      "specialty": "Xenpozyme 20 mg, poudre pour solution à diluer pour perfusion – [olipudase alfa]",
+      "record_key": "d80f483eee2001f30488",
+      "specialty": "Fluorouracile Accord 50 mg/ml, solution à diluer pour perfusion, flacon de 100 ml – [fluorouracile]",
+      "previous_status": "Tension d'approvisionnement",
+      "current_status": "",
+      "changed_fields": "entrée absente du dernier instantané",
+      "source_url": "https://ansm.sante.fr/disponibilites-des-produits-de-sante/medicaments",
+      "interpretation_note": "Sortie de la liste observée. Ne signifie pas à elle seule que la disponibilité est rétablie."
+    },
+    {
+      "event_at": "2026-11-27T16:24:19+00:00",
+      "event_type": "sortie_de_liste",
+      "record_key": "e79533336d7d4386af00",
+      "specialty": "Icatibant Zentiva 30 mg, solution injectable en seringue préremplie – 1 seringue préremplie en verre de 3 mL avec 1 aiguille – [icatibant (acétate d')]",
       "previous_status": "Tension d'approvisionnement",
       "current_status": "",
       "changed_fields": "entrée absente du dernier instantané",
